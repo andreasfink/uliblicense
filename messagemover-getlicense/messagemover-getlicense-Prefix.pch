@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'messagemover-getlicense' target in the 'messagemover-getlicense' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
