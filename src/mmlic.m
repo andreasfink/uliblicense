@@ -37,13 +37,13 @@ int main (int argc, const char * argv[])
         NSMutableDictionary     *licenseFile = [[NSMutableDictionary alloc]init];
         NSString *licenseFileName = @"license.bin";
         NSString *licenseInstallFileName = @"/etc/messagemover/license.bin";
-        licenseFeatures[@"core"] = @{@"enable": @YES};
-        licenseFeatures[@"sctp"] = @{@"enable": @YES};
-        licenseFeatures[@"m2pa"] = @{@"enable": @YES};
-        licenseFeatures[@"mtp3"] = @{@"enable": @YES};
-        licenseFeatures[@"sccp"] = @{@"enable": @YES};
-        licenseFeatures[@"tcap"] = @{@"enable": @YES};
-        licenseFeatures[@"gsmmap"] = @{@"enable": @YES};
+        licenseFeatures[@"core"] = @{@"enable": @"YES"};
+        licenseFeatures[@"sctp"] = @{@"enable": @"YES"};
+        licenseFeatures[@"m2pa"] = @{@"enable": @"YES"};
+        licenseFeatures[@"mtp3"] = @{@"enable": @"YES"};
+        licenseFeatures[@"sccp"] = @{@"enable": @"YES"};
+        licenseFeatures[@"tcap"] = @{@"enable": @"YES"};
+        licenseFeatures[@"gsmmap"] = @{@"enable": @"YES"};
 
         NSString *serialNumber  = NULL;
         NSString *expiration    = NULL;
@@ -110,60 +110,60 @@ int main (int argc, const char * argv[])
             }
             else if(strcmp(argv[i],"--smsc")==0)
             {
-                licenseFeatures[@"smsc"] = @{@"enable": @YES};
+                licenseFeatures[@"smsc"] = @{@"enable": @"YES"};
             }
             else if((strcmp(argv[i],"--emiucp")==0) || (strcmp(argv[i],"--emi-ucp")==0))
             {
-                licenseFeatures[@"emiucp"] = @{@"enable": @YES};
+                licenseFeatures[@"emiucp"] = @{@"enable": @"YES"};
             }
             else if(strcmp(argv[i],"--smpp")==0)
             {
-                licenseFeatures[@"smpp"] = @{@"enable": @YES};
+                licenseFeatures[@"smpp"] = @{@"enable": @"YES"};
             }
             else if(strcmp(argv[i],"--http")==0)
             {
-                licenseFeatures[@"http"] = @{@"enable": @YES};
+                licenseFeatures[@"http"] = @{@"enable": @"YES"};
             }
             else if(strcmp(argv[i],"--m3ua")==0)
             {
-                licenseFeatures[@"m3ua"] = @{@"enable": @YES};
+                licenseFeatures[@"m3ua"] = @{@"enable": @"YES"};
             }
             else if(strcmp(argv[i],"--proxy")==0)
             {
-                licenseFeatures[@"proxy"] = @{@"enable": @YES};
-                licenseFeatures[@"smsproxy"] = @{@"enable": @YES};
+                licenseFeatures[@"proxy"] = @{@"enable": @"YES"};
+                licenseFeatures[@"smsproxy"] = @{@"enable": @"YES"};
             }
             else if(strcmp(argv[i],"--http-hlr")==0)
             {
-                licenseFeatures[@"http-hlr"] = @{@"enable": @YES};
+                licenseFeatures[@"http-hlr"] = @{@"enable": @"YES"};
             }
             else if(strcmp(argv[i],"--mofwd")==0)
             {
-                licenseFeatures[@"mofwd"] = @{@"enable": @YES};
+                licenseFeatures[@"mofwd"] = @{@"enable": @"YES"};
             }
             else if(strcmp(argv[i],"--quota")==0)
             {
-                licenseFeatures[@"quota"] = @{@"enable": @YES};
+                licenseFeatures[@"quota"] = @{@"enable": @"YES"};
             }
             else if(strcmp(argv[i],"--interworking")==0)
             {
-                licenseFeatures[@"interworking"] = @{@"enable": @YES};
+                licenseFeatures[@"interworking"] = @{@"enable": @"YES"};
             }
             else if(strcmp(argv[i],"--rerouter")==0)
             {
-                licenseFeatures[@"rerouter"] = @{@"enable": @YES};
+                licenseFeatures[@"rerouter"] = @{@"enable": @"YES"};
             }
             else if(strcmp(argv[i],"--billing")==0)
             {
-                licenseFeatures[@"billing"] = @{@"enable": @YES};
+                licenseFeatures[@"billing"] = @{@"enable": @"YES"};
             }
             else if(strcmp(argv[i],"--logging")==0)
             {
-                licenseFeatures[@"logging"] = @{@"enable": @YES};
+                licenseFeatures[@"logging"] = @{@"enable": @"YES"};
             }
             else if(strcmp(argv[i],"--udp")==0)
             {
-                licenseFeatures[@"udp"] = @{@"enable": @YES};
+                licenseFeatures[@"udp"] = @{@"enable": @"YES"};
             }
         }
 
