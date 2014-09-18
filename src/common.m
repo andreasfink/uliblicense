@@ -212,7 +212,7 @@ NSString *GetMachineSerialNumber(void)
     }
     if (serialNumber)
     {
-        result = [(NSString*)serialNumber autorelease];
+        result = @ ([(NSString *)CFBridgingRelease(serialNumber) UTF8String]);
     }
     else
     {
@@ -521,7 +521,6 @@ NSString *hexNSString(const char *in)
 	{
 		[result appendFormat:@"%02X",((unsigned char *)in)[i]];
 	}
-	[result autorelease];
 	return result;
 }
 
@@ -591,7 +590,6 @@ NSArray *readChildProcess(NSArray *args)
         {
             free(line);
         }
-        [result autorelease];
     }
     return result;
 }
