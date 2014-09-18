@@ -47,7 +47,7 @@ NSDictionary *GetMACAddresses(void)
 			[interfaces setObject:hwaddr forKey:ifname];
 		}
 	}
-	return [interfaces autorelease];
+	return interfaces;
 }
 
 
@@ -139,7 +139,6 @@ NSString *GetMachineSerialNumber(void)
                         break;
                 }
             }
-            [serialNumber autorelease];
             found=1;
         }
     }
@@ -493,17 +492,16 @@ NSArray *GetCpuSerialNumbers(void)
             {
                 [serialNumbers addObject:serialNumber];
             }
-            [serialNumber release];
             serialNumber = NULL;
             found++;
         }
     }
     if(found==0)
     {
-        [serialNumbers release];
+        serialNumbers=NULL;
         return NULL;
     }
-    return [serialNumbers autorelease];
+    return serialNumbers;
 }
 
 

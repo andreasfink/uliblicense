@@ -14,22 +14,22 @@
 
 int main (int argc, const char * argv[])
 {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];
-
-    NSString *line = [NSString stringWithFormat:@"mminfo 1.0\nSerial Number: %@",GetMachineSerialNumber()];
-    fprintf(stdout,"\n%s\n",[line UTF8String]);
-
-    NSDictionary *dict = GetMACAddresses();
-	for(NSString *ifname in dict)
+    @autoreleasepool
     {
-        NSString *macaddr = [dict objectForKey:ifname];
-        NSString *line = [NSString stringWithFormat:@"%@: %@",ifname,macaddr];
-        fprintf(stdout,"%s\n",[line UTF8String]);
+        NSString *line = [NSString stringWithFormat:@"mminfo 1.0\nSerial Number: %@",GetMachineSerialNumber()];
+        fprintf(stdout,"\n%s\n",[line UTF8String]);
+        
+        NSDictionary *dict = GetMACAddresses();
+        for(NSString *ifname in dict)
+        {
+            NSString *macaddr = [dict objectForKey:ifname];
+            NSString *line = [NSString stringWithFormat:@"%@: %@",ifname,macaddr];
+            fprintf(stdout,"%s\n",[line UTF8String]);
+        }
+        
+        fprintf(stdout,"\n");
+        fflush(stdout);
     }
-    
-    fprintf(stdout,"\n");
-    fflush(stdout);
-    [pool drain];
     return 0;
 }
 

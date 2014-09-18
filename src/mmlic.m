@@ -31,7 +31,8 @@ int main (int argc, const char * argv[])
     if(stat("/etc/messagemover",&statbuf)!=0)
         mkdir("/etc/messagemover",0644);
     
-    @autoreleasepool {
+    @autoreleasepool
+    {
         NSMutableDictionary     *licenseFeatures = [[NSMutableDictionary alloc]init];
         NSMutableDictionary     *licenseFile = [[NSMutableDictionary alloc]init];
         NSString *licenseFileName = @"license.bin";
