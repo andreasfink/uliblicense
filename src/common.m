@@ -302,8 +302,16 @@ NSData *encryptData(NSData *data, NSData *key)
         NSLog(@"Encrypt fails with Error: %d %s",ccStatus,cryptErrorString(ccStatus));
     }
     NSData *result = [NSData dataWithBytes:output_ptr length:new_output_size];
-    free(output_ptr);
-    free(input_ptr);
+    if(output_ptr)
+    {
+        free(output_ptr);
+    }
+    output_ptr=NULL;
+    if(input_ptr)
+    {
+        free(input_ptr);
+    }
+    input_ptr=NULL;
     return result;
 }
 
@@ -379,11 +387,19 @@ NSData *decryptData(NSData *data,NSData *key)
     
     if(ccStatus !=0)
     {
-        free(output_ptr);
+        if(output_ptr)
+        {
+            free(output_ptr);
+        }
+        output_ptr = NULL;
         return NULL;
     }
     NSData *result = [NSData dataWithBytes:output_ptr length:new_output_size];
-    free(output_ptr);
+    if(output_ptr)
+    {
+        free(output_ptr);
+    }
+    output_ptr=NULL;
     return result;
 }
 
@@ -542,7 +558,7 @@ NSArray *readChildProcess(NSArray *args)
 		dup2(pipefds[TXPIPE], STDOUT_FILENO);
 		close(pipefds[RXPIPE]);
 		        
-        char  **cmd;
+        char  **cmd=NULL;
         int n = (int)[args count];
         int i;
         cmd = calloc(sizeof (char *),n+1);
@@ -552,7 +568,11 @@ NSArray *readChildProcess(NSArray *args)
         }
         if (execvp(cmd[0], cmd) == -1)
 		{
-            free(cmd);
+            if(cmd)
+            {
+                free(cmd);
+                cmd=NULL;
+            }
 			exit(-1);
 		}
         exit(0);
@@ -584,10 +604,11 @@ NSArray *readChildProcess(NSArray *args)
 				break;
 			}
 		}
-        if(line)
-        {
-            free(line);
-        }
+ //       if(line)
+ //       {
+ //           free(line);
+ //           line = NULL;
+ //       }
     }
     return result;
 }
