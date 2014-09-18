@@ -11,12 +11,11 @@
 #include <locale.h>
 
 #import <Foundation/Foundation.h>
-#import <CoreFoundation/CoreFoundation.h>
 
 #ifdef	LINUX
 
 #else
-
+#import <CoreFoundation/CoreFoundation.h>
 #import <IOKit/IOKitLib.h>
 #import <IOKit/network/IOEthernetInterface.h>
 #import <IOKit/network/IONetworkInterface.h>

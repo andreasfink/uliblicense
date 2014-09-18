@@ -11,7 +11,9 @@
 #include <locale.h>
 
 #import <Foundation/Foundation.h>
+#ifndef	LINUX
 #import <CoreFoundation/CoreFoundation.h>
+#endif
 
 #include "common.h"
 
