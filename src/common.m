@@ -89,7 +89,7 @@ NSDictionary *GetMACAddresses(void)
                     NSString *address = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x",
                                     ethernet_address[0], ethernet_address[1], ethernet_address[2], ethernet_address[3], ethernet_address[4], ethernet_address[5]];
                     NSString *ifname = [NSString stringWithFormat:@"if%d",i++];
-                    [result setObject:address forKey:ifname];
+                    result[ifname] = address;
                     CFRelease(MACAddressAsCFData);
                 }
                 (void) IOObjectRelease(controllerService);
@@ -434,7 +434,7 @@ NSString *GetMacAddr(NSString *interfaceName)
         if(s)
         {
             s += strlen("HWaddr");
-            ethernetAddress = [NSString stringWithUTF8String:s];
+            ethernetAddress = @(s);
             break;
         }
         
@@ -442,7 +442,7 @@ NSString *GetMacAddr(NSString *interfaceName)
         if(s)
         {
             s += strlen("ether ");
-            ethernetAddress = [NSString stringWithUTF8String:s];
+            ethernetAddress = @(s);
             break;
         }
     }
@@ -550,7 +550,7 @@ NSArray *readChildProcess(NSArray *args)
         cmd = calloc(sizeof (char *),n+1);
         for(i=0;i<n;i++)
         {
-            cmd[i]=(char *)[[args objectAtIndex:i] UTF8String];
+            cmd[i]=(char *)[args[i] UTF8String];
         }
         if (execvp(cmd[0], cmd) == -1)
 		{
@@ -580,7 +580,7 @@ NSArray *readChildProcess(NSArray *args)
          */
         while(fgets(line, (int)linecap, fromChild))
 		{
-            [result addObject:[NSString stringWithUTF8String:line]];
+            [result addObject:@(line)];
 			if(feof(fromChild))
 			{
 				break;

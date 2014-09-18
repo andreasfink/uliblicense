@@ -36,13 +36,13 @@ int main (int argc, const char * argv[])
         NSMutableDictionary     *licenseFile = [[NSMutableDictionary alloc]init];
         NSString *licenseFileName = @"license.bin";
         NSString *licenseInstallFileName = @"/etc/messagemover/license.bin";
-        [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"core"];
-        [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"sctp"];
-        [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"m2pa"];
-        [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"mtp3"];
-        [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"sccp"];
-        [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"tcap"];
-        [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"gsmmap"];
+        licenseFeatures[@"core"] = @{@"enable": @YES};
+        licenseFeatures[@"sctp"] = @{@"enable": @YES};
+        licenseFeatures[@"m2pa"] = @{@"enable": @YES};
+        licenseFeatures[@"mtp3"] = @{@"enable": @YES};
+        licenseFeatures[@"sccp"] = @{@"enable": @YES};
+        licenseFeatures[@"tcap"] = @{@"enable": @YES};
+        licenseFeatures[@"gsmmap"] = @{@"enable": @YES};
 
         NSString *serialNumber  = NULL;
         NSString *expiration    = NULL;
@@ -59,12 +59,12 @@ int main (int argc, const char * argv[])
             if(strcmp(argv[i],"--file")==0)
             {
                 i++;
-                licenseFileName = [NSString stringWithUTF8String:argv[i]];
+                licenseFileName = @(argv[i]);
             }
             else if(strcmp(argv[i],"--serial")==0)
             {
                 i++;
-                serialNumber = [NSString stringWithUTF8String:argv[i]];
+                serialNumber = @(argv[i]);
                 
             }        
             else if(strcmp(argv[i],"--demo")==0)
@@ -95,100 +95,100 @@ int main (int argc, const char * argv[])
             else if(strcmp(argv[i],"--expiration")==0)
             {
                 i++;
-                expiration = [NSString stringWithUTF8String:argv[i]];
+                expiration = @(argv[i]);
             }
             else if(strcmp(argv[i],"--license-name")==0)
             {
                 i++;
-                licenseName = [NSString stringWithUTF8String:argv[i]];
+                licenseName = @(argv[i]);
             }
             else if(strcmp(argv[i],"--license-number")==0)
             {
                 i++;
-                licenseNumber = [NSString stringWithUTF8String:argv[i]];
+                licenseNumber = @(argv[i]);
             }
             else if(strcmp(argv[i],"--smsc")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"smsc"];
+                licenseFeatures[@"smsc"] = @{@"enable": @YES};
             }
             else if((strcmp(argv[i],"--emiucp")==0) || (strcmp(argv[i],"--emi-ucp")==0))
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"emiucp"];
+                licenseFeatures[@"emiucp"] = @{@"enable": @YES};
             }
             else if(strcmp(argv[i],"--smpp")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"smpp"];
+                licenseFeatures[@"smpp"] = @{@"enable": @YES};
             }
             else if(strcmp(argv[i],"--http")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"http"];
+                licenseFeatures[@"http"] = @{@"enable": @YES};
             }
             else if(strcmp(argv[i],"--m3ua")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"m3ua"];
+                licenseFeatures[@"m3ua"] = @{@"enable": @YES};
             }
             else if(strcmp(argv[i],"--proxy")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"proxy"];
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"smsproxy"];
+                licenseFeatures[@"proxy"] = @{@"enable": @YES};
+                licenseFeatures[@"smsproxy"] = @{@"enable": @YES};
             }
             else if(strcmp(argv[i],"--http-hlr")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"http-hlr"];
+                licenseFeatures[@"http-hlr"] = @{@"enable": @YES};
             }
             else if(strcmp(argv[i],"--mofwd")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"mofwd"];
+                licenseFeatures[@"mofwd"] = @{@"enable": @YES};
             }
             else if(strcmp(argv[i],"--quota")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"quota"];
+                licenseFeatures[@"quota"] = @{@"enable": @YES};
             }
             else if(strcmp(argv[i],"--interworking")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"interworking"];
+                licenseFeatures[@"interworking"] = @{@"enable": @YES};
             }
             else if(strcmp(argv[i],"--rerouter")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"rerouter"];
+                licenseFeatures[@"rerouter"] = @{@"enable": @YES};
             }
             else if(strcmp(argv[i],"--billing")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"billing"];
+                licenseFeatures[@"billing"] = @{@"enable": @YES};
             }
             else if(strcmp(argv[i],"--logging")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"logging"];
+                licenseFeatures[@"logging"] = @{@"enable": @YES};
             }
             else if(strcmp(argv[i],"--udp")==0)
             {
-                [licenseFeatures setObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES],@"enable",NULL] forKey:@"udp"];
+                licenseFeatures[@"udp"] = @{@"enable": @YES};
             }
         }
 
         if(licenseName)
         {
-            [licenseFile setObject:licenseName forKey:@"license-name"];
+            licenseFile[@"license-name"] = licenseName;
         }
         if(licenseNumber)
         {
-            [licenseFile setObject:licenseNumber forKey:@"license-number"];
+            licenseFile[@"license-number"] = licenseNumber;
         }
         if(expiration)
         {
-            [licenseFile setObject:expiration forKey:@"expiration"];
+            licenseFile[@"expiration"] = expiration;
         }
 
-        [licenseFile setObject:licenseFeatures forKey:@"features"];
+        licenseFile[@"features"] = licenseFeatures;
         if(serialNumber==NULL)
         {
             
-            [licenseFile setObject:GetMachineSerialNumber() forKey:@"serial"];
-            [licenseFile setObject:GetMACAddresses() forKey:@"interfaces"];
+            licenseFile[@"serial"] = GetMachineSerialNumber();
+            licenseFile[@"interfaces"] = GetMACAddresses();
         }
         else
         {
-            [licenseFile setObject:serialNumber forKey:@"serial"];
+            licenseFile[@"serial"] = serialNumber;
         }
         
         unlink("license.plist");
