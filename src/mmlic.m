@@ -218,9 +218,12 @@ int main (int argc, const char * argv[])
         [decryptedData writeToFile:tmpfile atomically:YES];
         NSMutableDictionary *licDict = [NSMutableDictionary dictionaryWithContentsOfFile:tmpfile];
         if(licDict == NULL)
+        {
             NSLog(@"Produced result can not be read!\n");
-        else
-            NSLog(@"Successfully read\n");
+        }else
+        {
+        	NSLog(@"Successfully read\n");
+        }
     }
     return 0;
 }
