@@ -30,6 +30,10 @@ int main(int argc, const char **argv)
         NSLog(@"Reading %@",licenseFileName);
         NSData *verifyData =[NSData dataWithContentsOfFile:licenseFileName];
         NSData *decryptedData = decryptData(verifyData,key);
+        /* we dont want any trailing 0x00 bytes as this confuses GNUStep */
+        size_t len = strnlen((void *)decryptedData.bytes, (size_t)decryptedData.length);
+        decryptedData = [decryptedData subdataWithRange:NSMakeRange(0,len) ];
+
         NSString *tmpfile = [NSString stringWithFormat:@"/tmp/.mm.%d.plist",getpid()];
         [decryptedData writeToFile:tmpfile atomically:YES];
         NSMutableDictionary *licDict = [NSMutableDictionary dictionaryWithContentsOfFile:tmpfile];
