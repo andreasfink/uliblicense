@@ -216,7 +216,7 @@ int main (int argc, const char * argv[])
         NSString *tmpfile = [NSString stringWithFormat:@"/tmp/.mm.%d.plist",getpid()];
         
         [decryptedData writeToFile:tmpfile atomically:YES];
-        NSMutableDictionary *licDict = [NSMutableDictionary dictionaryWithContentsOfFile:tmpfile];
+        NSDictionary *licDict = [NSDictionary dictionaryWithContentsOfFile:tmpfile];
         if(licDict == NULL)
         {
             NSLog(@"Produced result can not be read!\n");
