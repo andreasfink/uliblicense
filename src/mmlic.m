@@ -196,7 +196,6 @@ int main (int argc, const char * argv[])
         unlink("license.plist");
         unlink("license.bin");
         
-        
         [licenseFile writeToFile:@"license.plist" atomically:NO];
 
         NSData *licenseData = [NSData dataWithContentsOfFile:@"license.plist"];
@@ -213,10 +212,15 @@ int main (int argc, const char * argv[])
 
         NSData *verifyData =[NSData dataWithContentsOfFile:licenseFileName];
         NSData *decryptedData = decryptData(verifyData,key);
-        NSString *tmpfile = [NSString stringWithFormat:@"/tmp/.mm.%d.plist",getpid()];
         
+        /* we dont want any trailing 0x00 bytes as this confuses GNUStep */
+        size_t len = strnlen((void *)decryptedData.bytes, (size_t)decryptedData.length);
+        decryptedData = [decryptedData subdataWithRange:NSMakeRange(0,len) ];
+        
+        NSString *tmpfile = [NSString stringWithFormat:@"/tmp/.mm.%d.plist",getpid()];
+
         [decryptedData writeToFile:tmpfile atomically:YES];
-        NSMutableDictionary *licDict = [NSMutableDictionary dictionaryWithContentsOfFile:tmpfile];
+        NSDictionary *licDict = [NSDictionary dictionaryWithContentsOfFile:tmpfile];
         if(licDict == NULL)
         {
             NSLog(@"Produced result can not be read!\n");
