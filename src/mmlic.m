@@ -31,6 +31,7 @@ int main (int argc, const char * argv[])
     if(stat("/etc/messagemover",&statbuf)!=0)
         mkdir("/etc/messagemover",0644);
     
+
     @autoreleasepool
     {
         NSMutableDictionary     *licenseFeatures = [[NSMutableDictionary alloc]init];
@@ -217,9 +218,12 @@ int main (int argc, const char * argv[])
         [decryptedData writeToFile:tmpfile atomically:YES];
         NSMutableDictionary *licDict = [NSMutableDictionary dictionaryWithContentsOfFile:tmpfile];
         if(licDict == NULL)
+        {
             NSLog(@"Produced result can not be read!\n");
-        else
-            NSLog(@"Successfully read\n");
+        }else
+        {
+        	NSLog(@"Successfully read\n");
+        }
     }
     return 0;
 }

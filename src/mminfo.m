@@ -14,6 +14,7 @@
 
 int main (int argc, const char * argv[])
 {
+
     @autoreleasepool
     {
         NSString *line = [NSString stringWithFormat:@"mminfo 1.0\nSerial Number: %@",GetMachineSerialNumber()];

@@ -302,6 +302,7 @@ NSData *encryptData(NSData *data, NSData *key)
         NSLog(@"Encrypt fails with Error: %d %s",ccStatus,cryptErrorString(ccStatus));
     }
     NSData *result = [NSData dataWithBytes:output_ptr length:new_output_size];
+
     if(output_ptr)
     {
         free(output_ptr);
