@@ -9,15 +9,17 @@
 
 
 CC=clang
-CFLAGS=-g -O0 -Wmissing-prototypes -I. -Isrc -DCONFIGURATION=Release
+CFLAGS=-g -O3 -Wmissing-prototypes -I. -Isrc -DCONFIGURATION=Release
 
 ifeq ($(shell uname -s),Linux)
 
-CFLAGS+=-DLINUX=1
+CFLAGS+=-DLINUX=1 -fasm-blocks -fstrict-aliasing -fobjc-runtime=gnustep -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -fpascal-strings
 ARCHS=
 LDFLAGS=
-LIBS=-lFoundation
+LIBS=-L/usr/local/lib -lgnustep-base -lobjc
 IEXEC=chmod 4755 /usr/sbin/dmidecode
+
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
 else
 
 CFLAGS=-DMACOSX=1
@@ -55,13 +57,14 @@ mmdisp:	src/mmdisp.m.o src/common.m.o
 install: mminfo mmlic mmdisp
 	cp mmlic /usr/sbin/mmlic
 	chmod 755 /usr/sbin/mmlic
-	chown root:wheel /usr/sbin/mmlic
+
+	chown root /usr/sbin/mmlic
 	cp mmdisp /usr/sbin/mmdisp
 	chmod 755 /usr/sbin/mmdisp
-	chown root:wheel /usr/sbin/mmdisp
+	chown root /usr/sbin/mmdisp
 	cp mminfo /usr/bin/mminfo
 	chmod 755 /usr/bin/mminfo
-	chown root:wheel /usr/bin/mminfo
+	chown root /usr/bin/mminfo
 	${IEXEC}
 
 .o:     .c .h

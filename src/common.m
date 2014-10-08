@@ -47,7 +47,11 @@ NSDictionary *GetMACAddresses(void)
 			[interfaces setObject:hwaddr forKey:ifname];
 		}
 	}
+<<<<<<< HEAD
 	return [interfaces autorelease];
+=======
+	return interfaces;
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
 }
 
 
@@ -89,7 +93,11 @@ NSDictionary *GetMACAddresses(void)
                     NSString *address = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x",
                                     ethernet_address[0], ethernet_address[1], ethernet_address[2], ethernet_address[3], ethernet_address[4], ethernet_address[5]];
                     NSString *ifname = [NSString stringWithFormat:@"if%d",i++];
+<<<<<<< HEAD
                     [result setObject:address forKey:ifname];
+=======
+                    result[ifname] = address;
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
                     CFRelease(MACAddressAsCFData);
                 }
                 (void) IOObjectRelease(controllerService);
@@ -139,7 +147,10 @@ NSString *GetMachineSerialNumber(void)
                         break;
                 }
             }
+<<<<<<< HEAD
             [serialNumber autorelease];
+=======
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
             found=1;
         }
     }
@@ -212,7 +223,11 @@ NSString *GetMachineSerialNumber(void)
     }
     if (serialNumber)
     {
+<<<<<<< HEAD
         result = [(NSString*)serialNumber autorelease];
+=======
+        result = @ ([(NSString *)CFBridgingRelease(serialNumber) UTF8String]);
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
     }
     else
     {
@@ -303,8 +318,21 @@ NSData *encryptData(NSData *data, NSData *key)
         NSLog(@"Encrypt fails with Error: %d %s",ccStatus,cryptErrorString(ccStatus));
     }
     NSData *result = [NSData dataWithBytes:output_ptr length:new_output_size];
+<<<<<<< HEAD
     free(output_ptr);
     free(input_ptr);
+=======
+    if(output_ptr)
+    {
+        free(output_ptr);
+    }
+    output_ptr=NULL;
+    if(input_ptr)
+    {
+        free(input_ptr);
+    }
+    input_ptr=NULL;
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
     return result;
 }
 
@@ -380,11 +408,27 @@ NSData *decryptData(NSData *data,NSData *key)
     
     if(ccStatus !=0)
     {
+<<<<<<< HEAD
         free(output_ptr);
         return NULL;
     }
     NSData *result = [NSData dataWithBytes:output_ptr length:new_output_size];
     free(output_ptr);
+=======
+        if(output_ptr)
+        {
+            free(output_ptr);
+        }
+        output_ptr = NULL;
+        return NULL;
+    }
+    NSData *result = [NSData dataWithBytes:output_ptr length:new_output_size];
+    if(output_ptr)
+    {
+        free(output_ptr);
+    }
+    output_ptr=NULL;
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
     return result;
 }
 
@@ -434,7 +478,11 @@ NSString *GetMacAddr(NSString *interfaceName)
         if(s)
         {
             s += strlen("HWaddr");
+<<<<<<< HEAD
             ethernetAddress = [NSString stringWithUTF8String:s];
+=======
+            ethernetAddress = @(s);
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
             break;
         }
         
@@ -442,7 +490,11 @@ NSString *GetMacAddr(NSString *interfaceName)
         if(s)
         {
             s += strlen("ether ");
+<<<<<<< HEAD
             ethernetAddress = [NSString stringWithUTF8String:s];
+=======
+            ethernetAddress = @(s);
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
             break;
         }
     }
@@ -493,17 +545,27 @@ NSArray *GetCpuSerialNumbers(void)
             {
                 [serialNumbers addObject:serialNumber];
             }
+<<<<<<< HEAD
             [serialNumber release];
+=======
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
             serialNumber = NULL;
             found++;
         }
     }
     if(found==0)
     {
+<<<<<<< HEAD
         [serialNumbers release];
         return NULL;
     }
     return [serialNumbers autorelease];
+=======
+        serialNumbers=NULL;
+        return NULL;
+    }
+    return serialNumbers;
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
 }
 
 
@@ -521,7 +583,10 @@ NSString *hexNSString(const char *in)
 	{
 		[result appendFormat:@"%02X",((unsigned char *)in)[i]];
 	}
+<<<<<<< HEAD
 	[result autorelease];
+=======
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
 	return result;
 }
 
@@ -545,17 +610,33 @@ NSArray *readChildProcess(NSArray *args)
 		dup2(pipefds[TXPIPE], STDOUT_FILENO);
 		close(pipefds[RXPIPE]);
 		        
+<<<<<<< HEAD
         char  **cmd;
+=======
+        char  **cmd=NULL;
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
         int n = (int)[args count];
         int i;
         cmd = calloc(sizeof (char *),n+1);
         for(i=0;i<n;i++)
         {
+<<<<<<< HEAD
             cmd[i]=(char *)[[args objectAtIndex:i] UTF8String];
         }
         if (execvp(cmd[0], cmd) == -1)
 		{
             free(cmd);
+=======
+            cmd[i]=(char *)[args[i] UTF8String];
+        }
+        if (execvp(cmd[0], cmd) == -1)
+		{
+            if(cmd)
+            {
+                free(cmd);
+                cmd=NULL;
+            }
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
 			exit(-1);
 		}
         exit(0);
@@ -581,17 +662,29 @@ NSArray *readChildProcess(NSArray *args)
          */
         while(fgets(line, (int)linecap, fromChild))
 		{
+<<<<<<< HEAD
             [result addObject:[NSString stringWithUTF8String:line]];
+=======
+            [result addObject:@(line)];
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
 			if(feof(fromChild))
 			{
 				break;
 			}
 		}
+<<<<<<< HEAD
         if(line)
         {
             free(line);
         }
         [result autorelease];
+=======
+ //       if(line)
+ //       {
+ //           free(line);
+ //           line = NULL;
+ //       }
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
     }
     return result;
 }

@@ -14,6 +14,7 @@
 
 int main (int argc, const char * argv[])
 {
+<<<<<<< HEAD
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];
 
     NSString *line = [NSString stringWithFormat:@"mminfo 1.0\nSerial Number: %@",GetMachineSerialNumber()];
@@ -30,6 +31,24 @@ int main (int argc, const char * argv[])
     fprintf(stdout,"\n");
     fflush(stdout);
     [pool drain];
+=======
+    @autoreleasepool
+    {
+        NSString *line = [NSString stringWithFormat:@"mminfo 1.0\nSerial Number: %@",GetMachineSerialNumber()];
+        fprintf(stdout,"\n%s\n",[line UTF8String]);
+        
+        NSDictionary *dict = GetMACAddresses();
+        for(NSString *ifname in dict)
+        {
+            NSString *macaddr = [dict objectForKey:ifname];
+            NSString *line = [NSString stringWithFormat:@"%@: %@",ifname,macaddr];
+            fprintf(stdout,"%s\n",[line UTF8String]);
+        }
+        
+        fprintf(stdout,"\n");
+        fflush(stdout);
+    }
+>>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
     return 0;
 }
 
