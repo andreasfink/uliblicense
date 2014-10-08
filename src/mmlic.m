@@ -16,6 +16,7 @@
 #endif
 
 #include "common.h"
+#include <string.h>
 
 
 #include <sys/types.h>
