@@ -11,19 +11,11 @@
 #include <locale.h>
 
 #import <Foundation/Foundation.h>
-<<<<<<< HEAD
-#import <CoreFoundation/CoreFoundation.h>
-=======
->>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
 
 #ifdef	LINUX
 
 #else
-<<<<<<< HEAD
-
-=======
 #import <CoreFoundation/CoreFoundation.h>
->>>>>>> 7648bdfc48cdfe42d265e8beca80ea6ec88cc162
 #import <IOKit/IOKitLib.h>
 #import <IOKit/network/IOEthernetInterface.h>
 #import <IOKit/network/IONetworkInterface.h>
