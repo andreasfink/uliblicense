@@ -9,16 +9,23 @@
 all:
 	-xcodebuild -target mmlic -configuration Release build
 	-xcodebuild -target mminfo -configuration Release build
+	-xcodebuild -target mmdisp -configuration Release build
 	-cp build/Release/mmlic ./mmlic
 	-cp build/Release/mminfo ./mminfo
+	-cp build/Release/mmdisp ./mmdisp
+
 
 install:
+	mkdir -p $(DESTDIR)/usr/local/bin
 	-xcodebuild -target mmlic -configuration Release build
 	-xcodebuild -target mminfo -configuration Release build
-	-cp build/Release/mmlic	/usr/bin/mmlic
-	-cp build/Release/mminfo /usr/bin/mminfo
+	-xcodebuild -target mmdisp -configuration Release build
+	-cp build/Release/mmlic	$(DESTDIR)/usr/local/bin/mmlic
+	-cp build/Release/mminfo $(DESTDIR)/usr/local/bin/mminfo
+	-cp build/Release/mmdisp $(DESTDIR)/usr/local/bin/mmdisp
 
 clean:
 	-xcodebuild -target mmlic -configuration Release clean
 	-xcodebuild -target mminfo -configuration Release clean
+	-xcodebuild -target mmdisp -configuration Release clean
 
