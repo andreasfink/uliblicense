@@ -5398,7 +5398,7 @@ fi
 if test "${enable_debug+set}" = set; then :
   enableval=$enable_debug;
 	echo Using Debuging target
-	CFLAGS="$CFLAGS -g -DROUTER_CONFIG=Debug"
+	CFLAGS="$CFLAGS -g -DMMLIC_CONFIG=Debug"
 	LDFLAGS="$LDFLAGS -g"
 	$as_echo "#define WS_DEBUG 1" >>confdefs.h
 
@@ -5407,7 +5407,7 @@ if test "${enable_debug+set}" = set; then :
 else
 
 	echo Using Release target
-	CFLAGS="$CFLAGS -DROUTER_CONFIG=Release"
+	CFLAGS="$CFLAGS -DMMLIC_CONFIG=Release"
 
 fi
 

@@ -514,14 +514,14 @@ dnl Implement --enable-debug option.
 AC_ARG_ENABLE(debug,
 [  --enable-debug	  enable debugging configuration [disabled]], [
 	echo Using Debuging target
-	CFLAGS="$CFLAGS -g -DROUTER_CONFIG=Debug"
+	CFLAGS="$CFLAGS -g -DMMLIC_CONFIG=Debug"
 	LDFLAGS="$LDFLAGS -g"
 	AC_DEFINE(WS_DEBUG)
 ]
 ,
 [
 	echo Using Release target
-	CFLAGS="$CFLAGS -DROUTER_CONFIG=Release"
+	CFLAGS="$CFLAGS -DMMLIC_CONFIG=Release"
 ])
 
 ./make_version
