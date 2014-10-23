@@ -167,6 +167,14 @@ int main (int argc, const char * argv[])
             {
                 licenseFeatures[@"udp"] = @{@"enable": @"YES"};
             }
+            else if(strcmp(argv[i],"--smsrouter")==0)
+            {
+                licenseFeatures[@"smsrouter"] = @{@"enable": @"YES"};
+            }
+            else if(strcmp(argv[i],"--hlrrouter")==0)
+            {
+                licenseFeatures[@"hlrrouter"] = @{@"enable": @"YES"};
+            }
         }
 
         if(licenseName)
