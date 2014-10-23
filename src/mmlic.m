@@ -6,6 +6,7 @@
 //  Copyright (c) 2011 Andreas Fink. All rights reserved.
 //
 
+#include <string.h>
 #include <time.h>
 #include <sys/time.h>
 #include <locale.h>
@@ -16,7 +17,6 @@
 #endif
 
 #include "common.h"
-#include <string.h>
 
 
 #include <sys/types.h>

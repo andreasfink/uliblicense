@@ -172,8 +172,6 @@ NSString *GetMachineUUID(void)
         {
             s += strlen("UUID: ");
             
-            size_t len = strlen(s);
-            int i;
             uuidNumber = [[ NSString stringWithUTF8String: s]
                           stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             found=1;
