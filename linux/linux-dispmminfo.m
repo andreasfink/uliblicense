@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 NSData *decryptData(NSData *data, NSData *key);
+NSData *encryptData(NSData *data, NSData *keyData);
 
 #define RXPIPE	0
 #define TXPIPE	1
