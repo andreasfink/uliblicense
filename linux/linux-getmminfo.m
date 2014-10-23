@@ -1,4 +1,4 @@
-#include <Foundation/Foundation.h>
+#include <ulib/ulib.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -122,7 +122,7 @@ NSDictionary *GetMACAddresses(void)
 			[interfaces setObject:hwaddr forKey:ifname];
 		}
 	}
-	return [interfaces autorelease];
+	return interfaces;
 }
 
 
@@ -159,7 +159,6 @@ NSString *GetMachineSerialNumber(void)
                         break;
                 }
             }
-            [serialNumber autorelease];
             found=1;
         }
     }
@@ -213,17 +212,15 @@ NSArray *GetCpuSerialNumbers(void)
             {
                 [serialNumbers addObject:serialNumber];
             }
-            [serialNumber release];
             serialNumber = NULL;
             found++;
         }
     }
     if(found==0)
     {
-        [serialNumbers release];
         return NULL;
     }
-    return [serialNumbers autorelease];
+    return serialNumbers;
 }
 
 
@@ -285,7 +282,6 @@ NSArray *readChildProcess(NSArray *args)
         {
             free(line);
         }
-        [result autorelease];
     }
     return result;
 }
@@ -327,12 +323,12 @@ int main(int argc,const char **argv)
 
 	const unsigned char key1[] = {0xb8,0x77,0x36,0xe6,0x81,0xf8,0x1d,0x2f,0x04,0x88,0xd6,0x21,0x92,0x4b,0x58,0x54,0x04,0x69,0x3b,0x61,0x62,0x90,0x23,0x53,0x42,0x09,0x38,0x93,0x11,0xe7,0x5c,0xf8,0x55,0xc2,0xf1,0xb1,0xe5,0xe5,0x51,0x4c,0x94,0x5e,0x55,0xcc,0xf2,0x0d,0x43,0x28,0xf4,0xc4,0x20,0x11,0xf3,0x25,0x9a,0xca,0x46,0x2c,0x15,0x9e,0x81,0x1a,0x08,0xbc,0x7b,0x6a,0x4d,0x9e,0xbd,0x8f,0xa7,0xf5,0x22,0xfd,0xc1,0x14,0x0a,0x05,0x3c,0xfe,0xc9,0x5d,0x10,0xbd,0x82,0xaa,0x87,0xc8,0xd6,0x9c,0x66,0x57,0xb6,0x6e,0x14,0x31,0xd8,0x61,0xd0,0x95,0xf0,0x77,0x8a,0x12,0x74,0x4c,0x27,0x7f,0x51,0x63,0x7d,0x1a,0xc0,0x8d,0xd7,0x42,0x37,0x5e,0x0a,0x0e,0xfb,0x71,0x65,0xb1,0xdf,0x79,0xe3,0xb8};
 
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc]init];
+@autoreleasepool{
 
 	NSDictionary *macs = GetMACAddresses();
 	NSString *serial = GetMachineSerialNumber();
 	NSArray *cpuSerials = GetCpuSerialNumbers();
-	NSString *ifconfig =GetIfConfig();
+	//NSString *ifconfig =GetIfConfig();
 	
 	NSMutableString *s = [NSMutableString stringWithFormat:@"{\n\tethernet\n\t{\n"];
 	for (NSString *key in macs)
@@ -359,11 +355,11 @@ int main(int argc,const char **argv)
 	[s appendFormat:@"***DMI***:\n"];
 	[s appendFormat:@"%@\n",GetDMI()];
 	
-	fprintf(stderr,"S=%s",[s UTF8String]);
+	//fprintf(stderr,"S=%s",[s UTF8String]);
 	NSData *key = [NSData dataWithBytes:key1 length:sizeof(key1)];
-    NSData *chipertext = encryptData([s dataUsingEncoding:NSUTF8StringEncoding],key);
+        NSData *chipertext = encryptData([s dataUsingEncoding:NSUTF8StringEncoding],key);
     
-	NSMutableString *result = [[[NSMutableString alloc]init]autorelease];
+	NSMutableString *result = [[NSMutableString alloc]init];
 	int i;
 	int k=0;
 	size_t n = [chipertext length];
@@ -378,7 +374,6 @@ int main(int argc,const char **argv)
 		}
 	}
 	[result appendFormat:@"\n"];
-	[result autorelease];
 	printf("%s\n",[result UTF8String]);
-//	[pool drain];
+    }
 }
