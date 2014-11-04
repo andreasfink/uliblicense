@@ -29,3 +29,13 @@ clean:
 	-xcodebuild -target mminfo -configuration Release clean
 	-xcodebuild -target mmdisp -configuration Release clean
 
+
+pkg:
+	-rm -rf install_root
+	mkdir -p install_root/usr/local/bin
+	mkdir -p install_scripts/
+	xcodebuild DSTROOT=install_root -target mminfo -configuration Release install
+	xcodebuild DSTROOT=install_root -target mmdisp -configuration Release install
+	pkgbuild --root install_root --install-location /  --sign "Developer ID Installer: SMSRelay AG"  --version "`cat VERSION`" --identifier "com.smsrelay.mmlic" "mmlic_`cat VERSION`.pkg"
+	xcodebuild DSTROOT=install_root -target mmlic -configuration Release install
+	pkgbuild --root install_root --install-location / --sign "Developer ID Installer: SMSRelay AG"  --version "`cat VERSION`" --identifier "com.smsrelay.mmlic-full" "mmlic-full_`cat VERSION`.pkg"
