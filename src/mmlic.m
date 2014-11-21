@@ -187,7 +187,7 @@ int main (int argc, const char * argv[])
         }
         if(expiration)
         {
-            licenseFile[@"expiration"] = expiration;
+            licenseFile[@"expiry"] = expiration;
         }
 
         licenseFile[@"features"] = licenseFeatures;
