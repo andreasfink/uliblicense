@@ -29,3 +29,7 @@ clean:
 	-xcodebuild -target mminfo -configuration Release clean
 	-xcodebuild -target mmdisp -configuration Release clean
 
+pkg:
+	-rm -rf install_root
+	make DESTDIR=install_root install
+	pkgbuild --root install_root --install-location /  --sign "Developer ID Installer: SMSRelay AG" --version "`cat VERSION`" --identifier "com.smsrelay.smsrouter" "mmlic_`date +%Y%m%d%H%M`.pkg"
