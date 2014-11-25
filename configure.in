@@ -74,19 +74,6 @@ case "$host" in
     CFLAGS="$CFLAGS $XCODEFLAGS $ARCH $SDK $WARNINGS $MINVER -D_REENTRANT=1 -DDARWIN=1 -Iinclude -I/usr/local/ssl/include -I/usr/local/include   -I/usr/local/postgresclient/include -I/usr/local/mysqlclient/include/ -F/Library/Frameworks -framework ulibsmpp -framework ulibdb -framework ulib"
     LDFLAGS="-L/usr/local/lib -L/usr/local/mysqlclient/lib -L/usr/local/postgresclient/lib -framework Foundation -framework CoreFoundation -framework Security -F/Library/Frameworks -framework ulibsmpp -framework ulibdb -framework ulib -lssl -lcrypto -lpq -lmysqlclient"
     BUILD_DIR="build/osx"
-    if [[ -f "/Applications/Auxiliary Tools/PackageMaker.app/Contents/MacOS/PackageMaker" ]]
-    then 
-    	PACKAGE_MAKER="/Applications/Auxiliary Tools/PackageMaker.app/Contents/MacOS/PackageMaker"
-    else
-		if [[ -f "/Applications/PackageMaker.app/Contents/MacOS/PackageMaker" ]]
-		then
-	    	PACKAGE_MAKER="/Applications/PackageMaker.app/Contents/MacOS/PackageMaker"
-	    else
-	    	echo "Can not find Package maker, neither in /Applications nor in /Applications/Auxiliary Tools"
-	    	echo "Please install it"
-	    	exit -1
-	    fi
-	fi
     ;;
   *-linux-*)
 
