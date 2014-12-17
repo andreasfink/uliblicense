@@ -2424,34 +2424,7 @@ COPYRIGHT="Copyright 2001-2014 SMSRelay AG"
 PROJECT_NAME="mmlic"
 
 VERSION=`head -n 1 VERSION`
-if test "x$VERSION" = "xcvs"; then
-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking cvs checkout date" >&5
-$as_echo_n "checking cvs checkout date... " >&6; }
 
-  cvs_date=`grep ChangeLog CVS/Entries | cut -f4 -d/`
-  day=`grep ChangeLog CVS/Entries | cut -f4 -d/ | cut -c9-10 | tr " " "0"`
-  month=`echo $cvs_date | cut -f2 -d' '`
-  case $month in
-    "Jan") month="01" ;;
-    "Feb") month="02" ;;
-    "Mar") month="03" ;;
-    "Apr") month="04" ;;
-    "May") month="05" ;;
-    "Jun") month="06" ;;
-    "Jul") month="07" ;;
-    "Aug") month="08" ;;
-    "Sep") month="09" ;;
-    "Oct") month="10" ;;
-    "Nov") month="11" ;;
-    "Dec") month="12" ;;
-  esac
-  year=`echo $cvs_date | cut -f5 -d' '`
-  CVS_DATE="$year$month$day"
-
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $CVS_DATE" >&5
-$as_echo "$CVS_DATE" >&6; }
-  VERSION="$VERSION-$CVS_DATE"
-fi
 CUSER=$USER
 
 
@@ -5417,6 +5390,8 @@ ac_config_files="$ac_config_files Makefile.osx"
 
 ac_config_files="$ac_config_files Makefile.linux"
 
+ac_config_files="$ac_config_files version.h"
+
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -6110,6 +6085,7 @@ do
     "config.h") CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
     "Makefile.osx") CONFIG_FILES="$CONFIG_FILES Makefile.osx" ;;
     "Makefile.linux") CONFIG_FILES="$CONFIG_FILES Makefile.linux" ;;
+    "version.h") CONFIG_FILES="$CONFIG_FILES version.h" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

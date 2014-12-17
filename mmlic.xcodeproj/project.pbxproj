@@ -62,6 +62,7 @@
 		A61FFCCE171EAAB8005D4601 /* mmdisp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mmdisp.m; sourceTree = "<group>"; };
 		A62DAD1E1472BF69005487AF /* mminfo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mminfo; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62DAD211472BF91005487AF /* mminfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mminfo.m; sourceTree = "<group>"; };
+		A6EDC7961A4176320090FC94 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = SOURCE_ROOT; };
 		A6F36B031472525E006F5AF0 /* mmlic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mmlic; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F36B071472525E006F5AF0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A6F36B0A1472525E006F5AF0 /* mmlic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mmlic.m; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 		A6F36B091472525E006F5AF0 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				A6EDC7961A4176320090FC94 /* VERSION */,
 				A605993F15E6B273009CD221 /* common.h */,
 				A605994015E6B273009CD221 /* common.m */,
 				A62DAD211472BF91005487AF /* mminfo.m */,

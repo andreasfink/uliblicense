@@ -22,11 +22,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
-
+#include "../version.h"
 
 int main (int argc, const char * argv[])
 {
-    printf("mmlic version 1.1\n");
+    printf("mmlic version " VERSION "\n");
     
     struct stat statbuf;
     if(stat("/etc/messagemover",&statbuf)!=0)
@@ -174,6 +174,14 @@ int main (int argc, const char * argv[])
             else if(strcmp(argv[i],"--hlrrouter")==0)
             {
                 licenseFeatures[@"hlrrouter"] = @{@"enable": @"YES"};
+            }
+            else if(strcmp(argv[i],"--ss7router")==0)
+            {
+                licenseFeatures[@"ss7router"] = @{@"enable": @"YES"};
+            }
+            else if(strcmp(argv[i],"--ss7firewall")==0)
+            {
+                licenseFeatures[@"ss7firewall"] = @{@"enable": @"YES"};
             }
         }
 

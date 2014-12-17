@@ -7,12 +7,13 @@
 //
 
 #import "common.h"
+#include "../version.h"
 
 #include <sys/stat.h>
 
 int main(int argc, const char **argv)
 {
-    printf("mmdisp version 1.0\n");
+    printf("mmdisp version " VERSION "\n");
     struct stat statbuf;
     
     if(stat("/etc/messagemover",&statbuf)!=0)

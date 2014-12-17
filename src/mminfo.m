@@ -11,13 +11,13 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include "../version.h"
 
 int main (int argc, const char * argv[])
 {
-
     @autoreleasepool
     {
-        NSString *line = [NSString stringWithFormat:@"mminfo 1.0\nSerial Number: %@",GetMachineSerialNumber()];
+        NSString *line = [NSString stringWithFormat:@"mminfo " VERSION "\nSerial Number: %@",GetMachineSerialNumber()];
         fprintf(stdout,"\n%s\n",[line UTF8String]);
         
         NSDictionary *dict = GetMACAddresses();

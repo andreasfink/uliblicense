@@ -27,12 +27,7 @@ PROJECT_NAME="mmlic"
 
 dnl Check version number.
 VERSION=`head -n 1 VERSION`
-if test "x$VERSION" = "xcvs"; then
-  AC_MSG_CHECKING([cvs checkout date])
-  AC_CVS_DATE(CVS_DATE)
-  AC_MSG_RESULT([$CVS_DATE])
-  VERSION="$VERSION-$CVS_DATE"
-fi
+
 dnl Set user who runs ./configure
 CUSER=$USER
 AC_SUBST(VERSION)
@@ -519,11 +514,12 @@ dnl Final Output
 AC_SUBST(PROJECT_NAME)
 AC_SUBST(BUILD_DIR)
 AC_SUBST(PACKAGE_MAKER)
-
+AC_SUBST(VERSION)
 AC_SUBST(PROJECT_NAME)
 AC_CONFIG_SECTION([Generating output files]) 
 AC_CONFIG_FILES([Makefile.osx])
 AC_CONFIG_FILES([Makefile.linux])
+AC_CONFIG_FILES(version.h)
 AC_OUTPUT
 case "$host" in
   *apple-darwin*) 
