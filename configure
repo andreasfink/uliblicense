@@ -3082,11 +3082,12 @@ fi
   echo "${nl}${T_MD}Generating output files ...${T_ME}"
 
 
-./make_version
 
 ac_config_files="$ac_config_files Makefile.osx"
 
 ac_config_files="$ac_config_files Makefile.linux"
+
+ac_config_files="$ac_config_files version.h"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -3781,6 +3782,7 @@ do
     "${CONFIG_HEADER}") CONFIG_HEADERS="$CONFIG_HEADERS ${CONFIG_HEADER}" ;;
     "Makefile.osx") CONFIG_FILES="$CONFIG_FILES Makefile.osx" ;;
     "Makefile.linux") CONFIG_FILES="$CONFIG_FILES Makefile.linux" ;;
+    "version.h") CONFIG_FILES="$CONFIG_FILES version.h" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac
