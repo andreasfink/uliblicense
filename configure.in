@@ -131,11 +131,11 @@ dnl Outputing
 dnl -------------------------------------
 AC_CONFIG_SECTION([Generating output files]) 
 
-./make_version
 dnl Final Output
 AC_SUBST(PROJECT_NAME)
 AC_CONFIG_FILES([Makefile.osx])
 AC_CONFIG_FILES([Makefile.linux])
+AC_CONFIG_FILES([version.h])
 AC_OUTPUT
 case "$host" in
   *apple-darwin*) 
