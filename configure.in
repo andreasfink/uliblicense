@@ -16,8 +16,7 @@ CONFIG_DEFINE="MMLIC_CONFIG"
 VERSION=`head -n 1 VERSION`
 CONFIG_HEADER=mmlic_config.h
 DEPENDENT_PKGCONFIGS="ulib"
-OSX_SDK="MacOSX10.10.sdk"
-OSX_MIN_VERSION="10.8"
+FRAMEWORKS="-framework ulib"
 
 AC_SUBST(SHELL)
 AC_CONFIG_AUX_DIR(.)
@@ -49,8 +48,8 @@ case "$host" in
   *apple-darwin*) 
 	ARCH="-arch x86_64"
 	OSX_DEVTOOL_DIR=`xcode-select -p`
-	CFLAGS="-mmacosx-version-min=${OSX_MIN_VERSION} $CFLAGS -D_REENTRANT=1 -DDARWIN=1 -I/usr/local/include -isysroot ${OSX_DEVTOOL_DIR}/Platforms/MacOSX.platform/Developer/SDKs/${OSX_SDK} ${ARCH}"
-	LDFLAGS="-mmacosx-version-min=${OSX_MIN_VERSION} -L/usr/local/lib -Wl,-syslibroot,${OSX_DEVTOOL_DIR}/Platforms/MacOSX.platform/Developer/SDKs/${OSX_SDK} -framework CoreFoundation -framework IOKit -framework Security"
+	CFLAGS="$CFLAGS -D_REENTRANT=1 -DDARWIN=1 ${ARCH}"
+	LDFLAGS="-framework CoreFoundation -framework IOKit -framework Security -F/Library/Frameworks -F /Library/Frameworks ${FRAMEWORKS}"
 	LIBTOOL="libtool -static -o" 
 	LIBS="$LIBS -Lsrc"
     ;;
