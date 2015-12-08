@@ -1820,6 +1820,8 @@ VERSION=`head -n 1 VERSION`
 CONFIG_HEADER=mmlic_config.h
 DEPENDENT_PKGCONFIGS="ulib"
 FRAMEWORKS="-framework ulib"
+PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
+export PKG_CONFIG_PATH
 
 
 ac_aux_dir=
@@ -1876,7 +1878,7 @@ ac_config_headers="$ac_config_headers ${CONFIG_HEADER}"
 
 
 
-CUSER=$USER
+CUSER=`id -un`
 
 
   nl='

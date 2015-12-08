@@ -17,6 +17,8 @@ VERSION=`head -n 1 VERSION`
 CONFIG_HEADER=mmlic_config.h
 DEPENDENT_PKGCONFIGS="ulib"
 FRAMEWORKS="-framework ulib"
+PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
+export PKG_CONFIG_PATH
 
 AC_SUBST(SHELL)
 AC_CONFIG_AUX_DIR(.)
@@ -30,7 +32,7 @@ AC_SUBST(CONFIG_HEADER)
 AC_SUBST(VERSION)
 
 dnl Set user who runs ./configure
-CUSER=$USER
+CUSER=`id -un`
 
 AC_CONFIG_SECTION([Configuring for $PROJECT_NAME version $VERSION])
 
