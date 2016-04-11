@@ -1,6 +1,6 @@
 dnl /* ==================================================================== 
 dnl  * Project "mmlic"
-dnl  * (c) 2001 -2015 SMSRelay AG
+dnl  * (c) 2001 -2015 Andreas Fink
 dnl  * ==================================================================== 
 dnl  */ 
 
@@ -9,7 +9,7 @@ AC_PREREQ([2.69])
 AC_INIT([mmlic],[1.5.2],[andreas@fink.org])
 
 dnl generic parameters
-COPYRIGHT="Copyright 2015 SMSRelay AG"
+COPYRIGHT="Copyright 2016 Andreas Fink"
 PROJECT_NAME="mmlic"
 AUTHOR="Andreas Fink <andreas@fink.org>"
 CONFIG_DEFINE="MMLIC_CONFIG"
