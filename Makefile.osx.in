@@ -30,24 +30,18 @@ clean:
 	-xcodebuild -target mmdisp -configuration Release clean
 
 
-pkg:
+install_root_prepare:
 	-rm -rf install_root
 	./codesign_environment.sh
 	mkdir -p install_root/usr/local/bin
 	mkdir -p install_scripts/
-	xcodebuild DSTROOT=install_root -target mminfo -configuration Release install
-	xcodebuild DSTROOT=install_root -target mmdisp -configuration Release install
+	xcodebuild ${XCODESIGN} DSTROOT=install_root -target mminfo -configuration Release install
+	xcodebuild ${XCODESIGN} DSTROOT=install_root -target mmdisp -configuration Release install
 	pkgbuild --root install_root --install-location /  ${PKG_SIGN}  --version "`cat VERSION`" --identifier "me.fink.mmlic" "mmlic_`cat VERSION`.pkg"
-	xcodebuild DSTROOT=install_root -target mmlic -configuration Release install
-	pkgbuild --root install_root --install-location / ${PKG_SIGN}}  --version "`cat VERSION`" --identifier "me.fink.mmlic-full" "mmlic-full_`cat VERSION`.pkg"
+	xcodebuild ${XCODESIGN} DSTROOT=install_root -target mmlic -configuration Release install
 
-pkg2:
-	-rm -rf install_root
-	./codesign_environment.sh
-	mkdir -p install_root/usr/local/bin
-	mkdir -p install_scripts/
-	xcodebuild DSTROOT=install_root -target mminfo -configuration Release install
-	xcodebuild DSTROOT=install_root -target mmdisp -configuration Release install
-	pkgbuild --root install_root --install-location /  ${PKG_SIGN}  --version "`cat VERSION`" --identifier "me.fink.mmlic" "mmlic.pkg"
-	xcodebuild DSTROOT=install_root -target mmlic -configuration Release install
-	pkgbuild --root install_root --install-location / ${PKG_SIGN}}  --version "`cat VERSION`" --identifier "me.fink.mmlic-full" "mmlic-full.pkg"
+pkg:	install_root_prepare
+	./make_pkg.sh "$(PROJECT_NAME$)" "$(PROJECT_ID)" install_root "`cat VERSION`" "$(PROJECT_NAME)_`cat VERSION`_`date +%Y%m%d%H%M`.pkg"
+
+pkg2: install_root_prepare
+	./make_pkg.sh "$(PROJECT_NAME$)" "$(PROJECT_ID)" install_root "`cat VERSION`" "$(PROJECT_NAME).pkg"

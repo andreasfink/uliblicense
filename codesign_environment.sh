@@ -13,7 +13,8 @@ fi
 
 if [ "${INSTALLER_CERT}" == "" ]
 then
-	export PKG_SIGN='--sign "'"$INSTALLER_CERT"'"'
-else
 	export PKG_SIGN=""
+else
+	export PKG_SIGN='--sign "'"$INSTALLER_CERT"'"'
 fi
+
