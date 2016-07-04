@@ -1981,13 +1981,13 @@ case "$host" in
 	CXX=clang++
     CFLAGS="${CFLAGS} -DLINUX=1 -DHAVE_LIBSSL=1 -D_XOPEN_SOURCE=700 -D_BSD_SOURCE"
 	CFLAGS="${CFLAGS} -std=c99 -fPIC -DLINUX=1  -DSCTP_IN_KERNEL=1"
-	CFLAGS="${CFLAGS} -Wno-trigraphs  -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties -Wno-receiver-is-weak"
+	CFLAGS="${CFLAGS} -Wno-trigraphs  -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties"
 	CFLAGS="${CFLAGS} -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label"
 	CFLAGS="${CFLAGS} -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow"
 	CFLAGS="${CFLAGS} -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion"
 	CFLAGS="${CFLAGS} -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector"
 	CFLAGS="${CFLAGS} -Wno-deprecated-implementations -Wprotocol -Wdeprecated-declarations -Wno-sign-conversion "
-	CFLAGS="${CFLAGS} -fasm-blocks -fstrict-aliasing -fobjc-arc -fobjc-runtime=gnustep"
+	CFLAGS="${CFLAGS} -fasm-blocks -fblocks -fstrict-aliasing -fobjc-arc -fobjc-runtime=gnustep"
 	CFLAGS="${CFLAGS} -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0"
 	CFLAGS+=" -fpascal-strings"
 	if [ -x /usr/local/bin/gnustep-config ]
