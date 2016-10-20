@@ -80,7 +80,6 @@ int main (int argc, const char * argv[])
                 time(&current);
                 current = current + (24*60*60*days);
                     
-                    
                 struct tm trec;
                 struct	timeval  tp;
                 struct	timezone tzp;
