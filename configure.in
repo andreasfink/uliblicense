@@ -14,6 +14,9 @@ PROJECT_NAME="mmlic"
 AUTHOR="Andreas Fink <andreas@fink.org>"
 CONFIG_DEFINE="MMLIC_CONFIG"
 VERSION=`head -n 1 VERSION`
+MAJORVER=`echo $VERSION | cut -f1 -d.`
+MINORVER=`echo $VERSION | cut -f2 -d.`
+REVISION=`echo $VERSION | cut -f3 -d.`
 CONFIG_HEADER=mmlic_config.h
 DEPENDENT_PKGCONFIGS="ulib"
 FRAMEWORKS="-framework ulib"
@@ -29,7 +32,6 @@ AC_SUBST(PROJECT_NAME)
 AC_SUBST(AUTHOR)
 AC_SUBST(CONFIG_DEFINE)
 AC_SUBST(CONFIG_HEADER)
-AC_SUBST(VERSION)
 
 dnl Set user who runs ./configure
 CUSER=`id -un`
@@ -59,8 +61,14 @@ case "$host" in
   *-linux-*)
 	CC=clang
 	CXX=clang++
-    CFLAGS="${CFLAGS} -DLINUX=1 -DHAVE_LIBSSL=1 -D_XOPEN_SOURCE=700 -D_BSD_SOURCE"
-	CFLAGS="${CFLAGS} -std=c99 -fPIC -DLINUX=1  -DSCTP_IN_KERNEL=1"
+		CFLAGS="$CFLAGS -std=c99 -fPIC -DLINUX -D_XOPEN_SOURCE=700 -D_POSIX_SOURCE"
+	DEBIAN_VERSION=`cat /etc/debian_version | cut -f1 -d.`
+	if [[ "$DEBIAN_VERSION" == "8" ]]
+	then
+        CFLAGS="$CFLAGS -D_BSD_SOURCE"
+    else
+        CFLAGS="$CFLAGS -D_DEFAULT_SOURCE"
+	fi
 	CFLAGS="${CFLAGS} -Wno-trigraphs  -Wno-missing-field-initializers -Wmissing-prototypes -Wno-implicit-atomic-properties"
 	CFLAGS="${CFLAGS} -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label"
 	CFLAGS="${CFLAGS} -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow"
@@ -134,6 +142,11 @@ AC_CONFIG_SECTION([Generating output files])
 
 dnl Final Output
 AC_SUBST(PROJECT_NAME)
+AC_SUBST(VERSION)
+AC_SUBST(MAJORVER)
+AC_SUBST(MINORVER)
+AC_SUBST(REVISION)
+AC_SUBST(SHARED_LIBRARY_EXTENSION)
 AC_CONFIG_FILES([Makefile.osx])
 AC_CONFIG_FILES([Makefile.linux])
 AC_CONFIG_FILES([version.h])
