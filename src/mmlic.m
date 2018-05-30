@@ -201,8 +201,8 @@ int main (int argc, const char * argv[])
         if(serialNumber==NULL)
         {
             
-            licenseFile[@"serial"] = GetMachineSerialNumber();
-            licenseFile[@"interfaces"] = GetMACAddresses();
+            licenseFile[@"serial"] = [UMUtil getMachineSerialNumber];
+            licenseFile[@"interfaces"] = [UMUtil getMacAddrs];
         }
         else
         {

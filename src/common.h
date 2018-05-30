@@ -30,7 +30,6 @@
 
 extern const unsigned char key128[128];
 
-NSDictionary *GetMACAddresses(void);
 NSString *GetMachineSerialNumber(void);
 const char *cryptErrorString(int code);
 

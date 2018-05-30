@@ -3,7 +3,7 @@
 //  mminfo
 //
 //  Created by Andreas Fink on 15.11.11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011-2018 Andreas Fink. All rights reserved.
 //
 
 #include <stdio.h>
@@ -27,7 +27,6 @@ int main (int argc, const char * argv[])
             NSString *line = [NSString stringWithFormat:@"%@: %@",ifname,macaddr];
             fprintf(stdout,"%s\n",[line UTF8String]);
         }
-        
         fprintf(stdout,"\n");
         fflush(stdout);
     }
