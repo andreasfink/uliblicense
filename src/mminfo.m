@@ -13,6 +13,25 @@
 #include <unistd.h>
 #include "../version.h"
 
+
+#define DICT_SET_STRING(dict,name,s1) \
+{ \
+    NSString *s = s1; \
+    if(s.length > 0) \
+    { \
+        dict[name] = s; \
+    }\
+}
+
+#define DICT_SET_ARRAY(dict,name,a1) \
+{ \
+    NSArray *a = a1;\
+    if(a.count > 0) \
+    { \
+        dict[name] = a; \
+    }\
+}
+
 int main (int argc, const char * argv[])
 {
     @autoreleasepool
@@ -20,14 +39,15 @@ int main (int argc, const char * argv[])
         NSString *line = [NSString stringWithFormat:@"mminfo " VERSION "\nSerial Number: %@",GetMachineSerialNumber()];
         fprintf(stdout,"\n%s\n",[line UTF8String]);
         
-        NSDictionary *dict = GetMACAddresses();
-        for(NSString *ifname in dict)
-        {
-            NSString *macaddr = [dict objectForKey:ifname];
-            NSString *line = [NSString stringWithFormat:@"%@: %@",ifname,macaddr];
-            fprintf(stdout,"%s\n",[line UTF8String]);
-        }
-        fprintf(stdout,"\n");
+        UMSynchronizedSortedDictionary  *dict =  [[UMSynchronizedSortedDictionary alloc]init];
+
+        DICT_SET_STRING(dict,@"hostname",[UMUtil hostname])
+        DICT_SET_ARRAY(dict,@"interfaces",[UMUtil getMacAddrs])
+        DICT_SET_STRING(dict,@"serial",[UMUtil getMachineSerialNumber])
+        DICT_SET_STRING(dict,@"uuid",[UMUtil getMachineUUID])
+        DICT_SET_STRING(dict,@"cpu-serials",[UMUtil getCPUSerialNumbers])
+        NSString *s = [dict jsonString];
+        fprintf(stdout,"%s\n",s.UTF8String);
         fflush(stdout);
     }
     return 0;

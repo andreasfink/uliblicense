@@ -31,75 +31,7 @@ NSArray *GetUUIDs(void);
 
 NSString *hexNSString(const char *in);
 
-#ifdef LINUX
 
-NSDictionary *GetMACAddresses(void)
-{
-	NSMutableDictionary *interfaces = [[NSMutableDictionary alloc]init];
-
-	NSArray *ifnames = [NSArray arrayWithObjects:@"eth0",@"eth1",@"eth2",@"eth3",@"en0",@"en1",@"en2",@"en3",nil];
-	
-	for (NSString *ifname in ifnames)
-	{
-		NSString *hwaddr = GetMacAddr(ifname);
-		if(hwaddr)
-		{            
-			[interfaces setObject:hwaddr forKey:ifname];
-		}
-	}
-	return interfaces;
-}
-
-
-#else
-
-NSDictionary *GetMACAddresses(void)
-{
-    NSMutableDictionary            *result = [[NSMutableDictionary alloc]init];
-    
-    CFMutableDictionaryRef	matchingDict;
-	io_iterator_t			intfIterator;
-    io_object_t				intfService;
-    io_object_t				controllerService;
-    kern_return_t			kernResult = KERN_FAILURE;
-	UInt8					ethernet_address[kIOEthernetAddressSize];
-    int						i=0;
-	CFTypeRef				MACAddressAsCFData;        
-	
-	i = 0;
-	matchingDict	= IOServiceMatching(kIOEthernetInterfaceClass);
-    kernResult		= IOServiceGetMatchingServices(kIOMasterPortDefault, matchingDict, &intfIterator);
-    if (KERN_SUCCESS == kernResult)
-    {
-        while ((intfService = IOIteratorNext(intfIterator)))
-        {
-            bzero(ethernet_address, kIOEthernetAddressSize);
-            kernResult = IORegistryEntryGetParentEntry(intfService,kIOServicePlane, &controllerService);
-            if (KERN_SUCCESS == kernResult)
-            {
-                // Retrieve the MAC address property from the I/O Registry in the form of a CFData
-                MACAddressAsCFData = IORegistryEntryCreateCFProperty(controllerService,
-                                                                     CFSTR(kIOMACAddress),
-                                                                     kCFAllocatorDefault,
-                                                                     0);
-                if (MACAddressAsCFData)
-                {
-                    CFDataGetBytes(MACAddressAsCFData, CFRangeMake(0, kIOEthernetAddressSize), ethernet_address);
-                    
-                    NSString *address = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x",
-                                    ethernet_address[0], ethernet_address[1], ethernet_address[2], ethernet_address[3], ethernet_address[4], ethernet_address[5]];
-                    NSString *ifname = [NSString stringWithFormat:@"if%d",i++];
-                    result[ifname] = address;
-                    CFRelease(MACAddressAsCFData);
-                }
-                (void) IOObjectRelease(controllerService);
-            }
-            (void) IOObjectRelease(intfService);
-        }
-    }
-    return result;
-}
-#endif
 
 
 #ifdef	LINUX
@@ -257,7 +189,6 @@ NSData *encryptData(NSData *data, NSData *keyData)
     }
     NSData *result = [NSData dataWithBytes:output_ptr length:new_output_size];
     return result;
-    
 }
 
 NSData *decryptData(NSData *data, NSData *keyData)
@@ -427,100 +358,7 @@ const char *cryptErrorString(int code)
 #endif
 
 
-NSString *GetMacAddr(NSString *interfaceName)
-{
-    
-    char buffer[256];
-    char line[256];
-    char *input_line = NULL;
-    char tmpfilename[256] = "/tmp/.mminfo-tmp-XXXXXX";
-    NSString *ethernetAddress = NULL;
-    
-    int fdes = mkstemp(tmpfilename);
 
-    sprintf(buffer,"/sbin/ifconfig %s > %s 2>/dev/null",[interfaceName UTF8String],tmpfilename);
-    system(buffer);
-    FILE *f = fdopen(fdes,"r");
-    
-    while((input_line = fgets(line,sizeof(line),f)))
-    {
-        const char *s = strstr(input_line,"HWaddr");
-        if(s)
-        {
-            s += strlen("HWaddr");
-            ethernetAddress = @(s);
-            break;
-        }
-        
-        s = strstr(input_line,"ether ");
-        if(s)
-        {
-            s += strlen("ether ");
-            ethernetAddress = @(s);
-            break;
-        }
-    }
-
-    if(ethernetAddress!=NULL)
-    {
-        ethernetAddress = [ethernetAddress stringByTrimmingCharactersInSet:
-                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    }
-    fclose(f);
-    unlink(tmpfilename);
-    return ethernetAddress;
-}
-
-#ifdef LINUX
-NSArray *GetCpuSerialNumbers(void)
-{
-    NSArray *cmd = [NSArray arrayWithObjects:@"/usr/sbin/dmidecode",@"-t",@"processor",NULL];
-    NSArray *lines = readChildProcess(cmd);
-    NSMutableArray  *serialNumbers = [[NSMutableArray alloc]init];
-    int found = 0;
-    
-    for(NSString *line in lines)
-    {
-        const char *s = strstr([line UTF8String],"ID: ");
-        if(s)
-        {
-            s += strlen("ID: ");
-            size_t len = strlen(s);
-            int i;
-            NSMutableString *serialNumber = [[NSMutableString alloc] init];
-            for(i=0;i<len;i++)
-            {
-                switch(s[i])
-                {
-                    case '\0':
-                    case '\n':
-                    case '\r':
-                    case '\t':
-                    case ' ':
-                        break;
-                    default:
-                        [serialNumber appendFormat:@"%c",s[i]];
-                        break;
-                }
-            }
-            if([serialNumbers indexOfObjectIdenticalTo:serialNumber]==NSNotFound)
-            {
-                [serialNumbers addObject:serialNumber];
-            }
-            serialNumber = NULL;
-            found++;
-        }
-    }
-    if(found==0)
-    {
-        serialNumbers=NULL;
-        return NULL;
-    }
-    return serialNumbers;
-}
-
-
-#endif
 
 
 NSString *hexNSString(const char *in)

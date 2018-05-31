@@ -23,6 +23,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include "../version.h"
+#import <ulib/ulib.h>
 
 int main (int argc, const char * argv[])
 {

@@ -37,6 +37,8 @@
 		A6B0251420BEED9E006779BA /* UMLicenseProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B0250720BEED9E006779BA /* UMLicenseProduct.m */; };
 		A6B0251520BEED9E006779BA /* UMLicenseProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B0250720BEED9E006779BA /* UMLicenseProduct.m */; };
 		A6B0251620BEED9E006779BA /* UMLicenseProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B0250720BEED9E006779BA /* UMLicenseProduct.m */; };
+		A6DB210920BFCC97006CBD20 /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024E420BEECB5006779BA /* ulib.framework */; };
+		A6DB210A20BFCC9B006CBD20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F36B071472525E006F5AF0 /* Foundation.framework */; };
 		A6DBF0C120BEFE3400B38DAF /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F36B15147254BE006F5AF0 /* IOKit.framework */; };
 		A6F36B081472525E006F5AF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F36B071472525E006F5AF0 /* Foundation.framework */; };
 		A6F36B0B1472525E006F5AF0 /* mmlic.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F36B0A1472525E006F5AF0 /* mmlic.m */; };
@@ -127,6 +129,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6DB210920BFCC97006CBD20 /* ulib.framework in Frameworks */,
+				A6DB210A20BFCC9B006CBD20 /* Foundation.framework in Frameworks */,
 				A6DBF0C120BEFE3400B38DAF /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +486,10 @@
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				ENABLE_TESTABILITY = YES;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -523,6 +531,10 @@
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				ENABLE_NS_ASSERTIONS = NO;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
