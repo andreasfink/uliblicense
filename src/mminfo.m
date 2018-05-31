@@ -13,8 +13,9 @@
 #include <unistd.h>
 #include "../version.h"
 
+#import <ulib/ulib.h>
 
-#define DICT_SET_STRING(dict,name,s1) \
+#define DICT_ADD_STRING(dict,name,s1) \
 { \
     NSString *s = s1; \
     if(s.length > 0) \
@@ -23,9 +24,18 @@
     }\
 }
 
-#define DICT_SET_ARRAY(dict,name,a1) \
+#define DICT_ADD_ARRAY(dict,name,a1) \
 { \
     NSArray *a = a1;\
+    if(a.count > 0) \
+    { \
+        dict[name] = a; \
+    }\
+}
+
+#define DICT_ADD_DICT(dict,name,a1) \
+{ \
+    NSDictionary *a = a1;\
     if(a.count > 0) \
     { \
         dict[name] = a; \
@@ -41,11 +51,11 @@ int main (int argc, const char * argv[])
         
         UMSynchronizedSortedDictionary  *dict =  [[UMSynchronizedSortedDictionary alloc]init];
 
-        DICT_SET_STRING(dict,@"hostname",[UMUtil hostname])
-        DICT_SET_ARRAY(dict,@"interfaces",[UMUtil getMacAddrs])
-        DICT_SET_STRING(dict,@"serial",[UMUtil getMachineSerialNumber])
-        DICT_SET_STRING(dict,@"uuid",[UMUtil getMachineUUID])
-        DICT_SET_STRING(dict,@"cpu-serials",[UMUtil getCPUSerialNumbers])
+        DICT_ADD_STRING(dict,@"hostname",[UMHost localHostName])
+        DICT_ADD_DICT(dict,@"interfaces",[UMUtil getMacAddrs])
+        DICT_ADD_STRING(dict,@"serial",[UMUtil getMachineSerialNumber])
+        DICT_ADD_STRING(dict,@"uuid",[UMUtil getMachineUUID])
+        DICT_ADD_ARRAY(dict,@"cpu-serials",[UMUtil getCPUSerialNumbers])
         NSString *s = [dict jsonString];
         fprintf(stdout,"%s\n",s.UTF8String);
         fflush(stdout);

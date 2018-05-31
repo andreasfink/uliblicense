@@ -43,7 +43,7 @@
 
 - (UMLicenseProductFeature *)getFeature:(NSString *)name
 {
-    UMLicenseProductFeature *feature;
+    UMLicenseProductFeature *feature = NULL;
     if(name.length > 0)
     {
         [_lock lock];
