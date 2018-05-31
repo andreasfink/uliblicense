@@ -46,7 +46,7 @@ int main (int argc, const char * argv[])
 {
     @autoreleasepool
     {
-        NSString *line = [NSString stringWithFormat:@"mminfo " VERSION "\nSerial Number: %@",GetMachineSerialNumber()];
+        NSString *line = [NSString stringWithFormat:@"mminfo " VERSION "\n];
         fprintf(stdout,"\n%s\n",[line UTF8String]);
         
         UMSynchronizedSortedDictionary  *dict =  [[UMSynchronizedSortedDictionary alloc]init];
