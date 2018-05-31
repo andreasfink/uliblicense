@@ -46,9 +46,6 @@ int main (int argc, const char * argv[])
 {
     @autoreleasepool
     {
-        NSString *line = [NSString stringWithFormat:@"mminfo " VERSION "\n"];
-        fprintf(stdout,"\n%s\n",[line UTF8String]);
-        
         UMSynchronizedSortedDictionary  *dict =  [[UMSynchronizedSortedDictionary alloc]init];
 
         DICT_ADD_STRING(dict,@"hostname",[UMHost localHostName])
@@ -56,9 +53,98 @@ int main (int argc, const char * argv[])
         DICT_ADD_STRING(dict,@"serial",[UMUtil getMachineSerialNumber])
         DICT_ADD_STRING(dict,@"uuid",[UMUtil getMachineUUID])
         DICT_ADD_ARRAY(dict,@"cpu-serials",[UMUtil getCPUSerialNumbers])
-        NSString *s = [dict jsonString];
-        fprintf(stdout,"%s\n",s.UTF8String);
-        fflush(stdout);
+
+    NSDictionary *appDefinition = @ {
+        @"version" : @(VERSION),
+        @"executable" : @"mminfo",
+        @"run-as" : @(argv[0]),
+        @"copyright" : @"© 2018 Andreas Fink",
+    };
+
+        NSArray *commandLineDefinition = @[
+                                           @{
+                                               @"name"  : @"version",
+                                               @"short" : @"-V",
+                                               @"long"  : @"--version",
+                                               @"help"  : @"shows the software version"
+                                               },
+                                           @{
+                                               @"name"  : @"verbose",
+                                               @"short" : @"-v",
+                                               @"long"  : @"--verbose",
+                                               @"help"  : @"enables verbose mode"
+                                               },
+                                           @{
+                                               @"name"  : @"help",
+                                               @"short" : @"-h",
+                                               @"long" : @"--help",
+                                               @"help"  : @"shows the help screen",
+                                               },
+                                           @{
+                                               @"name"  : @"request",
+                                               @"short" : @"-r",
+                                               @"long"  : @"--license-request",
+                                               @"help"  : @"request a license from the license server for this hardware",
+                                               },
+                                           @{
+                                               @"name"  : @"display",
+                                               @"short" : @"-d",
+                                               @"long"  : @"--display",
+                                               @"help"  : @"displays information for the license",
+                                               },
+                                           @{
+                                               @"name"  : @"url",
+                                               @"short" : @"-u",
+                                               @"long"  : @"--license-server-url",
+                                               @"argument" : @"url",
+                                               @"help"  : @"sets the license server url",
+                                               }];
+
+        UMCommandLine *_commandLine = [[UMCommandLine alloc]initWithCommandLineDefintion:commandLineDefinition
+                                                                           appDefinition:appDefinition
+                                                                                    argc:argc
+                                                                                    argv:argv];
+        [_commandLine handleStandardArguments];
+        BOOL actionDone=NO;
+        NSDictionary *params = _commandLine.params;
+        NSString *url = @ "https://license.messagemover.com/request.php";
+        if(params[@"url"])
+        {
+            id p = params[@"url"];
+            if([p isKindOfClass:[NSArray class]])
+            {
+                url = ((NSArray *)p)[0];
+            }
+            else if([p isKindOfClass:[NSString class]])
+            {
+                url = (NSString *)p;
+            }
+            else
+            {
+                fprintf(stderr, "Error: Can't interpret url\n");
+                exit(-1);
+            }
+        }
+        if(params[@"display"])
+        {
+            NSString *s = [dict jsonString];
+            fprintf(stdout,"%s",s.UTF8String);
+            actionDone = YES;
+        }
+        if(params[@"request"])
+        {
+            NSString *request = [[dict jsonString] urlencode];
+            NSString *full_url = [NSString stringWithFormat:@"%@?request=%@",url,request];
+            UMHTTPClientRequest *creq = [[UMHTTPClientRequest alloc]initWithURLString:full_url withChache:NO timeout:30];
+            UMHTTPClient *httpClient = [[UMHTTPClient alloc]init];
+            NSString *result = [httpClient simpleSynchronousRequest:creq];
+            fprintf(stdout, "%s\n",result.UTF8String);
+            actionDone = YES;
+        }
+        if(actionDone)
+        {
+            exit(0);
+        }
     }
     return 0;
 }
