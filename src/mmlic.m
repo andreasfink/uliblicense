@@ -204,6 +204,7 @@ int main (int argc, const char * argv[])
             
             licenseFile[@"serial"] = [UMUtil getMachineSerialNumber];
             licenseFile[@"interfaces"] = [UMUtil getMacAddrs];
+            licenseFile[@"ipaddresses"] = [UMUtil getIpAddrs];
         }
         else
         {
