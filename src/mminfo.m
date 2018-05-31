@@ -50,6 +50,7 @@ int main (int argc, const char * argv[])
 
         DICT_ADD_STRING(dict,@"hostname",[UMHost localHostName])
         DICT_ADD_DICT(dict,@"interfaces",[UMUtil getMacAddrs])
+        DICT_ADD_DICT(dict,@"ip-addresses",[UMUtil getIpAddrs])
         DICT_ADD_STRING(dict,@"serial",[UMUtil getMachineSerialNumber])
         DICT_ADD_STRING(dict,@"uuid",[UMUtil getMachineUUID])
         DICT_ADD_ARRAY(dict,@"cpu-serials",[UMUtil getCPUSerialNumbers])
