@@ -7,10 +7,20 @@
 //
 
 #import <ulib/ulib.h>
-@class UMLicenseProducts;
+#import <ulibasn1/ulibasn1.h>
 
-@interface UMLicense : UMObject
+@class UMLicenseProducts;
+@class UMLicenseRestriction;
+@class UMLicenseRestrictionList;
+
+@interface UMLicense : UMASN1Sequence
 {
+    NSString *_licenseSerialNumber;
+    NSString *_licenseType;
+    NSString *_licenseOwner;
+    UMLicenseRestrictionList *_licenseRestrictions;
+    NSDate *_licenseExpiration;
+    NSString *_licenseRenewUrl;
     NSMutableDictionary<NSString *, UMLicenseProducts *> *_products;
 }
 

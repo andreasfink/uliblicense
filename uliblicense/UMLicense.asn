@@ -1,0 +1,10 @@
+
+UMLicense ::= SEQUENCE {
+    licenseSerialNumber     [0] UTF8String,
+    licenseType             [1] UTF8String,
+    licenseOwner            [2] UTF8String,
+    licenseRestrictions     [3] UMLicenseRestrictionList OPTIONAL,
+    licenseExpiration       [4] UTF8String OPTIONAL,
+    licenseRenewUrl         [5] UTF8String OPTIONAL,
+    ...
+}

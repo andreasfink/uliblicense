@@ -7,33 +7,17 @@
 //
 
 #import <ulib/ulib.h>
+#import <ulibasn1/ulibasn1.h>
 #import "UMLicenseProduct.h"
 
-@interface UMLicenseProductFeature : UMObject
+@interface UMLicenseProductFeature : UMASN1Sequence
 {
-    NSString *_productName;
-    NSString *_featureName;
-    BOOL    _featureIsPermanentlyAvailable;
-    BOOL    _featureIsTemporaryAvailable;
-    NSString *_featureRenewUrl;
-    NSDate  *_featureStartDate;
-    NSDate  *_featureEndDateDate;
-    NSNumber    *_featureMaxUseCount;
-    NSNumber    *_featureMaxDurationSinceStart;
-    NSMutableDictionary *_featureSpecificDict;
+    NSString  *_featureName;
+    NSData    *_featureData;
 }
 
 
-@property(readwrite,atomic,strong)  NSString *productName;
 @property(readwrite,atomic,strong)  NSString *featureName;
-
-@property(readwrite,atomic,assign)  BOOL    featureIsPermanentlyAvailable;
-@property(readwrite,atomic,assign)  BOOL    featureIsTemporaryAvailable;
-@property(readwrite,atomic,strong)  NSString *featureRenewUrl;
-@property(readwrite,atomic,strong)  NSDate  *featureStartDate;
-@property(readwrite,atomic,strong)  NSDate  *featureEndDateDate;
-@property(readwrite,atomic,strong)  NSNumber    *featureMaxUseCount;
-@property(readwrite,atomic,strong)  NSNumber    *featureMaxDurationSinceStart;
-@property(readwrite,atomic,strong)  NSMutableDictionary *featureSpecificDict;
+@property(readwrite,atomic,strong)  NSData   *featureData;
 
 @end

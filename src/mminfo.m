@@ -55,12 +55,12 @@ int main (int argc, const char * argv[])
         DICT_ADD_STRING(dict,@"uuid",[UMUtil getMachineUUID])
         DICT_ADD_ARRAY(dict,@"cpu-serials",[UMUtil getCPUSerialNumbers])
 
-    NSDictionary *appDefinition = @ {
-        @"version" : @(VERSION),
-        @"executable" : @"mminfo",
-        @"run-as" : @(argv[0]),
-        @"copyright" : @"© 2018 Andreas Fink",
-    };
+        NSDictionary *appDefinition = @ {
+            @"version" : @(VERSION),
+            @"executable" : @"mminfo",
+            @"run-as" : @(argv[0]),
+            @"copyright" : @"© 2018 Andreas Fink",
+        };
 
         NSArray *commandLineDefinition = @[
                                            @{
@@ -92,6 +92,11 @@ int main (int argc, const char * argv[])
                                                @"short" : @"-d",
                                                @"long"  : @"--display",
                                                @"help"  : @"displays information for the license",
+                                               },
+                                           @{
+                                               @"name"  : @"keypair",
+                                               @"long"  : @"--generate-keypair",
+                                               @"help"  : @"generate a keypair for signing",
                                                },
                                            @{
                                                @"name"  : @"url",
@@ -126,6 +131,18 @@ int main (int argc, const char * argv[])
                 exit(-1);
             }
         }
+        if(params[@"keypair"])
+        {
+            NSDictionary *d = [UMCrypto generateRsaKeyPair];
+
+            NSString *privateKey = d[@"private-key"];
+            NSString *publicKey = d[@"public-key"];
+
+            fprintf(stdout,"\n%s\n%s\n",privateKey.UTF8String,publicKey.UTF8String);
+            fflush(stdout);
+            exit(0);
+        }
+
         if(params[@"display"])
         {
             NSString *s = [dict jsonString];

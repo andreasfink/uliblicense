@@ -201,7 +201,6 @@ int main (int argc, const char * argv[])
         licenseFile[@"features"] = licenseFeatures;
         if(serialNumber==NULL)
         {
-            
             licenseFile[@"serial"] = [UMUtil getMachineSerialNumber];
             licenseFile[@"interfaces"] = [UMUtil getMacAddrs];
             licenseFile[@"ipaddresses"] = [UMUtil getIpAddrs];

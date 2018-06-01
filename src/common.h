@@ -30,7 +30,6 @@
 
 extern const unsigned char key128[128];
 
-NSString *GetMachineSerialNumber(void);
 const char *cryptErrorString(int code);
 
 NSData *encryptData(NSData *data, NSData *key);

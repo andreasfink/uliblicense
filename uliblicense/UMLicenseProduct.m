@@ -8,7 +8,7 @@
 
 #import "UMLicenseProduct.h"
 #import "UMLicenseProductFeature.h"
-
+#import "UMLicenseProductFeatureList.h"
 @implementation UMLicenseProduct
 
 - (UMLicenseProduct *)init
@@ -23,34 +23,21 @@
 
 - (void)addFeature:(UMLicenseProductFeature *)feature
 {
-    if(feature.featureName.length > 0)
+    if(_featureList==NULL)
     {
-        [_lock lock];
-        _features[feature.featureName] = feature;
-        [_lock unlock];
+        _featureList = [[UMLicenseProductFeatureList alloc]init];
     }
+    [_featureList addFeature:feature];
 }
 
-- (void)removeFeature:(NSString *)feature
+- (void)removeFeature:(NSString *)featureName
 {
-    if(feature.length >0 )
-    {
-        [_lock lock];
-        [_features removeObjectForKey:feature];
-        [_lock unlock];
-    }
+    [_featureList removeFeature:featureName];
 }
 
 - (UMLicenseProductFeature *)getFeature:(NSString *)name
 {
-    UMLicenseProductFeature *feature = NULL;
-    if(name.length > 0)
-    {
-        [_lock lock];
-        feature = _features[feature.featureName];
-        [_lock unlock];
-    }
-    return feature;
+    return [_featureList getFeature:name];
 }
 
 @end
