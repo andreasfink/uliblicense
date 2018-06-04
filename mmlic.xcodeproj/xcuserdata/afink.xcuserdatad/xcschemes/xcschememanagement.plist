@@ -7,7 +7,7 @@
 		<key>messagemover-getlicense.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>5</integer>
 		</dict>
 		<key>mmdisp.xcscheme</key>
 		<dict>
@@ -27,7 +27,7 @@
 		<key>uliblicense.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>13</integer>
 		</dict>
 		<key>umlicense.xcscheme</key>
 		<dict>
