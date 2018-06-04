@@ -8,6 +8,3 @@
 
 #import "uliblicense.h"
 
-@implementation uliblicense
-
-@end

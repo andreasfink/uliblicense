@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A605994115E6B273009CD221 /* common.m in Sources */ = {isa = PBXBuildFile; fileRef = A605994015E6B273009CD221 /* common.m */; };
-		A605994215E6B273009CD221 /* common.m in Sources */ = {isa = PBXBuildFile; fileRef = A605994015E6B273009CD221 /* common.m */; };
 		A60A94CF1754958800A6B3D2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F36B15147254BE006F5AF0 /* IOKit.framework */; };
 		A60BC4BD16FC3E9100E38565 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F36B071472525E006F5AF0 /* Foundation.framework */; };
-		A62394121726F5C8008BAF3A /* common.m in Sources */ = {isa = PBXBuildFile; fileRef = A605994015E6B273009CD221 /* common.m */; };
 		A62394131726F5D4008BAF3A /* mmdisp.m in Sources */ = {isa = PBXBuildFile; fileRef = A61FFCCE171EAAB8005D4601 /* mmdisp.m */; };
 		A62DAD171472BF69005487AF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F36B071472525E006F5AF0 /* Foundation.framework */; };
 		A62DAD181472BF69005487AF /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F36B15147254BE006F5AF0 /* IOKit.framework */; };
@@ -20,7 +17,7 @@
 		A6B024E520BEECB5006779BA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024E420BEECB5006779BA /* ulib.framework */; };
 		A6B024E620BEECB5006779BA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024E420BEECB5006779BA /* ulib.framework */; };
 		A6B024E720BEECB5006779BA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024E420BEECB5006779BA /* ulib.framework */; };
-		A6B024FC20BEED6E006779BA /* uliblicense.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B024FB20BEED6E006779BA /* uliblicense.h */; };
+		A6B024FC20BEED6E006779BA /* uliblicense.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B024FB20BEED6E006779BA /* uliblicense.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6B024FE20BEED6E006779BA /* uliblicense.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B024FD20BEED6E006779BA /* uliblicense.m */; };
 		A6B0250820BEED9E006779BA /* UMLicenseProductFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B0250220BEED9D006779BA /* UMLicenseProductFeature.m */; };
 		A6B0250920BEED9E006779BA /* UMLicenseProductFeature.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B0250220BEED9D006779BA /* UMLicenseProductFeature.m */; };
@@ -30,9 +27,9 @@
 		A6B0250D20BEED9E006779BA /* UMLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B0250320BEED9D006779BA /* UMLicense.m */; };
 		A6B0250E20BEED9E006779BA /* UMLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B0250320BEED9D006779BA /* UMLicense.m */; };
 		A6B0250F20BEED9E006779BA /* UMLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B0250320BEED9D006779BA /* UMLicense.m */; };
-		A6B0251020BEED9E006779BA /* UMLicenseProductFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B0250420BEED9E006779BA /* UMLicenseProductFeature.h */; };
+		A6B0251020BEED9E006779BA /* UMLicenseProductFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B0250420BEED9E006779BA /* UMLicenseProductFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6B0251120BEED9E006779BA /* UMLicense.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B0250520BEED9E006779BA /* UMLicense.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A6B0251220BEED9E006779BA /* UMLicenseProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B0250620BEED9E006779BA /* UMLicenseProduct.h */; };
+		A6B0251220BEED9E006779BA /* UMLicenseProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B0250620BEED9E006779BA /* UMLicenseProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6B0251320BEED9E006779BA /* UMLicenseProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B0250720BEED9E006779BA /* UMLicenseProduct.m */; };
 		A6B0251420BEED9E006779BA /* UMLicenseProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B0250720BEED9E006779BA /* UMLicenseProduct.m */; };
 		A6B0251520BEED9E006779BA /* UMLicenseProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B0250720BEED9E006779BA /* UMLicenseProduct.m */; };
@@ -51,16 +48,25 @@
 		A6DBF0DB20C0101A00B38DAF /* UMLicenseRestrictionList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0D220C00AA900B38DAF /* UMLicenseRestrictionList.m */; };
 		A6DBF0DC20C0101B00B38DAF /* UMLicenseRestrictionList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0D220C00AA900B38DAF /* UMLicenseRestrictionList.m */; };
 		A6DBF0DD20C0101B00B38DAF /* UMLicenseRestrictionList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0D220C00AA900B38DAF /* UMLicenseRestrictionList.m */; };
-		A6DBF0E020C01EA600B38DAF /* UMLicenseProductFeatureList.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DBF0DE20C01EA500B38DAF /* UMLicenseProductFeatureList.h */; };
+		A6DBF0E020C01EA600B38DAF /* UMLicenseProductFeatureList.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DBF0DE20C01EA500B38DAF /* UMLicenseProductFeatureList.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6DBF0E120C01EA600B38DAF /* UMLicenseProductFeatureList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0DF20C01EA500B38DAF /* UMLicenseProductFeatureList.m */; };
 		A6DBF0E220C01EA600B38DAF /* UMLicenseProductFeatureList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0DF20C01EA500B38DAF /* UMLicenseProductFeatureList.m */; };
 		A6DBF0E320C01EA600B38DAF /* UMLicenseProductFeatureList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0DF20C01EA500B38DAF /* UMLicenseProductFeatureList.m */; };
 		A6DBF0E420C01EA600B38DAF /* UMLicenseProductFeatureList.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0DF20C01EA500B38DAF /* UMLicenseProductFeatureList.m */; };
-		A6DBF0EA20C0259B00B38DAF /* UMSignedLicense.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DBF0E820C0259B00B38DAF /* UMSignedLicense.h */; };
+		A6DBF0EA20C0259B00B38DAF /* UMSignedLicense.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DBF0E820C0259B00B38DAF /* UMSignedLicense.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6DBF0EB20C0259B00B38DAF /* UMSignedLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0E920C0259B00B38DAF /* UMSignedLicense.m */; };
 		A6DBF0EC20C0259B00B38DAF /* UMSignedLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0E920C0259B00B38DAF /* UMSignedLicense.m */; };
 		A6DBF0ED20C0259B00B38DAF /* UMSignedLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0E920C0259B00B38DAF /* UMSignedLicense.m */; };
 		A6DBF0EE20C0259B00B38DAF /* UMSignedLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0E920C0259B00B38DAF /* UMSignedLicense.m */; };
+		A6DD2C2B20C1A5A500FFFD00 /* mmlic.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F36B0A1472525E006F5AF0 /* mmlic.m */; };
+		A6DD2C2C20C1A5CC00FFFD00 /* uliblicense.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B024FD20BEED6E006779BA /* uliblicense.m */; };
+		A6DD2C2D20C1A5CC00FFFD00 /* UMLicenseRestriction.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0CD20C005C600B38DAF /* UMLicenseRestriction.m */; };
+		A6DD2C2E20C1A5CC00FFFD00 /* uliblicense.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B024FD20BEED6E006779BA /* uliblicense.m */; };
+		A6DD2C2F20C1A5CC00FFFD00 /* UMLicenseRestriction.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0CD20C005C600B38DAF /* UMLicenseRestriction.m */; };
+		A6DD2C3020C1A5CD00FFFD00 /* uliblicense.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B024FD20BEED6E006779BA /* uliblicense.m */; };
+		A6DD2C3120C1A5CD00FFFD00 /* UMLicenseRestriction.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DBF0CD20C005C600B38DAF /* UMLicenseRestriction.m */; };
+		A6DD2C3420C1B85500FFFD00 /* UMEncryptedLicense.h in Headers */ = {isa = PBXBuildFile; fileRef = A6DD2C3220C1B85500FFFD00 /* UMEncryptedLicense.h */; };
+		A6DD2C3520C1B85500FFFD00 /* UMEncryptedLicense.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DD2C3320C1B85500FFFD00 /* UMEncryptedLicense.m */; };
 		A6F36B081472525E006F5AF0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F36B071472525E006F5AF0 /* Foundation.framework */; };
 		A6F36B0B1472525E006F5AF0 /* mmlic.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F36B0A1472525E006F5AF0 /* mmlic.m */; };
 		A6F36B0F1472525E006F5AF0 /* mmlic.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = A6F36B0E1472525E006F5AF0 /* mmlic.1 */; };
@@ -100,8 +106,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A605993F15E6B273009CD221 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
-		A605994015E6B273009CD221 /* common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = common.m; sourceTree = "<group>"; };
 		A60BC4BC16FC3E9100E38565 /* mmdisp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mmdisp; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61FFCCE171EAAB8005D4601 /* mmdisp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mmdisp.m; sourceTree = "<group>"; };
 		A62DAD1E1472BF69005487AF /* mminfo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mminfo; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +137,9 @@
 		A6DBF0E920C0259B00B38DAF /* UMSignedLicense.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMSignedLicense.m; sourceTree = "<group>"; };
 		A6DBF0EF20C025E800B38DAF /* UMLicense.asn */ = {isa = PBXFileReference; lastKnownFileType = text; path = UMLicense.asn; sourceTree = "<group>"; };
 		A6DBF0F020C025FC00B38DAF /* UMSignedLicense.asn */ = {isa = PBXFileReference; lastKnownFileType = text; path = UMSignedLicense.asn; sourceTree = "<group>"; };
+		A6DD2C3220C1B85500FFFD00 /* UMEncryptedLicense.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMEncryptedLicense.h; sourceTree = "<group>"; };
+		A6DD2C3320C1B85500FFFD00 /* UMEncryptedLicense.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMEncryptedLicense.m; sourceTree = "<group>"; };
+		A6DD2C3820C1B8B600FFFD00 /* UMEncryptedLicense.asn */ = {isa = PBXFileReference; lastKnownFileType = text; path = UMEncryptedLicense.asn; sourceTree = "<group>"; };
 		A6EDC7961A4176320090FC94 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = SOURCE_ROOT; };
 		A6F36B031472525E006F5AF0 /* mmlic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mmlic; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F36B071472525E006F5AF0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -199,6 +206,9 @@
 				A6DBF0F020C025FC00B38DAF /* UMSignedLicense.asn */,
 				A6DBF0E820C0259B00B38DAF /* UMSignedLicense.h */,
 				A6DBF0E920C0259B00B38DAF /* UMSignedLicense.m */,
+				A6DD2C3820C1B8B600FFFD00 /* UMEncryptedLicense.asn */,
+				A6DD2C3220C1B85500FFFD00 /* UMEncryptedLicense.h */,
+				A6DD2C3320C1B85500FFFD00 /* UMEncryptedLicense.m */,
 				A6DBF0EF20C025E800B38DAF /* UMLicense.asn */,
 				A6B0250520BEED9E006779BA /* UMLicense.h */,
 				A6B0250320BEED9D006779BA /* UMLicense.m */,
@@ -257,8 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				A6EDC7961A4176320090FC94 /* VERSION */,
-				A605993F15E6B273009CD221 /* common.h */,
-				A605994015E6B273009CD221 /* common.m */,
 				A62DAD211472BF91005487AF /* mminfo.m */,
 				A6F36B0A1472525E006F5AF0 /* mmlic.m */,
 				A61FFCCE171EAAB8005D4601 /* mmdisp.m */,
@@ -287,6 +295,7 @@
 				A6DBF0D320C00AA900B38DAF /* UMLicenseRestrictionList.h in Headers */,
 				A6B024FC20BEED6E006779BA /* uliblicense.h in Headers */,
 				A6DBF0E020C01EA600B38DAF /* UMLicenseProductFeatureList.h in Headers */,
+				A6DD2C3420C1B85500FFFD00 /* UMEncryptedLicense.h in Headers */,
 				A6DBF0CE20C005C600B38DAF /* UMLicenseRestriction.h in Headers */,
 				A6DBF0EA20C0259B00B38DAF /* UMSignedLicense.h in Headers */,
 				A6B0251220BEED9E006779BA /* UMLicenseProduct.h in Headers */,
@@ -406,13 +415,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6DBF0E320C01EA600B38DAF /* UMLicenseProductFeatureList.m in Sources */,
-				A62394121726F5C8008BAF3A /* common.m in Sources */,
 				A6DBF0ED20C0259B00B38DAF /* UMSignedLicense.m in Sources */,
 				A6B0250A20BEED9E006779BA /* UMLicenseProductFeature.m in Sources */,
 				A6DBF0DD20C0101B00B38DAF /* UMLicenseRestrictionList.m in Sources */,
+				A6DD2C2D20C1A5CC00FFFD00 /* UMLicenseRestriction.m in Sources */,
 				A6B0251520BEED9E006779BA /* UMLicenseProduct.m in Sources */,
 				A62394131726F5D4008BAF3A /* mmdisp.m in Sources */,
 				A6B0250E20BEED9E006779BA /* UMLicense.m in Sources */,
+				A6DD2C2C20C1A5CC00FFFD00 /* uliblicense.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,10 +434,11 @@
 				A62DAD221472BF91005487AF /* mminfo.m in Sources */,
 				A6DBF0EC20C0259B00B38DAF /* UMSignedLicense.m in Sources */,
 				A6B0250920BEED9E006779BA /* UMLicenseProductFeature.m in Sources */,
+				A6DD2C2F20C1A5CC00FFFD00 /* UMLicenseRestriction.m in Sources */,
 				A6DBF0DC20C0101B00B38DAF /* UMLicenseRestrictionList.m in Sources */,
 				A6B0251420BEED9E006779BA /* UMLicenseProduct.m in Sources */,
-				A605994215E6B273009CD221 /* common.m in Sources */,
 				A6B0250D20BEED9E006779BA /* UMLicense.m in Sources */,
+				A6DD2C2E20C1A5CC00FFFD00 /* uliblicense.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +446,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6DD2C3520C1B85500FFFD00 /* UMEncryptedLicense.m in Sources */,
+				A6DD2C2B20C1A5A500FFFD00 /* mmlic.m in Sources */,
 				A6DBF0E420C01EA600B38DAF /* UMLicenseProductFeatureList.m in Sources */,
 				A6B0250F20BEED9E006779BA /* UMLicense.m in Sources */,
 				A6DBF0EE20C0259B00B38DAF /* UMSignedLicense.m in Sources */,
@@ -454,10 +467,11 @@
 				A6F36B0B1472525E006F5AF0 /* mmlic.m in Sources */,
 				A6DBF0EB20C0259B00B38DAF /* UMSignedLicense.m in Sources */,
 				A6B0250820BEED9E006779BA /* UMLicenseProductFeature.m in Sources */,
+				A6DD2C3120C1A5CD00FFFD00 /* UMLicenseRestriction.m in Sources */,
 				A6DBF0DB20C0101A00B38DAF /* UMLicenseRestrictionList.m in Sources */,
 				A6B0251320BEED9E006779BA /* UMLicenseProduct.m in Sources */,
-				A605994115E6B273009CD221 /* common.m in Sources */,
 				A6B0250C20BEED9E006779BA /* UMLicense.m in Sources */,
+				A6DD2C3020C1A5CD00FFFD00 /* uliblicense.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,7 @@
     UMLicenseProductFeatureList *_featureList;
 }
 
+@property(readwrite,strong) NSString    *productName;
 
 - (void)addFeature:(UMLicenseProductFeature *)feature;
 - (void)removeFeature:(NSString *)feature;

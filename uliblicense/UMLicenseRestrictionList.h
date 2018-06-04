@@ -7,8 +7,13 @@
 
 #import <ulibasn1/ulibasn1.h>
 
+@class UMLicenseRestriction;
+
 @interface UMLicenseRestrictionList : UMASN1Sequence
 {
     NSMutableArray *_sequenceEntries;
 }
+
+- (void)addRestriction:(UMLicenseRestriction *)rest;
+
 @end

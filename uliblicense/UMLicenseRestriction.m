@@ -12,8 +12,6 @@
 - (void) processBeforeEncode
 {
     [super processBeforeEncode];
-    BOOL isImplicit = YES;
-
 
     int count = 0;
     if(_lockedToCpuId)
@@ -87,14 +85,12 @@
 
 - (UMLicenseRestriction *) processAfterDecodeWithContext:(id)context
 {
-    int p=0;
-    UMASN1Object *o;
 
-    UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithASN1Object:self];
+    UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithASN1Object:self context:NULL];
 
     if(self.asn1_tag.tagClass == UMASN1Class_ContextSpecific)
     {
-        switch )self.asn1_tag.tagNumber)
+        switch (self.asn1_tag.tagNumber)
         {
         case 0:
             _lockedToCpuId = utf8.value;
@@ -136,23 +132,23 @@
     }
     if(_lockedToMacAddress)
     {
-        dict[@"lockedToMacAddress"] = _lockedToMacAddress
+        dict[@"lockedToMacAddress"] = _lockedToMacAddress;
     }
     if(_lockedToUUID)
     {
-        dict[@"lockedToUUID"] = _lockedToUUID
+        dict[@"lockedToUUID"] = _lockedToUUID;
     }
     if(_lockedToIp)
     {
-        dict[@"lockedToIp"] = _lockedToIp
+        dict[@"lockedToIp"] = _lockedToIp;
     }
     if(_lockedToSerial)
     {
-        dict[@"lockedToSerial"] = _lockedToSerial
+        dict[@"lockedToSerial"] = _lockedToSerial;
     }
     if(_lockedToOperatingSystem)
     {
-        dict[@"lockedToOperatingSystem"] = _lockedToOperatingSystem
+        dict[@"lockedToOperatingSystem"] = _lockedToOperatingSystem;
     }
 
     return dict;

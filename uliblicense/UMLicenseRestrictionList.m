@@ -6,6 +6,7 @@
 //
 
 #import "UMLicenseRestrictionList.h"
+#import "UMLicenseRestriction.h"
 
 @implementation UMLicenseRestrictionList
 
@@ -18,6 +19,15 @@
     {
         [asn1_list addObject:entry];
     }
+}
+
+- (void)addRestriction:(UMLicenseRestriction *)rest
+{
+    if(_sequenceEntries ==NULL)
+    {
+        _sequenceEntries = [[NSMutableArray alloc]init];
+    }
+    [_sequenceEntries addObject:rest];
 }
 
 - (UMLicenseRestrictionList *) processAfterDecodeWithContext:(id)context

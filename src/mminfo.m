@@ -7,13 +7,13 @@
 //
 
 #include <stdio.h>
-#include "common.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include "../version.h"
 
 #import <ulib/ulib.h>
+#import "UMSignedLicense.h"
 
 #define DICT_ADD_STRING(dict,name,s1) \
 { \
@@ -104,7 +104,12 @@ int main (int argc, const char * argv[])
                                                @"long"  : @"--license-server-url",
                                                @"argument" : @"url",
                                                @"help"  : @"sets the license server url",
-                                               }];
+                                               },
+                                            @{
+                                              @"name"  : @"test",
+                                              @"long"  : @"--test",
+                                              @"help"  : @"test the crypto",
+                                              }];
 
         UMCommandLine *_commandLine = [[UMCommandLine alloc]initWithCommandLineDefintion:commandLineDefinition
                                                                            appDefinition:appDefinition
@@ -133,12 +138,15 @@ int main (int argc, const char * argv[])
         }
         if(params[@"keypair"])
         {
-            NSDictionary *d = [UMCrypto generateRsaKeyPair];
-
-            NSString *privateKey = d[@"private-key"];
-            NSString *publicKey = d[@"public-key"];
-
-            fprintf(stdout,"\n%s\n%s\n",privateKey.UTF8String,publicKey.UTF8String);
+            UMCrypto *crypto = [[UMCrypto alloc]init];
+            [crypto generateRsaKeyPair];
+            fprintf(stdout,"\n%s\n%s\n",crypto.privateKey.UTF8String,crypto.publicKey.UTF8String);
+            fflush(stdout);
+            exit(0);
+        }
+        if(params[@"test"])
+        {
+            [UMSignedLicense cryptoTest];
             fflush(stdout);
             exit(0);
         }
@@ -166,3 +174,4 @@ int main (int argc, const char * argv[])
     }
     return 0;
 }
+

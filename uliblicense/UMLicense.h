@@ -24,4 +24,12 @@
     NSMutableDictionary<NSString *, UMLicenseProducts *> *_products;
 }
 
+@property(readwrite,strong)  NSString *licenseSerialNumber;
+@property(readwrite,strong)  NSString *licenseType;
+@property(readwrite,strong)  NSString *licenseOwner;
+@property(readwrite,strong)  UMLicenseRestrictionList *licenseRestrictions;
+@property(readwrite,strong)  NSDate *licenseExpiration;
+@property(readwrite,strong)  NSString *licenseRenewUrl;
+@property(readwrite,strong)  NSMutableDictionary<NSString *, UMLicenseProducts *> *products;
+
 @end
