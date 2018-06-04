@@ -1,0 +1,5 @@
+
+UMProductFeature ::= SEQUENCE {
+    featureName          [0] UTF8String,
+    featureData          [1] OCTET STRING
+}

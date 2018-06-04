@@ -1,0 +1,9 @@
+
+UMLicenseRestriction ::= CHOICE {
+    lockedToCpuIds          [0] UTF8String,
+    lockedToMacAddresses    [1] UTF8String,
+    lockedToUUID            [2] UTF8String,
+    lockedToIps             [3] UTF8String,
+    lockedToSerials         [4] UTF8String,
+    lockedToOperatingSystem [5] UTF8String,
+}

@@ -1,0 +1,7 @@
+
+UMLicenseProduct ::= SEQUENCE {
+    productName          [0] UTF8String,
+    productFeatures      [1] UMLicenseProductFeatureList OPTIONAL,
+    ...
+}
+

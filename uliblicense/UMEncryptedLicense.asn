@@ -1,0 +1,6 @@
+
+UMEncryptedLicense ::= SEQUENCE {
+    encryptionMethod     [0] UTF8String,
+    encryptedStreamKey   [1] OCTET STRING,
+    encryptedData        [2] OCTET STRING,
+}

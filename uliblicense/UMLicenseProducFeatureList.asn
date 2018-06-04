@@ -1,0 +1,2 @@
+
+UMLicenseProductFeatureList ::= SEQUENCE OF UMLicenseProductFeature
