@@ -1,0 +1,2 @@
+
+UMLicenseProductList ::= SEQUENCE OF [0] UMLicenseProduct

@@ -6,6 +6,7 @@
 //
 
 #import "UMEncryptedLicense.h"
+#import "UMLicense.h"
 
 @implementation UMEncryptedLicense
 
@@ -17,30 +18,52 @@ UMEncryptedLicense ::= SEQUENCE {
 }
 */
 
-- (UMEncryptedLicense *)initWithUnencryptedData:(NSData *)d publicKey:(NSString *)key
+- (UMEncryptedLicense *)initWithUnencryptedLicense:(UMLicense *)lic
+                                         publicKey:(NSString *)key
 {
-    self [super init];
+    self = [super init];
     if(self)
     {
-        UMCrypto *crypto;
+        NSData *data = [lic berEncoded];
+        UMCrypto *crypto = [[UMCrypto alloc]init];
         crypto.publicKey = key;
-        streamKey = [UMCrypto AES256RandomKey];
-        streamIV =  [UMCrypto AES256RandomIV];
-        _encryptedStreamKey = [crypto RSAEncryptWithPlaintextSSLPublic:streamKey];
-        _encryptedData = [crypto AES256EncryptWithPlaintext:d key:streamKey iv:streamIV];
+        crypto.aes256Key = [crypto aes256RandomKey];
+        _encryptedStreamKey = [crypto RSAEncryptWithPlaintextSSLPublic:crypto.aes256Key];
+        
+        NSLog(@"aes256Key: %@",crypto.aes256Key);
+        NSLog(@"encryptedStreamKey: %@",_encryptedStreamKey);
+        NSLog(@"cleartextData: %@",data);
+        _encryptedData = [crypto aes256Encrypt:data];
+        NSLog(@"encryptedData: %@",_encryptedData);
+
         _encryptionMethod = @"RSA-AES256";
     }
+    return self;
 }
+
+
+- (NSData *)decryptedDataForPrivateKey:(NSString *)key
+{
+    UMCrypto *crypto = [[UMCrypto alloc]init];
+    crypto.privateKey = key;
+
+    crypto.aes256Key = [crypto RSADecryptWithCiphertextSSLPrivate:_encryptedStreamKey];
+    
+    NSLog(@"encryptedStreamKey: %@",_encryptedStreamKey);
+    NSLog(@"aes256Key: %@",crypto.aes256Key);
+    NSData *data = [crypto aes256Decrypt:_encryptedData];
+    return data;
+}
+
 
 - (void) processBeforeEncode
 {
     [super processBeforeEncode];
     asn1_tag.isConstructed=YES;
-    asn1_list = [[NSMutableArray alloc]init];
-
+    asn1_list = [[NSMutableArray alloc]init];    
     if(_encryptionMethod)
     {
-        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_cypherMethod];
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_encryptionMethod];
 
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
@@ -71,7 +94,7 @@ UMEncryptedLicense ::= SEQUENCE {
     }
 }
 
-- (UMSignedLicense *) processAfterDecodeWithContext:(id)context
+- (UMEncryptedLicense *) processAfterDecodeWithContext:(id)context
 {
     int p=0;
     UMASN1Object *o = [self getObjectAtPosition:p++];
@@ -111,11 +134,11 @@ UMEncryptedLicense ::= SEQUENCE {
     }
     if(_encryptedStreamKey)
     {
-        dict[@"encryptedStreamKey"] = _encryptedStreamKey.objectValue;
+        dict[@"encryptedStreamKey"] = _encryptedStreamKey;
     }
     if(_encryptedData)
     {
-        dict[@"_encryptedData"] = _encryptedData.objectValue;
+        dict[@"_encryptedData"] = _encryptedData;
     }
     return dict;
 }

@@ -140,14 +140,22 @@ int main (int argc, const char * argv[])
         {
             UMCrypto *crypto = [[UMCrypto alloc]init];
             [crypto generateRsaKeyPair];
-            fprintf(stdout,"\n%s\n%s\n",crypto.privateKey.UTF8String,crypto.publicKey.UTF8String);
-            fflush(stdout);
-            exit(0);
-        }
-        if(params[@"test"])
-        {
-            [UMSignedLicense cryptoTest];
-            fflush(stdout);
+            fprintf(stderr,"writing to decryption.key\n");
+            NSString *s = crypto.privateKey;
+            NSError *err = NULL;
+            [s writeToFile:@"decryption.key" atomically:YES encoding:NSUTF8StringEncoding  error:&err];
+            if(err)
+            {
+                NSLog(@"Error %@",err);
+            }
+            fprintf(stderr,"writing to encryption.key\n");
+            s = crypto.publicKey;
+            [s writeToFile:@"encryption.key" atomically:YES encoding:NSUTF8StringEncoding error:&err];
+            if(err)
+            {
+                NSLog(@"Error %@",err);
+            }
+            fflush(stderr);
             exit(0);
         }
 

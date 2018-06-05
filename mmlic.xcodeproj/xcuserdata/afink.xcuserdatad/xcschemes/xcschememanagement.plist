@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>mmdisplay.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
 		<key>mminfo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -24,10 +29,15 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>mmtest.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
 		<key>uliblicense.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>13</integer>
+			<integer>14</integer>
 		</dict>
 		<key>umlicense.xcscheme</key>
 		<dict>
@@ -43,6 +53,11 @@
 			<true/>
 		</dict>
 		<key>A62DAD131472BF69005487AF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A67A283B20C69EC6001BB7A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

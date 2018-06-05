@@ -10,6 +10,15 @@
 
 @implementation UMLicenseProductFeature
 
+- (UMLicenseProductFeature *)initWithName:(NSString *)name
+{
+    self = [super init];
+    if(self)
+    {
+        _featureName = name;
+    }
+    return self;
+}
 
 - (void) processBeforeEncode
 {
@@ -42,8 +51,6 @@
 {
     int p=0;
     UMASN1Object *o = [self getObjectAtPosition:p++];
-
-    o = [self getObjectAtPosition:p++];
     if((o.asn1_tag.tagNumber==0) && (o.asn1_tag.tagClass==UMASN1Class_ContextSpecific))
     {
         UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];
@@ -79,5 +86,13 @@
     return dict;
 }
 
-
+- (UMLicenseProductFeature *)copyWithZone:(NSZone *)zone
+{
+    UMLicenseProductFeature *n = [[UMLicenseProductFeature allocWithZone:zone]initWithASN1Object:self context:NULL];
+    n.featureName = _featureName;
+    n.featureData = _featureData;
+    n.licenseExpiration = _licenseExpiration;
+    n.licenseSerialNumber = _licenseSerialNumber;
+    return n;
+}
 @end

@@ -1,12 +1,11 @@
 
-UMSignedLicense ::= SEQUENCE {
+UMSignedLicense ::= APPLICATION [0] SEQUENCE {
     license                 [0] UMLicense OPTIONAL,
     encryptedLicense        [1] UMEncryptedLicense OPTIONAL,
     hashData                [2] OCTET STRING OPTIONAL,
     signature               [3] OCTET STRING,
     variant                 [4] INTEGER,
     plaintext               [5] UTF8String OPTIONAL,
-    keyLength               [6] INTEGER,
     ...
 }
 -- either license or encryptedLicense must be present

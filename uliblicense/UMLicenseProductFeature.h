@@ -12,12 +12,19 @@
 
 @interface UMLicenseProductFeature : UMASN1Sequence
 {
-    NSString  *_featureName;
-    NSData    *_featureData;
+    NSString    *_featureName;
+    NSData      *_featureData;
+    /* note: These fields are normally in UMLicense and are copied over into this object
+     if its being requested. They are NOT stored inside the ASN1 */
+    NSDate      *_licenseExpiration;
+    NSString    *_licenseSerialNumber;
 }
 
+@property(readwrite,atomic,strong)  NSString    *featureName;
+@property(readwrite,atomic,strong)  NSData      *featureData;
+@property(readwrite,atomic,strong)  NSDate      *licenseExpiration;
+@property(readwrite,atomic,strong)  NSString    *licenseSerialNumber;
 
-@property(readwrite,atomic,strong)  NSString *featureName;
-@property(readwrite,atomic,strong)  NSData   *featureData;
+- (UMLicenseProductFeature *)initWithName:(NSString *)name;
 
 @end

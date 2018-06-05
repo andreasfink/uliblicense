@@ -6,6 +6,7 @@
 //
 
 #import <ulibasn1/ulibasn1.h>
+@class UMLicense;
 
 @interface UMEncryptedLicense : UMASN1Sequence
 {
@@ -18,6 +19,9 @@
 @property(readwrite,strong) NSData   *encryptedStreamKey;
 @property(readwrite,strong) NSData   *encryptedData;
 
+- (UMEncryptedLicense *)initWithUnencryptedLicense:(UMLicense *)lic
+                                         publicKey:(NSString *)key;
 
-- (UMEncryptedLicense *)initWithUnencryptedData:(NSData *)d;
+- (NSData *)decryptedDataForPrivateKey:(NSString *)key;
+
 @end

@@ -52,7 +52,7 @@
     }
     if(_lockedToSerial)
     {
-        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_lockedToOperatingSystem];
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_lockedToSerial];
         [utf8 processBeforeEncode];
         self.asn1_tag.tagNumber = 4;
         self.asn1_tag.tagClass = UMASN1Class_ContextSpecific;

@@ -18,7 +18,6 @@ typedef enum UMLicense_EncryptionVariant
 
 @interface UMSignedLicense : UMASN1Sequence
 {
-
     UMLicense           *_license;
     UMEncryptedLicense  *_encryptedLicense;
     NSData              *_hashData;
@@ -26,24 +25,22 @@ typedef enum UMLicense_EncryptionVariant
     UMLicense_EncryptionVariant _variant;
     NSString            *_plaintext;
     BOOL                isValid;
-    int                 _keyLength;
 }
 
 @property(readwrite,strong) UMLicense           *license;
 @property(readwrite,strong) UMEncryptedLicense  *encryptedLicense;
-@property(readwrite,strong) NSData          *hashData;
+@property(readwrite,strong) NSData              *hashData;
 @property(readwrite,strong) NSData          *signature;
 @property(readwrite,assign) UMLicense_EncryptionVariant variant;
 @property(readwrite,strong) NSString        *plaintext;
-@property(readwrite,assign) int             keyLength;
 
-- (void)decryptLicense;
-- (void)encryptLicenseWithRSAPrivateKey:(NSString *)privateKey;
-- (BOOL)decryptLicenseWithRSAPublicKey:(NSString *)publicKey; /* returns YES on success */
-- (void)signLicenseWithRSAPrivateKey:(NSString *)privateKey;
-- (BOOL)isSignatureValid;
+- (void)decryptLicenseWithKeys:(NSArray *)keys;
+- (void)encryptLicenseWithRSAPublicKey:(NSString *)privateKey;
+- (BOOL)decryptLicenseWithRSAPrivateKey:(NSString *)keys; /* returns YES on success */
+- (void)signLicenseWithRSAPublicKey:(NSString *)publicKey;
+- (BOOL)isSignatureValidForRSAPrivateKey:(NSString *)privateKey; /* verifies _hashData against _signature */
 
-+ (void)cryptoTest;
+- (BOOL)isSignatureValidForKeys:(NSArray *)keys; /* verifies _hashData against _signature */
 
 @end
 

@@ -20,7 +20,10 @@
         NSArray *_featuresDictKey = [_featuresDict allKeys];
         for(id key in _featuresDictKey)
         {
-            [asn1_list addObject:_featuresDict[key]];
+            UMLicenseProductFeature *f = _featuresDict[key];
+            f.asn1_tag.tagNumber = 0;
+            f.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+            [asn1_list addObject:f];
         }
     }
 }
@@ -32,10 +35,13 @@
     _featuresDict = [[UMSynchronizedSortedDictionary alloc]init];
     while(o)
     {
-        UMLicenseProductFeature *feature = [[UMLicenseProductFeature alloc]initWithASN1Object:o context:context];
-        if(feature.featureName)
+        if((o.asn1_tag.tagNumber == 0) && (o.asn1_tag.tagClass == UMASN1Class_ContextSpecific))
         {
-            _featuresDict[feature.featureName] = feature;
+            UMLicenseProductFeature *feature = [[UMLicenseProductFeature alloc]initWithASN1Object:o context:context];
+            if(feature.featureName)
+            {
+                _featuresDict[feature.featureName] = feature;
+            }
         }
         o = [self getObjectAtPosition:p++];
     }
@@ -51,6 +57,19 @@
             _featuresDict = [[UMSynchronizedSortedDictionary alloc]init];
         }
         _featuresDict[feature.featureName] = feature;
+    }
+}
+
+
+- (void)addFeatureWithName:(NSString *)featureName
+{
+    if(featureName)
+    {
+        if(_featuresDict==NULL)
+        {
+            _featuresDict = [[UMSynchronizedSortedDictionary alloc]init];
+        }
+        _featuresDict[featureName] = [[UMLicenseProductFeature alloc]initWithName:featureName];
     }
 }
 
@@ -72,7 +91,14 @@
 
 - (id) objectValue
 {
-    return _featuresDict;
+    NSMutableArray *arr = [[NSMutableArray alloc]init];
+    NSArray *keys = [_featuresDict allKeys];
+    for(NSString *key in keys)
+    {
+        UMLicenseProductFeature *f = _featuresDict [key];
+        [arr addObject:f.objectValue];
+    }
+    return arr;
 }
 
 

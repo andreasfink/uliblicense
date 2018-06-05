@@ -37,7 +37,8 @@
     _sequenceEntries = [[NSMutableArray alloc]init];
     while(o)
     {
-        [_sequenceEntries addObject:o];
+        UMLicenseRestriction *r = [[UMLicenseRestriction alloc]initWithASN1Object:o context:context];
+        [_sequenceEntries addObject:r];
         o = [self getObjectAtPosition:p++];
     }
     return self;

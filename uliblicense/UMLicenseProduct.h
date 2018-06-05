@@ -14,14 +14,15 @@
 
 @interface UMLicenseProduct : UMASN1Sequence
 {
-    NSString    *_productName;
-    UMMutex *_lock;
-    UMLicenseProductFeatureList *_featureList;
+    NSString                    *_productName;
+    UMMutex                     *_lock;
+    UMLicenseProductFeatureList *_productFeatures;
 }
 
 @property(readwrite,strong) NSString    *productName;
-
+- (UMLicenseProduct *)initWithName:(NSString *)name;
 - (void)addFeature:(UMLicenseProductFeature *)feature;
+- (void)addFeatureWithName:(NSString *)feature;
 - (void)removeFeature:(NSString *)feature;
 - (UMLicenseProductFeature *)getFeature:(NSString *)name;
 

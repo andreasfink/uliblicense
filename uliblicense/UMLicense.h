@@ -9,9 +9,13 @@
 #import <ulib/ulib.h>
 #import <ulibasn1/ulibasn1.h>
 
-@class UMLicenseProducts;
+@class UMLicenseProduct;
+@class UMLicenseProductList;
 @class UMLicenseRestriction;
 @class UMLicenseRestrictionList;
+@class UMLicenseProductFeature;
+
+#define PERPETUAL_LICENSE_DATE_STRING  @"9999-12-31 23:59:59.999999"
 
 @interface UMLicense : UMASN1Sequence
 {
@@ -21,7 +25,10 @@
     UMLicenseRestrictionList *_licenseRestrictions;
     NSDate *_licenseExpiration;
     NSString *_licenseRenewUrl;
-    NSMutableDictionary<NSString *, UMLicenseProducts *> *_products;
+    UMLicenseProductList *_licenseProducts;
+    
+    /* this is internally used only and not stored in ASN1: */
+    NSString *_filename;
 }
 
 @property(readwrite,strong)  NSString *licenseSerialNumber;
@@ -30,6 +37,11 @@
 @property(readwrite,strong)  UMLicenseRestrictionList *licenseRestrictions;
 @property(readwrite,strong)  NSDate *licenseExpiration;
 @property(readwrite,strong)  NSString *licenseRenewUrl;
-@property(readwrite,strong)  NSMutableDictionary<NSString *, UMLicenseProducts *> *products;
+@property(readwrite,strong)  UMLicenseProductList *licenseProducts;
+@property(readwrite,strong)  NSString *filename;
+
+- (void)addProduct:(UMLicenseProduct *)product;
+- (void)addRestriction:(UMLicenseRestriction *)rest;
+- (UMLicenseProductFeature *)getProduct:(NSString *)product feature:(NSString *)feature;
 
 @end

@@ -14,6 +14,7 @@
 }
 
 - (void)addFeature:(UMLicenseProductFeature *)feature;
+- (void)addFeatureWithName:(NSString *)featureName;
 - (void)removeFeature:(NSString *)featureName;
 - (UMLicenseProductFeature *)getFeature:(NSString *)name;
 

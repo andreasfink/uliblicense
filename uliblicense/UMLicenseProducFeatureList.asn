@@ -1,2 +1,2 @@
 
-UMLicenseProductFeatureList ::= SEQUENCE OF UMLicenseProductFeature
+UMLicenseProductFeatureList ::= SEQUENCE OF [0] UMLicenseProductFeature IMPLICIT
