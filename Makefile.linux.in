@@ -12,6 +12,9 @@ CFLAGS=@CFLAGS@
 LDFLAGS=@LDFLAGS@
 EXEDIR=/usr/local/sbin
 
+ULIB_LICENSE_M  = $(wildcard uliblicense/*.m)
+ULIB_LICENSE_O	= $(ULIB_LICENSE_M:.m=.o)
+
 all:		mminfo mmdisp getmminfo
 
 all-full: 	mminfo mmlic mmdisp getmminfo dispmminfo
@@ -31,6 +34,11 @@ mmlic:	src/mmlic.m.o src/common.m.o
 mmdisp:	src/mmdisp.m.o src/common.m.o
 	${CC} -o mmdisp ${LDFLAGS} src/mmdisp.m.o src/common.m.o ${LIBS} ${STATIC_LIBS}
 
+mmdisplay: mmdisplay/main.m.o uliblicense.a
+
+
+uliblicense.a:	$(ULIB_LICENSE_O)
+	${CC} -o 
 clean:
 	rm -f linux/*.o src/*.o mminfo mmlic mmdisp getmminfo dispmminfo
 
