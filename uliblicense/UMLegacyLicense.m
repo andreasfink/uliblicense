@@ -10,12 +10,14 @@
 #include <string.h>
 #include <errno.h>
 #include <sys/wait.h>
+#ifdef __APPLE__
 #import <CoreFoundation/CoreFoundation.h>
 #import <IOKit/IOKitLib.h>
 #import <IOKit/network/IOEthernetInterface.h>
 #import <IOKit/network/IONetworkInterface.h>
 #import <IOKit/network/IOEthernetController.h>
 #import <CommonCrypto/CommonCryptor.h>
+#endif
 
 #import <ulib/ulib.h>
 

@@ -1,6 +1,6 @@
 dnl /* ==================================================================== 
 dnl  * Project "mmlic"
-dnl  * (c) 2001 -2015 Andreas Fink
+dnl  * (c) 2001 -2018 Andreas Fink
 dnl  * ==================================================================== 
 dnl  */ 
 
@@ -18,8 +18,7 @@ MAJORVER=`echo $VERSION | cut -f1 -d.`
 MINORVER=`echo $VERSION | cut -f2 -d.`
 REVISION=`echo $VERSION | cut -f3 -d.`
 CONFIG_HEADER=mmlic_config.h
-DEPENDENT_PKGCONFIGS="ulib"
-FRAMEWORKS="-framework ulib"
+DEPENDENT_PKGCONFIGS="ulib ulibasn1"
 PKG_CONFIG_PATH="/usr/local/lib/pkgconfig"
 export PKG_CONFIG_PATH
 

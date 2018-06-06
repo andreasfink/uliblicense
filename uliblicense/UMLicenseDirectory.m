@@ -331,13 +331,20 @@
 
     NSURL *u = [[NSURL alloc]initWithString:full_url];
     NSError *e= NULL;
+
+#ifdef __APPLE__
     NSData *data = [NSData dataWithContentsOfURL:u
                                          options:NSDataReadingUncached
                                            error:&e];
+#else
+    NSData *data = [NSData dataWithContentsOfURL:u];
+#endif
+
     if((e==0) && (data.length > 0))
     {
         [self refreshLicenseSerial:serial data:data];
     }
+
 }
 
 - (void)refreshLicenseSerial:(NSString *)serial1  data:(NSData *)data
