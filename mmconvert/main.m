@@ -191,6 +191,8 @@ int main(int argc, const char * argv[])
                     BOOL featureEnabled_smsproxy = NO;
                     BOOL featureEnabled_tcap = NO;
                     BOOL featureEnabled_udp = NO;
+                    BOOL featureEnabled_isupfwd = NO;
+                    BOOL featureEnabled_wappush = NO;
 
 #define CHECK_FEATURE(featureName,featureVar) \
                     { \
@@ -219,7 +221,6 @@ int main(int argc, const char * argv[])
                     CHECK_FEATURE(@"gsmmap",featureEnabled_gsmmap);
                     CHECK_FEATURE(@"http",featureEnabled_http);
                     CHECK_FEATURE(@"http-hlr",featureEnabled_httpHlr);
-                    CHECK_FEATURE(@"interworking",featureEnabled_interworking);
                     CHECK_FEATURE(@"logging",featureEnabled_logging);
                     CHECK_FEATURE(@"m2pa",featureEnabled_m2pa);
                     CHECK_FEATURE(@"m3ua",featureEnabled_m3ua);
@@ -233,6 +234,8 @@ int main(int argc, const char * argv[])
                     CHECK_FEATURE(@"smsc",featureEnabled_smsc);
                     CHECK_FEATURE(@"tcap",featureEnabled_tcap);
                     CHECK_FEATURE(@"udp",featureEnabled_udp);
+                    CHECK_FEATURE(@"isupfwd",featureEnabled_isupfwd);
+                    CHECK_FEATURE(@"wappush",featureEnabled_wappush);
 
                     CHECK_FEATURE(@"proxy",featureEnabled_smsproxy);
                     CHECK_FEATURE(@"smsproxy",featureEnabled_smsproxy);
@@ -268,12 +271,12 @@ int main(int argc, const char * argv[])
                     CONDITIONAL_ADD_PRODUCT_ALL(@"mofwd",featureEnabled_mofwd);
                     CONDITIONAL_ADD_PRODUCT_ALL(@"emiucp",featureEnabled_emiucp);
                     CONDITIONAL_ADD_PRODUCT_ALL(@"billing",featureEnabled_billing);
-                    CONDITIONAL_ADD_PRODUCT_ALL(@"interworking",featureEnabled_interworking);
                     CONDITIONAL_ADD_PRODUCT_ALL(@"logging",featureEnabled_logging);
                     CONDITIONAL_ADD_PRODUCT_ALL(@"quota",featureEnabled_quota);
-                    CONDITIONAL_ADD_PRODUCT_ALL(@"rerouter",featureEnabled_rerouter);
                     CONDITIONAL_ADD_PRODUCT_ALL(@"smpp",featureEnabled_smpp);
                     CONDITIONAL_ADD_PRODUCT_ALL(@"udp",featureEnabled_udp);
+                    CONDITIONAL_ADD_PRODUCT_ALL(@"isupfwd",featureEnabled_isupfwd);
+                    CONDITIONAL_ADD_PRODUCT_ALL(@"wappush",featureEnabled_wappush);
 
 #undef CONDITIONAL_ADD_PRODUCT_ALL
                     
