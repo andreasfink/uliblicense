@@ -99,12 +99,21 @@
 }
 
 
-- (void)addKey:(NSString *)key
+- (void)addDecryptionKey:(NSString *)key
 {
     if(key)
     {
         [_lock lock];
         [_licenseDecryptionKeys addObject:key];
+        [_lock unlock];
+    }
+}
+
+- (void)addSignatureVerificationKey:(NSString *)key
+{
+    if(key)
+    {
+        [_lock lock];
         [_licenseSignatureKeys addObject:key];
         [_lock unlock];
     }

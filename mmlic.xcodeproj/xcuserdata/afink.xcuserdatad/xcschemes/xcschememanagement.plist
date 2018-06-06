@@ -4,45 +4,30 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>messagemover-getlicense.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
 		<key>mmconvert.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>14</integer>
-		</dict>
-		<key>mmdisp.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>4</integer>
 		</dict>
 		<key>mmdisplay.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>3</integer>
 		</dict>
 		<key>mminfo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>mmlic.xcscheme</key>
+		<key>mmlicense.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>mmtest.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>15</integer>
-		</dict>
 		<key>uliblicense.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>13</integer>
+			<integer>2</integer>
 		</dict>
 		<key>umlicense.xcscheme</key>
 		<dict>
@@ -57,17 +42,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A62DAD131472BF69005487AF</key>
+		<key>A652E13420C7CFF200CDA5EF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A67A283B20C69EC6001BB7A3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A6F36B021472525E006F5AF0</key>
+		<key>A67A282620C671E1001BB7A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

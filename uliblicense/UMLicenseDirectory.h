@@ -28,7 +28,8 @@
 
 - (void)scanDirectoryForLicenseFiles:(NSString *)path;
 - (void)addLicenseFile:(UMLicenseFile *)licenseFile;
-- (void)addKey:(NSString *)key;
+- (void)addDecryptionKey:(NSString *)key;
+- (void)addSignatureVerificationKey:(NSString *)key;
 - (void)decryptLicenses;
 - (void)validateSignatures;
 - (UMLicenseProductFeature *)getProduct:(NSString *)product feature:(NSString *)feature;

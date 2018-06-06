@@ -29,13 +29,7 @@ UMEncryptedLicense ::= SEQUENCE {
         crypto.publicKey = key;
         crypto.aes256Key = [crypto aes256RandomKey];
         _encryptedStreamKey = [crypto RSAEncryptWithPlaintextSSLPublic:crypto.aes256Key];
-        
-        NSLog(@"aes256Key: %@",crypto.aes256Key);
-        NSLog(@"encryptedStreamKey: %@",_encryptedStreamKey);
-        NSLog(@"cleartextData: %@",data);
         _encryptedData = [crypto aes256Encrypt:data];
-        NSLog(@"encryptedData: %@",_encryptedData);
-
         _encryptionMethod = @"RSA-AES256";
     }
     return self;
@@ -47,10 +41,7 @@ UMEncryptedLicense ::= SEQUENCE {
     UMCrypto *crypto = [[UMCrypto alloc]init];
     crypto.privateKey = key;
 
-    crypto.aes256Key = [crypto RSADecryptWithCiphertextSSLPrivate:_encryptedStreamKey];
-    
-    NSLog(@"encryptedStreamKey: %@",_encryptedStreamKey);
-    NSLog(@"aes256Key: %@",crypto.aes256Key);
+    crypto.aes256Key = [crypto RSADecryptWithCiphertextSSLPrivate:_encryptedStreamKey];    
     NSData *data = [crypto aes256Decrypt:_encryptedData];
     return data;
 }

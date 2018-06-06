@@ -16,6 +16,7 @@
     NSString *_lockedToIp;
     NSString *_lockedToSerial;
     NSString *_lockedToOperatingSystem;
+    NSString *_lockedToLegacySerial; /* legacy conversion */
 }
 
 @property(readwrite,strong,atomic)  NSString *lockedToCpuId;
@@ -24,5 +25,6 @@
 @property(readwrite,strong,atomic)  NSString *lockedToIp;
 @property(readwrite,strong,atomic)  NSString *lockedToSerial;
 @property(readwrite,strong,atomic)  NSString *lockedToOperatingSystem;
+@property(readwrite,strong,atomic)  NSString *lockedToLegacySerial;
 
 @end

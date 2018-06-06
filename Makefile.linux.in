@@ -14,7 +14,7 @@ LDFLAGS=@LDFLAGS@
 ULIBLICENSE_M   = $(wildcard uliblicense/*.m)
 ULIBLICENSE_O	= $(ULIBLICENSE_M:.m=.m.o)
 
-all:		build/mminfo build/mmdisplay
+all:		build/mminfo build/mmdisplay build/mmconvert
 
 all-full: 	build/mminfo build/mmdisplay build/mmlicense build/libuliblicense.a
 
@@ -30,6 +30,10 @@ build/mmdisplay: mmdisplay/main.m.o build/libuliblicense.a
 build/mmlicense: mmlicense/main.m.o build/libuliblicense.a
 	mkdir -p build/
 	${CC} -o build/mmlicense ${LDFLAGS} mmlicense/main.m.o build/libuliblicense.a ${LIBS} ${STATIC_LIBS}
+
+build/mmconvert: mmconvert/main.m.o build/libuliblicense.a
+	mkdir -p build/
+	${CC} -o build/mmconvert ${LDFLAGS} mmconvert/main.m.o build/libuliblicense.a ${LIBS} ${STATIC_LIBS}
 
 build/libuliblicense.a:	$(ULIBLICENSE_O)
 	mkdir -p build/

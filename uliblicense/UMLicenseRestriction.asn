@@ -6,4 +6,5 @@ UMLicenseRestriction ::= CHOICE {
     lockedToIps             [3] UTF8String,
     lockedToSerials         [4] UTF8String,
     lockedToOperatingSystem [5] UTF8String,
+    lockedToLegacySerial [6] UTF8String,
 }

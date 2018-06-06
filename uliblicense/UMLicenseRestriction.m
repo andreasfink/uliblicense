@@ -68,6 +68,15 @@
         self.asn1_data = [utf8.asn1_data copy];
         count++;
     }
+    if(_lockedToLegacySerial)
+    {
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_lockedToLegacySerial];
+        [utf8 processBeforeEncode];
+        self.asn1_tag.tagNumber = 6;
+        self.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+        self.asn1_data = [utf8.asn1_data copy];
+        count++;
+    }
     if(count<1)
     {
         @throw([NSException exceptionWithName:@"PARAMETER_MISSING"
@@ -92,26 +101,29 @@
     {
         switch (self.asn1_tag.tagNumber)
         {
-        case 0:
-            _lockedToCpuId = utf8.value;
-            break;
-        case 1:
-            _lockedToMacAddress = utf8.value;
-            break;
-        case 2:
-            _lockedToUUID = utf8.value;
-            break;
-        case 3:
-            _lockedToIp = utf8.value;
-            break;
-        case 4:
-            _lockedToSerial = utf8.value;
-            break;
-        case 5:
-            _lockedToOperatingSystem = utf8.value;
-            break;
-        default:
-            break;
+            case 0:
+                _lockedToCpuId = utf8.value;
+                break;
+            case 1:
+                _lockedToMacAddress = utf8.value;
+                break;
+            case 2:
+                _lockedToUUID = utf8.value;
+                break;
+            case 3:
+                _lockedToIp = utf8.value;
+                break;
+            case 4:
+                _lockedToSerial = utf8.value;
+                break;
+            case 5:
+                _lockedToOperatingSystem = utf8.value;
+                break;
+            case 6:
+                _lockedToLegacySerial = utf8.value;
+                break;
+            default:
+                break;
         }
     }
     return self;
@@ -149,6 +161,10 @@
     if(_lockedToOperatingSystem)
     {
         dict[@"lockedToOperatingSystem"] = _lockedToOperatingSystem;
+    }
+    if(_lockedToLegacySerial)
+    {
+        dict[@"lockedToLegacySerial"] = _lockedToLegacySerial;
     }
 
     return dict;

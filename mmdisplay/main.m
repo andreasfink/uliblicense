@@ -48,9 +48,16 @@ int main(int argc, const char * argv[]) {
                                            @{
                                                @"name"  : @"key",
                                                @"short" : @"-k",
-                                               @"long"  : @"--key",
+                                               @"long"  : @"--decryption-key",
                                                @"argument" : @"keyfile",
-                                               @"help"  : @"uses indicated decryption key file",
+                                               @"help"  : @"decryption key file",
+                                               },
+                                           @{
+                                               @"name"  : @"sigver",
+                                               @"short" : @"-s",
+                                               @"long"  : @"--signature-verification-key",
+                                               @"argument" : @"keyfile",
+                                               @"help"  : @"signature verification key file"
                                                }];
         
         UMCommandLine *_commandLine = [[UMCommandLine alloc]initWithCommandLineDefintion:commandLineDefinition
@@ -72,7 +79,26 @@ int main(int argc, const char * argv[]) {
                 NSString *key = [NSString stringWithContentsOfFile:filename encoding:NSUTF8StringEncoding error:&err];
                 if(key)
                 {
-                    [licdir addKey:key];
+                    [licdir addDecryptionKey:key];
+                }
+                else
+                {
+                    NSString *d = err.description;
+                    fprintf(stderr,"Error: can not read keyfile %s\n%s\n",filename.UTF8String,d.UTF8String);
+                }
+            }
+        }
+        if(params[@"sigver"])
+        {
+            NSArray *filenames = params[@"sigver"];
+            for(NSString *filename in filenames)
+            {
+                NSError *err =NULL;;
+                
+                NSString *key = [NSString stringWithContentsOfFile:filename encoding:NSUTF8StringEncoding error:&err];
+                if(key)
+                {
+                    [licdir addSignatureVerificationKey:key];
                 }
                 else
                 {
