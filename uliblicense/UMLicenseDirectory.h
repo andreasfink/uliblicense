@@ -6,6 +6,7 @@
 //
 
 #import <ulib/ulib.h>
+#import "UMLicenseRefreshDelegateProtocol.h"
 @class UMLicenseProductFeature;
 @class UMLicense;
 @class UMLicenseFile;
@@ -16,7 +17,14 @@
     NSMutableArray *_licenseDecryptionKeys;
     NSMutableArray *_licenseSignatureKeys;
     UMMutex          *_lock;
+    NSString    *_licenseDirectory;
+    UMTimer *_timer;
+    id<UMLicenseRefreshDelegateProtocol> _updateByAddressDelegate;
+    NSDictionary *_productHttpParameters;
 }
+
+@property(readwrite,strong)    id<UMLicenseRefreshDelegateProtocol> updateByAddressDelegate;
+@property(readwrite,strong)     NSDictionary *productHttpParameters;
 
 - (void)scanDirectoryForLicenseFiles:(NSString *)path;
 - (void)addLicenseFile:(UMLicenseFile *)licenseFile;
@@ -25,6 +33,8 @@
 - (void)validateSignatures;
 - (UMLicenseProductFeature *)getProduct:(NSString *)product feature:(NSString *)feature;
 - (void)refreshLicenses;
+- (void)startAutoRefresh;
+- (void)stopAutoRefresh;
 
 @end
 

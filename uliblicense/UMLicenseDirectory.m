@@ -18,6 +18,13 @@
     _licenseDecryptionKeys = [[NSMutableArray alloc] init];
     _licenseSignatureKeys = [[NSMutableArray alloc] init];
     _lock = [[UMMutex alloc]init];
+    _licenseDirectory = @"/etc/umlicense/";
+    _timer = [[UMTimer alloc]initWithTarget:self
+                                   selector:@selector(refreshLicenses)
+                                     object:NULL
+                                    seconds:5*60 /* every 5 minutes we check if there's any licenses to be potentially updated */
+                                       name:@"license-check-timer"
+                                    repeats:YES];
 }
 
 - (UMLicenseDirectory *)init
@@ -41,8 +48,22 @@
     return self;
 }
 
+- (void)startAutoRefresh
+{
+    [_timer start];
+}
+
+-(void)stopAutoRefresh
+{
+    [_timer stop];
+}
+
 - (void)scanDirectoryForLicenseFiles:(NSString *)path
 {
+    if(path==NULL)
+    {
+        path = _licenseDirectory;
+    }
     [_lock lock];
     NSFileManager *mgr = [NSFileManager defaultManager];
     for (NSString *filePath in [mgr enumeratorAtPath:path])
@@ -112,7 +133,7 @@
         }
         if(slic.license == NULL)
         {
-            NSLog(@"Can not decrypt licensefile %@",licFile.filename);
+            NSLog(@"Can not decrypt licensefile %@",licFile.fullPath);
             [_licenseFiles removeObjectAtIndex:i];
             n--;
             i--;
@@ -134,7 +155,7 @@
         
         if(![slic isSignatureValidForKeys:[_licenseSignatureKeys copy]])
         {
-            NSLog(@"Invalid signature in %@",licFile.filename);
+            NSLog(@"Invalid signature in %@",licFile.fullPath);
             [_licenseFiles removeObjectAtIndex:i];
             n++;
         }
@@ -199,7 +220,7 @@
     [_lock unlock];
     for(UMLicenseFile *lf in lfs)
     {
-        NSString *filename = lf.filename;
+        NSString *filename = lf.fullPath;
         UMSignedLicense *sl = lf.signedLicense;
         UMLicense *lic = sl.license;
         NSString *ostr = [lic.objectValue jsonString];
@@ -211,18 +232,149 @@
 
 - (void)refreshLicenses
 {
-    NSMutableDictionary *toUpdate = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *toUpdateAddress = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *toUpdateUrl = [[NSMutableDictionary alloc]init];
+    NSDate *now = [NSDate date];
+
+    /* first we update all via URL. if URL fails only then we will attempt update via Address */
     [_lock lock];
     for(UMLicenseFile *lf in _licenseFiles)
     {
-        NSString *filename = lf.filename;
         UMLicense *lic = lf.signedLicense.license;
+        NSString  *serial = lf.signedLicense.license.licenseSerialNumber;
         if([lic.licenseType isEqualToString:@"renewing"])
         {
-            if(lic.licenseRenewUrl)
+            if(lf.nextUpdate < now)
             {
-                toUpdate[@"filename"]=lic.licenseRenewUrl;
+                if(lic.licenseRenewUrl)
+                {
+                    toUpdateUrl[serial]=lic.licenseRenewUrl;
+                }
             }
+        
+        }
+    }
+    [_lock unlock];
+    
+    NSArray *serials = [toUpdateUrl allKeys];
+    for (NSString *serial in serials)
+    {
+        NSString *url = toUpdateUrl[serial];
+        [self updateViaUrl:url serial:serial];
+    }
+
+    if(_updateByAddressDelegate)
+    {
+        
+        /* if URL update is successful, then the update time will be updated so for the same it would fall through here */
+        [_lock lock];
+        for(UMLicenseFile *lf in _licenseFiles)
+        {
+            UMLicense *lic = lf.signedLicense.license;
+            NSString  *serial = lf.signedLicense.license.licenseSerialNumber;
+            if([lic.licenseType isEqualToString:@"renewing"])
+            {
+                if(lf.nextUpdate < now)
+                {
+                    if(lic.licenseRenewAddress)
+                    {
+                        toUpdateAddress[serial]=lic.licenseRenewAddress;
+                    }
+                }
+            }
+        }
+        [_lock unlock];
+        
+        serials = [toUpdateAddress allKeys];
+        for (NSString *serial in serials)
+        {
+            NSString *address = toUpdateAddress[serial];
+            [_updateByAddressDelegate licenseUpdateRequestForAddress:address serial:serial];
+        }
+    }
+}
+
+- (void)appendProductParameters:(NSMutableString *)s
+{
+    if(_productHttpParameters == NULL)
+    {
+        return ;
+    }
+    NSArray *keys = [_productHttpParameters allKeys];
+    for(NSString *key in keys)
+    {
+        id value = _productHttpParameters[key];
+        if([value isKindOfClass:[NSString class]])
+        {
+            NSString *str = (NSString *)value;
+            [s appendFormat:@"&%@=%@",key,[str urlencode]];
+        }
+        else if([value isKindOfClass:[NSData class]])
+        {
+            NSData *data = (NSData *)value;
+            [s appendFormat:@"&%@=%@",key,[data urlencode]];
+        }
+        else if([value isKindOfClass:[NSNumber class]])
+        {
+            NSNumber *num = (NSNumber *)value;
+            NSString *str = [num stringValue];
+            [s appendFormat:@"&%@=%@",key,[str urlencode]];
+        }
+    }
+}
+
+- (void)updateViaUrl:(NSString *)url
+              serial:(NSString *)serial
+{
+    NSMutableString *full_url = [[NSMutableString alloc]init];
+    [full_url appendFormat:@"%@?serial=%@",url,[serial urlencode]];
+    [self appendProductParameters:full_url];
+
+    NSURL *u = [[NSURL alloc]initWithString:full_url];
+    NSError *e= NULL;
+    NSData *data = [NSData dataWithContentsOfURL:u
+                                         options:NSDataReadingUncached
+                                           error:&e];
+    if((e==0) && (data.length > 0))
+    {
+        [self refreshLicenseSerial:serial data:data];
+    }
+}
+
+- (void)refreshLicenseSerial:(NSString *)serial1  data:(NSData *)data
+{
+    [_lock lock];
+    for(UMLicenseFile *lf in _licenseFiles)
+    {
+        NSString  *serial = lf.signedLicense.license.licenseSerialNumber;
+        if([serial isEqualToString:serial1])
+        {
+            UMSignedLicense *slic_old = lf.signedLicense;
+            [lf updateData:data];
+            UMSignedLicense *slic = lf.signedLicense;
+            if((slic.license == NULL) && ( slic.encryptedLicense !=NULL))
+            {
+                @try
+                {
+                    [slic decryptLicenseWithKeys:[_licenseDecryptionKeys copy]];
+                }
+                @catch(NSException *e)
+                {
+                            
+                }
+            }
+            if(slic.license == NULL)
+            {
+                NSLog(@"Can not decrypt update license for %@. Reverting",lf.fullPath);
+                lf.signedLicense = slic_old;
+            }
+            else
+            {
+                lf.signedLicense = slic;
+                lf.lastRefresh = [NSDate date];
+                [lf updateTimeIntervals];
+            }
+            break;
         }
     }
     [_lock unlock];

@@ -8,9 +8,6 @@
       location = "group:../ulib/ulib.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../ulibsctp/ulibsctp.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:../ulibasn1/ulibasn1.xcodeproj">
    </FileRef>
 </Workspace>

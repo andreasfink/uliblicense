@@ -1,0 +1,14 @@
+//
+//  UMLicenseRefreshDelegateProtocol.h
+//  uliblicense
+//
+//  Created by Andreas Fink on 06.06.18.
+//
+
+#import <Foundation/Foundation.h>
+
+@protocol UMLicenseRefreshDelegateProtocol<NSObject>
+
+- (void)licenseUpdateRequestForAddress:(NSString *)addr serial:(NSString *)serial;
+
+@end

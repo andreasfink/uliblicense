@@ -12,13 +12,21 @@
 @interface UMLicenseFile : UMObject
 {
     UMSignedLicense *_signedLicense;
-    NSString *_filename;
+    NSString *_fullPath;
+    NSString *_shortName;
+    NSDate *_lastRefresh;
+    NSDate *_nextUpdate;
 }
 
 @property(readwrite,strong) UMSignedLicense *signedLicense;
-@property(readwrite,strong) NSString *filename;
+@property(readwrite,strong) NSString *fullPath;
+@property(readwrite,strong) NSString *shortName;
+@property(readwrite,strong) NSDate *lastRefresh;
+@property(readwrite,strong) NSDate *nextUpdate;
 
 - (UMLicenseFile *)initWithFilename:(NSString *)filename;
+- (void)updateData:(NSData *)data;
+- (void)updateTimeIntervals;
 
 @end
 

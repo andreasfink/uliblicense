@@ -107,6 +107,31 @@
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         [asn1_list addObject:utf8];
     }
+    if(_licenseRenewAddress)
+    {
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_licenseRenewUrl];
+        [utf8 processBeforeEncode];
+        utf8.asn1_tag.tagNumber = 7;
+        utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+        [asn1_list addObject:utf8];
+    }
+    if(_licenseRenewTimerMin)
+    {
+        UMASN1Integer *asn1int = [[UMASN1Integer alloc]initWithValue:[_licenseRenewTimerMin intValue]];
+        [asn1int processBeforeEncode];
+        asn1int.asn1_tag.tagNumber = 8;
+        asn1int.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+        [asn1_list addObject:asn1int];
+    }
+    if(_licenseRenewTimerMax)
+    {
+        UMASN1Integer *asn1int = [[UMASN1Integer alloc]initWithValue:[_licenseRenewTimerMax intValue]];
+        [asn1int processBeforeEncode];
+        asn1int.asn1_tag.tagNumber = 9;
+        asn1int.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+        [asn1_list addObject:asn1int];
+    }
+
 }
 
 
@@ -155,12 +180,31 @@
         _licenseRenewUrl = utf8.value;
         o = [self getObjectAtPosition:p++];
     }
+    if((o) && (o.asn1_tag.tagNumber == 7) && (o.asn1_tag.tagClass == UMASN1Class_ContextSpecific))
+    {
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];
+        _licenseRenewAddress = utf8.value;
+        o = [self getObjectAtPosition:p++];
+    }
+    if((o) && (o.asn1_tag.tagNumber == 8) && (o.asn1_tag.tagClass == UMASN1Class_ContextSpecific))
+    {
+        UMASN1Integer *asnint = [[UMASN1Integer alloc]initWithASN1Object:o context:context];
+        _licenseRenewTimerMin = @(asnint.value);
+        o = [self getObjectAtPosition:p++];
+    }
+    if((o) && (o.asn1_tag.tagNumber == 9) && (o.asn1_tag.tagClass == UMASN1Class_ContextSpecific))
+    {
+        UMASN1Integer *asnint = [[UMASN1Integer alloc]initWithASN1Object:o context:context];
+        _licenseRenewTimerMax = @(asnint.value);
+        o = [self getObjectAtPosition:p++];
+    }
+#if 0
     while(o)
     {
         /* ... */
         o = [self getObjectAtPosition:p++];
     }
-    
+#endif
     if(_licenseExpiration==NULL)
     {
         _licenseExpiration =[PERPETUAL_LICENSE_DATE_STRING dateValue];
@@ -203,6 +247,10 @@
     if(_licenseRenewUrl)
     {
         dict[@"licenseRenewUrl"] = _licenseRenewUrl;
+    }
+    if(_licenseRenewAddress)
+    {
+        dict[@"licenseRenewAddress"] = _licenseRenewAddress;
     }
     return dict;
 }
