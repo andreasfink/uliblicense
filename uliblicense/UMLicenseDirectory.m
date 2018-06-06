@@ -251,7 +251,6 @@
                     toUpdateUrl[serial]=lic.licenseRenewUrl;
                 }
             }
-        
         }
     }
     [_lock unlock];

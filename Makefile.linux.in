@@ -10,54 +10,64 @@
 CC=@CC@
 CFLAGS=@CFLAGS@
 LDFLAGS=@LDFLAGS@
-EXEDIR=/usr/local/sbin
 
-ULIB_LICENSE_M  = $(wildcard uliblicense/*.m)
-ULIB_LICENSE_O	= $(ULIB_LICENSE_M:.m=.o)
+ULIBLICENSE_M   = $(wildcard uliblicense/*.m)
+ULIBLICENSE_O	= $(ULIBLICENSE_M:.m=.o)
 
-all:		mminfo mmdisp getmminfo
+all:		mminfo mmdisplay
 
-all-full: 	mminfo mmlic mmdisp getmminfo dispmminfo
-
-dispmminfo: linux/linux-dispmminfo.m.o
-	${CC} -o dispmminfo ${LDFLAGS} linux/linux-dispmminfo.m.o ${LIBS} ${STATIC_LIBS}
-
-getmminfo: linux/linux-getmminfo.m.o
-	${CC} -o getmminfo ${LDFLAGS} linux/linux-getmminfo.m.o ${LIBS} ${STATIC_LIBS}
-
-mminfo:	src/mminfo.m.o src/common.m.o 
-	${CC} -o mminfo ${LDFLAGS} src/mminfo.m.o src/common.m.o ${LIBS} ${STATIC_LIBS}
-
-mmlic:	src/mmlic.m.o src/common.m.o
-	${CC} -o mmlic ${LDFLAGS} src/mmlic.m.o src/common.m.o ${LIBS} ${STATIC_LIBS}
-
-mmdisp:	src/mmdisp.m.o src/common.m.o
-	${CC} -o mmdisp ${LDFLAGS} src/mmdisp.m.o src/common.m.o ${LIBS} ${STATIC_LIBS}
-
-mmdisplay: mmdisplay/main.m.o uliblicense.a
+all-full: 	mminfo mmdisplay mmlicense libuliblicense.a
 
 
-uliblicense.a:	$(ULIB_LICENSE_O)
-	${CC} -o 
+mminfo: mminfo/main.o libuliblicense.a
+	${CC} -o mminfo ${LDFLAGS} mminfo/main.m.o uliblicense.a ${LIBS} ${STATIC_LIBS}
+
+mmdisplay: mmdisplay/main.o libuliblicense.a
+	${CC} -o mmdisplay ${LDFLAGS} mmdisplay/main.m.o uliblicense.a ${LIBS} ${STATIC_LIBS}
+
+mmlicense: mmlicense/main.o libuliblicense.a
+	${CC} -o mmdisplay ${LDFLAGS} mmlicense/main.m.o uliblicense.a ${LIBS} ${STATIC_LIBS}
+
+libuliblicense.a:	$(ULIBLICENSE_M)
+	@LIBTOOL@ libuliblicense.a $(ULIBLICENSE_O)
+	@RANLIB@  libuliblicense.a
+	
 clean:
-	rm -f linux/*.o src/*.o mminfo mmlic mmdisp getmminfo dispmminfo
+	rm -f mminfo/main.o
+	rm -f mmdisplay/main.o
+	rm -f mmlicense/main.o
+	rm -f uliblicense/*.o 
 
-.SUFFIXES: .m.o .o .m .c
+.SUFFIXES: .o .m .c
 
-%.m.o:	%.m
-	${CC} -c ${CFLAGS} -x objective-c $<  ${INCLUDEDIRS} -o $@
+%.o:	%.m
+	${CC} -c ${CFLAGS} -I uliblicense -x objective-c $<  ${INCLUDEDIRS} -o $@
 
 
-install: mminfo mmdisp getmminfo
+install: mminfo mmdisplay
 	mkdir -p $(DESTDIR)/usr/local/bin/
-	install -b -g bin -o root -m 755 mminfo $(DESTDIR)/usr/local/bin/mminfo
-	install -b -g bin -o root -m 755 mmdisp $(DESTDIR)/usr/local/bin/mmdisp
-	install -b -g bin -o root -m 755 getmminfo $(DESTDIR)/usr/local/bin/getmminfo
+	install -b -g bin -o root -m 755 mminfo                             $(DESTDIR)/usr/local/bin/mminfo
+	install -b -g bin -o root -m 755 mmdisplay                          $(DESTDIR)/usr/local/bin/mmdisplay
 
-install-full:  mminfo mmlic mmdisp getmminfo dispmminfo
+install-full:  mminfo mmdisplay uliblicense.a
 	mkdir -p $(DESTDIR)/usr/local/bin/
-	install -b -g bin -o root -m 755 mminfo $(DESTDIR)/usr/local/bin/mminfo
-	install -b -g bin -o root -m 755 mmlic $(DESTDIR)/usr/local/bin/mmlic
-	install -b -g bin -o root -m 755 mmdisp $(DESTDIR)/usr/local/bin/mmdisp
-	install -b -g bin -o root -m 755 getmminfo $(DESTDIR)/usr/local/bin/getmminfo
-	install -b -g bin -o root -m 755 dispmminfo $(DESTDIR)/usr/local/bin/dispmminfo
+	mkdir -p $(DESTDIR)/usr/local/lib/
+	mkdir -p $(DESTDIR)/usr/local/include/
+	install -b -g bin -o root -m 755 mminfo                             $(DESTDIR)/usr/local/bin/mminfo
+	install -b -g bin -o root -m 755 mmlicense                          $(DESTDIR)/usr/local/bin/mmlicense
+	install -b -g bin -o root -m 755 mmdisplay                          $(DESTDIR)/usr/local/bin/mmdisplay
+	install -b -g bin -o root -m 644 libuliblicense.a                   $(DESTDIR)/usr/local/lib/libuliblicense.a
+	install -b -g bin -o root -m 644 uliblicense.h                      $(DESTDIR)/usr/local/include/uliblicense/uliblicense.h
+	install -b -g bin -o root -m 644 UMEncryptedLicense.h               $(DESTDIR)/usr/local/include/uliblicense/UMEncryptedLicense.h   
+	install -b -g bin -o root -m 644 UMLegacyLicense.h                  $(DESTDIR)/usr/local/include/uliblicense/UMLegacyLicense.h      
+	install -b -g bin -o root -m 644 UMLicense.h                        $(DESTDIR)/usr/local/include/uliblicense/UMLicense.h            
+	install -b -g bin -o root -m 644 UMLicenseDirectory.h               $(DESTDIR)/usr/local/include/uliblicense/UMLicenseDirectory.h   
+	install -b -g bin -o root -m 644 UMLicenseFile.h                    $(DESTDIR)/usr/local/include/uliblicense/UMLicenseFile.h        
+	install -b -g bin -o root -m 644 UMLicenseProduct.h                 $(DESTDIR)/usr/local/include/uliblicense/UMLicenseProduct.h     
+	install -b -g bin -o root -m 644 UMLicenseProductFeature.h          $(DESTDIR)/usr/local/include/uliblicense/UMLicenseProductFeature.h  
+	install -b -g bin -o root -m 644 UMLicenseProductFeatureList.h      $(DESTDIR)/usr/local/include/uliblicense/UMLicenseProductFeatureList.h
+	install -b -g bin -o root -m 644 UMLicenseProductList.h             $(DESTDIR)/usr/local/include/uliblicense/UMLicenseProductList.h
+	install -b -g bin -o root -m 644 UMLicenseRefreshDelegateProtocol.h $(DESTDIR)/usr/local/include/uliblicense/UMLicenseRefreshDelegateProtocol.h
+	install -b -g bin -o root -m 644 UMLicenseRestriction.h             $(DESTDIR)/usr/local/include/uliblicense/UMLicenseRestriction.h
+	install -b -g bin -o root -m 644 UMLicenseRestrictionList.h         $(DESTDIR)/usr/local/include/uliblicense/UMLicenseRestrictionList.h
+	install -b -g bin -o root -m 644 UMSignedLicense.h                  $(DESTDIR)/usr/local/include/uliblicense/UMSignedLicense.h
