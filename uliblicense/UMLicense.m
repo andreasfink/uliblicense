@@ -131,7 +131,20 @@
         asn1int.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         [asn1_list addObject:asn1int];
     }
-
+    if(_licenseEmail)
+    {
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_licenseEmail];
+        [utf8 processBeforeEncode];
+        utf8.asn1_tag.tagNumber = 10;
+        utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+        [asn1_list addObject:utf8];
+    }
+    else
+    {
+        @throw([NSException exceptionWithName:@"PARAMETER_ENCODING_ERROR"
+                                       reason:@"UMLicense licenseEmail missing"
+                                     userInfo:@{    @"backtrace": UMBacktrace(NULL,0)}]);
+    }
 }
 
 
@@ -196,6 +209,12 @@
     {
         UMASN1Integer *asnint = [[UMASN1Integer alloc]initWithASN1Object:o context:context];
         _licenseRenewTimerMax = @(asnint.value);
+        o = [self getObjectAtPosition:p++];
+    }
+    if((o) && (o.asn1_tag.tagNumber == 10) && (o.asn1_tag.tagClass == UMASN1Class_ContextSpecific))
+    {
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];
+        _licenseEmail = utf8.value;
         o = [self getObjectAtPosition:p++];
     }
 #if 0

@@ -22,6 +22,7 @@
     NSString *_licenseSerialNumber;
     NSString *_licenseType;
     NSString *_licenseOwner;
+    NSString *_licenseEmail;
     UMLicenseRestrictionList *_licenseRestrictions;
     NSDate *_licenseExpiration;
     NSString *_licenseRenewUrl;
