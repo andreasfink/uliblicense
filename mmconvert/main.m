@@ -183,7 +183,6 @@ int main(int argc, const char * argv[])
                     BOOL featureEnabled_gsmmap = NO;
                     BOOL featureEnabled_http = NO;
                     BOOL featureEnabled_httpHlr = NO;
-                    BOOL featureEnabled_interworking = NO;
                     BOOL featureEnabled_logging = NO;
                     BOOL featureEnabled_m2pa = NO;
                     BOOL featureEnabled_m3ua = NO;
