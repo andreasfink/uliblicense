@@ -294,6 +294,8 @@
     f = [f copy];
     f.licenseSerialNumber = _licenseSerialNumber;
     f.licenseExpiration = _licenseExpiration;
+    f.licenseName = _licenseOwner;
+    f.licenseEmail= _licenseEmail;
     return f;
 }
 @end

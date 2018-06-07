@@ -24,7 +24,7 @@
 		A67A282120C66958001BB7A3 /* UMLicenseProductList.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A281F20C66958001BB7A3 /* UMLicenseProductList.m */; };
 		A67A283220C689F7001BB7A3 /* UMLicenseDirectory.h in Headers */ = {isa = PBXBuildFile; fileRef = A67A283020C689F7001BB7A3 /* UMLicenseDirectory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A67A283320C689F7001BB7A3 /* UMLicenseDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A283120C689F7001BB7A3 /* UMLicenseDirectory.m */; };
-		A67A283620C6903E001BB7A3 /* UMLicenseFile.h in Headers */ = {isa = PBXBuildFile; fileRef = A67A283420C6903E001BB7A3 /* UMLicenseFile.h */; };
+		A67A283620C6903E001BB7A3 /* UMLicenseFile.h in Headers */ = {isa = PBXBuildFile; fileRef = A67A283420C6903E001BB7A3 /* UMLicenseFile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A67A283720C6903E001BB7A3 /* UMLicenseFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A283520C6903E001BB7A3 /* UMLicenseFile.m */; };
 		A67A283F20C69EC6001BB7A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A283E20C69EC6001BB7A3 /* main.m */; };
 		A67A284320C69EDA001BB7A3 /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6DBF0D620C00FF700B38DAF /* ulibasn1.framework */; };

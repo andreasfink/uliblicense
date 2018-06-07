@@ -18,12 +18,16 @@
      if its being requested. They are NOT stored inside the ASN1 */
     NSDate      *_licenseExpiration;
     NSString    *_licenseSerialNumber;
+    NSString    *_licenseName;
+    NSString    *_licenseEmail;
 }
 
 @property(readwrite,atomic,strong)  NSString    *featureName;
 @property(readwrite,atomic,strong)  NSData      *featureData;
 @property(readwrite,atomic,strong)  NSDate      *licenseExpiration;
 @property(readwrite,atomic,strong)  NSString    *licenseSerialNumber;
+@property(readwrite,atomic,strong)  NSString    *licenseName;
+@property(readwrite,atomic,strong)  NSString    *licenseEmail;
 
 - (UMLicenseProductFeature *)initWithName:(NSString *)name;
 
