@@ -41,7 +41,12 @@ UMEncryptedLicense ::= SEQUENCE {
     UMCrypto *crypto = [[UMCrypto alloc]init];
     crypto.privateKey = key;
 
-    crypto.aes256Key = [crypto RSADecryptWithCiphertextSSLPrivate:_encryptedStreamKey];    
+    NSData *aes256Key = [crypto RSADecryptWithCiphertextSSLPrivate:_encryptedStreamKey];
+    if(aes256Key==NULL)
+    {
+        return NULL;
+    }
+    crypto.aes256Key = aes256Key;
     NSData *data = [crypto aes256Decrypt:_encryptedData];
     return data;
 }

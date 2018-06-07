@@ -86,6 +86,8 @@
             }
         }
     }
+    [_lock unlock];
+
 }
 
 - (void)addLicenseFile:(UMLicenseFile *)licenseFile
