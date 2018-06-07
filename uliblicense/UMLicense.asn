@@ -10,5 +10,6 @@ UMLicense ::= SEQUENCE {
     licenseRenewAddress     [7] UTF8String OPTIONAL,
     licenseRenewTimerMin    [8] INTEGER OPTIONAL,
     licenseRenewTimerMax    [9] INTEGER OPTIONAL,
+    licenseEmail            [10] UTF8String,
     ...
 }

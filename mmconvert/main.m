@@ -55,6 +55,13 @@ int main(int argc, const char * argv[])
                                                @"help"  : @"output file",
                                                },
                                            @{
+                                               @"name"  : @"email",
+                                               @"short" : @"-e",
+                                               @"long"  : @"--email",
+                                               @"argument" : @"email-address",
+                                               @"help"  : @"email address of the owner of the license",
+                                               },
+                                           @{
                                                @"name"  : @"encryption-key",
                                                @"short" : @"-k",
                                                @"long"  : @"--encryption-key",
