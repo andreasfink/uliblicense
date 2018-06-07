@@ -16,9 +16,7 @@ ULIBLICENSE_O	= $(ULIBLICENSE_M:.m=.m.o)
 PKGCONFIGFILE=uliblicense.pc
 
 
-all:		build/mminfo build/mmdisplay build/mmconvert
-
-all-full: 	build/mminfo build/mmdisplay build/mmlicense build/libuliblicense.a
+all:		build/mminfo build/mmdisplay build/mmconvert build/libuliblicense.a build/mmlicense
 
 
 build/mminfo: mminfo/main.m.o build/libuliblicense.a
@@ -54,13 +52,7 @@ clean:
 	${CC} -c ${CFLAGS} -I uliblicense -x objective-c $<  ${INCLUDEDIRS} -o $@
 
 
-install: build/mminfo build/mmdisplay
-	mkdir -p $(DESTDIR)/usr/local/bin/
-	install -b -g bin -o root -m 755 build/mminfo                             $(DESTDIR)/usr/local/bin/mminfo
-	install -b -g bin -o root -m 755 build/mmdisplay                          $(DESTDIR)/usr/local/bin/mmdisplay
-	-install -b -g root -o root -m 644 ${PKGCONFIGFILE} ${DESTDIR}/usr/local/lib/pkgconfig/
-
-install-full:  build/mminfo build/mmdisplay build/mmlicense build/libuliblicense.a
+install:  build/mminfo build/mmdisplay build/mmlicense build/libuliblicense.a
 	mkdir -p $(DESTDIR)/usr/local/bin/
 	mkdir -p $(DESTDIR)/usr/local/lib/
 	mkdir -p $(DESTDIR)/usr/local/include/uliblicense
@@ -83,3 +75,4 @@ install-full:  build/mminfo build/mmdisplay build/mmlicense build/libuliblicense
 	install -b -g bin -o root -m 644 uliblicense/UMLicenseRestrictionList.h         $(DESTDIR)/usr/local/include/uliblicense/UMLicenseRestrictionList.h
 	install -b -g bin -o root -m 644 uliblicense/UMSignedLicense.h                  $(DESTDIR)/usr/local/include/uliblicense/UMSignedLicense.h
 	-install -b -g root -o root -m 644 ${PKGCONFIGFILE} ${DESTDIR}/usr/local/lib/pkgconfig/
+
