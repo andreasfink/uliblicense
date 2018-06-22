@@ -11,6 +11,7 @@
 
 int main(int argc, const char * argv[])
 {
+    NSString *email = @"dummy@email.com";
     @autoreleasepool
     {
         NSDictionary *appDefinition = @
@@ -100,6 +101,14 @@ int main(int argc, const char * argv[])
                 {
                     encryptionKey = key;
                 }
+            }
+        }
+        if(params[@"email"])
+        {
+            NSArray *emails = params[@"email"];
+            if(emails.count > 0)
+            {
+                email = emails[0];
             }
         }
         if(params[@"signature-key"])
@@ -311,7 +320,7 @@ int main(int argc, const char * argv[])
                     lic.licenseOwner = licenseOwner;
                     lic.licenseSerialNumber = licenseNumber;
                     lic.licenseExpiration =  expiration;
-
+                    lic.licenseEmail = email;
                     UMLicenseRestriction *rest = [[UMLicenseRestriction alloc]init];
                     rest.lockedToLegacySerial = hwSerial;
                     [lic addRestriction: rest];

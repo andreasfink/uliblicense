@@ -38,6 +38,7 @@
 @property(readwrite,strong)  NSString *licenseSerialNumber;
 @property(readwrite,strong)  NSString *licenseType;
 @property(readwrite,strong)  NSString *licenseOwner;
+@property(readwrite,strong)  NSString *licenseEmail;
 @property(readwrite,strong)  UMLicenseRestrictionList *licenseRestrictions;
 @property(readwrite,strong)  NSDate *licenseExpiration;
 @property(readwrite,strong)  NSString *licenseRenewUrl;
