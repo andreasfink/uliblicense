@@ -10,6 +10,7 @@
 #import "UMSignedLicense.h"
 #import "UMLicenseProductFeature.h"
 #import "UMLicenseFile.h"
+
 @implementation UMLicenseDirectory
 
 - (void)genericInitialisation
