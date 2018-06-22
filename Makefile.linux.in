@@ -44,6 +44,7 @@ clean:
 	rm -f mminfo/main.m.o
 	rm -f mmdisplay/main.m.o
 	rm -f mmlicense/main.m.o
+	rm -f mmconvert/main.m.o
 	rm -f uliblicense/*.m.o 
 	rm -rf build/*
 .SUFFIXES: .m.o .o .m .c
@@ -59,6 +60,7 @@ install:  build/mminfo build/mmdisplay build/mmlicense build/libuliblicense.a
 	install -b -g bin -o root -m 755 build/mminfo                                   $(DESTDIR)/usr/local/bin/mminfo
 	install -b -g bin -o root -m 755 build/mmlicense                                $(DESTDIR)/usr/local/bin/mmlicense
 	install -b -g bin -o root -m 755 build/mmdisplay                                $(DESTDIR)/usr/local/bin/mmdisplay
+	install -b -g bin -o root -m 755 build/mmconvert                                $(DESTDIR)/usr/local/bin/mmconvert
 	install -b -g bin -o root -m 644 build/libuliblicense.a                         $(DESTDIR)/usr/local/lib/libuliblicense.a
 	install -b -g bin -o root -m 644 uliblicense/uliblicense.h                      $(DESTDIR)/usr/local/include/uliblicense/uliblicense.h
 	install -b -g bin -o root -m 644 uliblicense/UMEncryptedLicense.h               $(DESTDIR)/usr/local/include/uliblicense/UMEncryptedLicense.h   
