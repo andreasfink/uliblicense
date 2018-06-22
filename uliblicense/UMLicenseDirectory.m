@@ -169,7 +169,8 @@
         {
             NSLog(@"Invalid signature in %@",licFile.fullPath);
             [_licenseFiles removeObjectAtIndex:i];
-            n++;
+            n--;
+            i--;
         }
         
         if((slic.license == NULL) && ( slic.encryptedLicense !=NULL))
@@ -179,7 +180,8 @@
         if(slic.license == NULL)
         {
             [_licenseFiles removeObjectAtIndex:i];
-            n++;
+            n--;
+            i--;
         }
     }
     [_lock unlock];
