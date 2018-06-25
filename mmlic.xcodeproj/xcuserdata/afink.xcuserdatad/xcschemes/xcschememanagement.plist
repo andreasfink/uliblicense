@@ -7,27 +7,27 @@
 		<key>mmconvert.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>24</integer>
 		</dict>
 		<key>mmdisplay.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>29</integer>
+			<integer>25</integer>
 		</dict>
 		<key>mminfo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>28</integer>
+			<integer>22</integer>
 		</dict>
 		<key>mmlicense.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>27</integer>
+			<integer>20</integer>
 		</dict>
 		<key>uliblicense.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>23</integer>
 		</dict>
 		<key>umlicense.xcscheme</key>
 		<dict>
@@ -42,17 +42,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A652E13420C7CFF200CDA5EF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>A67A282620C671E1001BB7A3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A6B024F820BEED6E006779BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
