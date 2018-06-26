@@ -45,20 +45,22 @@
     {
         int min = 30*60;
         int max = 45*60;
-        if(_signedLicense.license.licenseRenewTimerMin)
+        if(_signedLicense.license.licenseRenewTimerMin!=NULL)
         {
             min = [_signedLicense.license.licenseRenewTimerMin intValue];
             if(min < 300)
             {
                 min = 300;
+                _signedLicense.license.licenseRenewTimerMin = @(min);
             }
         }
-        if(_signedLicense.license.licenseRenewTimerMax)
+        if(_signedLicense.license.licenseRenewTimerMax!=NULL)
         {
             max = [_signedLicense.license.licenseRenewTimerMax intValue];
             if(max > (30*24*60*60))
             {
                 max = (30*24*60*60); /* at least once a month */
+                _signedLicense.license.licenseRenewTimerMax = @(max);
             }
         }
     }
