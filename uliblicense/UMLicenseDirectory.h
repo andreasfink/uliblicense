@@ -7,7 +7,6 @@
 
 #import <ulib/ulib.h>
 #import "UMLicenseRefreshDelegateProtocol.h"
-
 @class UMLicenseProductFeature;
 @class UMLicense;
 @class UMLicenseFile;
@@ -18,7 +17,7 @@
     NSMutableArray *_licenseDecryptionKeys;
     NSMutableArray *_licenseSignatureKeys;
     UMMutex          *_lock;
-    NSString        *_licenseDirectory;
+    NSString    *_licenseDirectory;
     UMTimer *_timer;
     id<UMLicenseRefreshDelegateProtocol> _updateByAddressDelegate;
     NSDictionary *_productHttpParameters;
@@ -37,6 +36,7 @@
 - (void)refreshLicenses;
 - (void)startAutoRefresh;
 - (void)stopAutoRefresh;
+- (BOOL)validateRestrictions;
 
 @end
 

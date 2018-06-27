@@ -15,5 +15,7 @@
 }
 
 - (void)addRestriction:(UMLicenseRestriction *)rest;
+- (unsigned)count;
+- (UMLicenseRestriction *)objectAtIndex:(unsigned)index;
 
 @end

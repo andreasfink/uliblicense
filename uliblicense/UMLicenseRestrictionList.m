@@ -51,13 +51,16 @@
 
 - (id) objectValue
 {
-    NSMutableArray *arr = [[NSMutableArray alloc]init];
+    return [_sequenceEntries copy];
+}
 
-    for(UMLicenseRestriction *entry in _sequenceEntries)
-    {
-        [arr addObject:entry.objectValue];
-    }
-    return arr;
+- (unsigned)count
+{
+   return [_sequenceEntries count];
+}
+- (UMLicenseRestriction *)objectAtIndex:(unsigned)index
+{
+	return [_sequenceEntries objectAtIndex:index];
 }
 
 @end
