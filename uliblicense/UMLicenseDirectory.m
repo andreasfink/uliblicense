@@ -195,6 +195,7 @@
 	
 	// Initial NO Valid
 	BOOL valid = NO;
+    BOOL osValid = NO;
 
     for(UMLicenseFile *licFile in _licenseFiles)
     {
@@ -223,88 +224,116 @@
 	#define PLATFORM_NAME "NetBSD" // NetBSD
 #elif defined(__OpenBSD__)
 	#define PLATFORM_NAME "OpenBSD" // OpenBSD
+#else
+#error Unknown platform name
 #endif	
 
 			NSArray *arr_licR = slic.license.licenseRestrictions.values;
+            
+            // lets first go through the OS restrictions
+            // we should have at least one matching records or no records at all
+            int osRecCount = 0;
 			for(UMLicenseRestriction *licR in arr_licR)
 			{
-				// Operating System
-				NSLog(@" -- OS: %@ --", @PLATFORM_NAME);
-				
-				NSString *os = licR.lockedToOperatingSystem;	// Check OS restriction
-				if ([os length] == 0 || [os isEqualToString:@PLATFORM_NAME]) 
-				{
-					// UUID Restriction
-					NSString *uuid = [UMUtil getMachineUUID];
-					if ([uuid isEqualToString:licR.lockedToUUID]) {
-						valid = YES;
-						NSLog(@"Valid UUID: %@", uuid);
-						break;
-					}
-					
-					// Serial
-					NSString *serialNum = [UMUtil getMachineSerialNumber];
-					if ([serialNum isEqualToString:licR.lockedToSerial]) {
-						valid = YES;
-						NSLog(@"Valid Serial: %@", serialNum);
-						break;
-					}
+                NSString *os = licR.lockedToOperatingSystem;
+                if(os == NULL)
+                {
+                    continue;
+                }
+                osRecCount++;
+                if ([os isEqualToString:@PLATFORM_NAME] || [os isEqualToString:@"any"])
+                {
+                    osValid = YES;
+                }
+            }
+            if(osRecCount == 0)
+            {
+                osValid=YES;
+            }
+            
+            for(UMLicenseRestriction *licR in arr_licR)
+            {
+				if(licR.lockedToOperatingSystem)
+                {
+                    continue;
+                }
+                
+                // UUID Restriction
+                NSString *uuid = [UMUtil getMachineUUID];
+                if ([uuid isEqualToString:licR.lockedToUUID])
+                {
+                    valid = YES;
+                    NSLog(@"Valid UUID: %@", uuid);
+                    break;
+                }
+                
+                // Serial
+                NSString *serialNum = [UMUtil getMachineSerialNumber];
+                if ([serialNum isEqualToString:licR.lockedToSerial])
+                {
+                    valid = YES;
+                    NSLog(@"Valid Serial: %@", serialNum);
+                    break;
+                }
 
-					// CPU ids
-					NSArray *cpuSerials = [UMUtil getCPUSerialNumbers];
-					for( NSString *x in cpuSerials)
-					{
-						if ([x isEqualToString:licR.lockedToCpuId]) 
-						{
-							valid = YES;
-							NSLog(@"Valid CPU-id: %@", x);
-							break;
-						}
-					}
+                // CPU ids
+                NSArray *cpuSerials = [UMUtil getCPUSerialNumbers];
+                for( NSString *x in cpuSerials)
+                {
+                    if ([x isEqualToString:licR.lockedToCpuId])
+                    {
+                        valid = YES;
+                        NSLog(@"Valid CPU-id: %@", x);
+                        break;
+                    }
+                }
 					
-					// Mac Address
-					NSArray *arr = [UMUtil getArrayOfMacAddresses];
-					for(NSString *ai in arr)
-					{
-						if ([ai isEqualToString:licR.lockedToMacAddress]) 
-						{
-							valid = YES;
-							NSLog(@"Valid mac-address: %@", ai);
-							break;
-						}
-					}
-					
-					// IPs
-					NSDictionary<NSString *,NSArray<NSDictionary<NSString *,NSString *> *> *> *interface_ips;
-					interface_ips = [UMUtil getIpAddrs];
-					NSArray *interface_names = [interface_ips allKeys];
-					for(NSString *interface_name in interface_names)
-					{
-						NSArray<NSDictionary<NSString *,NSString *> *> *ips_per_if = interface_ips[interface_name];
-						for(NSDictionary<NSString *,NSString *> *entry in ips_per_if)
-						{
-							NSString *ip = entry[@"address"];
-							if ([ip isEqualToString:licR.lockedToIp]) 
-							{
-								valid = YES;
-								NSLog(@"Valid IP: %@", ip);
-								break;
-							}
-						}
-						
-						if(valid)
-						{
-							break;
-						}
-					}
-				}
-			}
+                // Mac Address
+                NSArray *arr = [UMUtil getArrayOfMacAddresses];
+                for(NSString *ai in arr)
+                {
+                    if ([ai isEqualToString:licR.lockedToMacAddress])
+                    {
+                        valid = YES;
+                        NSLog(@"Valid mac-address: %@", ai);
+                        break;
+                    }
+                }
+                
+                // IPs
+                NSDictionary<NSString *,NSArray<NSDictionary<NSString *,NSString *> *> *> *interface_ips;
+                interface_ips = [UMUtil getIpAddrs];
+                NSArray *interface_names = [interface_ips allKeys];
+                for(NSString *interface_name in interface_names)
+                {
+                    NSArray<NSDictionary<NSString *,NSString *> *> *ips_per_if = interface_ips[interface_name];
+                    for(NSDictionary<NSString *,NSString *> *entry in ips_per_if)
+                    {
+                        NSString *ip = entry[@"address"];
+                        if ([ip isEqualToString:licR.lockedToIp])
+                        {
+                            valid = YES;
+                            NSLog(@"Valid IP: %@", ip);
+                            break;
+                        }
+                    }
+                    
+                    if(valid)
+                    {
+                        break;
+                    }
+                }
+            }
 		}
     }
 	
     [_lock unlock];
 	
-	return valid;
+    if(osValid && valid)
+    {
+        return YES;
+    }
+	return NO;
 }
 
 - (UMLicenseProductFeature *)getProduct:(NSString *)product

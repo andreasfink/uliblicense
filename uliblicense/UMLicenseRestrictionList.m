@@ -54,7 +54,7 @@
     return [_sequenceEntries copy];
 }
 
-- (unsigned)count
+- (NSUInteger)count
 {
    return [_sequenceEntries count];
 }
