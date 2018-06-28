@@ -1,0 +1,17 @@
+# uliblicense pkg-config source file
+#  Copyright © 2017 Andreas Fink (andreas@fink.org). All rights reserved.
+
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Cflags: -I${includedir}
+Libs: -L${libdir} -luliblicense
+
+Name: uliblicense
+Description: universal license management library
+Version: 1.10.0
+Requires: ulib ulibasn1 
+
+
