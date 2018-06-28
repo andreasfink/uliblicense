@@ -111,7 +111,7 @@ UMEncryptedLicense ::= SEQUENCE {
     {
         UMASN1OctetString *oct = [[UMASN1OctetString alloc]initWithASN1Object:o context:context];
         _encryptedData = oct.value;
-        o = [self getObjectAtPosition:p++];
+        //o = [self getObjectAtPosition:p++];
     }
     return self;
 }

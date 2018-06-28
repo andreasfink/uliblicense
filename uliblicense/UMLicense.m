@@ -115,7 +115,7 @@
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         [asn1_list addObject:utf8];
     }
-    if(_licenseRenewTimerMin)
+    if(_licenseRenewTimerMin!=NULL)
     {
         UMASN1Integer *asn1int = [[UMASN1Integer alloc]initWithValue:[_licenseRenewTimerMin intValue]];
         [asn1int processBeforeEncode];
@@ -123,7 +123,7 @@
         asn1int.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         [asn1_list addObject:asn1int];
     }
-    if(_licenseRenewTimerMax)
+    if(_licenseRenewTimerMax!=NULL)
     {
         UMASN1Integer *asn1int = [[UMASN1Integer alloc]initWithValue:[_licenseRenewTimerMax intValue]];
         [asn1int processBeforeEncode];
@@ -215,7 +215,7 @@
     {
         UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];
         _licenseEmail = utf8.value;
-        o = [self getObjectAtPosition:p++];
+        //o = [self getObjectAtPosition:p++];
     }
 #if 0
     while(o)

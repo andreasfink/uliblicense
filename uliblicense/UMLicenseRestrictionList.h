@@ -15,5 +15,7 @@
 }
 
 - (void)addRestriction:(UMLicenseRestriction *)rest;
+- (NSUInteger)count;
+- (UMLicenseRestriction *)objectAtIndex:(unsigned)index;
 
 @end
