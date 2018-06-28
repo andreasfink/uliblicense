@@ -313,12 +313,10 @@
                     }
                 }
             }
-            
             if(osRecCount == 0)
             {
                 osValid=YES;
             }
-            
         }
     }
     
