@@ -192,9 +192,9 @@
 - (BOOL)validateRestrictions;
 {
     [_lock lock];
-	
-	// Initial NO Valid
-	BOOL valid = NO;
+    
+    // Initial NO Valid
+    BOOL valid = NO;
     BOOL osValid = NO;
 
     for(UMLicenseFile *licFile in _licenseFiles)
@@ -206,56 +206,45 @@
         {
             [slic decryptLicenseWithKeys:[_licenseDecryptionKeys copy]];
         }
-		
+        
         if(slic.license == NULL)
         {
             [_licenseFiles removeObject:slic];
         }
-		else
-		{
-		
+        else
+        {
+        
 #if defined(__APPLE__)
     #define PLATFORM_NAME "osx" // Apple OSX
 #elif defined(__linux__)
-    #define PLATFORM_NAME "linux" // Debian, Ubuntu, Gentoo, Fedora, openSUSE, RedHat, Centos and other	
+    #define PLATFORM_NAME "linux" // Debian, Ubuntu, Gentoo, Fedora, openSUSE, RedHat, Centos and other    
 #elif defined(__FreeBSD__)
-	#define PLATFORM_NAME "FreeBSD" // FreeBSD
+    #define PLATFORM_NAME "FreeBSD" // FreeBSD
 #elif defined(__NetBSD__)
-	#define PLATFORM_NAME "NetBSD" // NetBSD
+    #define PLATFORM_NAME "NetBSD" // NetBSD
 #elif defined(__OpenBSD__)
-	#define PLATFORM_NAME "OpenBSD" // OpenBSD
+    #define PLATFORM_NAME "OpenBSD" // OpenBSD
 #else
 #error Unknown platform name
-#endif	
+#endif    
 
-			NSArray *arr_licR = slic.license.licenseRestrictions.values;
+            NSArray *arr_licR = slic.license.licenseRestrictions.values;
             
             // lets first go through the OS restrictions
             // we should have at least one matching records or no records at all
             int osRecCount = 0;
-			for(UMLicenseRestriction *licR in arr_licR)
-			{
-                NSString *os = licR.lockedToOperatingSystem;
-                if(os == NULL)
-                {
-                    continue;
-                }
-                osRecCount++;
-                if ([os isEqualToString:@PLATFORM_NAME] || [os isEqualToString:@"any"])
-                {
-                    osValid = YES;
-                }
-            }
-            if(osRecCount == 0)
-            {
-                osValid=YES;
-            }
-            
             for(UMLicenseRestriction *licR in arr_licR)
             {
-				if(licR.lockedToOperatingSystem)
+                if(licR.lockedToOperatingSystem)
                 {
-                    continue;
+                    NSString *os = licR.lockedToOperatingSystem;
+					if ([os isEqualToString:@PLATFORM_NAME] || [os isEqualToString:@"any"])
+					{
+						osValid = YES;
+					}
+					
+					osRecCount++;
+					continue;
                 }
                 
                 // UUID Restriction
@@ -287,7 +276,7 @@
                         break;
                     }
                 }
-					
+                    
                 // Mac Address
                 NSArray *arr = [UMUtil getArrayOfMacAddresses];
                 for(NSString *ai in arr)
@@ -324,16 +313,20 @@
                     }
                 }
             }
-		}
+            if(osRecCount == 0)
+            {
+                osValid=YES;
+            }
+        }
     }
-	
+    
     [_lock unlock];
-	
+    
     if(osValid && valid)
     {
         return YES;
     }
-	return NO;
+    return NO;
 }
 
 - (UMLicenseProductFeature *)getProduct:(NSString *)product
