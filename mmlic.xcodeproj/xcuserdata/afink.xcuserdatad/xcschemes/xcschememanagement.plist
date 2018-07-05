@@ -7,27 +7,27 @@
 		<key>mmconvert.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>25</integer>
+			<integer>33</integer>
 		</dict>
 		<key>mmdisplay.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>24</integer>
+			<integer>32</integer>
 		</dict>
 		<key>mminfo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>22</integer>
+			<integer>30</integer>
 		</dict>
 		<key>mmlicense.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>21</integer>
+			<integer>29</integer>
 		</dict>
 		<key>uliblicense.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>23</integer>
+			<integer>31</integer>
 		</dict>
 	</dict>
 </dict>
