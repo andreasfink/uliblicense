@@ -19,6 +19,15 @@
 #
 #########################
 
+Makefile.linux
+Makefile.osx
+config.log
+config.status
+mmlic_config.h
+stamp-h1
+uliblicense.pc
+version.h
+
 #####
 # OS X temporary files that should never be committed
 #

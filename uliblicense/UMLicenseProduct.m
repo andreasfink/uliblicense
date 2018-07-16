@@ -16,7 +16,7 @@
     self = [super init];
     if(self)
     {
-        _lock = [[UMMutex alloc]init];
+        _lock = [[UMMutex alloc]initWithName:@"umlicense-product-lock"];
     }
     return self;
 }
@@ -27,7 +27,7 @@
     self = [super init];
     if(self)
     {
-        _lock = [[UMMutex alloc]init];
+        _lock = [[UMMutex alloc]initWithName:[NSString stringWithFormat:@"umlicense-product-lock(%@)",name]];
         _productName = name;
     }
     return self;
