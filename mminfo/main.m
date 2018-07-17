@@ -171,7 +171,7 @@ int main (int argc, const char * argv[])
             NSString *full_url = [NSString stringWithFormat:@"%@?request=%@",url,request];
             UMHTTPClientRequest *creq = [[UMHTTPClientRequest alloc]initWithURLString:full_url withChache:NO timeout:30];
             UMHTTPClient *httpClient = [[UMHTTPClient alloc]init];
-            NSString *result = [httpClient simpleSynchronousRequest::creq];
+            NSString *result = [httpClient simpleSynchronousRequest:creq];
             fprintf(stdout, "%s\n",result.UTF8String);
             actionDone = YES;
         }
