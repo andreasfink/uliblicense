@@ -34,6 +34,10 @@
 		A67A284720C69EF0001BB7A3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024F920BEED6E006779BA /* libuliblicense.a */; };
 		A67E44B52112A4810092DB00 /* UMLicenseWebConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = A67E44B32112A4810092DB00 /* UMLicenseWebConvert.m */; };
 		A67E44B62112A4810092DB00 /* UMLicenseWebConvert.h in Headers */ = {isa = PBXBuildFile; fileRef = A67E44B42112A4810092DB00 /* UMLicenseWebConvert.h */; };
+		A67E44B92112F1490092DB00 /* UMLicenseWebGet.h in Headers */ = {isa = PBXBuildFile; fileRef = A67E44B72112F1490092DB00 /* UMLicenseWebGet.h */; };
+		A67E44BA2112F1490092DB00 /* UMLicenseWebGet.m in Sources */ = {isa = PBXBuildFile; fileRef = A67E44B82112F1490092DB00 /* UMLicenseWebGet.m */; };
+		A67E44BD2112F1940092DB00 /* UMLicenseWebUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = A67E44BB2112F1940092DB00 /* UMLicenseWebUpdate.h */; };
+		A67E44BE2112F1940092DB00 /* UMLicenseWebUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = A67E44BC2112F1940092DB00 /* UMLicenseWebUpdate.m */; };
 		A6B024E520BEECB5006779BA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024E420BEECB5006779BA /* ulib.framework */; };
 		A6B024E620BEECB5006779BA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024E420BEECB5006779BA /* ulib.framework */; };
 		A6B024FC20BEED6E006779BA /* uliblicense.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B024FB20BEED6E006779BA /* uliblicense.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -124,6 +128,10 @@
 		A67A283E20C69EC6001BB7A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A67E44B32112A4810092DB00 /* UMLicenseWebConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMLicenseWebConvert.m; sourceTree = "<group>"; };
 		A67E44B42112A4810092DB00 /* UMLicenseWebConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMLicenseWebConvert.h; sourceTree = "<group>"; };
+		A67E44B72112F1490092DB00 /* UMLicenseWebGet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseWebGet.h; sourceTree = "<group>"; };
+		A67E44B82112F1490092DB00 /* UMLicenseWebGet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseWebGet.m; sourceTree = "<group>"; };
+		A67E44BB2112F1940092DB00 /* UMLicenseWebUpdate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseWebUpdate.h; sourceTree = "<group>"; };
+		A67E44BC2112F1940092DB00 /* UMLicenseWebUpdate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseWebUpdate.m; sourceTree = "<group>"; };
 		A6B024E420BEECB5006779BA /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = /Library/Frameworks/ulib.framework; sourceTree = "<absolute>"; };
 		A6B024F920BEED6E006779BA /* libuliblicense.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuliblicense.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6B024FB20BEED6E006779BA /* uliblicense.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uliblicense.h; sourceTree = "<group>"; };
@@ -293,6 +301,10 @@
 				A6B0250220BEED9D006779BA /* UMLicenseProductFeature.m */,
 				A67E44B42112A4810092DB00 /* UMLicenseWebConvert.h */,
 				A67E44B32112A4810092DB00 /* UMLicenseWebConvert.m */,
+				A67E44B72112F1490092DB00 /* UMLicenseWebGet.h */,
+				A67E44B82112F1490092DB00 /* UMLicenseWebGet.m */,
+				A67E44BB2112F1940092DB00 /* UMLicenseWebUpdate.h */,
+				A67E44BC2112F1940092DB00 /* UMLicenseWebUpdate.m */,
 			);
 			path = uliblicense;
 			sourceTree = "<group>";
@@ -349,9 +361,11 @@
 				A629A7A820C5585A008F3CE8 /* UMLegacyLicense.h in Headers */,
 				A67E44B62112A4810092DB00 /* UMLicenseWebConvert.h in Headers */,
 				A652E12F20C7B30D00CDA5EF /* UMLicenseRefreshDelegateProtocol.h in Headers */,
+				A67E44BD2112F1940092DB00 /* UMLicenseWebUpdate.h in Headers */,
 				A67A283620C6903E001BB7A3 /* UMLicenseFile.h in Headers */,
 				A6DBF0E020C01EA600B38DAF /* UMLicenseProductFeatureList.h in Headers */,
 				A6DD2C3420C1B85500FFFD00 /* UMEncryptedLicense.h in Headers */,
+				A67E44B92112F1490092DB00 /* UMLicenseWebGet.h in Headers */,
 				A6DBF0CE20C005C600B38DAF /* UMLicenseRestriction.h in Headers */,
 				A67A282020C66958001BB7A3 /* UMLicenseProductList.h in Headers */,
 				A6DBF0EA20C0259B00B38DAF /* UMSignedLicense.h in Headers */,
@@ -523,10 +537,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A67E44BA2112F1490092DB00 /* UMLicenseWebGet.m in Sources */,
 				A6DD2C3520C1B85500FFFD00 /* UMEncryptedLicense.m in Sources */,
 				A67A283320C689F7001BB7A3 /* UMLicenseDirectory.m in Sources */,
 				A6DBF0E420C01EA600B38DAF /* UMLicenseProductFeatureList.m in Sources */,
 				A6B0250F20BEED9E006779BA /* UMLicense.m in Sources */,
+				A67E44BE2112F1940092DB00 /* UMLicenseWebUpdate.m in Sources */,
 				A67A283720C6903E001BB7A3 /* UMLicenseFile.m in Sources */,
 				A629A7A920C5585A008F3CE8 /* UMLegacyLicense.m in Sources */,
 				A6DBF0EE20C0259B00B38DAF /* UMSignedLicense.m in Sources */,

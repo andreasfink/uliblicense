@@ -1,19 +1,19 @@
 //
-//  UMLicenseWebConvert.m
-//  mmconvert
+//  UMLicenseWebGet.m
+//  uliblicense
 //
 //  Created by Andreas Fink on 02.08.18.
 //
 
-#import "UMLicenseWebConvert.h"
+#import "UMLicenseWebGet.h"
 
-@implementation UMLicenseWebConvert
+@implementation UMLicenseWebGet
 
 - (void)start
 {
     NSData *data = [NSData dataWithContentsOfFile:_inputFilename];
     NSString *input = [data urlencode];
-    NSString *url = [NSString stringWithFormat:@"https://license.messagemover.com/convert.php?input=%@",input];
+    NSString *url = [NSString stringWithFormat:@"https://license.messagemover.com/get.php?input=%@",input];
     UMHTTPClient *webClient = [[UMHTTPClient alloc]init];
     UMHTTPClientRequest *req = [[UMHTTPClientRequest alloc]init];
     req.urlString = url;
