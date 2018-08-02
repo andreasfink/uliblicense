@@ -17,7 +17,7 @@ int main(int argc, const char * argv[])
         NSDictionary *appDefinition = @
         {
             @"version" : @(VERSION),
-            @"executable" : @"mmdisplay",
+            @"executable" : @"mmconvert",
             @"run-as" : @(argv[0]),
             @"copyright" : @"© 2018 Andreas Fink",
         };
@@ -75,7 +75,14 @@ int main(int argc, const char * argv[])
                                                @"long"  : @"--signature-key",
                                                @"argument" : @"keyfile",
                                                @"help"  : @"use indicated signature key file",
-                                            }];
+                                            },
+                                           @{
+                                               @"name"  : @"web-convert",
+                                               @"short" : @"-w",
+                                               @"long"  : @"--web-convert",
+                                               @"help"  : @"convert license file using online method",
+                                               }];
+
 
         UMCommandLine *_commandLine = [[UMCommandLine alloc]initWithCommandLineDefintion:commandLineDefinition
                                                                            appDefinition:appDefinition
@@ -88,7 +95,7 @@ int main(int argc, const char * argv[])
         NSString *encryptionKey = NULL;
         NSString *signatureKey = NULL;
         NSString *outputLicenseFileName = NULL;
-        
+        BOOL webConvert = NO;
         if(params[@"encryption-key"])
         {
             NSArray *filenames = params[@"encryption-key"];
@@ -111,6 +118,11 @@ int main(int argc, const char * argv[])
                 email = emails[0];
             }
         }
+        if(params[@"webConvert"])
+        {
+            webConvert=YES;
+        }
+
         if(params[@"signature-key"])
         {
             NSArray *filenames = params[@"signature-key"];
@@ -125,13 +137,13 @@ int main(int argc, const char * argv[])
                 }
             }
         }
-        if(encryptionKey==NULL)
+        if((encryptionKey==NULL) && (webConvert==NO))
         {
             fprintf(stderr,"encryption key is mandatory\n");
             exit(-1);
         }
 
-        if(signatureKey==NULL)
+        if((signatureKey==NULL)  && (webConvert==NO))
         {
             fprintf(stderr,"signature key is mandatory\n");
             exit(-1);
@@ -146,8 +158,20 @@ int main(int argc, const char * argv[])
             }
         }
 
-
-        if(params[@"input"])
+        if(webConvert)
+        {
+            NSArray *filenames = params[@"input"];
+            for(NSString *filename in filenames)
+            {
+                UMLicenseWebConvert *webConvertor = [[UMLicenseWebConvert alloc]init];
+                webConvertor.inputFilename = filename;
+                webConvertor.outputFilename = [NSString stringWithFormat:"%@-converted.license",filename];
+                fprintf(stdout,"online converting '%s' to '%s'\n",filename.UTF8String,webConvertor.outputFilename.UTF8String);
+                [webConvertor start];
+                [webConvertor waitUntilDone];
+            }
+        }
+        else if(params[@"input"])
         {
             NSArray *filenames = params[@"input"];
             for(NSString *filename in filenames)
@@ -342,11 +366,11 @@ int main(int argc, const char * argv[])
                     [data writeToFile:outputLicenseFileName atomically:YES];
                 }
             }
+            [licdir decryptLicenses];
+            [licdir validateSignatures];
+            NSString *d = licdir.description;
+            fprintf(stdout,"%s",d.UTF8String);
         }
-        [licdir decryptLicenses];
-        [licdir validateSignatures];
-        NSString *d = licdir.description;
-        fprintf(stdout,"%s",d.UTF8String);
     }
     return 0;
 }

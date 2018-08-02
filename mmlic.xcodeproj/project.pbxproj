@@ -32,6 +32,8 @@
 		A67A284520C69EE5001BB7A3 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F36B15147254BE006F5AF0 /* IOKit.framework */; };
 		A67A284620C69EE9001BB7A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F36B071472525E006F5AF0 /* Foundation.framework */; };
 		A67A284720C69EF0001BB7A3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024F920BEED6E006779BA /* libuliblicense.a */; };
+		A67E44B52112A4810092DB00 /* UMLicenseWebConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = A67E44B32112A4810092DB00 /* UMLicenseWebConvert.m */; };
+		A67E44B62112A4810092DB00 /* UMLicenseWebConvert.h in Headers */ = {isa = PBXBuildFile; fileRef = A67E44B42112A4810092DB00 /* UMLicenseWebConvert.h */; };
 		A6B024E520BEECB5006779BA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024E420BEECB5006779BA /* ulib.framework */; };
 		A6B024E620BEECB5006779BA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024E420BEECB5006779BA /* ulib.framework */; };
 		A6B024FC20BEED6E006779BA /* uliblicense.h in Headers */ = {isa = PBXBuildFile; fileRef = A6B024FB20BEED6E006779BA /* uliblicense.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -120,6 +122,8 @@
 		A67A283520C6903E001BB7A3 /* UMLicenseFile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseFile.m; sourceTree = "<group>"; };
 		A67A283C20C69EC6001BB7A3 /* mmdisplay */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mmdisplay; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67A283E20C69EC6001BB7A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A67E44B32112A4810092DB00 /* UMLicenseWebConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMLicenseWebConvert.m; sourceTree = "<group>"; };
+		A67E44B42112A4810092DB00 /* UMLicenseWebConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMLicenseWebConvert.h; sourceTree = "<group>"; };
 		A6B024E420BEECB5006779BA /* ulib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ulib.framework; path = /Library/Frameworks/ulib.framework; sourceTree = "<absolute>"; };
 		A6B024F920BEED6E006779BA /* libuliblicense.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libuliblicense.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6B024FB20BEED6E006779BA /* uliblicense.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uliblicense.h; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 				A6DBF0E520C01EC800B38DAF /* UMLicenseProducFeature.asn */,
 				A6B0250420BEED9E006779BA /* UMLicenseProductFeature.h */,
 				A6B0250220BEED9D006779BA /* UMLicenseProductFeature.m */,
+				A67E44B42112A4810092DB00 /* UMLicenseWebConvert.h */,
+				A67E44B32112A4810092DB00 /* UMLicenseWebConvert.m */,
 			);
 			path = uliblicense;
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 				A6DBF0D320C00AA900B38DAF /* UMLicenseRestrictionList.h in Headers */,
 				A6B024FC20BEED6E006779BA /* uliblicense.h in Headers */,
 				A629A7A820C5585A008F3CE8 /* UMLegacyLicense.h in Headers */,
+				A67E44B62112A4810092DB00 /* UMLicenseWebConvert.h in Headers */,
 				A652E12F20C7B30D00CDA5EF /* UMLicenseRefreshDelegateProtocol.h in Headers */,
 				A67A283620C6903E001BB7A3 /* UMLicenseFile.h in Headers */,
 				A6DBF0E020C01EA600B38DAF /* UMLicenseProductFeatureList.h in Headers */,
@@ -526,6 +533,7 @@
 				A6B0250B20BEED9E006779BA /* UMLicenseProductFeature.m in Sources */,
 				A6DBF0D420C00AA900B38DAF /* UMLicenseRestrictionList.m in Sources */,
 				A6DBF0CF20C005C600B38DAF /* UMLicenseRestriction.m in Sources */,
+				A67E44B52112A4810092DB00 /* UMLicenseWebConvert.m in Sources */,
 				A6B024FE20BEED6E006779BA /* uliblicense.m in Sources */,
 				A6B0251620BEED9E006779BA /* UMLicenseProduct.m in Sources */,
 				A67A282120C66958001BB7A3 /* UMLicenseProductList.m in Sources */,

@@ -20,5 +20,6 @@
 #import "UMLicenseProductList.h"
 #import "UMLicenseDirectory.h"
 #import "UMLicenseFile.h"
+#import "UMLicenseWebConvert.h"
 
 
