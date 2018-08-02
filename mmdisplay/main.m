@@ -115,10 +115,12 @@ static NSString *signatureVerificationKey =
 @"9pMtlL+dxhHFu1htzO3u2M8D3u9VQ3jgcKgKsPlJ83RiyV2yJ5r0zCEmAA==\n"
 @"-----END RSA PRIVATE KEY-----\n";
 
-int main(int argc, const char * argv[]) {
+int main(int argc, const char * argv[])
+{
     @autoreleasepool
     {
-        NSDictionary *appDefinition = @ {
+        NSDictionary *appDefinition = @
+        {
             @"version" : @(VERSION),
             @"executable" : @"mmdisplay",
             @"run-as" : @(argv[0]),
@@ -234,7 +236,7 @@ int main(int argc, const char * argv[]) {
         }
         [licdir decryptLicenses];
         [licdir validateSignatures];
-        NSString *d = licdir.description;
+        NSString *d = licdir.jsonString;
         fprintf(stdout,"%s",d.UTF8String);
     }
     return 0;

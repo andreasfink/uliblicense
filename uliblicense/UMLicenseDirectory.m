@@ -386,6 +386,22 @@
 }
 
 
+- (NSString *)jsonString
+{
+    [_lock lock];
+    NSArray *lfs = [_licenseFiles copy];
+    [_lock unlock];
+    NSMutableArray *arr = [[NSMutableArray alloc]init];
+    for(UMLicenseFile *lf in lfs)
+    {
+        UMSignedLicense *sl = lf.signedLicense;
+        UMLicense *lic = sl.license;
+        id o = [lic objectValue];
+        [arr addObject:o];
+    }
+    return [arr jsonString];
+}
+
 - (void)refreshLicenses
 {
     NSMutableDictionary *toUpdateAddress = [[NSMutableDictionary alloc]init];

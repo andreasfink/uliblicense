@@ -37,6 +37,7 @@
 - (void)startAutoRefresh;
 - (void)stopAutoRefresh;
 - (BOOL)validateRestrictions;
+- (NSString *)jsonString;
 
 @end
 
