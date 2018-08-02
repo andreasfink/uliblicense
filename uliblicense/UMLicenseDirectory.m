@@ -399,7 +399,11 @@
         id o = [lic objectValue];
         [arr addObject:o];
     }
-    return [arr jsonString];
+
+    UMJsonWriter *writer = [[UMJsonWriter alloc]init];
+    writer.humanReadable = YES;
+    NSString *string =  [writer stringWithObject:arr];
+    return string;
 }
 
 - (void)refreshLicenses
