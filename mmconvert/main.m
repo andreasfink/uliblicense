@@ -165,7 +165,7 @@ int main(int argc, const char * argv[])
             {
                 UMLicenseWebConvert *webConvertor = [[UMLicenseWebConvert alloc]init];
                 webConvertor.inputFilename = filename;
-                webConvertor.outputFilename = [NSString stringWithFormat:"%@-converted.license",filename];
+                webConvertor.outputFilename = [NSString stringWithFormat:@"%@-converted.license",filename];
                 fprintf(stdout,"online converting '%s' to '%s'\n",filename.UTF8String,webConvertor.outputFilename.UTF8String);
                 [webConvertor start];
                 [webConvertor waitUntilDone];
