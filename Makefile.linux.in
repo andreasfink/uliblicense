@@ -62,19 +62,6 @@ install:  build/mminfo build/mmdisplay build/mmlicense build/libuliblicense.a
 	install -b -g bin -o root -m 755 build/mmdisplay                                $(DESTDIR)/usr/local/bin/mmdisplay
 	install -b -g bin -o root -m 755 build/mmconvert                                $(DESTDIR)/usr/local/bin/mmconvert
 	install -b -g bin -o root -m 644 build/libuliblicense.a                         $(DESTDIR)/usr/local/lib/libuliblicense.a
-	install -b -g bin -o root -m 644 uliblicense/uliblicense.h                      $(DESTDIR)/usr/local/include/uliblicense/uliblicense.h
-	install -b -g bin -o root -m 644 uliblicense/UMEncryptedLicense.h               $(DESTDIR)/usr/local/include/uliblicense/UMEncryptedLicense.h   
-	install -b -g bin -o root -m 644 uliblicense/UMLegacyLicense.h                  $(DESTDIR)/usr/local/include/uliblicense/UMLegacyLicense.h      
-	install -b -g bin -o root -m 644 uliblicense/UMLicense.h                        $(DESTDIR)/usr/local/include/uliblicense/UMLicense.h            
-	install -b -g bin -o root -m 644 uliblicense/UMLicenseDirectory.h               $(DESTDIR)/usr/local/include/uliblicense/UMLicenseDirectory.h   
-	install -b -g bin -o root -m 644 uliblicense/UMLicenseFile.h                    $(DESTDIR)/usr/local/include/uliblicense/UMLicenseFile.h        
-	install -b -g bin -o root -m 644 uliblicense/UMLicenseProduct.h                 $(DESTDIR)/usr/local/include/uliblicense/UMLicenseProduct.h     
-	install -b -g bin -o root -m 644 uliblicense/UMLicenseProductFeature.h          $(DESTDIR)/usr/local/include/uliblicense/UMLicenseProductFeature.h  
-	install -b -g bin -o root -m 644 uliblicense/UMLicenseProductFeatureList.h      $(DESTDIR)/usr/local/include/uliblicense/UMLicenseProductFeatureList.h
-	install -b -g bin -o root -m 644 uliblicense/UMLicenseProductList.h             $(DESTDIR)/usr/local/include/uliblicense/UMLicenseProductList.h
-	install -b -g bin -o root -m 644 uliblicense/UMLicenseRefreshDelegateProtocol.h $(DESTDIR)/usr/local/include/uliblicense/UMLicenseRefreshDelegateProtocol.h
-	install -b -g bin -o root -m 644 uliblicense/UMLicenseRestriction.h             $(DESTDIR)/usr/local/include/uliblicense/UMLicenseRestriction.h
-	install -b -g bin -o root -m 644 uliblicense/UMLicenseRestrictionList.h         $(DESTDIR)/usr/local/include/uliblicense/UMLicenseRestrictionList.h
-	install -b -g bin -o root -m 644 uliblicense/UMSignedLicense.h                  $(DESTDIR)/usr/local/include/uliblicense/UMSignedLicense.h
+	cp uliblicense/*.h								$(DESTDIR)/usr/local/include/uliblicense/
 	-install -b -g root -o root -m 644 ${PKGCONFIGFILE} ${DESTDIR}/usr/local/lib/pkgconfig/
 
