@@ -55,7 +55,7 @@ clean:
 
 install:  build/mminfo build/mmdisplay build/mmlicense build/libuliblicense.a
 	mkdir -p $(DESTDIR)/usr/local/bin/
-	mkdir -p $(DESTDIR)/usr/local/lib/
+	mkdir -p $(DESTDIR)/usr/local/lib/pkginfo
 	mkdir -p $(DESTDIR)/usr/local/include/uliblicense
 	install -b -g bin -o root -m 755 build/mminfo                                   $(DESTDIR)/usr/local/bin/mminfo
 	install -b -g bin -o root -m 755 build/mmlicense                                $(DESTDIR)/usr/local/bin/mmlicense
