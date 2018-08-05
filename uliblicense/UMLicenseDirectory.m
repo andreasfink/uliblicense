@@ -20,7 +20,7 @@
     _licenseDecryptionKeys = [[NSMutableArray alloc] init];
     _licenseSignatureKeys = [[NSMutableArray alloc] init];
     _lock = [[UMMutex alloc]initWithName:@"umlicense-lock"];
-    _licenseDirectory = @"/etc/umlicense/";
+    _licenseDirectory = @"/opt/uliblicense/";
     _timer = [[UMTimer alloc]initWithTarget:self
                                    selector:@selector(refreshLicenses)
                                      object:NULL

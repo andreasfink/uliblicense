@@ -43,7 +43,5 @@ typedef enum UMLicense_EncryptionVariant
 
 - (BOOL)isSignatureValidForKeys:(NSArray *)keys; /* verifies _hashData against _signature */
 
-- (BOOL)validateRestrictions;
-
 @end
 
