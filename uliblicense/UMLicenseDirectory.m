@@ -66,12 +66,21 @@
     {
         path = _licenseDirectory;
     }
+    if(_debug)
+    {
+        fprintf(stderr,"DEBUG: scanDirectoryForLicenseFiles('%s'\n",path.UTF8String);
+    }
+
     [_lock lock];
     NSFileManager *mgr = [NSFileManager defaultManager];
     for (NSString *filePath in [mgr enumeratorAtPath:path])
     {
         NSError *err = nil;
         NSString *fullPath = [path stringByAppendingPathComponent:filePath];
+        if(_debug)
+        {
+            fprintf(stderr,"DEBUG: pocessing item '%s'\n",fullPath.UTF8String);
+        }
         NSDictionary *itemInfo = [mgr attributesOfItemAtPath:fullPath error:&err];
         if (itemInfo)
         {
