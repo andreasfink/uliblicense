@@ -352,11 +352,15 @@
     
     if(osValid && valid)
     {
+        if(_debug)
+        {
+            fprintf(stderr,"DEBUG: license restrictions considered valid\n");
+        }
         return YES;
     }
     if(_debug)
     {
-        fprintf(stderr,"DEBUG: license restriction doesnt match\n");
+        fprintf(stderr,"DEBUG: license restriction considered invalid\n");
     }
     return NO;
 }
@@ -429,6 +433,9 @@
         UMSignedLicense *sl = lf.signedLicense;
         UMLicense *lic = sl.license;
         id o = [lic objectValue];
+        UMSynchronizedSortedDictionary *d = [[UMSynchronizedSortedDictionary alloc]init];
+        d[@"license"] = o;
+        d["is-considered-valid"] = @lic.
         [arr addObject:o];
     }
 
