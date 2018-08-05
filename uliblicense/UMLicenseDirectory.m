@@ -433,9 +433,6 @@
         UMSignedLicense *sl = lf.signedLicense;
         UMLicense *lic = sl.license;
         id o = [lic objectValue];
-        UMSynchronizedSortedDictionary *d = [[UMSynchronizedSortedDictionary alloc]init];
-        d[@"license"] = o;
-        d["is-considered-valid"] = @lic.
         [arr addObject:o];
     }
 

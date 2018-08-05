@@ -24,7 +24,7 @@ typedef enum UMLicense_EncryptionVariant
     NSData              *_signature;
     UMLicense_EncryptionVariant _variant;
     NSString            *_plaintext;
-    BOOL                isValid;
+    BOOL                _isValid;
 }
 
 @property(readwrite,strong) UMLicense           *license;
@@ -33,6 +33,7 @@ typedef enum UMLicense_EncryptionVariant
 @property(readwrite,strong) NSData          *signature;
 @property(readwrite,assign) UMLicense_EncryptionVariant variant;
 @property(readwrite,strong) NSString        *plaintext;
+@property(readwrite,assign) BOOL            isValid;
 
 - (void)decryptLicenseWithKeys:(NSArray *)keys;
 - (void)encryptLicenseWithRSAPublicKey:(NSString *)privateKey;
@@ -41,6 +42,8 @@ typedef enum UMLicense_EncryptionVariant
 - (BOOL)isSignatureValidForRSAPrivateKey:(NSString *)privateKey; /* verifies _hashData against _signature */
 
 - (BOOL)isSignatureValidForKeys:(NSArray *)keys; /* verifies _hashData against _signature */
+
+- (BOOL)validateRestrictions;
 
 @end
 

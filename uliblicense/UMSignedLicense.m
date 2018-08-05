@@ -173,7 +173,7 @@
     {
         if( [self isSignatureValidForRSAPrivateKey:key])
         {
-            isValid=YES;
+            _isValid=YES;
             return YES;
         }
     }
