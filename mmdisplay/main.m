@@ -181,7 +181,7 @@ int main(int argc, const char * argv[])
 
         if(params[@"debug"])
         {
-            ligcdir.debug=YES;
+            licdir.debug=YES;
         }
 
         if(params[@"key"])
