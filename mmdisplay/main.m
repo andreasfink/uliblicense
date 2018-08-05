@@ -246,6 +246,10 @@ int main(int argc, const char * argv[])
                 }
             }
         }
+        else
+        {
+            [licdir scanDirectoryForLicenseFiles:@"/opt/uliblicense"];
+        }
         [licdir decryptLicenses];
         [licdir validateSignatures];
         NSString *d = licdir.jsonString;
