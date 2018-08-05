@@ -51,7 +51,12 @@
 
 - (id) objectValue
 {
-    return [_sequenceEntries copy];
+    NSMutableArray *arr = [[NSMutableArray alloc]init];
+    for(UMLicenseRestriction *p in _sequenceEntries)
+    {
+        [arr addObject:p.objectValue];
+    }
+    return arr;
 }
 
 - (NSUInteger)count
