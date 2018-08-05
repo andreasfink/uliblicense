@@ -109,7 +109,7 @@
     else
     {
         @throw([NSException exceptionWithName:@"PARAMETER_ENCODING_ERROR"
-                                       reason:@"UMSignedLicense unknown variant"
+                                       reason:[NSString stringWithFormat:@"UMSignedLicense unknown variant (%d)",_variant]
                                      userInfo:@{    @"backtrace": UMBacktrace(NULL,0)}]);
     }
 }
