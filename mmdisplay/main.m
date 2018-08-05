@@ -166,7 +166,14 @@ int main(int argc, const char * argv[])
                                                @"long"  : @"--signature-verification-key",
                                                @"argument" : @"keyfile",
                                                @"help"  : @"signature verification key file"
+                                               },
+                                           @{
+                                               @"name"  : @"debug",
+                                               @"short" : @"-d",
+                                               @"long"  : @"--debug",
+                                               @"help"  : @"debug output"
                                                }];
+
         
         UMCommandLine *_commandLine = [[UMCommandLine alloc]initWithCommandLineDefintion:commandLineDefinition
                                                                            appDefinition:appDefinition
