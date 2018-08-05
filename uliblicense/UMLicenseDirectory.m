@@ -79,12 +79,27 @@
             {
                 if([fullPath hasSuffix:@".license"])
                 {
-                    UMLicenseFile *licenseFile = [[UMLicenseFile alloc]initWithFilename:fullPath];
+                    UMLicenseFile *licenseFile = [[UMLicenseFile alloc]initWithFilename:fullPath debug:_debug];
                     if(licenseFile)
                     {
                         [self addLicenseFile:licenseFile];
                     }
                 }
+                else
+                {
+                    if(_debug)
+                    {
+                        fprintf(stderr,"DEBUG: '%s' ignored. Filename is not ending in .license\n",fullPath.UTF8String);
+                    }
+                }
+            }
+            else
+            {
+                if(_debug)
+                {
+                    fprintf(stderr,"DEBUG: '%s' ignored. Its not a regular file\n",fullPath.UTF8String);
+                }
+
             }
         }
     }
@@ -141,7 +156,11 @@
             }
             @catch(NSException *e)
             {
-                
+                if(_debug)
+                {
+                    NSString *s = e.description;
+                    fprintf(stderr,"DEBUG: can not decrypt license: %s\n",s.UTF8String);
+                }
             }
         }
         if(slic.license == NULL)
@@ -325,6 +344,10 @@
     if(osValid && valid)
     {
         return YES;
+    }
+    if(_debug)
+    {
+        fprintf(stderr,"DEBUG: license restriction doesnt match\n");
     }
     return NO;
 }

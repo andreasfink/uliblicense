@@ -179,6 +179,11 @@ int main(int argc, const char * argv[])
         [licdir addDecryptionKey:decryptionKey];
         [licdir addSignatureVerificationKey:signatureVerificationKey];
 
+        if(params[@"debug"])
+        {
+            ligcdir.debug=YES;
+        }
+
         if(params[@"key"])
         {
             NSArray *filenames = params[@"key"];

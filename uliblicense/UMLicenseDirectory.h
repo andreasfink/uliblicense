@@ -21,10 +21,12 @@
     UMTimer *_timer;
     id<UMLicenseRefreshDelegateProtocol> _updateByAddressDelegate;
     NSDictionary *_productHttpParameters;
+    BOOL _debug;
 }
 
 @property(readwrite,strong)    id<UMLicenseRefreshDelegateProtocol> updateByAddressDelegate;
 @property(readwrite,strong)     NSDictionary *productHttpParameters;
+@property(readwrite,assign)  BOOL debug;
 
 - (void)scanDirectoryForLicenseFiles:(NSString *)path;
 - (void)addLicenseFile:(UMLicenseFile *)licenseFile;

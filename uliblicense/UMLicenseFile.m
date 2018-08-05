@@ -12,8 +12,14 @@
 
 @implementation UMLicenseFile
 
-
 - (UMLicenseFile *)initWithFilename:(NSString *)filename
+{
+    return [self initWithFilename:filename debug:NO];
+
+}
+
+- (UMLicenseFile *)initWithFilename:(NSString *)filename debug:(BOOL)dbg
+
 {
     self = [super init];
     if(self)
@@ -21,9 +27,14 @@
         _lastRefresh =[NSDate date];
         _fullPath = filename;
         _shortName = [filename lastPathComponent];
+        _debug = dbg;
         NSData *d = [NSData dataWithContentsOfFile:_fullPath];
         if(d==NULL)
         {
+            if(_debug)
+            {
+                fprintf(stderr,"DEBUG: unabled to read file '%s'\n",_fullPath.UTF8String);
+            }
             return NULL;
         }
         NSUInteger i=0;
@@ -31,6 +42,10 @@
         UMSignedLicense *slic = [[UMSignedLicense alloc]initWithASN1Object:o context:NULL];
         if(slic == NULL)
         {
+            if(_debug)
+            {
+                fprintf(stderr,"DEBUG: unabled to decode ASN1 of file '%s'\n",_fullPath.UTF8String);
+            }
             return NULL;
         }
         _signedLicense = slic;

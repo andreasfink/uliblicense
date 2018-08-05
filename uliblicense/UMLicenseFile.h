@@ -16,6 +16,7 @@
     NSString *_shortName;
     NSDate *_lastRefresh;
     NSDate *_nextUpdate;
+    BOOL    _debug;
 }
 
 @property(readwrite,strong) UMSignedLicense *signedLicense;
@@ -23,7 +24,9 @@
 @property(readwrite,strong) NSString *shortName;
 @property(readwrite,strong) NSDate *lastRefresh;
 @property(readwrite,strong) NSDate *nextUpdate;
+@property(readwrite,assign) BOOL debug;
 
+- (UMLicenseFile *)initWithFilename:(NSString *)filename debug:(BOOL)dbg;
 - (UMLicenseFile *)initWithFilename:(NSString *)filename;
 - (void)updateData:(NSData *)data;
 - (void)updateTimeIntervals;
