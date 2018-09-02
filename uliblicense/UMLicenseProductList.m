@@ -13,8 +13,8 @@
 - (void) processBeforeEncode
 {
     [super processBeforeEncode];
-    asn1_tag.isConstructed=YES;
-    asn1_list = [[NSMutableArray alloc]init];
+    _asn1_tag.isConstructed=YES;
+    _asn1_list = [[NSMutableArray alloc]init];
     if(_productDict)
     {
         NSArray *_productDictKey = [_productDict allKeys];
@@ -24,7 +24,7 @@
             [p processBeforeEncode];
             p.asn1_tag.tagNumber = 0;
             p.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-            [asn1_list addObject:p];
+            [_asn1_list addObject:p];
         }
     }
 }

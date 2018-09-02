@@ -55,8 +55,8 @@ UMEncryptedLicense ::= SEQUENCE {
 - (void) processBeforeEncode
 {
     [super processBeforeEncode];
-    asn1_tag.isConstructed=YES;
-    asn1_list = [[NSMutableArray alloc]init];    
+    _asn1_tag.isConstructed=YES;
+    _asn1_list = [[NSMutableArray alloc]init];    
     if(_encryptionMethod)
     {
         UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_encryptionMethod];
@@ -64,7 +64,7 @@ UMEncryptedLicense ::= SEQUENCE {
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         utf8.asn1_tag.tagNumber = 0;
-        [asn1_list addObject:utf8];
+        [_asn1_list addObject:utf8];
     }
     else
     {
@@ -78,7 +78,7 @@ UMEncryptedLicense ::= SEQUENCE {
         [o processBeforeEncode];
         o.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         o.asn1_tag.tagNumber = 1;
-        [asn1_list addObject:o];
+        [_asn1_list addObject:o];
     }
     if(_encryptedData)
     {
@@ -86,7 +86,7 @@ UMEncryptedLicense ::= SEQUENCE {
         [o processBeforeEncode];
         o.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         o.asn1_tag.tagNumber =2;
-        [asn1_list addObject:o];
+        [_asn1_list addObject:o];
     }
 }
 

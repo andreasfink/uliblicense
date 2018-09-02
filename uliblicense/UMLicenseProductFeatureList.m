@@ -13,8 +13,8 @@
 - (void) processBeforeEncode
 {
     [super processBeforeEncode];
-    asn1_tag.isConstructed=YES;
-    asn1_list = [[NSMutableArray alloc]init];
+    _asn1_tag.isConstructed=YES;
+    _asn1_list = [[NSMutableArray alloc]init];
     if(_featuresDict)
     {
         NSArray *_featuresDictKey = [_featuresDict allKeys];
@@ -23,7 +23,7 @@
             UMLicenseProductFeature *f = _featuresDict[key];
             f.asn1_tag.tagNumber = 0;
             f.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-            [asn1_list addObject:f];
+            [_asn1_list addObject:f];
         }
     }
 }
