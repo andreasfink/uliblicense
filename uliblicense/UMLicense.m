@@ -19,15 +19,15 @@
 - (void) processBeforeEncode
 {
     [super processBeforeEncode];
-    asn1_tag.isConstructed=YES;
-    asn1_list = [[NSMutableArray alloc]init];
+    _asn1_tag.isConstructed=YES;
+    _asn1_list = [[NSMutableArray alloc]init];
     if(_licenseSerialNumber)
     {
         UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_licenseSerialNumber];
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagNumber = 0;
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:utf8];
+        [_asn1_list addObject:utf8];
     }
     else
     {
@@ -41,7 +41,7 @@
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagNumber = 1;
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:utf8];
+        [_asn1_list addObject:utf8];
     }
     else
     {
@@ -55,7 +55,7 @@
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagNumber = 2;
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:utf8];
+        [_asn1_list addObject:utf8];
     }
     else
     {
@@ -68,14 +68,14 @@
         [_licenseRestrictions processBeforeEncode];
         _licenseRestrictions.asn1_tag.tagNumber = 3;
         _licenseRestrictions.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:_licenseRestrictions];
+        [_asn1_list addObject:_licenseRestrictions];
     }
     if(_licenseProducts)
     {
         [_licenseProducts processBeforeEncode];
         _licenseProducts.asn1_tag.tagNumber = 4;
         _licenseProducts.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:_licenseProducts];
+        [_asn1_list addObject:_licenseProducts];
     }
     else
     {
@@ -89,7 +89,7 @@
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagNumber = 5;
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:utf8];
+        [_asn1_list addObject:utf8];
     }
     else
     {
@@ -97,7 +97,7 @@
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagNumber = 5;
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:utf8];
+        [_asn1_list addObject:utf8];
     }
     if(_licenseRenewUrl)
     {
@@ -105,7 +105,7 @@
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagNumber = 6;
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:utf8];
+        [_asn1_list addObject:utf8];
     }
     if(_licenseRenewAddress)
     {
@@ -113,7 +113,7 @@
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagNumber = 7;
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:utf8];
+        [_asn1_list addObject:utf8];
     }
     if(_licenseRenewTimerMin!=NULL)
     {
@@ -121,7 +121,7 @@
         [asn1int processBeforeEncode];
         asn1int.asn1_tag.tagNumber = 8;
         asn1int.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:asn1int];
+        [_asn1_list addObject:asn1int];
     }
     if(_licenseRenewTimerMax!=NULL)
     {
@@ -129,7 +129,7 @@
         [asn1int processBeforeEncode];
         asn1int.asn1_tag.tagNumber = 9;
         asn1int.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:asn1int];
+        [_asn1_list addObject:asn1int];
     }
     if(_licenseEmail)
     {
@@ -137,7 +137,7 @@
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagNumber = 10;
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:utf8];
+        [_asn1_list addObject:utf8];
     }
     else
     {

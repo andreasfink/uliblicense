@@ -23,14 +23,14 @@
 - (void) processBeforeEncode
 {
     [super processBeforeEncode];
-    asn1_tag.isConstructed=YES;
-    asn1_list = [[NSMutableArray alloc]init];
+    _asn1_tag.isConstructed=YES;
+    _asn1_list = [[NSMutableArray alloc]init];
     if(_featureName)
     {
         UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_featureName];
         utf8.asn1_tag.tagNumber = 0;
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:utf8];
+        [_asn1_list addObject:utf8];
     }
     else
     {
@@ -43,7 +43,7 @@
         UMASN1OctetString *o = [[UMASN1OctetString alloc]initWithValue:_featureData];
         o.asn1_tag.tagNumber = 0;
         o.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:o];
+        [_asn1_list addObject:o];
     }
 }
 

@@ -18,11 +18,11 @@
 - (void) processBeforeEncode
 {
     [super processBeforeEncode];
-    asn1_tag.isConstructed=YES;
-    asn1_list = [[NSMutableArray alloc]init];
+    _asn1_tag.isConstructed=YES;
+    _asn1_list = [[NSMutableArray alloc]init];
     
-    asn1_tag.tagNumber = 0;
-    asn1_tag.tagClass = UMASN1Class_Application;
+    _asn1_tag.tagNumber = 0;
+    _asn1_tag.tagClass = UMASN1Class_Application;
 
     if((_license == NULL) && (_encryptedLicense==NULL))
     {
@@ -36,14 +36,14 @@
         [_license processBeforeEncode];
         _license.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         _license.asn1_tag.tagNumber = 0;
-        [asn1_list addObject:_license];
+        [_asn1_list addObject:_license];
     }
     if(_encryptedLicense)
     {
         [_encryptedLicense processBeforeEncode];
         _encryptedLicense.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         _encryptedLicense.asn1_tag.tagNumber = 1;
-        [asn1_list addObject:_encryptedLicense];
+        [_asn1_list addObject:_encryptedLicense];
     }
     if(_hashData)
     {
@@ -51,7 +51,7 @@
         [o processBeforeEncode];
         o.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         o.asn1_tag.tagNumber =2;
-        [asn1_list addObject:o];
+        [_asn1_list addObject:o];
     }
     if(_signature)
     {
@@ -59,7 +59,7 @@
         [o processBeforeEncode];
         o.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         o.asn1_tag.tagNumber =3;
-        [asn1_list addObject:o];
+        [_asn1_list addObject:o];
     }
     else
     {
@@ -73,7 +73,7 @@
     [v processBeforeEncode];
     v.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
     v.asn1_tag.tagNumber = 4;
-    [asn1_list addObject:v];
+    [_asn1_list addObject:v];
 
     if(_plaintext)
     {
@@ -81,7 +81,7 @@
         [o processBeforeEncode];
         o.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         o.asn1_tag.tagNumber = 5;
-        [asn1_list addObject:o];
+        [_asn1_list addObject:o];
     }
 }
 

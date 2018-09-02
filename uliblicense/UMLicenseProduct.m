@@ -66,19 +66,19 @@
 - (void) processBeforeEncode
 {
     [super processBeforeEncode];
-    asn1_tag.isConstructed=YES;
-    asn1_list = [[NSMutableArray alloc]init];
+    _asn1_tag.isConstructed=YES;
+    _asn1_list = [[NSMutableArray alloc]init];
 
     [super processBeforeEncode];
-    asn1_tag.isConstructed=YES;
-    asn1_list = [[NSMutableArray alloc]init];
+    _asn1_tag.isConstructed=YES;
+    _asn1_list = [[NSMutableArray alloc]init];
     if(_productName)
     {
         UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_productName];
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagNumber = 0;
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:utf8];
+        [_asn1_list addObject:utf8];
     }
     else
     {
@@ -91,7 +91,7 @@
         [_productFeatures processBeforeEncode];
         _productFeatures.asn1_tag.tagNumber = 1;
         _productFeatures.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        [asn1_list addObject:_productFeatures];
+        [_asn1_list addObject:_productFeatures];
     }
 }
 
