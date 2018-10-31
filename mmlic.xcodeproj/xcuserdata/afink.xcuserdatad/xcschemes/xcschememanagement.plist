@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>26</integer>
 		</dict>
+		<key>mmconvert.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>26</integer>
+		</dict>
 		<key>mmdisplay.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -19,12 +24,27 @@
 			<key>orderHint</key>
 			<integer>24</integer>
 		</dict>
+		<key>mminfo.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>24</integer>
+		</dict>
 		<key>mmlicense.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>23</integer>
 		</dict>
+		<key>mmlicense.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
 		<key>uliblicense.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>25</integer>
+		</dict>
+		<key>uliblicense.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>25</integer>
