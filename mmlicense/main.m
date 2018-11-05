@@ -74,6 +74,7 @@ int main(int argc, const char * argv[])
 	UMLicenseProduct *cnamserver    = [[UMLicenseProduct alloc]initWithName:@"cnamserver"];
 
 #define  ADD_PRODUCT_ALL(name) \
+licenseFeatures[name] = @{@"enable": @"YES"}; \
 [smsc addFeatureWithName:name]; \
 [smsproxy addFeatureWithName:name]; \
 [rerouter addFeatureWithName:name]; \
@@ -96,7 +97,6 @@ int main(int argc, const char * argv[])
 	[cnamserver addFeatureWithName:@"cnamserver"];
 	
 	NSString *licenseFileName = @"license.bin";
-	NSString *licenseInstallFileName = @"/etc/messagemover/license.bin";
 	licenseFeatures[@"core"] = @{@"enable": @"YES"};
 	licenseFeatures[@"sctp"] = @{@"enable": @"YES"};
 	licenseFeatures[@"m2pa"] = @{@"enable": @"YES"};
@@ -111,7 +111,6 @@ int main(int argc, const char * argv[])
 	NSString *licenseNumber     = NULL;
 	BOOL doInstall = NO;
 	BOOL doLegacy = NO;
-	NSString *key = NULL;
 
 	
 	@autoreleasepool
@@ -377,12 +376,51 @@ int main(int argc, const char * argv[])
 		}
 		if(params[@"demo"])
 		{
-			NSArray *serials = params[@"output"];
-			for(NSString *serial in serials)
+			NSArray *demos = params[@"demo"];
+			for(NSString *demo in demos)
 			{
-				serialNumber = serial;
+				int days  = [demo intValue];
+				
+				time_t current;
+				time(&current);
+				current = current + (24*60*60*days);
+				
+				struct tm trec;
+				struct    timeval  tp;
+				struct    timezone tzp;
+				gettimeofday(&tp, &tzp);
+				gmtime_r(&current, &trec);
+				expiration = [NSString stringWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d.%06d",
+							  trec.tm_year+1900,
+							  trec.tm_mon+1,
+							  trec.tm_mday,
+							  trec.tm_hour,
+							  trec.tm_min,
+							  trec.tm_sec,
+							  (int)tp.tv_usec];
+				expirationDate = [NSDate dateWithTimeIntervalSinceNow:(NSTimeInterval)(24*60*60*days)];
+				mmlicense.licenseType = @"temporary";
 			}
 		}
+		if(params[@"renew-url"])
+		{
+			NSArray *urls = params[@"renew-url"];
+			for(NSString *url in urls)
+			{
+				mmlicense.licenseType = @"renewing";
+				mmlicense.licenseRenewUrl = url;
+			}
+		}
+		if(params[@"renew-address"])
+		{
+			NSArray *nrs = params[@"renew-address"];
+			for(NSString *nr in nrs)
+			{
+				mmlicense.licenseType = @"renewing";
+				mmlicense.licenseRenewAddress= nr;
+			}
+		}
+
 		if(params[@"install"])
 		{
 			doInstall = YES;
@@ -393,324 +431,109 @@ int main(int argc, const char * argv[])
 		}
 		if(params[@"legacy"])
 		{
-			
+			doLegacy = YES;
+			if(verbose)
+			{
+				NSLog(@"legacy=yes");
+			}
 		}
-		if(params[@"file"])
+
+		if(params[@"smpp"])
 		{
-			
+			ADD_PRODUCT_ALL(@"smpp");
 		}
-		if(params[@"serial"])
+		
+		if(params[@"emi-ucp"])
 		{
-			
+			ADD_PRODUCT_ALL(@"emi-ucp");
 		}
-		if(params[@"demo"])
+		if(params[@"m3ua"])
 		{
-			
+			ADD_PRODUCT_ALL(@"m3ua");
 		}
-		if(params[@"renew-url"])
+		if(params[@"http"])
 		{
-			
+			ADD_PRODUCT_ALL(@"http");
 		}
+		if(params[@"http-hlr"])
+		{
+			ADD_PRODUCT_ALL(@"http-hlr");
+		}
+		if(params[@"mofwd"])
+		{
+			ADD_PRODUCT_ALL(@"mofwd");
+		}
+		if(params[@"quota"])
+		{
+			ADD_PRODUCT_ALL(@"quota");
+		}
+		if(params[@"interworking"])
+		{
+			ADD_PRODUCT_ALL(@"interworking");
+		}
+		if(params[@"udp"])
+		{
+			ADD_PRODUCT_ALL(@"udp");
+		}
+
 		if(params[@"expiration"])
 		{
-			
+			NSArray *expirations = params[@"expiration"];
+			for(NSString *expiration in expirations)
+			{
+				NSDateFormatter *formatter;
+				expirationDate = [formatter dateFromString:expiration];
+				mmlicense.licenseType = @"temporary";
+			}
 		}
 		if(params[@"license-number"])
 		{
-			
+			NSArray *lns = params[@"license-number"];
+			for(NSString *ln in lns)
+			{
+				licenseNumber = ln;
+			}
 		}
 		if(params[@"license-name"])
 		{
 			
+			NSArray *lns = params[@"license-name"];
+			for(NSString *ln in lns)
+			{
+				licenseName = ln;
+			}
 		}
 		if(params[@"smsc"])
 		{
-			
+			licenseFeatures[@"smsc"] = @{@"enable": @"YES"};
+			[mmlicense addProduct:smsc];
+
 		}
 		if(params[@"smsproxy"])
 		{
-			
+			licenseFeatures[@"smsproxy"] = @{@"enable": @"YES"};
+			[mmlicense addProduct:smsproxy];
 		}
-		if(params[@"smsc"])
+		if(params[@"estp"])
 		{
-			
+			licenseFeatures[@"estp"] = @{@"enable": @"YES"};
+			[mmlicense addProduct:estp];
 		}
 		if(params[@"ss7firewall"])
 		{
-			
+			licenseFeatures[@"ss7firewall"] = @{@"enable": @"YES"};
+			[mmlicense addProduct:ss7firewall];
 		}
 		if(params[@"cnamserver"])
 		{
-			
+			licenseFeatures[@"cnamserver"] = @{@"enable": @"YES"};
+			[mmlicense addProduct:cnamserver];
 		}
 
-		NSMutableDictionary     *licenseFeatures	= [[NSMutableDictionary alloc]init];
-		NSMutableDictionary     *licenseFile 		= [[NSMutableDictionary alloc]init];
-		
-		UMSignedLicense *slicense = [[UMSignedLicense alloc]init];
-		UMLicense *mmlicense =  [[UMLicense alloc]init];
-		mmlicense.licenseType = @"permanent";
-		slicense.license = mmlicense;
-
-		UMLicenseProduct *smsc          = [[UMLicenseProduct alloc]initWithName:@"smsc"];
-		UMLicenseProduct *smsproxy      = [[UMLicenseProduct alloc]initWithName:@"smsproxy"];
-		UMLicenseProduct *rerouter      = [[UMLicenseProduct alloc]initWithName:@"rerouter"];
-		UMLicenseProduct *estp          = [[UMLicenseProduct alloc]initWithName:@"estp"];
-		UMLicenseProduct *ss7firewall   = [[UMLicenseProduct alloc]initWithName:@"ss7firewall"];
-		UMLicenseProduct *cnamserver    = [[UMLicenseProduct alloc]initWithName:@"cnamserver"];
-
-	#define  ADD_PRODUCT_ALL(name) \
-		[smsc addFeatureWithName:name]; \
-		[smsproxy addFeatureWithName:name]; \
-		[rerouter addFeatureWithName:name]; \
-		[estp addFeatureWithName:name]; \
-		[ss7firewall addFeatureWithName:name]; \
-		[cnamserver addFeatureWithName:name]
-
-		ADD_PRODUCT_ALL(@"core");
-		ADD_PRODUCT_ALL(@"sctp");
-		ADD_PRODUCT_ALL(@"m2pa");
-		ADD_PRODUCT_ALL(@"mtp3");
-		ADD_PRODUCT_ALL(@"sccp");
-		ADD_PRODUCT_ALL(@"tcap");
-		ADD_PRODUCT_ALL(@"gsmmap");
-		
-		[smsc addFeatureWithName:@"smsc"];
-		[smsproxy addFeatureWithName:@"smsproxy"];
-		[rerouter addFeatureWithName:@"rerouter"];
-		[estp addFeatureWithName:@"estp"];
-		[ss7firewall addFeatureWithName:@"ss7firewall"];
-		[cnamserver addFeatureWithName:@"cnamserver"];
-
-		ADD_PRODUCT_ALL(@"smsc");
-		
-
-		NSString *licenseFileName = @"license.bin";
-		NSString *licenseInstallFileName = @"/etc/messagemover/license.bin";
-		licenseFeatures[@"core"] = @{@"enable": @"YES"};
-		licenseFeatures[@"sctp"] = @{@"enable": @"YES"};
-		licenseFeatures[@"m2pa"] = @{@"enable": @"YES"};
-		licenseFeatures[@"mtp3"] = @{@"enable": @"YES"};
-		licenseFeatures[@"sccp"] = @{@"enable": @"YES"};
-		licenseFeatures[@"tcap"] = @{@"enable": @"YES"};
-		licenseFeatures[@"gsmmap"] = @{@"enable": @"YES"};
-
-		
-		NSString *serialNumber  = NULL;
-		NSString *expiration    = NULL;
-		NSDate *expirationDate = NULL;
-		NSString *licenseName  = NULL;
-		NSString *licenseNumber     = NULL;
-		BOOL doInstall = NO;
-		BOOL doLegacy = NO;
-		NSString *key = NULL;
-		for(int i=1;i<argc;i++)
+		if(params[@"rerouter"])
 		{
-			if(strcmp(argv[i],"--install")==0)
-			{
-				doInstall = YES;
-				NSLog(@"doinstall=yes");
-			}
-			if(strcmp(argv[i],"--legacy")==0)
-			{
-				doLegacy = YES;
-				NSLog(@"legacy=yes");
-			}
-			if(strcmp(argv[i],"--key")==0)
-			{
-				i++;
-				if(i<argc)
-				{
-					NSString *keyFileName = @(argv[i]);
-					NSData *data = [NSData dataWithContentsOfFile:keyFileName];
-					key = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-				}
-			}
-
-			if(strcmp(argv[i],"--file")==0)
-			{
-				i++;
-				if(i<argc)
-				{
-					licenseFileName = @(argv[i]);
-				}
-			}
-			else if(strcmp(argv[i],"--serial")==0)
-			{
-				i++;
-				if(i<argc)
-				{
-					serialNumber = @(argv[i]);
-				}
-				
-			}
-			else if(strcmp(argv[i],"--demo")==0)
-			{
-				i++;
-				int days;
-				if(i<argc)
-				{
-					sscanf(argv[i],"%d",&days);
-					
-					time_t current;
-					time(&current);
-					current = current + (24*60*60*days);
-					
-					struct tm trec;
-					struct    timeval  tp;
-					struct    timezone tzp;
-					gettimeofday(&tp, &tzp);
-					gmtime_r(&current, &trec);
-					expiration = [NSString stringWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d.%06d",
-								  trec.tm_year+1900,
-								  trec.tm_mon+1,
-								  trec.tm_mday,
-								  trec.tm_hour,
-								  trec.tm_min,
-								  trec.tm_sec,
-								  (int)tp.tv_usec];
-					expirationDate = [NSDate dateWithTimeIntervalSinceNow:(NSTimeInterval)(24*60*60*days)];
-					mmlicense.licenseType = @"temporary";
-				}
-			}
-			else if(strcmp(argv[i],"--renew-url")==0)
-			{
-				i++;
-				if(i<argc)
-				{
-					mmlicense.licenseType = @"renewing";
-					mmlicense.licenseRenewUrl = @(argv[i]);
-				}
-			}
-
-			else if(strcmp(argv[i],"--expiration")==0)
-			{
-				i++;
-				if(i<argc)
-				{
-					expiration = @(argv[i]);
-					expirationDate = [NSDate dateWithString:@(argv[i])];
-					mmlicense.licenseType = @"temporary";
-				}
-			}
-			else if(strcmp(argv[i],"--license-name")==0)
-			{
-				i++;
-				if(i<argc)
-				{
-					licenseName = @(argv[i]);
-				}
-			}
-			else if(strcmp(argv[i],"--license-number")==0)
-			{
-				i++;
-				if(i<argc)
-				{
-					licenseNumber = @(argv[i]);
-				}
-			}
-			else if(strcmp(argv[i],"--smsc")==0)
-			{
-				licenseFeatures[@"smsc"] = @{@"enable": @"YES"};
-				[mmlicense addProduct:smsc];
-			}
-			else if((strcmp(argv[i],"--emiucp")==0) || (strcmp(argv[i],"--emi-ucp")==0))
-			{
-				licenseFeatures[@"emiucp"] = @{@"enable": @"YES"};
-				ADD_PRODUCT_ALL(@"emiucp");
-			}
-			else if(strcmp(argv[i],"--smpp")==0)
-			{
-				licenseFeatures[@"smpp"] = @{@"enable": @"YES"};
-				ADD_PRODUCT_ALL(@"smpp");
-			}
-			else if(strcmp(argv[i],"--http")==0)
-			{
-				licenseFeatures[@"http"] = @{@"enable": @"YES"};
-				ADD_PRODUCT_ALL(@"http");
-			}
-			else if(strcmp(argv[i],"--m3ua")==0)
-			{
-				licenseFeatures[@"m3ua"] = @{@"enable": @"YES"};
-				ADD_PRODUCT_ALL(@"m3ua");
-			}
-			else if((strcmp(argv[i],"--proxy")==0) || (strcmp(argv[i],"--smsproxy")==0))
-			{
-				[mmlicense addProduct:smsproxy];
-			}
-			else if(strcmp(argv[i],"--http-hlr")==0)
-			{
-				licenseFeatures[@"http-hlr"] = @{@"enable": @"YES"};
-				ADD_PRODUCT_ALL(@"http-hlr");
-			}
-			else if(strcmp(argv[i],"--mofwd")==0)
-			{
-				licenseFeatures[@"mofwd"] = @{@"enable": @"YES"};
-				ADD_PRODUCT_ALL(@"mofwd");
-			}
-			else if(strcmp(argv[i],"--quota")==0)
-			{
-				licenseFeatures[@"quota"] = @{@"enable": @"YES"};
-				ADD_PRODUCT_ALL(@"quota");
-			}
-			else if(strcmp(argv[i],"--interworking")==0)
-			{
-				licenseFeatures[@"interworking"] = @{@"enable": @"YES"};
-				ADD_PRODUCT_ALL(@"interworking");
-			}
-			else if(strcmp(argv[i],"--rerouter")==0)
-			{
-				licenseFeatures[@"rerouter"] = @{@"enable": @"YES"};
-				[mmlicense addProduct:rerouter];
-			}
-			else if(strcmp(argv[i],"--billing")==0)
-			{
-				licenseFeatures[@"billing"] = @{@"enable": @"YES"};
-				ADD_PRODUCT_ALL(@"billing");
-			}
-			else if(strcmp(argv[i],"--logging")==0)
-			{
-				licenseFeatures[@"logging"] = @{@"enable": @"YES"};
-				ADD_PRODUCT_ALL(@"logging");
-			}
-			else if(strcmp(argv[i],"--udp")==0)
-			{
-				ADD_PRODUCT_ALL(@"udp");
-			}
-			else if(strcmp(argv[i],"--estp")==0)
-			{
-				licenseFeatures[@"estp"] = @{@"enable": @"YES"};
-				[mmlicense addProduct:estp];
-			}
-			else if(strcmp(argv[i],"--ss7firewall")==0)
-			{
-				licenseFeatures[@"ss7firewall"] = @{@"enable": @"YES"};
-				[mmlicense addProduct:ss7firewall];
-			}
-			else if(strcmp(argv[i],"--cnamserver")==0)
-			{
-				licenseFeatures[@"cnamserver"] = @{@"enable": @"YES"};
-				[mmlicense addProduct:cnamserver];
-			}
-		}
-
-		if(licenseName)
-		{
-			licenseFile[@"license-name"] = licenseName;
-			mmlicense.licenseOwner = licenseName;
-		}
-		if(licenseNumber)
-		{
-			licenseFile[@"license-number"] = licenseNumber;
-			mmlicense.licenseSerialNumber = licenseNumber;
-		}
-		if(expiration)
-		{
-			licenseFile[@"expiry"] = expiration;
-		}
-		if(expirationDate)
-		{
-			mmlicense.licenseExpiration = expirationDate;
+			licenseFeatures[@"rerouter"] = @{@"enable": @"YES"};
+			[mmlicense addProduct:rerouter];
 		}
 
 		licenseFile[@"features"] = licenseFeatures;
@@ -778,6 +601,7 @@ int main(int argc, const char * argv[])
 			NSData *chiphertext = llic.ciphertext;
 			if(doInstall)
 			{
+				NSString *licenseInstallFileName = @"/etc/messagemover/license.bin";
 				NSLog(@"Installing license to %@",licenseInstallFileName);
 				[chiphertext writeToFile:licenseInstallFileName atomically:YES];
 			}
@@ -807,12 +631,12 @@ int main(int argc, const char * argv[])
 		}
 		if(slicense)
 		{
-			[slicense signLicenseWithRSAPublicKey:key];
+			[slicense signLicenseWithRSAPublicKey:signatureKey];
 
 			NSString *licenseFileName = [NSString stringWithFormat:@"%@.license",slicense.license.licenseSerialNumber];
-			if(key)
+			if(encryptionKey)
 			{
-				[slicense encryptLicenseWithRSAPublicKey:key];
+				[slicense encryptLicenseWithRSAPublicKey:encryptionKey];
 			}
 			NSData *data = [slicense berEncoded];
 			NSLog(@"writing new license to %@",licenseFileName);
