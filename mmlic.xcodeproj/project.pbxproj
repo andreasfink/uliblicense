@@ -33,10 +33,10 @@
 		A67A284620C69EE9001BB7A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F36B071472525E006F5AF0 /* Foundation.framework */; };
 		A67A284720C69EF0001BB7A3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024F920BEED6E006779BA /* libuliblicense.a */; };
 		A67E44B52112A4810092DB00 /* UMLicenseWebConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = A67E44B32112A4810092DB00 /* UMLicenseWebConvert.m */; };
-		A67E44B62112A4810092DB00 /* UMLicenseWebConvert.h in Headers */ = {isa = PBXBuildFile; fileRef = A67E44B42112A4810092DB00 /* UMLicenseWebConvert.h */; };
-		A67E44B92112F1490092DB00 /* UMLicenseWebGet.h in Headers */ = {isa = PBXBuildFile; fileRef = A67E44B72112F1490092DB00 /* UMLicenseWebGet.h */; };
+		A67E44B62112A4810092DB00 /* UMLicenseWebConvert.h in Headers */ = {isa = PBXBuildFile; fileRef = A67E44B42112A4810092DB00 /* UMLicenseWebConvert.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A67E44B92112F1490092DB00 /* UMLicenseWebGet.h in Headers */ = {isa = PBXBuildFile; fileRef = A67E44B72112F1490092DB00 /* UMLicenseWebGet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A67E44BA2112F1490092DB00 /* UMLicenseWebGet.m in Sources */ = {isa = PBXBuildFile; fileRef = A67E44B82112F1490092DB00 /* UMLicenseWebGet.m */; };
-		A67E44BD2112F1940092DB00 /* UMLicenseWebUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = A67E44BB2112F1940092DB00 /* UMLicenseWebUpdate.h */; };
+		A67E44BD2112F1940092DB00 /* UMLicenseWebUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = A67E44BB2112F1940092DB00 /* UMLicenseWebUpdate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A67E44BE2112F1940092DB00 /* UMLicenseWebUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = A67E44BC2112F1940092DB00 /* UMLicenseWebUpdate.m */; };
 		A6B024E520BEECB5006779BA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024E420BEECB5006779BA /* ulib.framework */; };
 		A6B024E620BEECB5006779BA /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B024E420BEECB5006779BA /* ulib.framework */; };
@@ -472,6 +472,10 @@
 			attributes = {
 				LastUpgradeCheck = 0940;
 				TargetAttributes = {
+					A62DAD131472BF69005487AF = {
+						DevelopmentTeam = 2GSNWPNR77;
+						ProvisioningStyle = Automatic;
+					};
 					A652E13420C7CFF200CDA5EF = {
 						CreatedOnToolsVersion = 9.4;
 						DevelopmentTeam = 2GSNWPNR77;
@@ -484,6 +488,10 @@
 					};
 					A6B024F820BEED6E006779BA = {
 						CreatedOnToolsVersion = 9.4;
+						DevelopmentTeam = 2GSNWPNR77;
+						ProvisioningStyle = Automatic;
+					};
+					A6F36B021472525E006F5AF0 = {
 						DevelopmentTeam = 2GSNWPNR77;
 						ProvisioningStyle = Automatic;
 					};
@@ -573,6 +581,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
@@ -580,6 +591,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = mminfo;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -587,6 +599,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
@@ -594,6 +609,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = mminfo;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -626,6 +642,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -659,6 +676,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -691,6 +709,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -724,6 +743,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -916,6 +936,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
@@ -923,6 +946,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -930,6 +954,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
@@ -937,6 +964,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

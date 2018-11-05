@@ -310,14 +310,11 @@ int main(int argc, const char * argv[])
 
 		[_commandLine handleStandardArguments];
 		NSDictionary *params = _commandLine.params;
-		
-		UMLicenseDirectory *licdir = [[UMLicenseDirectory alloc]init];
 		NSString *encryptionKey = g_defaultEncryptionKey;
-		NSString *signatureKey = g_defaultSignatureKey;
-		NSString *outputLicenseFileName = NULL;
+		NSString *signatureKey = g_defaultSignKey;
 		BOOL verbose=NO;
 		
-		if(params@"verbose")
+		if(params[@"verbose"])
 		{
 			verbose = YES;
 		}
