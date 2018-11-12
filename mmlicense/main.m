@@ -492,6 +492,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			for(NSString *ln in lns)
 			{
 				licenseNumber = ln;
+                mmlicense.licenseSerialNumber = licenseNumber;
 			}
 		}
 		if(params[@"license-name"])
@@ -501,6 +502,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			for(NSString *ln in lns)
 			{
 				licenseName = ln;
+                mmlicense.licenseOwner = licenseName;
 			}
 		}
 		if(params[@"smsc"])
