@@ -385,6 +385,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			if(emails.count > 0)
 			{
 				email = emails[0];
+                mmlicense.licenseEmail = email;
 			}
 		}
 
