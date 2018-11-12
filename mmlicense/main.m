@@ -448,7 +448,10 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		NSString *encryptionKey = g_defaultEncryptionKey;
 		NSString *signatureKey = g_defaultSignatureKey;
 		BOOL verbose=NO;
-		
+
+
+        UMLicenseRestrictionList *licenseRestrictions = [[UMLicenseRestrictionList alloc]init];
+
 		if(params[@"verbose"])
 		{
 			verbose = YES;
@@ -511,11 +514,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
             {
                 UMLicenseRestriction *lr = [[UMLicenseRestriction alloc]init];
                 lr.lockedToCpuId = entry;
-                if(mmlicense.licenseRestrictions == NULL)
-                {
-                    mmlicense.licenseRestrictions = [[UMLicenseRestrictionList alloc]init];
-                }
-                [mmlicense.licenseRestrictions addRestriction:lr];
+                [licenseRestrictions addRestriction:lr];
             }
         }
 
@@ -526,11 +525,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
             {
                 UMLicenseRestriction *lr = [[UMLicenseRestriction alloc]init];
                 lr.lockedToMacAddress = entry;
-                if(mmlicense.licenseRestrictions == NULL)
-                {
-                    mmlicense.licenseRestrictions = [[UMLicenseRestrictionList alloc]init];
-                }
-                [mmlicense.licenseRestrictions addRestriction:lr];
+                [licenseRestrictions addRestriction:lr];
             }
         }
         if(params[@"ip-addr"])
@@ -540,11 +535,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
             {
                 UMLicenseRestriction *lr = [[UMLicenseRestriction alloc]init];
                 lr.lockedToIp= entry;
-                if(mmlicense.licenseRestrictions == NULL)
-                {
-                    mmlicense.licenseRestrictions = [[UMLicenseRestrictionList alloc]init];
-                }
-                [mmlicense.licenseRestrictions addRestriction:lr];
+                [licenseRestrictions addRestriction:lr];
             }
         }
         if(params[@"os"])
@@ -554,11 +545,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
             {
                 UMLicenseRestriction *lr = [[UMLicenseRestriction alloc]init];
                 lr.lockedToOperatingSystem= entry;
-                if(mmlicense.licenseRestrictions == NULL)
-                {
-                    mmlicense.licenseRestrictions = [[UMLicenseRestrictionList alloc]init];
-                }
-                [mmlicense.licenseRestrictions addRestriction:lr];
+                [licenseRestrictions addRestriction:lr];
             }
         }
         if(params[@"serial"])
@@ -566,13 +553,10 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
             NSArray *entries = params[@"serial"];
             for(NSString *entry in entries)
             {
+                licenseFile[@"serial"] = entry;
                 UMLicenseRestriction *lr = [[UMLicenseRestriction alloc]init];
                 lr.lockedToSerial= entry;
-                if(mmlicense.licenseRestrictions == NULL)
-                {
-                    mmlicense.licenseRestrictions = [[UMLicenseRestrictionList alloc]init];
-                }
-                [mmlicense.licenseRestrictions addRestriction:lr];
+                [licenseRestrictions addRestriction:lr];
             }
         }
 
@@ -741,57 +725,10 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		}
 
 		licenseFile[@"features"] = licenseFeatures;
-		if(serialNumber==NULL)
-		{
-			NSArray *ips = [UMUtil getNonLocalIPs];
-			NSArray *macs = [UMUtil getArrayOfMacAddresses];
-			NSString *serial = [UMUtil getMachineSerialNumber];
-			NSString *uuid = [UMUtil getMachineUUID];
-			NSString *os = NULL;
-			licenseFile[@"serial"] = serial;
-			licenseFile[@"interfaces"] = macs;
-			licenseFile[@"ipaddresses"] = ips;
-			
-			for (NSString *ip in ips)
-			{
-				UMLicenseRestriction *rest = [[UMLicenseRestriction alloc]init];
-				rest.lockedToIp = ip;
-				[mmlicense addRestriction: rest];
-			}
-			for (NSString *mac in macs)
-			{
-				UMLicenseRestriction *rest = [[UMLicenseRestriction alloc]init];
-				rest.lockedToMacAddress = mac;
-				[mmlicense addRestriction: rest];
-			}
-			if(serial)
-			{
-				UMLicenseRestriction *rest = [[UMLicenseRestriction alloc]init];
-				rest.lockedToSerial = serial;
-				[mmlicense addRestriction: rest];
-			}
-			if(uuid)
-			{
-				UMLicenseRestriction *rest = [[UMLicenseRestriction alloc]init];
-				rest.lockedToUUID = uuid;
-				[mmlicense addRestriction: rest];
-			}
-			if(os)
-			{
-				UMLicenseRestriction *rest = [[UMLicenseRestriction alloc]init];
-				rest.lockedToOperatingSystem = os;
-				[mmlicense addRestriction: rest];
-			}
-		}
-		else
-		{
-			licenseFile[@"serial"] = serialNumber;
 
-			UMLicenseRestriction *rest = [[UMLicenseRestriction alloc]init];
-			rest.lockedToSerial = serialNumber;
-			[mmlicense addRestriction: rest];
-		}
-		
+
+        mmlicense.licenseRestrictions = licenseRestrictions;
+
 		if(doLegacy)
 		{
 			unlink("license.plist");
