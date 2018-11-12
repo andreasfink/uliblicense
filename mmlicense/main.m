@@ -217,6 +217,36 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 											   @"argument" : @"number of license",
 											   @"help"  : @"set the license number",
 											   },
+                                           @{
+                                               @"name"  : @"serial",
+                                               @"long"  : @"--serial",
+                                               @"argument" : @"serial-number",
+                                               @"help"  : @"set the hardware serial number lock",
+                                               },
+                                           @{
+                                               @"name"  : @"cpu-id",
+                                               @"long"  : @"--cpu-id",
+                                               @"argument" : @"cpu-id",
+                                               @"help"  : @"set the hardware cpu-id lock",
+                                               },
+                                           @{
+                                               @"name"  : @"mac-addr",
+                                               @"long"  : @"--mac-addr",
+                                               @"argument" : @"mac-addr",
+                                               @"help"  : @"set the hardware mac-addr lock",
+                                               },
+                                           @{
+                                               @"name"  : @"ip-addr",
+                                               @"long"  : @"--ip-addr",
+                                               @"argument" : @"ip-address",
+                                               @"help"  : @"set the hardware ip-address lock",
+                                               },
+                                           @{
+                                               @"name"  : @"os",
+                                               @"long"  : @"--os",
+                                               @"argument" : @"osname",
+                                               @"help"  : @"set the operating sytem lock",
+                                               },
 										   @{
 											   @"name"  : @"smsc",
 											   @"short" : @"",
@@ -366,14 +396,79 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 				licenseFileName = filename;
 			}
 		}
-		if(params[@"serial"])
-		{
-			NSArray *serials = params[@"output"];
-			for(NSString *serial in serials)
-			{
-				serialNumber = serial;
-			}
-		}
+
+        if(params[@"cpu-id"])
+        {
+            NSArray *entries = params[@"cpu-id"];
+            for(NSString *entry in entries)
+            {
+                UMLicenseRestriction *lr = [[UMLicenseRestriction alloc]init];
+                lr.lockedToCpuId = entry;
+                if(mmlicense.licenseRestrictions == NULL)
+                {
+                    mmlicense.licenseRestrictions = [[UMLicenseRestrictionList alloc]init];
+                }
+                [mmlicense.licenseRestrictions addRestriction:lr];
+            }
+        }
+
+        if(params[@"mac-addr"])
+        {
+            NSArray *entries = params[@"mac-addr"];
+            for(NSString *entry in entries)
+            {
+                UMLicenseRestriction *lr = [[UMLicenseRestriction alloc]init];
+                lr.lockedToMacAddress = entry;
+                if(mmlicense.licenseRestrictions == NULL)
+                {
+                    mmlicense.licenseRestrictions = [[UMLicenseRestrictionList alloc]init];
+                }
+                [mmlicense.licenseRestrictions addRestriction:lr];
+            }
+        }
+        if(params[@"ip-addr"])
+        {
+            NSArray *entries = params[@"ip-addr"];
+            for(NSString *entry in entries)
+            {
+                UMLicenseRestriction *lr = [[UMLicenseRestriction alloc]init];
+                lr.lockedToIp= entry;
+                if(mmlicense.licenseRestrictions == NULL)
+                {
+                    mmlicense.licenseRestrictions = [[UMLicenseRestrictionList alloc]init];
+                }
+                [mmlicense.licenseRestrictions addRestriction:lr];
+            }
+        }
+        if(params[@"os"])
+        {
+            NSArray *entries = params[@"os"];
+            for(NSString *entry in entries)
+            {
+                UMLicenseRestriction *lr = [[UMLicenseRestriction alloc]init];
+                lr.lockedToOperatingSystem= entry;
+                if(mmlicense.licenseRestrictions == NULL)
+                {
+                    mmlicense.licenseRestrictions = [[UMLicenseRestrictionList alloc]init];
+                }
+                [mmlicense.licenseRestrictions addRestriction:lr];
+            }
+        }
+        if(params[@"serial"])
+        {
+            NSArray *entries = params[@"serial"];
+            for(NSString *entry in entries)
+            {
+                UMLicenseRestriction *lr = [[UMLicenseRestriction alloc]init];
+                lr.lockedToSerial= entry;
+                if(mmlicense.licenseRestrictions == NULL)
+                {
+                    mmlicense.licenseRestrictions = [[UMLicenseRestrictionList alloc]init];
+                }
+                [mmlicense.licenseRestrictions addRestriction:lr];
+            }
+        }
+
 		if(params[@"demo"])
 		{
 			NSArray *demos = params[@"demo"];
