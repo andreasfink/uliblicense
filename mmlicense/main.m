@@ -446,7 +446,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		[_commandLine handleStandardArguments];
 		NSDictionary *params = _commandLine.params;
 		NSString *encryptionKey = g_defaultEncryptionKey;
-		NSString *signatureKey = g_defaultSignKey;
+		NSString *signatureKey = g_defaultSignatureKey;
 		BOOL verbose=NO;
 		
 		if(params[@"verbose"])
