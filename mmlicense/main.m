@@ -210,7 +210,6 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 	licenseFeatures[@"sccp"] = @{@"enable": @"YES"};
 	licenseFeatures[@"tcap"] = @{@"enable": @"YES"};
 	licenseFeatures[@"gsmmap"] = @{@"enable": @"YES"};
-	NSString *serialNumber  = NULL;
 	NSString *expiration    = NULL;
 	NSDate *expirationDate = NULL;
 	NSString *licenseName  = NULL;
@@ -371,7 +370,13 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 											   @"long"  : @"--emi-ucp",
 											   @"help"  : @"enable EMI/UCP protocol",
 											   },
-										   @{
+                                           @{
+                                               @"name"  : @"m3ua",
+                                               @"short" : @"",
+                                               @"long"  : @"--m3ua",
+                                               @"help"  : @"enable M3UA protocol",
+                                               },
+                                          @{
 											   @"name"  : @"http",
 											   @"short" : @"",
 											   @"long"  : @"--http",
