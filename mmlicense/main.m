@@ -324,10 +324,10 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		{
 			verbose = YES;
 		}
-		if(params[@"encryption-key"])
+        NSArray *a = params[@"encryption-key"];
+		if(a.count  > 0)
 		{
-			NSArray *filenames = params[@"encryption-key"];
-			for(NSString *filename in filenames)
+			for(NSString *filename in a)
 			{
 				NSError *err =NULL;;
 				
@@ -341,17 +341,17 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
         else
         {
             NSError *err = NULL;
-            encryptionKey = [NSString stringWithContentsOfFile:@"/opt/ulib/encryption.key" encoding:NSUTF8StringEncoding error:&err];
+            encryptionKey = [NSString stringWithContentsOfFile:@"/opt/uliblicense/encryption.key" encoding:NSUTF8StringEncoding error:&err];
             if(err)
             {
                 NSLog(@"%@",err);
             }
         }
 
-		if(params[@"signature-key"])
+        a = params[@"signature-key"];
+		if(a.count > 0)
 		{
-			NSArray *filenames = params[@"signature-key"];
-			for(NSString *filename in filenames)
+			for(NSString *filename in a)
 			{
 				NSError *err =NULL;
 				NSString *key = [NSString stringWithContentsOfFile:filename encoding:NSUTF8StringEncoding error:&err];
@@ -368,7 +368,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
         else
         {
             NSError *err = NULL;
-            signatureKey = [NSString stringWithContentsOfFile:@"/opt/ulib/sign.key" encoding:NSUTF8StringEncoding error:&err];
+            signatureKey = [NSString stringWithContentsOfFile:@"/opt/uliblicense/sign.key" encoding:NSUTF8StringEncoding error:&err];
             if(err)
             {
                 NSLog(@"%@",err);
