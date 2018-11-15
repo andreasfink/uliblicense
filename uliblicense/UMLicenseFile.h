@@ -16,6 +16,7 @@
     NSString *_shortName;
     NSDate *_lastRefresh;
     NSDate *_nextUpdate;
+    NSDate *_nextReport;
     BOOL    _debug;
 }
 
@@ -24,6 +25,7 @@
 @property(readwrite,strong) NSString *shortName;
 @property(readwrite,strong) NSDate *lastRefresh;
 @property(readwrite,strong) NSDate *nextUpdate;
+@property(readwrite,strong) NSDate *nextReport;
 @property(readwrite,assign) BOOL debug;
 
 - (UMLicenseFile *)initWithFilename:(NSString *)filename debug:(BOOL)dbg;

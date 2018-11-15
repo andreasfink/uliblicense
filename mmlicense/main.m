@@ -164,6 +164,13 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 											   @"argument" : @"url",
 											   @"help"  : @"url to automatically renew license",
 											   },
+                                           @{
+                                               @"name"  : @"report-url",
+                                               @"short" : @"-r",
+                                               @"long"  : @"--report-url",
+                                               @"argument" : @"url",
+                                               @"help"  : @"url to report license",
+                                               },
 										   @{
 											   @"name"  : @"expiration",
 											   @"short" : @"-e",
@@ -482,9 +489,28 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			for(NSString *url in urls)
 			{
 				mmlicense.licenseType = @"renewing";
-				mmlicense.licenseRenewUrl = url;
+                mmlicense.licenseRenewUrl = url;
+                mmlicense.licenseRenewUTimerMin = @(7*24*60*60); /* min once a week */
+                mmlicense.licenseRenewUTimerMax = @(31*24*60*60); /* max one per month */
+                mmlicense.licenseRenewAddress = @"41587079921;
 			}
 		}
+        if(params[@"report-url"])
+        {
+            NSArray *urls = params[@"report-url"];
+            for(NSString *url in urls)
+            {
+                mmlicense.licenseReportUrl = url;
+                mmlicense.licenseReportAddress = @"41587079922;
+                mmlicense.licenseReportTimer = @(7*24*60*60); /* report once a week */
+            }
+        }
+        else
+        {
+            mmlicense.licenseReportUrl = "https://license.messagemover.com/report.php";
+            mmlicense.licenseReportAddress = @"41587079922;
+            mmlicense.licenseReportTimer = @(7*24*60*60); /* report once a week */
+        }
 		if(params[@"renew-address"])
 		{
 			NSArray *nrs = params[@"renew-address"];

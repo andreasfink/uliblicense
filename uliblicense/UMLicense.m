@@ -109,7 +109,7 @@
     }
     if(_licenseRenewAddress)
     {
-        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_licenseRenewUrl];
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_licenseRenewAddress];
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagNumber = 7;
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
@@ -139,6 +139,31 @@
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         [_asn1_list addObject:utf8];
     }
+
+    if(_licenseReportUrl)
+    {
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_licenseRenewUrl];
+        [utf8 processBeforeEncode];
+        utf8.asn1_tag.tagNumber = 11;
+        utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+        [_asn1_list addObject:utf8];
+    }
+    if(_licenseReportAddress)
+    {
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_licenseReportAddress];
+        [utf8 processBeforeEncode];
+        utf8.asn1_tag.tagNumber = 12;
+        utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+        [_asn1_list addObject:utf8];
+    }
+    if(_licenseReportTimer!=NULL)
+    {
+        UMASN1Integer *asn1int = [[UMASN1Integer alloc]initWithValue:[_licenseReportTimer intValue]];
+        [asn1int processBeforeEncode];
+        asn1int.asn1_tag.tagNumber = 13;
+        asn1int.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
+        [_asn1_list addObject:asn1int];
+    }
     else
     {
         @throw([NSException exceptionWithName:@"PARAMETER_ENCODING_ERROR"
@@ -146,7 +171,6 @@
                                      userInfo:@{    @"backtrace": UMBacktrace(NULL,0)}]);
     }
 }
-
 
 - (UMLicense *) processAfterDecodeWithContext:(id)context
 {
@@ -215,15 +239,26 @@
     {
         UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];
         _licenseEmail = utf8.value;
-        //o = [self getObjectAtPosition:p++];
-    }
-#if 0
-    while(o)
-    {
-        /* ... */
         o = [self getObjectAtPosition:p++];
     }
-#endif
+    if((o) && (o.asn1_tag.tagNumber == 11) && (o.asn1_tag.tagClass == UMASN1Class_ContextSpecific))
+    {
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];
+        _licenseReportUrl = utf8.value;
+        o = [self getObjectAtPosition:p++];
+    }
+    if((o) && (o.asn1_tag.tagNumber == 12) && (o.asn1_tag.tagClass == UMASN1Class_ContextSpecific))
+    {
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithASN1Object:o context:context];
+        _licenseReportAddress = utf8.value;
+        o = [self getObjectAtPosition:p++];
+    }
+    if((o) && (o.asn1_tag.tagNumber == 13) && (o.asn1_tag.tagClass == UMASN1Class_ContextSpecific))
+    {
+        UMASN1Integer *asn1int = [[UMASN1Integer alloc]initWithASN1Object:o context:context];
+        _licenseReportTimer = @(asn1int.value);
+        //o = [self getObjectAtPosition:p++];
+    }
     if(_licenseExpiration==NULL)
     {
         _licenseExpiration =[PERPETUAL_LICENSE_DATE_STRING dateValue];
@@ -270,6 +305,27 @@
     if(_licenseRenewAddress)
     {
         dict[@"licenseRenewAddress"] = _licenseRenewAddress;
+    }
+    if(_licenseRenewTimerMin)
+    {
+        dict[@"licenseRenewTimerMin"] = _licenseRenewTimerMin;
+    }
+    if(_licenseRenewTimerMax)
+    {
+        dict[@"licenseRenewTimerMax"] = _licenseRenewTimerMax;
+    }
+
+    if(_licenseReportUrl)
+    {
+        dict[@"licenseReportUrl"] = _licenseReportUrl;
+    }
+    if(_licenseReportAddress)
+    {
+        dict[@"licenseReportAddress"] = _licenseReportAddress;
+    }
+    if(_licenseReportTimer)
+    {
+        dict[@"licenseReportTimer"] = _licenseReportTimer;
     }
     return dict;
 }

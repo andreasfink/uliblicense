@@ -29,6 +29,10 @@
     NSString *_licenseRenewAddress;
     NSNumber *_licenseRenewTimerMin;
     NSNumber *_licenseRenewTimerMax;
+    NSString *_licenseReportUrl;
+    NSString *_licenseReportAddress;
+    NSNumber *_licenseReportTimer;
+
     UMLicenseProductList *_licenseProducts;
     
     /* this is internally used only and not stored in ASN1: */
@@ -47,6 +51,9 @@
 @property(readwrite,strong)  NSString *filename;
 @property(readwrite,strong)  NSNumber *licenseRenewTimerMin;
 @property(readwrite,strong)  NSNumber *licenseRenewTimerMax;
+@property(readwrite,strong)  NSString *licenseReportUrl;
+@property(readwrite,strong)  NSString *licenseReportAddress;
+@property(readwrite,strong)  NSNumber *licenseReportTimer;
 
 - (void)addProduct:(UMLicenseProduct *)product;
 - (void)addRestriction:(UMLicenseRestriction *)rest;

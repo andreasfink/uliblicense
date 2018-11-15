@@ -20,6 +20,7 @@
     NSString    *_licenseDirectory;
     UMTimer *_timer;
     id<UMLicenseRefreshDelegateProtocol> _updateByAddressDelegate;
+    id<UMLicenseRefreshDelegateProtocol> _reportByAddressDelegate;
     NSDictionary *_productHttpParameters;
     BOOL _debug;
 }

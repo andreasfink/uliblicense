@@ -444,8 +444,8 @@
 
 - (void)refreshLicenses
 {
-    NSMutableDictionary *toUpdateAddress = [[NSMutableDictionary alloc]init];
-    NSMutableDictionary *toUpdateUrl = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *toUpdate = [[NSMutableDictionary alloc]init];
+    NSMutableDictionary *toReport = [[NSMutableDictionary alloc]init];
     NSDate *now = [NSDate date];
 
     /* first we update all via URL. if URL fails only then we will attempt update via Address */
@@ -458,49 +458,71 @@
         {
             if(lf.nextUpdate < now)
             {
-                if(lic.licenseRenewUrl)
-                {
-                    toUpdateUrl[serial]=lic.licenseRenewUrl;
-                }
+                toUpdate[serial]=lic;
+            }
+        }
+        else
+        {
+            if(lf.nextReport < now)
+            {
+                toReport[serial]=lic;
             }
         }
     }
     [_lock unlock];
     
-    NSArray *serials = [toUpdateUrl allKeys];
+    NSArray *serials = [toUpdate allKeys];
+    NSMutableArray *viaAddressUpdate = [[NSMutableArray alloc]init];
     for (NSString *serial in serials)
     {
-        NSString *url = toUpdateUrl[serial];
-        [self updateViaUrl:url serial:serial];
+        UMLicenseFile *lf = toUpdate[serial];
+        UMLicense *lic = lf.signedLicense.license;
+        NSString *url =  lic.licenseRenewUrl;
+        if([self updateViaUrl:url serial:serial] == 0)
+        {
+            [viaAddressUpdate addObject:lf];
+        }
+    }
+
+    serials = [toReport allKeys];
+    NSMutableArray *viaAddressReport = [[NSMutableArray alloc]init];
+    for (NSString *serial in serials)
+    {
+        UMLicenseFile *lf = toReport[serial];
+        UMLicense *lic = lf.signedLicense.license;
+        NSString *url =  lic.licenseReportUrl;
+        if(url)
+        {
+            if([self reportViaUrl:url serial:serial lic:lic] == 0)
+            {
+                [viaAddressReport addObject:lf];
+            }
+        }
     }
 
     if(_updateByAddressDelegate)
     {
-        
         /* if URL update is successful, then the update time will be updated so for the same it would fall through here */
         [_lock lock];
-        for(UMLicenseFile *lf in _licenseFiles)
+        for(UMLicenseFile *lf in viaAddressUpdate)
         {
             UMLicense *lic = lf.signedLicense.license;
-            NSString  *serial = lf.signedLicense.license.licenseSerialNumber;
-            if([lic.licenseType isEqualToString:@"renewing"])
-            {
-                if(lf.nextUpdate < now)
-                {
-                    if(lic.licenseRenewAddress)
-                    {
-                        toUpdateAddress[serial]=lic.licenseRenewAddress;
-                    }
-                }
-            }
-        }
-        [_lock unlock];
-        
-        serials = [toUpdateAddress allKeys];
-        for (NSString *serial in serials)
-        {
-            NSString *address = toUpdateAddress[serial];
+            NSString *address = lic.licenseRenewAddress;
+            NSString  *serial = lic.licenseSerialNumber;
             [_updateByAddressDelegate licenseUpdateRequestForAddress:address serial:serial];
+        }
+    }
+    if(_reportByAddressDelegate)
+    {
+        /* if URL update is successful, then the update time will be updated so for the same it would fall through here */
+        [_lock lock];
+        for(UMLicenseFile *lf in viaAddressReport)
+        {
+            UMLicense *lic = lf.signedLicense.license;
+            NSString *address = lic.licenseRenewAddress;
+            NSString  *serial = lic.licenseSerialNumber;
+            NSData *data = [lic berEncoded];
+            [_reportByAddressDelegate licenseReportRequestForAddress:address serial:serial data:data];
         }
     }
 }
@@ -534,7 +556,7 @@
     }
 }
 
-- (void)updateViaUrl:(NSString *)url
+- (BOOL)updateViaUrl:(NSString *)url /* returns YES on success */
               serial:(NSString *)serial
 {
     NSMutableString *full_url = [[NSMutableString alloc]init];
@@ -555,9 +577,39 @@
     if((e==0) && (data.length > 0))
     {
         [self refreshLicenseSerial:serial data:data];
+        return YES;
     }
-
+    return NO;
 }
+
+
+- (BOOL) reportViaUrl:(NSString *)url /* returns YES on success */
+               serial:(NSString *)serial
+                  lic:(UMLicense *)lic
+{
+    NSMutableString *full_url = [[NSMutableString alloc]init];
+    [full_url appendFormat:@"%@?serial=%@&data=%@",url,[serial urlencode],[[lic berEncoded]urlencode]];
+    [self appendProductParameters:full_url];
+
+    NSURL *u = [[NSURL alloc]initWithString:full_url];
+    NSError *e= NULL;
+
+#ifdef __APPLE__
+    NSData *data = [NSData dataWithContentsOfURL:u
+                                         options:NSDataReadingUncached
+                                           error:&e];
+#else
+    NSData *data = [NSData dataWithContentsOfURL:u];
+#endif
+
+    if((e==0) && (data.length > 0))
+    {
+        [self refreshLicenseSerial:serial data:data];
+        return YES;
+    }
+    return NO;
+}
+
 
 - (void)refreshLicenseSerial:(NSString *)serial1  data:(NSData *)data
 {

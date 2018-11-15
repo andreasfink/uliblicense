@@ -10,5 +10,6 @@
 @protocol UMLicenseRefreshDelegateProtocol<NSObject>
 
 - (void)licenseUpdateRequestForAddress:(NSString *)addr serial:(NSString *)serial;
+- (void)licenseReportRequestForAddress:(NSString *)addr serial:(NSString *)serial data:(NSData *)data;
 
 @end
