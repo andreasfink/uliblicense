@@ -490,9 +490,9 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			{
 				mmlicense.licenseType = @"renewing";
                 mmlicense.licenseRenewUrl = url;
-                mmlicense.licenseRenewUTimerMin = @(7*24*60*60); /* min once a week */
-                mmlicense.licenseRenewUTimerMax = @(31*24*60*60); /* max one per month */
-                mmlicense.licenseRenewAddress = @"41587079921;
+                mmlicense.licenseRenewTimerMin = @(7*24*60*60); /* min once a week */
+                mmlicense.licenseRenewTimerMax = @(31*24*60*60); /* max one per month */
+                mmlicense.licenseRenewAddress = @"+41587079921";
 			}
 		}
         if(params[@"report-url"])
@@ -501,14 +501,14 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
             for(NSString *url in urls)
             {
                 mmlicense.licenseReportUrl = url;
-                mmlicense.licenseReportAddress = @"41587079922;
+                mmlicense.licenseReportAddress = @"+41587079922";
                 mmlicense.licenseReportTimer = @(7*24*60*60); /* report once a week */
             }
         }
         else
         {
-            mmlicense.licenseReportUrl = "https://license.messagemover.com/report.php";
-            mmlicense.licenseReportAddress = @"41587079922;
+            mmlicense.licenseReportUrl = @"https://license.messagemover.com/report.php";
+            mmlicense.licenseReportAddress = @"+41587079922";
             mmlicense.licenseReportTimer = @(7*24*60*60); /* report once a week */
         }
 		if(params[@"renew-address"])
