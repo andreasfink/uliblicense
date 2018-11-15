@@ -142,7 +142,7 @@
 
     if(_licenseReportUrl)
     {
-        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_licenseRenewUrl];
+        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_licenseReportUrl];
         [utf8 processBeforeEncode];
         utf8.asn1_tag.tagNumber = 11;
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
