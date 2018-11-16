@@ -457,6 +457,12 @@ int main(int argc, const char * argv[])
                     UMLicenseRestriction *rest = [[UMLicenseRestriction alloc]init];
                     rest.lockedToLegacySerial = hwSerial;
                     [lic addRestriction: rest];
+
+
+                    lic.licenseReportUrl = @"https://license.messagemover.com/report.php";
+                    lic.licenseReportAddress = @"+41587079922";
+                    lic.licenseReportTimer = @(7*24*60*60); /* report once a week */
+
                     slicense.license = lic;
                     if(outputLicenseFileName==NULL)
                     {
