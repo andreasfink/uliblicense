@@ -458,14 +458,14 @@
         {
             if(lf.nextUpdate < now)
             {
-                toUpdate[serial]=lic;
+                toUpdate[serial]=lf;
             }
         }
         else
         {
             if(lf.nextReport < now)
             {
-                toReport[serial]=lic;
+                toReport[serial]=lf;
             }
         }
     }
