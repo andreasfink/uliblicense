@@ -579,13 +579,18 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 
 		if(params[@"expiration"])
 		{
+			NSLog(@"Checkpoint1");
 			NSArray *expirations = params[@"expiration"];
 			for(NSString *expiration in expirations)
 			{
-				NSDateFormatter *formatter;
+				NSLog(@"checkpoint2");
+				NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+				 [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+
 				expirationDate = [formatter dateFromString:expiration];
 				mmlicense.licenseType = @"temporary";
                 mmlicense.licenseExpiration = expirationDate;
+				NSLog(@"Expiration: %@",mmlicense.licenseExpiration);
 			}
 		}
 		if(params[@"license-number"])
