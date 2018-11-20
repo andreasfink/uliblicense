@@ -481,6 +481,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 							  (int)tp.tv_usec];
 				expirationDate = [NSDate dateWithTimeIntervalSinceNow:(NSTimeInterval)(24*60*60*days)];
 				mmlicense.licenseType = @"temporary";
+                mmlicense.licenseExpiration = expirationDate;
 			}
 		}
 		if(params[@"renew-url"])
@@ -584,6 +585,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 				NSDateFormatter *formatter;
 				expirationDate = [formatter dateFromString:expiration];
 				mmlicense.licenseType = @"temporary";
+                mmlicense.licenseExpiration = expirationDate;
 			}
 		}
 		if(params[@"license-number"])
