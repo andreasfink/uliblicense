@@ -459,6 +459,20 @@
             if(lf.nextUpdate < now)
             {
                 toUpdate[serial]=lf;
+                int i = 7*24*60*60;
+                int j = 7*24*60*60;
+                NSNumber *n = lf.signedLicense.license.licenseRenewTimerMin;
+                if(n)
+                {
+                    i = (NSTimeInterval)[n integerValue];
+                }
+                n = lf.signedLicense.license.licenseRenewTimerMax;
+                if(n)
+                {
+                    j = (NSTimeInterval)[n integerValue];
+                }
+                i = [UMUtil randomFrom:i to:j];
+                lf.nextUpdate = [NSDate dateWithTimeIntervalSinceNow:i];
             }
         }
         else
@@ -466,6 +480,14 @@
             if(lf.nextReport < now)
             {
                 toReport[serial]=lf;
+                
+                NSTimeInterval i = 7*24*60*60;
+                NSNumber *n = lf.signedLicense.license.licenseReportTimer;
+                if(n)
+                {
+                    i = (NSTimeInterval)[n integerValue];
+                }
+                lf.nextReport = [NSDate dateWithTimeIntervalSinceNow:i];
             }
         }
     }

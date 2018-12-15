@@ -59,7 +59,7 @@
     if(_signedLicense.license)
     {
         int min = 30*60;
-        int max = 45*60;
+        int max = 24*60*60;
         if(_signedLicense.license.licenseRenewTimerMin!=NULL)
         {
             min = [_signedLicense.license.licenseRenewTimerMin intValue];
