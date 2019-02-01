@@ -41,6 +41,9 @@ int main(int argc, const char * argv[])
 	UMLicenseProduct *estp          = [[UMLicenseProduct alloc]initWithName:@"estp"];
 	UMLicenseProduct *ss7firewall   = [[UMLicenseProduct alloc]initWithName:@"ss7firewall"];
 	UMLicenseProduct *cnamserver    = [[UMLicenseProduct alloc]initWithName:@"cnamserver"];
+	UMLicenseProduct *simproxy    	= [[UMLicenseProduct alloc]initWithName:@"simproxy"];
+	UMLicenseProduct *hlrclient    	= [[UMLicenseProduct alloc]initWithName:@"hlrclient"];
+	UMLicenseProduct *eirproxy    	= [[UMLicenseProduct alloc]initWithName:@"eirproxy"];
 
 #define  ADD_PRODUCT_ALL(name) \
 licenseFeatures[name] = @{@"enable": @"YES"}; \
@@ -49,8 +52,10 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 [rerouter addFeatureWithName:name]; \
 [estp addFeatureWithName:name]; \
 [ss7firewall addFeatureWithName:name]; \
-[cnamserver addFeatureWithName:name]
-	
+[cnamserver addFeatureWithName:name] \
+[simproxy addFeatureWithName:name] \
+[hlrclient addFeatureWithName:name]
+
 	ADD_PRODUCT_ALL(@"core");
 	ADD_PRODUCT_ALL(@"sctp");
 	ADD_PRODUCT_ALL(@"m2pa");
@@ -64,7 +69,10 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 	[estp addFeatureWithName:@"estp"];
 	[ss7firewall addFeatureWithName:@"ss7firewall"];
 	[cnamserver addFeatureWithName:@"cnamserver"];
-	
+	[simproxy addFeatureWithName:@"simproxy"];
+	[hlrclient addFeatureWithName:@"hlrclient"];
+	[eirproxy addFeatureWithName:@"eirproxy"];
+
 	NSString *licenseFileName = @"license.bin";
 	licenseFeatures[@"core"] = @{@"enable": @"YES"};
 	licenseFeatures[@"sctp"] = @{@"enable": @"YES"};
@@ -311,7 +319,25 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 											   @"short" : @"",
 											   @"long"  : @"--estp",
 											   @"help"  : @"enable product ESTP",
-											   }];
+											   },
+										   @{
+											   @"name"  : @"hlrclient",
+											   @"short" : @"",
+											   @"long"  : @"--cnam-server",
+											   @"help"  : @"enable product CNAM-Server",
+											   },
+										   @{
+											   @"name"  : @"simproxy",
+											   @"short" : @"",
+											   @"long"  : @"--simproxy",
+											   @"help"  : @"enable product simproxy",
+											   },
+										   @{
+											   @"name"  : @"eirproxy",
+											   @"short" : @"",
+											   @"long"  : @"--eirproxy",
+											   @"help"  : @"enable product EIR Proxy",
+											   },];
 
 		UMCommandLine *_commandLine = [[UMCommandLine alloc]initWithCommandLineDefintion:commandLineDefinition
 																		   appDefinition:appDefinition
@@ -637,7 +663,21 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			licenseFeatures[@"cnamserver"] = @{@"enable": @"YES"};
 			[mmlicense addProduct:cnamserver];
 		}
-
+		if(params[@"simproxy"])
+		{
+			licenseFeatures[@"simproxy"] = @{@"enable": @"YES"};
+			[mmlicense addProduct:simproxy];
+		}
+		if(params[@"hlrclient"])
+		{
+			licenseFeatures[@"hlrclient"] = @{@"enable": @"YES"};
+			[mmlicense addProduct:simproxy];
+		}
+		if(params[@"eirproxy"])
+		{
+			licenseFeatures[@"eirproxy"] = @{@"enable": @"YES"};
+			[mmlicense addProduct:simproxy];
+		}
 		if(params[@"rerouter"])
 		{
 			licenseFeatures[@"rerouter"] = @{@"enable": @"YES"};
