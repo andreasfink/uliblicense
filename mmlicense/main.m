@@ -52,8 +52,8 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 [rerouter addFeatureWithName:name]; \
 [estp addFeatureWithName:name]; \
 [ss7firewall addFeatureWithName:name]; \
-[cnamserver addFeatureWithName:name] \
-[simproxy addFeatureWithName:name] \
+[cnamserver addFeatureWithName:name]; \
+[simproxy addFeatureWithName:name]; \
 [hlrclient addFeatureWithName:name]
 
 	ADD_PRODUCT_ALL(@"core");
