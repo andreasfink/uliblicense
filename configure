@@ -1996,18 +1996,6 @@ then
 fi
 
 case "$host" in
-#
-# we prefer clang over gcc
-#
-if [ "$CC" == "" ]
-then
-	CC=clang
-fi
-if [ "$CXX" == "" ]
-then
-	CXX=clang++
-fi
-
   *apple-darwin*)
 	ARCH="-arch x86_64"
 	OSX_DEVTOOL_DIR=`xcode-select -p`

@@ -44,6 +44,7 @@ int main(int argc, const char * argv[])
 	UMLicenseProduct *simproxy    	= [[UMLicenseProduct alloc]initWithName:@"simproxy"];
 	UMLicenseProduct *hlrclient    	= [[UMLicenseProduct alloc]initWithName:@"hlrclient"];
 	UMLicenseProduct *eirproxy    	= [[UMLicenseProduct alloc]initWithName:@"eirproxy"];
+	UMLicenseProduct *diameter_dra  = [[UMLicenseProduct alloc]initWithName:@"diameter-routing-agent"];
 
 #define  ADD_PRODUCT_ALL(name) \
 licenseFeatures[name] = @{@"enable": @"YES"}; \
@@ -52,9 +53,11 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 [rerouter addFeatureWithName:name]; \
 [estp addFeatureWithName:name]; \
 [ss7firewall addFeatureWithName:name]; \
-[cnamserver addFeatureWithName:name] \
-[simproxy addFeatureWithName:name] \
-[hlrclient addFeatureWithName:name]
+[cnamserver addFeatureWithName:name]; \
+[simproxy addFeatureWithName:name]; \
+[hlrclient addFeatureWithName:name]; \
+[diameter_dra addFeatureWithName:name]
+
 
 	ADD_PRODUCT_ALL(@"core");
 	ADD_PRODUCT_ALL(@"sctp");
