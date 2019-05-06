@@ -306,11 +306,11 @@
     {
         dict[@"licenseRenewAddress"] = _licenseRenewAddress;
     }
-    if(_licenseRenewTimerMin)
+    if(_licenseRenewTimerMin!=NULL)
     {
         dict[@"licenseRenewTimerMin"] = _licenseRenewTimerMin;
     }
-    if(_licenseRenewTimerMax)
+    if(_licenseRenewTimerMax!=NULL)
     {
         dict[@"licenseRenewTimerMax"] = _licenseRenewTimerMax;
     }
@@ -323,7 +323,7 @@
     {
         dict[@"licenseReportAddress"] = _licenseReportAddress;
     }
-    if(_licenseReportTimer)
+    if(_licenseReportTimer!=NULL)
     {
         dict[@"licenseReportTimer"] = _licenseReportTimer;
     }

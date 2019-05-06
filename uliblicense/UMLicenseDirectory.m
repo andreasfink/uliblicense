@@ -26,7 +26,8 @@
                                      object:NULL
                                     seconds:5*60 /* every 5 minutes we check if there's any licenses to be potentially updated */
                                        name:@"license-check-timer"
-                                    repeats:YES];
+                                    repeats:YES
+                            runInForeground:NO];
 }
 
 - (UMLicenseDirectory *)init
@@ -462,12 +463,12 @@
                 int i = 7*24*60*60;
                 int j = 7*24*60*60;
                 NSNumber *n = lf.signedLicense.license.licenseRenewTimerMin;
-                if(n)
+                if(n != NULL)
                 {
                     i = (NSTimeInterval)[n integerValue];
                 }
                 n = lf.signedLicense.license.licenseRenewTimerMax;
-                if(n)
+                if(n != NULL)
                 {
                     j = (NSTimeInterval)[n integerValue];
                 }
@@ -483,7 +484,7 @@
                 
                 NSTimeInterval i = 7*24*60*60;
                 NSNumber *n = lf.signedLicense.license.licenseReportTimer;
-                if(n)
+                if(n != NULL)
                 {
                     i = (NSTimeInterval)[n integerValue];
                 }
