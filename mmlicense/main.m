@@ -55,7 +55,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 [ss7firewall addFeatureWithName:name]; \
 [cnamserver addFeatureWithName:name]; \
 [simproxy addFeatureWithName:name]; \
-[hlrclient addFeatureWithName:name] \
+[hlrclient addFeatureWithName:name]; \
 [diameter_dra addFeatureWithName:name]
 
 
