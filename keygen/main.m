@@ -1,14 +1,18 @@
 //
 //  main.m
-//  mmdisplay
+//  keygen
 //
-//  Created by Andreas Fink on 05.06.18.
+//  Created by Andreas Fink on 28.06.19.
 //
 
-#import <Foundation/Foundation.h>
-#include "../version.h"
+#import <ulib/ulib.h>
+
+#ifdef __APPLE__
+#import "/Library/Application Support/FinkTelecomServices/frameworks/uliblicense/uliblicense.h"
+#else
 #import <uliblicense/uliblicense.h>
-#if 0
+#endif
+
 static NSString *decryptionKey =
 @"-----BEGIN RSA PRIVATE KEY-----\n"
 @"MIIJKQIBAAKCAgEAupJJTHXBDeMIdeYnezgD9/eHhapOFISNWeA1otheCdIJu42T\n"
@@ -62,7 +66,7 @@ static NSString *decryptionKey =
 @"A5Rkh71Ul5EcXsQvHy7HW0gCIAcAhowvQz2zh7z+6RC45lfmFm7Db+OMANxL\n"
 @"-----END RSA PRIVATE KEY-----\n";
 
-static NSString *signatureVerificationKey =
+	static NSString *signatureVerificationKey =
 @"-----BEGIN RSA PRIVATE KEY-----\n"
 @"MIIJJwIBAAKCAgEAsxnayLqYwH+QbTMdJB1ju1glztLXnuoMhQkmojqLm0SllGgm\n"
 @"xOWGDXyJa+XEdxv1ctnVRju23kPzSqVKK03UYMi1FE+6q4ZqYOxlSgIBg/HJBpz6\n"
@@ -114,147 +118,73 @@ static NSString *signatureVerificationKey =
 @"YN1Qq+wPThoajcvd6Jkaw1MQNBL/VSZ8eONf6SZ38MQOr91BcubgpyRksOklou24\n"
 @"9pMtlL+dxhHFu1htzO3u2M8D3u9VQ3jgcKgKsPlJ83RiyV2yJ5r0zCEmAA==\n"
 @"-----END RSA PRIVATE KEY-----\n";
-#endif
 
+static void data_dump_c(NSData *data, const char  *var);
+
+static void data_dump_c(NSData *data, const char *var)
+{
+	NSInteger n = data.length;
+	uint8_t *bytes = (uint8_t *)data.bytes;
+
+	fprintf(stdout,"uint8_t %s[] = \n{",var);
+
+	for(NSInteger i=0;i<n;i++)
+	{
+		fprintf(stdout,"0x%0x,",bytes[i]);
+		if((i%8) == 7)
+		{
+			fprintf(stdout,"\n\t");
+		}
+	}
+	fprintf(stdout,"\n}");
+
+	fflush(stdout);
+}
 
 int main(int argc, const char * argv[])
 {
-    @autoreleasepool
-    {
-        NSDictionary *appDefinition = @
-        {
-            @"version" : @(VERSION),
-            @"executable" : @"mmdisplay",
-            @"run-as" : @(argv[0]),
-            @"copyright" : @"© 2018 Andreas Fink",
-        };
-        
-        NSArray *commandLineDefinition = @[
-                                           @{
-                                               @"name"  : @"version",
-                                               @"short" : @"-V",
-                                               @"long"  : @"--version",
-                                               @"help"  : @"shows the software version"
-                                               },
-                                           @{
-                                               @"name"  : @"verbose",
-                                               @"short" : @"-v",
-                                               @"long"  : @"--verbose",
-                                               @"help"  : @"enables verbose mode"
-                                               },
-                                           @{
-                                               @"name"  : @"help",
-                                               @"short" : @"-h",
-                                               @"long" : @"--help",
-                                               @"help"  : @"shows the help screen",
-                                               },
-                                           @{
-                                               @"name"  : @"file",
-                                               @"short" : @"-f",
-                                               @"long"  : @"--file",
-                                               @"argument" : @"filename",
-                                               @"help"  : @"display the license info from file",
-                                               },
-                                           @{
-                                               @"name"  : @"key",
-                                               @"short" : @"-k",
-                                               @"long"  : @"--decryption-key",
-                                               @"argument" : @"keyfile",
-                                               @"help"  : @"decryption key file",
-                                               },
-                                           @{
-                                               @"name"  : @"sigver",
-                                               @"short" : @"-s",
-                                               @"long"  : @"--signature-verification-key",
-                                               @"argument" : @"keyfile",
-                                               @"help"  : @"signature verification key file"
-                                               },
-                                           @{
-                                               @"name"  : @"debug",
-                                               @"short" : @"-d",
-                                               @"long"  : @"--debug",
-                                               @"help"  : @"debug output"
-                                               }];
+	uint8_t d3bytes[] = {
+		196,	192,	213,	132,
+		40,		9,		188,	186,
+		66,		184,	45,		159,
+		169,	221,	173,	1,
+		104,	82,		187,	137,
+		121,	135,	171,	95,
+		3,		10,		69,		157,
+		83,		217,	29,		117,
+		156,	103,	176,	33,
+		110,
+	};
+	NSData *d3 = [NSData dataWithBytes:d3bytes length:sizeof d3bytes];
 
-        
-        UMCommandLine *_commandLine = [[UMCommandLine alloc]initWithCommandLineDefintion:commandLineDefinition
-                                                                           appDefinition:appDefinition
-                                                                                    argc:argc
-                                                                                    argv:argv];
-        [_commandLine handleStandardArguments];
-        NSDictionary *params = _commandLine.params;
-        
-        UMLicenseDirectory *licdir = UMLicense_newLicenseDirectoryWithDefaultKeys();
+	NSData *key1 = [decryptionKey            dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+	NSData *key2 = [signatureVerificationKey dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
 
+	NSData *key1e 	= [key1 xor:d3];
+	NSData *key2e	= [key2 xor:d3];
 
-        if(params[@"debug"])
-        {
-            licdir.debug=YES;
-        }
+	NSData *key1d 	= [key1e xor:d3];
+	NSData *key2d	= [key2e xor:d3];
 
-        if(params[@"key"])
-        {
-            NSArray *filenames = params[@"key"];
-            for(NSString *filename in filenames)
-            {
-                NSError *err =NULL;;
-                
-                NSString *key = [NSString stringWithContentsOfFile:filename encoding:NSUTF8StringEncoding error:&err];
-                if(key)
-                {
-                    [licdir addDecryptionKey:key];
-                }
-                else
-                {
-                    NSString *d = err.description;
-                    fprintf(stderr,"Error: can not read keyfile %s\n%s\n",filename.UTF8String,d.UTF8String);
-                }
-            }
-        }
-        if(params[@"sigver"])
-        {
-            NSArray *filenames = params[@"sigver"];
-            for(NSString *filename in filenames)
-            {
-                NSError *err =NULL;;
-                
-                NSString *key = [NSString stringWithContentsOfFile:filename encoding:NSUTF8StringEncoding error:&err];
-                if(key)
-                {
-                    [licdir addSignatureVerificationKey:key];
-                }
-                else
-                {
-                    NSString *d = err.description;
-                    fprintf(stderr,"Error: can not read keyfile %s\n%s\n",filename.UTF8String,d.UTF8String);
-                }
-            }
-        }
-        if(params[@"file"])
-        {
+	NSString *key1s = [key1d utf8String];
+	NSString *key2s = [key2d utf8String];
 
-            NSArray *filenames = params[@"file"];
-            for(NSString *filename in filenames)
-            {
-                UMLicenseFile *lf = [[UMLicenseFile alloc]initWithFilename:filename];
-                if(lf)
-                {
-                    [licdir addLicenseFile:lf];
-                }
-                else
-                {
-                    fprintf(stderr,"Error: can not read license file %s\n",filename.UTF8String);
-                }
-            }
-        }
-        else
-        {
-            [licdir scanDirectoryForLicenseFiles:@"/opt/uliblicense"];
-        }
-        [licdir decryptLicenses];
-        [licdir validateSignatures];
-        NSString *d = licdir.jsonString;
-        fprintf(stdout,"%s",d.UTF8String);
-    }
-    return 0;
+	NSLog(@"key1: %@",key1);
+	NSLog(@"key1e: %@",key1e);
+	NSLog(@"key1d: %@",key1d);
+	NSLog(@"key1s: %@",key1s);
+
+	NSLog(@"key2: %@",key2);
+	NSLog(@"key2e: %@",key2e);
+	NSLog(@"key2d: %@",key2d);
+	NSLog(@"key2s: %@",key2s);
+
+	data_dump_c(key1e,"key1e");
+	data_dump_c(key2e,"key2e");
+
+	UMLicenseDirectory *ld =  UMLicense_newLicenseDirectoryWithDefaultKeys();
+	NSLog(@"dk: %@",[ld licenseDecryptionKeys]);
+	NSLog(@"svk: %@",[ld licenseSignatureKeys]);
+
+	return 0;
 }

@@ -80,7 +80,7 @@
     else
     {
         @throw([NSException exceptionWithName:@"PARAMETER_ENCODING_ERROR"
-                                       reason:@"UMLicense licensePorudct missing"
+                                       reason:@"UMLicense licenseProduct missing"
                                      userInfo:@{    @"backtrace": UMBacktrace(NULL,0)}]);
     }
     if(_licenseExpiration)

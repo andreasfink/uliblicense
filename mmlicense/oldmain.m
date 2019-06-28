@@ -5,6 +5,7 @@
 //  Created by Andreas Fink on 15.11.11.
 //  Copyright (c) 2011 Andreas Fink. All rights reserved.
 //
+#if 0
 
 #include <string.h>
 #include <time.h>
@@ -410,4 +411,6 @@ int main (int argc, const char * argv[])
 	}
 	return 0;
 }
+
+#endif
 

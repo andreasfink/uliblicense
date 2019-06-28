@@ -22,3 +22,6 @@
 #import "UMLicenseFile.h"
 #import "UMLicenseWebConvert.h"
 
+UMLicenseDirectory * UMLicense_loadLicensesFromPath(NSString *directory, BOOL debug);
+UMLicenseDirectory * UMLicense_newLicenseDirectoryWithDefaultKeys(void);
+

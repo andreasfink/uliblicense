@@ -51,6 +51,16 @@
     return self;
 }
 
+- (NSArray *)licenseDecryptionKeys
+{
+	return [_licenseDecryptionKeys copy];
+}
+
+- (NSArray *)licenseSignatureKeys
+{
+	return [_licenseSignatureKeys copy];
+}
+
 - (void)startAutoRefresh
 {
     [_timer start];

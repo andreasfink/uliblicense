@@ -3,7 +3,7 @@
 //  uliblicense
 //
 //  Created by Andreas Fink on 05.06.18.
-//
+// 
 
 #import <ulib/ulib.h>
 #import "UMLicenseRefreshDelegateProtocol.h"
@@ -28,6 +28,9 @@
 @property(readwrite,strong)    id<UMLicenseRefreshDelegateProtocol> updateByAddressDelegate;
 @property(readwrite,strong)     NSDictionary *productHttpParameters;
 @property(readwrite,assign)  BOOL debug;
+
+- (NSArray *)licenseDecryptionKeys;
+- (NSArray *)licenseSignatureKeys;
 
 - (void)scanDirectoryForLicenseFiles:(NSString *)path;
 - (void)addLicenseFile:(UMLicenseFile *)licenseFile;

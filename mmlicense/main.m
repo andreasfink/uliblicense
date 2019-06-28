@@ -40,11 +40,16 @@ int main(int argc, const char * argv[])
 	UMLicenseProduct *rerouter      = [[UMLicenseProduct alloc]initWithName:@"rerouter"];
 	UMLicenseProduct *estp          = [[UMLicenseProduct alloc]initWithName:@"estp"];
 	UMLicenseProduct *ss7firewall   = [[UMLicenseProduct alloc]initWithName:@"ss7firewall"];
+	UMLicenseProduct *smsfirewall   = [[UMLicenseProduct alloc]initWithName:@"smsfirewall"];
 	UMLicenseProduct *cnamserver    = [[UMLicenseProduct alloc]initWithName:@"cnamserver"];
 	UMLicenseProduct *simproxy    	= [[UMLicenseProduct alloc]initWithName:@"simproxy"];
 	UMLicenseProduct *hlrclient    	= [[UMLicenseProduct alloc]initWithName:@"hlrclient"];
 	UMLicenseProduct *eirproxy    	= [[UMLicenseProduct alloc]initWithName:@"eirproxy"];
 	UMLicenseProduct *diameter_dra  = [[UMLicenseProduct alloc]initWithName:@"diameter-routing-agent"];
+	UMLicenseProduct *diameter_dea  = [[UMLicenseProduct alloc]initWithName:@"diameter-edge-agent"];
+	UMLicenseProduct *map_api 		= [[UMLicenseProduct alloc]initWithName:@"map-api-server"];
+	UMLicenseProduct *camel_api 	= [[UMLicenseProduct alloc]initWithName:@"camel-api-server"];
+	UMLicenseProduct *diameter_api	= [[UMLicenseProduct alloc]initWithName:@"diameter-api-server"];
 
 #define  ADD_PRODUCT_ALL(name) \
 licenseFeatures[name] = @{@"enable": @"YES"}; \
@@ -53,11 +58,12 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 [rerouter addFeatureWithName:name]; \
 [estp addFeatureWithName:name]; \
 [ss7firewall addFeatureWithName:name]; \
+[smsfirewall addFeatureWithName:name]; \
 [cnamserver addFeatureWithName:name]; \
 [simproxy addFeatureWithName:name]; \
 [hlrclient addFeatureWithName:name]; \
-[diameter_dra addFeatureWithName:name]
-
+[diameter_dra addFeatureWithName:name]; \
+[diameter_dea addFeatureWithName:name]
 
 	ADD_PRODUCT_ALL(@"core");
 	ADD_PRODUCT_ALL(@"sctp");
@@ -75,6 +81,8 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 	[simproxy addFeatureWithName:@"simproxy"];
 	[hlrclient addFeatureWithName:@"hlrclient"];
 	[eirproxy addFeatureWithName:@"eirproxy"];
+	[diameter_dra addFeatureWithName:@"diameter-routing-agent"];
+	[diameter_dea addFeatureWithName:@"diameter-edge-agent"];
 
 	NSString *licenseFileName = @"license.bin";
 	licenseFeatures[@"core"] = @{@"enable": @"YES"};
@@ -317,6 +325,22 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 											   @"long"  : @"--ss7firewall",
 											   @"help"  : @"enable product SS7 Firewall",
 											   },
+
+										   @{
+											   @"name"  : @"diameter",
+											   @"long"  : @"--diameter",
+											   @"help"  : @"support diameter protocol",
+											   },
+										   @{
+											   @"name"  : @"diameter-routing-agent",
+											   @"long"  : @"--diameter-routing-agent",
+											   @"help"  : @"adds  diameter routing agent functionality",
+											   },
+										   @{
+											   @"name"  : @"diameter-edge-agent",
+											   @"long"  : @"--diameter-edge-agent",
+											   @"help"  : @"addsdiameter edge agent functionality",
+											   },
 										   @{
 											   @"name"  : @"estp",
 											   @"short" : @"",
@@ -340,6 +364,24 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 											   @"short" : @"",
 											   @"long"  : @"--eirproxy",
 											   @"help"  : @"enable product EIR Proxy",
+											   },
+											   @{
+											   @"name"  : @"map-api-server",
+											   @"short" : @"",
+											   @"long"  : @"--map-api-server",
+											   @"help"  : @"enable GSMMAP API",
+											   },
+											   @{
+											   @"name"  : @"camel-api-server",
+											   @"short" : @"",
+											   @"long"  : @"--camel-api-server",
+											   @"help"  : @"enable CAMEL API",
+											   },
+											   @{
+											   @"name"  : @"diameter-api-server",
+											   @"short" : @"",
+											   @"long"  : @"--diameter-api-server",
+											   @"help"  : @"enable Diameter API",
 											   },];
 
 		UMCommandLine *_commandLine = [[UMCommandLine alloc]initWithCommandLineDefintion:commandLineDefinition
@@ -352,7 +394,6 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
         NSString *encryptionKey = NULL;
         NSString *signatureKey = NULL;
 		BOOL verbose=NO;
-
 
         UMLicenseRestrictionList *licenseRestrictions = [[UMLicenseRestrictionList alloc]init];
 
@@ -605,7 +646,10 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		{
 			ADD_PRODUCT_ALL(@"udp");
 		}
-
+		if(params[@"diameter"])
+		{
+			ADD_PRODUCT_ALL(@"diameter");
+		}
 		if(params[@"expiration"])
 		{
 			NSArray *expirations = params[@"expiration"];
@@ -651,16 +695,17 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			licenseFeatures[@"smsproxy"] = @{@"enable": @"YES"};
 			[mmlicense addProduct:smsproxy];
 		}
-		if(params[@"estp"])
-		{
-			licenseFeatures[@"estp"] = @{@"enable": @"YES"};
-			[mmlicense addProduct:estp];
-		}
 		if(params[@"ss7firewall"])
 		{
 			licenseFeatures[@"ss7firewall"] = @{@"enable": @"YES"};
 			[mmlicense addProduct:ss7firewall];
 		}
+		if(params[@"smsfirewall"])
+		{
+			licenseFeatures[@"smsfirewall"] = @{@"enable": @"YES"};
+			[mmlicense addProduct:smsfirewall];
+		}
+
 		if(params[@"cnamserver"])
 		{
 			licenseFeatures[@"cnamserver"] = @{@"enable": @"YES"};
@@ -685,6 +730,51 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		{
 			licenseFeatures[@"rerouter"] = @{@"enable": @"YES"};
 			[mmlicense addProduct:rerouter];
+		}
+		if(params[@"diameter-edge-agent"])
+		{
+			[diameter_dea addFeatureWithName:@"diameter-edge-agent"];
+			[estp addFeatureWithName:@"diameter-edge-agent"];
+			[diameter_dea addFeatureWithName:@"diameter"];
+			[estp addFeatureWithName:@"diameter"];
+			[mmlicense addProduct:diameter_dea];
+		}
+		if(params[@"diameter-routing-agent"])
+		{
+			[diameter_dra addFeatureWithName:@"diameter-routing-agent"];
+			[estp addFeatureWithName:@"diameter-routing-agent"];
+			[diameter_dra addFeatureWithName:@"diameter"];
+			[estp addFeatureWithName:@"diameter"];
+			[mmlicense addProduct:diameter_dra];
+		}
+
+		if(params[@"map-api-server"])
+		{
+			[map_api addFeatureWithName:@"map-api-server"];
+			[estp addFeatureWithName:@"map-api-server"];
+			[mmlicense addProduct:map_api];
+		}
+		if(params[@"camel-api-server"])
+		{
+			[camel_api addFeatureWithName:@"camel-api-server"];
+			[estp addFeatureWithName:@"camel-api-server"];
+			[mmlicense addProduct:camel_api];
+		}
+
+		if(params[@"diameter-api-server"])
+		{
+			[diameter_api addFeatureWithName:@"diameter-api-server"];
+			[estp addFeatureWithName:@"diameter-api-server"];
+			[mmlicense addProduct:diameter_api];
+		}
+
+
+
+		if(params[@"estp"])
+		{
+			licenseFeatures[@"estp"] = @{@"enable": @"YES"};
+			[estp addFeatureWithName:@"estp"];
+			[mmlicense addProduct:estp];
 		}
 
 		licenseFile[@"features"] = licenseFeatures;

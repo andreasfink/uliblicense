@@ -56,7 +56,53 @@
 		A6798A9C22BB81690019806C /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A7022BB7BA20019806C /* libuliblicense.a */; };
 		A6798A9D22BB816A0019806C /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A7022BB7BA20019806C /* libuliblicense.a */; };
 		A67A283F20C69EC6001BB7A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A283E20C69EC6001BB7A3 /* main.m */; };
+		A67E7A8022C5E9D200B34DA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A67E7A7F22C5E9D200B34DA3 /* main.m */; };
+		A67E7A8422C60CEF00B34DA3 /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3B22BB74600019806C /* ulib.framework */; };
+		A67E7A8522C60CF200B34DA3 /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3C22BB74600019806C /* ulibasn1.framework */; };
+		A67E7A9222C623C500B34DA3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67E7A9122C623C500B34DA3 /* libuliblicense.a */; };
+		A67E7A9322C623C500B34DA3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67E7A9122C623C500B34DA3 /* libuliblicense.a */; };
+		A67E7A9422C623C600B34DA3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67E7A9122C623C500B34DA3 /* libuliblicense.a */; };
+		A67E7A9522C623C600B34DA3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67E7A9122C623C500B34DA3 /* libuliblicense.a */; };
+		A67E7A9622C623C600B34DA3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67E7A9122C623C500B34DA3 /* libuliblicense.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A67E7A9822C6250500B34DA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6F36AFA1472525E006F5AF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6798A6F22BB7BA20019806C;
+			remoteInfo = uliblicense;
+		};
+		A67E7A9A22C6250C00B34DA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6F36AFA1472525E006F5AF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6798A6F22BB7BA20019806C;
+			remoteInfo = uliblicense;
+		};
+		A67E7A9C22C6251200B34DA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6F36AFA1472525E006F5AF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6798A6F22BB7BA20019806C;
+			remoteInfo = uliblicense;
+		};
+		A67E7A9E22C6251800B34DA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6F36AFA1472525E006F5AF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6798A6F22BB7BA20019806C;
+			remoteInfo = uliblicense;
+		};
+		A67E7AA022C6251F00B34DA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6F36AFA1472525E006F5AF0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6798A6F22BB7BA20019806C;
+			remoteInfo = uliblicense;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		A62DAD191472BF69005487AF /* CopyFiles */ = {
@@ -78,6 +124,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		A67A283A20C69EC6001BB7A3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		A67E7A7B22C5E9D200B34DA3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -120,10 +175,13 @@
 		A67A283E20C69EC6001BB7A3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A67E44B32112A4810092DB00 /* UMLicenseWebConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMLicenseWebConvert.m; sourceTree = "<group>"; };
 		A67E44B42112A4810092DB00 /* UMLicenseWebConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMLicenseWebConvert.h; sourceTree = "<group>"; };
-		A67E44B72112F1490092DB00 /* UMLicenseWebGet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseWebGet.h; sourceTree = "<group>"; };
+		A67E44B72112F1490092DB00 /* UMLicenseWebGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMLicenseWebGet.h; sourceTree = "<group>"; };
 		A67E44B82112F1490092DB00 /* UMLicenseWebGet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseWebGet.m; sourceTree = "<group>"; };
 		A67E44BB2112F1940092DB00 /* UMLicenseWebUpdate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseWebUpdate.h; sourceTree = "<group>"; };
 		A67E44BC2112F1940092DB00 /* UMLicenseWebUpdate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseWebUpdate.m; sourceTree = "<group>"; };
+		A67E7A7D22C5E9D200B34DA3 /* keygen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = keygen; sourceTree = BUILT_PRODUCTS_DIR; };
+		A67E7A7F22C5E9D200B34DA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A67E7A9122C623C500B34DA3 /* libuliblicense.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuliblicense.a; path = "/Library/Application Support/FinkTelecomServices/frameworks/libuliblicense.a"; sourceTree = "<absolute>"; };
 		A6B024FB20BEED6E006779BA /* uliblicense.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uliblicense.h; sourceTree = "<group>"; };
 		A6B024FD20BEED6E006779BA /* uliblicense.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uliblicense.m; sourceTree = "<group>"; };
 		A6B0250220BEED9D006779BA /* UMLicenseProductFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMLicenseProductFeature.m; sourceTree = "<group>"; };
@@ -161,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6798A4322BB74B80019806C /* ulibasn1.framework in Frameworks */,
+				A67E7A9322C623C500B34DA3 /* libuliblicense.a in Frameworks */,
 				A6798A9B22BB81680019806C /* libuliblicense.a in Frameworks */,
 				A6798A3F22BB74A90019806C /* ulib.framework in Frameworks */,
 			);
@@ -171,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6798A4222BB74AB0019806C /* ulib.framework in Frameworks */,
+				A67E7A9522C623C600B34DA3 /* libuliblicense.a in Frameworks */,
 				A6798A9D22BB816A0019806C /* libuliblicense.a in Frameworks */,
 				A6798A4622BB74BA0019806C /* ulibasn1.framework in Frameworks */,
 			);
@@ -188,8 +248,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6798A4522BB74B90019806C /* ulibasn1.framework in Frameworks */,
+				A67E7A9422C623C600B34DA3 /* libuliblicense.a in Frameworks */,
 				A6798A9C22BB81690019806C /* libuliblicense.a in Frameworks */,
 				A6798A4122BB74AA0019806C /* ulib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A67E7A7A22C5E9D200B34DA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A67E7A8422C60CEF00B34DA3 /* ulib.framework in Frameworks */,
+				A67E7A9622C623C600B34DA3 /* libuliblicense.a in Frameworks */,
+				A67E7A8522C60CF200B34DA3 /* ulibasn1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6798A3D22BB74600019806C /* ulib.framework in Frameworks */,
+				A67E7A9222C623C500B34DA3 /* libuliblicense.a in Frameworks */,
 				A6798A9A22BB81670019806C /* libuliblicense.a in Frameworks */,
 				A6798A3E22BB74600019806C /* ulibasn1.framework in Frameworks */,
 			);
@@ -237,6 +309,14 @@
 				A67A283E20C69EC6001BB7A3 /* main.m */,
 			);
 			path = mmdisplay;
+			sourceTree = "<group>";
+		};
+		A67E7A7E22C5E9D200B34DA3 /* keygen */ = {
+			isa = PBXGroup;
+			children = (
+				A67E7A7F22C5E9D200B34DA3 /* main.m */,
+			);
+			path = keygen;
 			sourceTree = "<group>";
 		};
 		A6B024FA20BEED6E006779BA /* uliblicense */ = {
@@ -297,6 +377,7 @@
 				A6B024FA20BEED6E006779BA /* uliblicense */,
 				A67A283D20C69EC6001BB7A3 /* mmdisplay */,
 				A652E13620C7CFF200CDA5EF /* mmconvert */,
+				A67E7A7E22C5E9D200B34DA3 /* keygen */,
 				A6F36B061472525E006F5AF0 /* Frameworks */,
 				A6F36B041472525E006F5AF0 /* Products */,
 			);
@@ -310,6 +391,7 @@
 				A67A283C20C69EC6001BB7A3 /* mmdisplay */,
 				A652E13520C7CFF200CDA5EF /* mmconvert */,
 				A6798A7022BB7BA20019806C /* libuliblicense.a */,
+				A67E7A7D22C5E9D200B34DA3 /* keygen */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -317,6 +399,7 @@
 		A6F36B061472525E006F5AF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A67E7A9122C623C500B34DA3 /* libuliblicense.a */,
 				A6798A3B22BB74600019806C /* ulib.framework */,
 				A6798A3C22BB74600019806C /* ulibasn1.framework */,
 			);
@@ -330,6 +413,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6798A8822BB7C3A0019806C /* UMLicenseWebGet.h in Headers */,
 				A6798A7E22BB7C3A0019806C /* UMLicenseDirectory.h in Headers */,
 				A6798A8122BB7C3A0019806C /* UMLicenseProductFeature.h in Headers */,
 				A6798A7922BB7BD70019806C /* uliblicense.h in Headers */,
@@ -342,7 +426,6 @@
 				A6798A8222BB7C3A0019806C /* UMLicenseProductFeatureList.h in Headers */,
 				A6798A7D22BB7C3A0019806C /* UMLicense.h in Headers */,
 				A6798A8322BB7C3A0019806C /* UMLicenseProductList.h in Headers */,
-				A6798A8822BB7C3A0019806C /* UMLicenseWebGet.h in Headers */,
 				A6798A8622BB7C3A0019806C /* UMLicenseRestrictionList.h in Headers */,
 				A6798A8522BB7C3A0019806C /* UMLicenseRestriction.h in Headers */,
 				A6798A7B22BB7C3A0019806C /* UMEncryptedLicense.h in Headers */,
@@ -360,10 +443,12 @@
 				A62DAD141472BF69005487AF /* Sources */,
 				A62DAD161472BF69005487AF /* Frameworks */,
 				A62DAD191472BF69005487AF /* CopyFiles */,
+				A67E7A8822C618E500B34DA3 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A67E7A9F22C6251800B34DA3 /* PBXTargetDependency */,
 			);
 			name = mminfo;
 			productName = mmlic;
@@ -377,10 +462,12 @@
 				A652E13120C7CFF200CDA5EF /* Sources */,
 				A652E13220C7CFF200CDA5EF /* Frameworks */,
 				A652E13320C7CFF200CDA5EF /* CopyFiles */,
+				A67E7A8B22C6190B00B34DA3 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A67E7A9B22C6250C00B34DA3 /* PBXTargetDependency */,
 			);
 			name = mmconvert;
 			productName = mmconvert;
@@ -391,9 +478,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6798A7822BB7BA20019806C /* Build configuration list for PBXNativeTarget "uliblicense" */;
 			buildPhases = (
-				A6798A6C22BB7BA20019806C /* Headers */,
 				A6798A6D22BB7BA20019806C /* Sources */,
 				A6798A6E22BB7BA20019806C /* Frameworks */,
+				A6798A6C22BB7BA20019806C /* Headers */,
 			);
 			buildRules = (
 			);
@@ -411,14 +498,34 @@
 				A67A283820C69EC6001BB7A3 /* Sources */,
 				A67A283920C69EC6001BB7A3 /* Frameworks */,
 				A67A283A20C69EC6001BB7A3 /* CopyFiles */,
+				A67E7A8922C618F300B34DA3 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A67E7A9D22C6251200B34DA3 /* PBXTargetDependency */,
 			);
 			name = mmdisplay;
 			productName = mmdisplay;
 			productReference = A67A283C20C69EC6001BB7A3 /* mmdisplay */;
+			productType = "com.apple.product-type.tool";
+		};
+		A67E7A7C22C5E9D200B34DA3 /* keygen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A67E7A8322C5E9D200B34DA3 /* Build configuration list for PBXNativeTarget "keygen" */;
+			buildPhases = (
+				A67E7A7922C5E9D200B34DA3 /* Sources */,
+				A67E7A7A22C5E9D200B34DA3 /* Frameworks */,
+				A67E7A7B22C5E9D200B34DA3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A67E7A9922C6250500B34DA3 /* PBXTargetDependency */,
+			);
+			name = keygen;
+			productName = keygen;
+			productReference = A67E7A7D22C5E9D200B34DA3 /* keygen */;
 			productType = "com.apple.product-type.tool";
 		};
 		A6F36B021472525E006F5AF0 /* mmlicense */ = {
@@ -428,10 +535,12 @@
 				A6F36AFF1472525E006F5AF0 /* Sources */,
 				A6F36B001472525E006F5AF0 /* Frameworks */,
 				A6F36B011472525E006F5AF0 /* CopyFiles */,
+				A67E7A8722C6185A00B34DA3 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A67E7AA122C6251F00B34DA3 /* PBXTargetDependency */,
 			);
 			name = mmlicense;
 			productName = mmlic;
@@ -465,6 +574,11 @@
 						DevelopmentTeam = 2GSNWPNR77;
 						ProvisioningStyle = Automatic;
 					};
+					A67E7A7C22C5E9D200B34DA3 = {
+						CreatedOnToolsVersion = 10.2.1;
+						DevelopmentTeam = 2GSNWPNR77;
+						ProvisioningStyle = Automatic;
+					};
 					A6F36B021472525E006F5AF0 = {
 						DevelopmentTeam = 2GSNWPNR77;
 						ProvisioningStyle = Automatic;
@@ -489,9 +603,81 @@
 				A67A283B20C69EC6001BB7A3 /* mmdisplay */,
 				A652E13420C7CFF200CDA5EF /* mmconvert */,
 				A6798A6F22BB7BA20019806C /* uliblicense */,
+				A67E7A7C22C5E9D200B34DA3 /* keygen */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A67E7A8722C6185A00B34DA3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\n\nEXE=mmlicense\nmkdir -p /usr/local/bin\nif [ -f \"/usr/local/bin/$EXE\" ]\nthen\n    rm -f \"/usr/local/bin/$EXE\"\nfi\nif [ -L \"/usr/local/bin/$EXE\" ]\nthen\n    rm -f \"/usr/local/bin/$EXE\"\nfi\nln -s /Library/Application\\ Support/FinkTelecomServices/bin/$EXE /usr/local/bin/$EXE\n";
+		};
+		A67E7A8822C618E500B34DA3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\n\nEXE=mminfo\nmkdir -p /usr/local/bin\nif [ -f \"/usr/local/bin/$EXE\" ]\nthen\n    rm -f \"/usr/local/bin/$EXE\"\nfi\nif [ -L \"/usr/local/bin/$EXE\" ]\nthen\n    rm -f \"/usr/local/bin/$EXE\"\nfi\nln -s /Library/Application\\ Support/FinkTelecomServices/bin/$EXE /usr/local/bin/$EXE\n";
+		};
+		A67E7A8922C618F300B34DA3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\n\nEXE=mmdisplay\nmkdir -p /usr/local/bin\nif [ -f \"/usr/local/bin/$EXE\" ]\nthen\n    rm -f \"/usr/local/bin/$EXE\"\nfi\nif [ -L \"/usr/local/bin/$EXE\" ]\nthen\n    rm -f \"/usr/local/bin/$EXE\"\nfi\nln -s /Library/Application\\ Support/FinkTelecomServices/bin/$EXE /usr/local/bin/$EXE\n";
+		};
+		A67E7A8B22C6190B00B34DA3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\n\nEXE=mmconvert\nmkdir -p /usr/local/bin\nif [ -f \"/usr/local/bin/$EXE\" ]\nthen\n    rm -f \"/usr/local/bin/$EXE\"\nfi\nif [ -L \"/usr/local/bin/$EXE\" ]\nthen\n    rm -f \"/usr/local/bin/$EXE\"\nfi\nln -s /Library/Application\\ Support/FinkTelecomServices/bin/$EXE /usr/local/bin/$EXE\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A62DAD141472BF69005487AF /* Sources */ = {
@@ -541,6 +727,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A67E7A7922C5E9D200B34DA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A67E7A8022C5E9D200B34DA3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6F36AFF1472525E006F5AF0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -550,6 +744,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A67E7A9922C6250500B34DA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6798A6F22BB7BA20019806C /* uliblicense */;
+			targetProxy = A67E7A9822C6250500B34DA3 /* PBXContainerItemProxy */;
+		};
+		A67E7A9B22C6250C00B34DA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6798A6F22BB7BA20019806C /* uliblicense */;
+			targetProxy = A67E7A9A22C6250C00B34DA3 /* PBXContainerItemProxy */;
+		};
+		A67E7A9D22C6251200B34DA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6798A6F22BB7BA20019806C /* uliblicense */;
+			targetProxy = A67E7A9C22C6251200B34DA3 /* PBXContainerItemProxy */;
+		};
+		A67E7A9F22C6251800B34DA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6798A6F22BB7BA20019806C /* uliblicense */;
+			targetProxy = A67E7A9E22C6251800B34DA3 /* PBXContainerItemProxy */;
+		};
+		A67E7AA122C6251F00B34DA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6798A6F22BB7BA20019806C /* uliblicense */;
+			targetProxy = A67E7AA022C6251F00B34DA3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A62DAD1C1472BF69005487AF /* Debug */ = {
@@ -565,6 +787,10 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -586,6 +812,10 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -621,6 +851,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -656,6 +890,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -670,7 +908,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -679,15 +917,21 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MODULEMAP_PRIVATE_FILE = "/Library/Application Support/FinkTelecomServices/frameworks/uliblicense";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -703,7 +947,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -712,16 +956,21 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
 				ENABLE_NS_ASSERTIONS = NO;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MODULEMAP_PRIVATE_FILE = "/Library/Application Support/FinkTelecomServices/frameworks/uliblicense";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -757,6 +1006,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -792,10 +1045,89 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+		A67E7A8122C5E9D200B34DA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2GSNWPNR77;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A67E7A8222C5E9D200B34DA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 2GSNWPNR77;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -912,6 +1244,10 @@
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -931,6 +1267,10 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
@@ -974,6 +1314,15 @@
 			buildConfigurations = (
 				A67A284120C69EC6001BB7A3 /* Debug */,
 				A67A284220C69EC6001BB7A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A67E7A8322C5E9D200B34DA3 /* Build configuration list for PBXNativeTarget "keygen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A67E7A8122C5E9D200B34DA3 /* Debug */,
+				A67E7A8222C5E9D200B34DA3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
