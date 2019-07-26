@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A62DAD221472BF91005487AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A62DAD211472BF91005487AF /* main.m */; };
+		A64FAAED22EB878D001964F4 /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3B22BB74600019806C /* ulib.framework */; };
 		A652E13820C7CFF200CDA5EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A652E13720C7CFF200CDA5EF /* main.m */; };
 		A652E13F20C7F0FC00CDA5EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A652E13E20C7F0FC00CDA5EF /* main.m */; };
 		A6798A3D22BB74600019806C /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3B22BB74600019806C /* ulib.framework */; };
@@ -240,6 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A64FAAED22EB878D001964F4 /* ulib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,6 +927,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -963,6 +966,7 @@
 				EXECUTABLE_PREFIX = lib;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
