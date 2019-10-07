@@ -41,7 +41,7 @@ int main(int argc, const char * argv[])
 	UMLicenseProduct *estp          = [[UMLicenseProduct alloc]initWithName:@"estp"];
 	UMLicenseProduct *ss7firewall   = [[UMLicenseProduct alloc]initWithName:@"ss7firewall"];
 	UMLicenseProduct *smsfirewall   = [[UMLicenseProduct alloc]initWithName:@"smsfirewall"];
-	UMLicenseProduct *cnamserver    = [[UMLicenseProduct alloc]initWithName:@"cnamserver"];
+	UMLicenseProduct *cnam_server    = [[UMLicenseProduct alloc]initWithName:@"cnam-server"];
 	UMLicenseProduct *simproxy    	= [[UMLicenseProduct alloc]initWithName:@"simproxy"];
 	UMLicenseProduct *hlrclient    	= [[UMLicenseProduct alloc]initWithName:@"hlrclient"];
 	UMLicenseProduct *eirproxy    	= [[UMLicenseProduct alloc]initWithName:@"eirproxy"];
@@ -59,7 +59,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 [estp addFeatureWithName:name]; \
 [ss7firewall addFeatureWithName:name]; \
 [smsfirewall addFeatureWithName:name]; \
-[cnamserver addFeatureWithName:name]; \
+[cnam_server addFeatureWithName:name]; \
 [simproxy addFeatureWithName:name]; \
 [hlrclient addFeatureWithName:name]; \
 [diameter_dra addFeatureWithName:name]; \
@@ -77,7 +77,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 	[rerouter addFeatureWithName:@"rerouter"];
 	[estp addFeatureWithName:@"estp"];
 	[ss7firewall addFeatureWithName:@"ss7firewall"];
-	[cnamserver addFeatureWithName:@"cnamserver"];
+	[cnam_server addFeatureWithName:@"cnam-server"];
 	[simproxy addFeatureWithName:@"simproxy"];
 	[hlrclient addFeatureWithName:@"hlrclient"];
 	[eirproxy addFeatureWithName:@"eirproxy"];
@@ -363,8 +363,8 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 										   @{
 											   @"name"  : @"hlrclient",
 											   @"short" : @"",
-											   @"long"  : @"--cnam-server",
-											   @"help"  : @"enable product CNAM-Server",
+											   @"long"  : @"--hlrclient",
+											   @"help"  : @"enable product hlrclient",
 											   },
 										   @{
 											   @"name"  : @"simproxy",
@@ -736,10 +736,10 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			[mmlicense addProduct:smsfirewall];
 		}
 
-		if(params[@"cnamserver"])
+		if(params[@"cnam-server"])
 		{
-			licenseFeatures[@"cnamserver"] = @{@"enable": @"YES"};
-			[mmlicense addProduct:cnamserver];
+			licenseFeatures[@"cnam-server"] = @{@"enable": @"YES"};
+			[mmlicense addProduct:cnam_server];
 		}
 		if(params[@"simproxy"])
 		{
