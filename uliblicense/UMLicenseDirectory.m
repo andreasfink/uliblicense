@@ -617,7 +617,7 @@
     }
     @catch(NSException *e)
     {
-        NSLog(@"Exception while pulling URL %@",full_url)
+        NSLog(@"Exception while pulling URL %@",full_url);
         returnValue = NO;
 
     }
@@ -653,7 +653,7 @@
     }
     @catch(NSException *e)
     {
-        NSLog(@"Exception while pulling URL %@",full_url)
+        NSLog(@"Exception while pulling URL %@",full_url);
         returnValue = NO;
     }
     return returnValue;
