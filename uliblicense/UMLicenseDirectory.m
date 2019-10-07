@@ -592,27 +592,36 @@
 - (BOOL)updateViaUrl:(NSString *)url /* returns YES on success */
               serial:(NSString *)serial
 {
+    BOOL returnValue=NO;
+
     NSMutableString *full_url = [[NSMutableString alloc]init];
     [full_url appendFormat:@"%@?serial=%@",url,[serial urlencode]];
     [self appendProductParameters:full_url];
 
     NSURL *u = [[NSURL alloc]initWithString:full_url];
     NSError *e= NULL;
-
+    @try
+    {
 #ifdef __APPLE__
-    NSData *data = [NSData dataWithContentsOfURL:u
+        NSData *data = [NSData dataWithContentsOfURL:u
                                          options:NSDataReadingUncached
                                            error:&e];
 #else
-    NSData *data = [NSData dataWithContentsOfURL:u];
+        NSData *data = [NSData dataWithContentsOfURL:u];
 #endif
-
-    if((e==0) && (data.length > 0))
-    {
-        [self refreshLicenseSerial:serial data:data];
-        return YES;
+        if((e==0) && (data.length > 0))
+        {
+            [self refreshLicenseSerial:serial data:data];
+            returnValue = YES;
+        }
     }
-    return NO;
+    @catch(NSException *e)
+    {
+        NSLog(@"Exception while pulling URL %@",full_url)
+        returnValue = NO;
+
+    }
+    return returnValue;
 }
 
 
@@ -620,27 +629,34 @@
                serial:(NSString *)serial
                   lic:(UMLicense *)lic
 {
+    BOOL returnValue=NO;
     NSMutableString *full_url = [[NSMutableString alloc]init];
     [full_url appendFormat:@"%@?serial=%@&data=%@",url,[serial urlencode],[[lic berEncoded]urlencode]];
     [self appendProductParameters:full_url];
 
     NSURL *u = [[NSURL alloc]initWithString:full_url];
     NSError *e= NULL;
-
+    @try
+    {
 #ifdef __APPLE__
-    NSData *data = [NSData dataWithContentsOfURL:u
+        NSData *data = [NSData dataWithContentsOfURL:u
                                          options:NSDataReadingUncached
                                            error:&e];
 #else
-    NSData *data = [NSData dataWithContentsOfURL:u];
+        NSData *data = [NSData dataWithContentsOfURL:u];
 #endif
-
-    if((e==0) && (data.length > 0))
-    {
-        [self refreshLicenseSerial:serial data:data];
-        return YES;
+        if((e==0) && (data.length > 0))
+        {
+            [self refreshLicenseSerial:serial data:data];
+            returnValue= YES;
+        }
     }
-    return NO;
+    @catch(NSException *e)
+    {
+        NSLog(@"Exception while pulling URL %@",full_url)
+        returnValue = NO;
+    }
+    return returnValue;
 }
 
 
