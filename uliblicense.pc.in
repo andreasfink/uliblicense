@@ -6,7 +6,7 @@ exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 
-Cflags: -I${includedir}
+Cflags: -I${includedir} -DHAS_ULIBLICENSE=1
 Libs: -L${libdir} -luliblicense
 
 Name: uliblicense
