@@ -30,5 +30,6 @@
 @property(readwrite,atomic,strong)  NSString    *licenseEmail;
 
 - (UMLicenseProductFeature *)initWithName:(NSString *)name;
+- (BOOL)isAvailable;
 
 @end

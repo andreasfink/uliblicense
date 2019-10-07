@@ -259,12 +259,25 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 											   @"long"  : @"--emi-ucp",
 											   @"help"  : @"enable EMI/UCP protocol",
 											   },
+
                                            @{
-                                               @"name"  : @"m3ua",
+                                               @"name"  : @"m2pa",
                                                @"short" : @"",
-                                               @"long"  : @"--m3ua",
-                                               @"help"  : @"enable M3UA protocol",
+                                               @"long"  : @"--m2pa",
+                                               @"help"  : @"enable M2PA protocol",
                                                },
+                                           @{
+                                                @"name"  : @"m3ua",
+                                                @"short" : @"",
+                                                @"long"  : @"--m3ua",
+                                                @"help"  : @"enable M3UA protocol",
+                                           },
+                                           @{
+                                               @"name"  : @"mtp3",
+                                               @"short" : @"",
+                                               @"long"  : @"--mtp3",
+                                               @"help"  : @"enable MTP3 Instance",
+                                           },
                                           @{
 											   @"name"  : @"http",
 											   @"short" : @"",
@@ -650,6 +663,23 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		{
 			ADD_PRODUCT_ALL(@"diameter");
 		}
+        if(params[@"tcap"])
+        {
+            ADD_PRODUCT_ALL(@"tcap");
+        }
+        if(params[@"gsmmap"])
+        {
+            ADD_PRODUCT_ALL(@"gsmmap");
+        }
+        if(params[@"m2pa"])
+        {
+            ADD_PRODUCT_ALL(@"m2pa");
+        }
+        if(params[@"mtp3"])
+        {
+            ADD_PRODUCT_ALL(@"mtp3");
+        }
+
 		if(params[@"expiration"])
 		{
 			NSArray *expirations = params[@"expiration"];

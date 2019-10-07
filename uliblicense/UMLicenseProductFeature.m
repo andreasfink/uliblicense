@@ -95,4 +95,21 @@
     n.licenseSerialNumber = _licenseSerialNumber;
     return n;
 }
+
+- (BOOL)isAvailable
+{
+    NSDate *now = [NSDate date];
+    NSDate *expiry = _licenseExpiration;
+    if(_licenseExpiration == NULL)
+    {
+        return YES;
+    }
+    if(expiry.timeIntervalSince1970 < now.timeIntervalSince1970)
+    {
+        /* license is expired */
+        return NO;
+    }
+    return YES;
+}
+
 @end
