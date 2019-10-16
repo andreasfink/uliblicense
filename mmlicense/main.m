@@ -76,7 +76,12 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 	[smsproxy addFeatureWithName:@"smsproxy"];
 	[rerouter addFeatureWithName:@"rerouter"];
 	[estp addFeatureWithName:@"estp"];
-	[ss7firewall addFeatureWithName:@"ss7firewall"];
+    [ss7firewall addFeatureWithName:@"ss7firewall"];
+    [ss7firewall addFeatureWithName:@"ss7screening"];
+    [ss7firewall addFeatureWithName:@"ss7alwaysmatch"];
+    [ss7firewall addFeatureWithName:@"ss7nevermatch"];
+    [ss7firewall addFeatureWithName:@"ss7monitor"];
+    [ss7firewall addFeatureWithName:@"ss7smsmonitor"];
 	[cnam_server addFeatureWithName:@"cnam-server"];
 	[simproxy addFeatureWithName:@"simproxy"];
 	[hlrclient addFeatureWithName:@"hlrclient"];
@@ -728,6 +733,8 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		if(params[@"ss7firewall"])
 		{
 			licenseFeatures[@"ss7firewall"] = @{@"enable": @"YES"};
+
+            ss7firewall
 			[mmlicense addProduct:ss7firewall];
 		}
 		if(params[@"smsfirewall"])
