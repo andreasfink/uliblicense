@@ -733,8 +733,6 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		if(params[@"ss7firewall"])
 		{
 			licenseFeatures[@"ss7firewall"] = @{@"enable": @"YES"};
-
-            ss7firewall
 			[mmlicense addProduct:ss7firewall];
 		}
 		if(params[@"smsfirewall"])
