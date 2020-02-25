@@ -303,7 +303,7 @@
                     NSLog(@"Valid Serial: %@", serialNum);
                     break;
                 }
-
+#ifdef INCLUDE_DEPRECIATED
                 // CPU ids
                 NSArray *cpuSerials = [UMUtil getCPUSerialNumbers];
                 for( NSString *x in cpuSerials)
@@ -315,7 +315,7 @@
                         break;
                     }
                 }
-                    
+#endif
                 // Mac Address
                 NSArray *arr = [UMUtil getArrayOfMacAddresses];
                 for(NSString *ai in arr)
