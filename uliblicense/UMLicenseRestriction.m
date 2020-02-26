@@ -14,15 +14,6 @@
     [super processBeforeEncode];
 
     int count = 0;
-    if(_lockedToCpuId)
-    {
-        UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_lockedToCpuId];
-        [utf8 processBeforeEncode];
-        self.asn1_tag.tagNumber = 0;
-        self.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-        self.asn1_data = [utf8.asn1_data copy];
-        count++;
-    }
     if(_lockedToMacAddress)
     {
         UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_lockedToMacAddress];
@@ -101,9 +92,6 @@
     {
         switch (self.asn1_tag.tagNumber)
         {
-            case 0:
-                _lockedToCpuId = utf8.value;
-                break;
             case 1:
                 _lockedToMacAddress = utf8.value;
                 break;
@@ -138,10 +126,6 @@
 {
     UMSynchronizedSortedDictionary *dict = [[UMSynchronizedSortedDictionary alloc]init];
 
-    if(_lockedToCpuId)
-    {
-        dict[@"lockedToCpuId"] = _lockedToCpuId;
-    }
     if(_lockedToMacAddress)
     {
         dict[@"lockedToMacAddress"] = _lockedToMacAddress;

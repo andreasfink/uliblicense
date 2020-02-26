@@ -223,12 +223,6 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
                                                @"help"  : @"set the hardware serial number lock",
                                                },
                                            @{
-                                               @"name"  : @"cpu-id",
-                                               @"long"  : @"--cpu-id",
-                                               @"argument" : @"cpu-id",
-                                               @"help"  : @"set the hardware cpu-id lock",
-                                               },
-                                           @{
                                                @"name"  : @"mac-addr",
                                                @"long"  : @"--mac-addr",
                                                @"argument" : @"mac-addr",
@@ -490,16 +484,6 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			}
 		}
 
-        if(params[@"cpu-id"])
-        {
-            NSArray *entries = params[@"cpu-id"];
-            for(NSString *entry in entries)
-            {
-                UMLicenseRestriction *lr = [[UMLicenseRestriction alloc]init];
-                lr.lockedToCpuId = entry;
-                [licenseRestrictions addRestriction:lr];
-            }
-        }
 
         if(params[@"mac-addr"])
         {
