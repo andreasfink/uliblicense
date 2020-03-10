@@ -41,7 +41,8 @@ int main(int argc, const char * argv[])
 	UMLicenseProduct *estp          = [[UMLicenseProduct alloc]initWithName:@"estp"];
 	UMLicenseProduct *ss7firewall   = [[UMLicenseProduct alloc]initWithName:@"ss7firewall"];
 	UMLicenseProduct *smsfirewall   = [[UMLicenseProduct alloc]initWithName:@"smsfirewall"];
-	UMLicenseProduct *cnam_server    = [[UMLicenseProduct alloc]initWithName:@"cnam-server"];
+    UMLicenseProduct *cnam_server   = [[UMLicenseProduct alloc]initWithName:@"cnam-server"];
+    UMLicenseProduct *gsm_api       = [[UMLicenseProduct alloc]initWithName:@"gsm-api"];
 	UMLicenseProduct *simproxy    	= [[UMLicenseProduct alloc]initWithName:@"simproxy"];
 	UMLicenseProduct *hlrclient    	= [[UMLicenseProduct alloc]initWithName:@"hlrclient"];
 	UMLicenseProduct *eirproxy    	= [[UMLicenseProduct alloc]initWithName:@"eirproxy"];
@@ -60,6 +61,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 [ss7firewall addFeatureWithName:name]; \
 [smsfirewall addFeatureWithName:name]; \
 [cnam_server addFeatureWithName:name]; \
+[gsm_api addFeatureWithName:name]; \
 [simproxy addFeatureWithName:name]; \
 [hlrclient addFeatureWithName:name]; \
 [diameter_dra addFeatureWithName:name]; \
@@ -82,7 +84,8 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
     [ss7firewall addFeatureWithName:@"ss7nevermatch"];
     [ss7firewall addFeatureWithName:@"ss7monitor"];
     [ss7firewall addFeatureWithName:@"ss7smsmonitor"];
-	[cnam_server addFeatureWithName:@"cnam-server"];
+    [cnam_server addFeatureWithName:@"cnam-server"];
+    [gsm_api addFeatureWithName:@"gsm-api"];
 	[simproxy addFeatureWithName:@"simproxy"];
 	[hlrclient addFeatureWithName:@"hlrclient"];
 	[eirproxy addFeatureWithName:@"eirproxy"];
@@ -112,7 +115,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			@"version" : @(VERSION),
 			@"executable" : @"mmlicense",
 			@"run-as" : @(argv[0]),
-			@"copyright" : @"© 2018 Andreas Fink",
+			@"copyright" : @"© 2020 Andreas Fink",
 		};
 
 		NSArray *commandLineDefinition = @[
@@ -229,6 +232,12 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
                                                @"help"  : @"set the hardware mac-addr lock",
                                                },
                                            @{
+                                                @"name"  : @"uuid",
+                                                @"long"  : @"--uuid",
+                                                @"argument" : @"uuid",
+                                                @"help"  : @"set the uuid lock",
+                                           },
+                                           @{
                                                @"name"  : @"ip-addr",
                                                @"long"  : @"--ip-addr",
                                                @"argument" : @"ip-address",
@@ -331,7 +340,12 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 											   @"long"  : @"--cnam-server",
 											   @"help"  : @"enable product CNAM-Server",
 											   },
-										   @{
+                                           @{
+                                               @"name"  : @"gsm-api",
+                                               @"short" : @"",
+                                               @"long"  : @"--gsm-api",
+                                               @"help"  : @"enable product GSM-API",
+                                           },@{
 											   @"name"  : @"ss7firewall",
 											   @"short" : @"",
 											   @"long"  : @"--ss7firewall",
@@ -494,6 +508,16 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
                 lr.lockedToMacAddress = entry;
                 [licenseRestrictions addRestriction:lr];
             }
+        }
+        if(params[@"uuid"])
+        {
+           NSArray *entries = params[@"uuid"];
+           for(NSString *entry in entries)
+           {
+               UMLicenseRestriction *lr = [[UMLicenseRestriction alloc]init];
+               lr.lockedToUUID = entry;
+               [licenseRestrictions addRestriction:lr];
+           }
         }
         if(params[@"ip-addr"])
         {
@@ -730,6 +754,11 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			licenseFeatures[@"cnam-server"] = @{@"enable": @"YES"};
 			[mmlicense addProduct:cnam_server];
 		}
+        if(params[@"gsm-api"])
+        {
+            licenseFeatures[@"gsm-api"] = @{@"enable": @"YES"};
+            [mmlicense addProduct:gsm_api];
+        }
 		if(params[@"simproxy"])
 		{
 			licenseFeatures[@"simproxy"] = @{@"enable": @"YES"};
