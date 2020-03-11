@@ -57,11 +57,12 @@ install:  build/mminfo build/mmdisplay build/mmlicense build/libuliblicense.a
 	mkdir -p $(DESTDIR)/usr/local/bin/
 	mkdir -p $(DESTDIR)/usr/local/lib/pkgconfig
 	mkdir -p $(DESTDIR)/usr/local/include/uliblicense
-	install -b -g bin -o root -m 755 build/mminfo                                   $(DESTDIR)/usr/local/bin/mminfo
-	install -b -g bin -o root -m 755 build/mmlicense                                $(DESTDIR)/usr/local/bin/mmlicense
-	install -b -g bin -o root -m 755 build/mmdisplay                                $(DESTDIR)/usr/local/bin/mmdisplay
-	install -b -g bin -o root -m 755 build/mmconvert                                $(DESTDIR)/usr/local/bin/mmconvert
-	install -b -g bin -o root -m 644 build/libuliblicense.a                         $(DESTDIR)/usr/local/lib/libuliblicense.a
+	mkdir -p $(DESTDIR)/opt/uliblicense
+	install -C -g bin -o root -m 755 build/mminfo                                   $(DESTDIR)/usr/local/bin/mminfo
+	install -C -g bin -o root -m 755 build/mmlicense                                $(DESTDIR)/usr/local/bin/mmlicense
+	install -C -g bin -o root -m 755 build/mmdisplay                                $(DESTDIR)/usr/local/bin/mmdisplay
+	install -C -g bin -o root -m 755 build/mmconvert                                $(DESTDIR)/usr/local/bin/mmconvert
+	install -C -g bin -o root -m 644 build/libuliblicense.a                         $(DESTDIR)/usr/local/lib/libuliblicense.a
 	cp uliblicense/*.h								$(DESTDIR)/usr/local/include/uliblicense/
-	-install -b -g root -o root -m 644 ${PKGCONFIGFILE} ${DESTDIR}/usr/local/lib/pkgconfig/
+	-install -C -g root -o root -m 644 ${PKGCONFIGFILE} ${DESTDIR}/usr/local/lib/pkgconfig/
 
