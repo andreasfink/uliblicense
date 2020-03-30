@@ -13,7 +13,6 @@
 #import "UMLicenseProduct.h"
 #import "UMLicenseProductFeature.h"
 
-
 @implementation UMLicense
 
 - (void) processBeforeEncode

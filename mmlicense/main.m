@@ -557,24 +557,6 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			for(NSString *demo in demos)
 			{
 				int days  = [demo intValue];
-				
-				time_t current;
-				time(&current);
-				current = current + (24*60*60*days);
-				
-				struct tm trec;
-				struct    timeval  tp;
-				struct    timezone tzp;
-				gettimeofday(&tp, &tzp);
-				gmtime_r(&current, &trec);
-				expiration = [NSString stringWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d.%06d",
-							  trec.tm_year+1900,
-							  trec.tm_mon+1,
-							  trec.tm_mday,
-							  trec.tm_hour,
-							  trec.tm_min,
-							  trec.tm_sec,
-							  (int)tp.tv_usec];
 				expirationDate = [NSDate dateWithTimeIntervalSinceNow:(NSTimeInterval)(24*60*60*days)];
 				mmlicense.licenseType = @"temporary";
                 mmlicense.licenseExpiration = expirationDate;
@@ -883,6 +865,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			NSData *data = [slicense berEncoded];
 			NSLog(@"writing new license to %@",licenseFileName);
 			[data writeToFile:licenseFileName atomically:YES];
+            sleep(1);
 		}
 	}
     return 0;
