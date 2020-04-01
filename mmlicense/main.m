@@ -100,7 +100,6 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 	licenseFeatures[@"sccp"] = @{@"enable": @"YES"};
 	licenseFeatures[@"tcap"] = @{@"enable": @"YES"};
 	licenseFeatures[@"gsmmap"] = @{@"enable": @"YES"};
-	NSString *expiration    = NULL;
 	NSDate *expirationDate = NULL;
 	NSString *licenseName  = NULL;
 	NSString *licenseNumber     = NULL;
