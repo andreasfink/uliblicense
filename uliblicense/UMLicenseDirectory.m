@@ -455,107 +455,110 @@
 
 - (void)refreshLicenses
 {
-    NSMutableDictionary *toUpdate = [[NSMutableDictionary alloc]init];
-    NSMutableDictionary *toReport = [[NSMutableDictionary alloc]init];
-    NSDate *now = [NSDate date];
+    @autoreleasepool
+    {
+        NSMutableDictionary *toUpdate = [[NSMutableDictionary alloc]init];
+        NSMutableDictionary *toReport = [[NSMutableDictionary alloc]init];
+        NSDate *now = [NSDate date];
 
-    /* first we update all via URL. if URL fails only then we will attempt update via Address */
-    [_lock lock];
-    for(UMLicenseFile *lf in _licenseFiles)
-    {
-        UMLicense *lic = lf.signedLicense.license;
-        NSString  *serial = lf.signedLicense.license.licenseSerialNumber;
-        if([lic.licenseType isEqualToString:@"renewing"])
-        {
-            if(lf.nextUpdate < now)
-            {
-                toUpdate[serial]=lf;
-                int i = 7*24*60*60;
-                int j = 7*24*60*60;
-                NSNumber *n = lf.signedLicense.license.licenseRenewTimerMin;
-                if(n != NULL)
-                {
-                    i = (NSTimeInterval)[n integerValue];
-                }
-                n = lf.signedLicense.license.licenseRenewTimerMax;
-                if(n != NULL)
-                {
-                    j = (NSTimeInterval)[n integerValue];
-                }
-                i = [UMUtil randomFrom:i to:j];
-                lf.nextUpdate = [NSDate dateWithTimeIntervalSinceNow:i];
-            }
-        }
-        else
-        {
-            if(lf.nextReport < now)
-            {
-                toReport[serial]=lf;
-                
-                NSTimeInterval i = 7*24*60*60;
-                NSNumber *n = lf.signedLicense.license.licenseReportTimer;
-                if(n != NULL)
-                {
-                    i = (NSTimeInterval)[n integerValue];
-                }
-                lf.nextReport = [NSDate dateWithTimeIntervalSinceNow:i];
-            }
-        }
-    }
-    [_lock unlock];
-    
-    NSArray *serials = [toUpdate allKeys];
-    NSMutableArray *viaAddressUpdate = [[NSMutableArray alloc]init];
-    for (NSString *serial in serials)
-    {
-        UMLicenseFile *lf = toUpdate[serial];
-        UMLicense *lic = lf.signedLicense.license;
-        NSString *url =  lic.licenseRenewUrl;
-        if([self updateViaUrl:url serial:serial] == 0)
-        {
-            [viaAddressUpdate addObject:lf];
-        }
-    }
-
-    serials = [toReport allKeys];
-    NSMutableArray *viaAddressReport = [[NSMutableArray alloc]init];
-    for (NSString *serial in serials)
-    {
-        UMLicenseFile *lf = toReport[serial];
-        UMLicense *lic = lf.signedLicense.license;
-        NSString *url =  lic.licenseReportUrl;
-        if(url)
-        {
-            if([self reportViaUrl:url serial:serial lic:lic] == 0)
-            {
-                [viaAddressReport addObject:lf];
-            }
-        }
-    }
-
-    if(_updateByAddressDelegate)
-    {
-        /* if URL update is successful, then the update time will be updated so for the same it would fall through here */
+        /* first we update all via URL. if URL fails only then we will attempt update via Address */
         [_lock lock];
-        for(UMLicenseFile *lf in viaAddressUpdate)
+        for(UMLicenseFile *lf in _licenseFiles)
         {
             UMLicense *lic = lf.signedLicense.license;
-            NSString *address = lic.licenseRenewAddress;
-            NSString  *serial = lic.licenseSerialNumber;
-            [_updateByAddressDelegate licenseUpdateRequestForAddress:address serial:serial];
+            NSString  *serial = lf.signedLicense.license.licenseSerialNumber;
+            if([lic.licenseType isEqualToString:@"renewing"])
+            {
+                if(lf.nextUpdate < now)
+                {
+                    toUpdate[serial]=lf;
+                    int i = 7*24*60*60;
+                    int j = 7*24*60*60;
+                    NSNumber *n = lf.signedLicense.license.licenseRenewTimerMin;
+                    if(n != NULL)
+                    {
+                        i = (NSTimeInterval)[n integerValue];
+                    }
+                    n = lf.signedLicense.license.licenseRenewTimerMax;
+                    if(n != NULL)
+                    {
+                        j = (NSTimeInterval)[n integerValue];
+                    }
+                    i = [UMUtil randomFrom:i to:j];
+                    lf.nextUpdate = [NSDate dateWithTimeIntervalSinceNow:i];
+                }
+            }
+            else
+            {
+                if(lf.nextReport < now)
+                {
+                    toReport[serial]=lf;
+
+                    NSTimeInterval i = 7*24*60*60;
+                    NSNumber *n = lf.signedLicense.license.licenseReportTimer;
+                    if(n != NULL)
+                    {
+                        i = (NSTimeInterval)[n integerValue];
+                    }
+                    lf.nextReport = [NSDate dateWithTimeIntervalSinceNow:i];
+                }
+            }
         }
-    }
-    if(_reportByAddressDelegate)
-    {
-        /* if URL update is successful, then the update time will be updated so for the same it would fall through here */
-        [_lock lock];
-        for(UMLicenseFile *lf in viaAddressReport)
+        [_lock unlock];
+
+        NSArray *serials = [toUpdate allKeys];
+        NSMutableArray *viaAddressUpdate = [[NSMutableArray alloc]init];
+        for (NSString *serial in serials)
         {
+            UMLicenseFile *lf = toUpdate[serial];
             UMLicense *lic = lf.signedLicense.license;
-            NSString *address = lic.licenseRenewAddress;
-            NSString  *serial = lic.licenseSerialNumber;
-            NSData *data = [lic berEncoded];
-            [_reportByAddressDelegate licenseReportRequestForAddress:address serial:serial data:data];
+            NSString *url =  lic.licenseRenewUrl;
+            if([self updateViaUrl:url serial:serial] == 0)
+            {
+                [viaAddressUpdate addObject:lf];
+            }
+        }
+
+        serials = [toReport allKeys];
+        NSMutableArray *viaAddressReport = [[NSMutableArray alloc]init];
+        for (NSString *serial in serials)
+        {
+            UMLicenseFile *lf = toReport[serial];
+            UMLicense *lic = lf.signedLicense.license;
+            NSString *url =  lic.licenseReportUrl;
+            if(url)
+            {
+                if([self reportViaUrl:url serial:serial lic:lic] == 0)
+                {
+                    [viaAddressReport addObject:lf];
+                }
+            }
+        }
+
+        if(_updateByAddressDelegate)
+        {
+            /* if URL update is successful, then the update time will be updated so for the same it would fall through here */
+            [_lock lock];
+            for(UMLicenseFile *lf in viaAddressUpdate)
+            {
+                UMLicense *lic = lf.signedLicense.license;
+                NSString *address = lic.licenseRenewAddress;
+                NSString  *serial = lic.licenseSerialNumber;
+                [_updateByAddressDelegate licenseUpdateRequestForAddress:address serial:serial];
+            }
+        }
+        if(_reportByAddressDelegate)
+        {
+            /* if URL update is successful, then the update time will be updated so for the same it would fall through here */
+            [_lock lock];
+            for(UMLicenseFile *lf in viaAddressReport)
+            {
+                UMLicense *lic = lf.signedLicense.license;
+                NSString *address = lic.licenseRenewAddress;
+                NSString  *serial = lic.licenseSerialNumber;
+                NSData *data = [lic berEncoded];
+                [_reportByAddressDelegate licenseReportRequestForAddress:address serial:serial data:data];
+            }
         }
     }
 }
@@ -600,26 +603,38 @@
 
     NSURL *u = [[NSURL alloc]initWithString:full_url];
     NSError *e= NULL;
-    @try
+    @autoreleasepool
     {
-#ifdef __APPLE__
-        NSData *data = [NSData dataWithContentsOfURL:u
-                                         options:NSDataReadingUncached
-                                           error:&e];
-#else
-        NSData *data = [NSData dataWithContentsOfURL:u];
-#endif
-        if((e==0) && (data.length > 0))
+        @try
         {
-            [self refreshLicenseSerial:serial data:data];
-            returnValue = YES;
+    #ifdef __APPLE__
+            NSData *data = [NSData dataWithContentsOfURL:u
+                                             options:NSDataReadingUncached
+                                               error:&e];
+    #else
+            NSLog(@"calling URL u=%p (%@)",u,full_url);
+            NSData *data = [NSData dataWithContentsOfURL:u];
+            if(data.length>0)
+            {
+                NSLog(@"    %d bytes received",data.length);
+            }
+            else
+            {
+                NSLog(@"    no data received");
+            }
+    #endif
+            if((e==0) && (data.length > 0))
+            {
+                [self refreshLicenseSerial:serial data:data];
+                returnValue = YES;
+            }
         }
-    }
-    @catch(NSException *e)
-    {
-        NSLog(@"Exception while pulling URL %@",full_url);
-        returnValue = NO;
+        @catch(NSException *e)
+        {
+            NSLog(@"Exception while pulling URL %@",full_url);
+            returnValue = NO;
 
+        }
     }
     return returnValue;
 }
