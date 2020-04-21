@@ -138,7 +138,13 @@
         utf8.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         [_asn1_list addObject:utf8];
     }
-
+    else
+    {
+        @throw([NSException exceptionWithName:@"PARAMETER_ENCODING_ERROR"
+                                       reason:@"UMLicense licenseEmail missing"
+                                     userInfo:@{    @"backtrace": UMBacktrace(NULL,0)}]);
+    }
+    
     if(_licenseReportUrl)
     {
         UMASN1UTF8String *utf8 = [[UMASN1UTF8String alloc]initWithValue:_licenseReportUrl];
@@ -163,12 +169,7 @@
         asn1int.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         [_asn1_list addObject:asn1int];
     }
-    else
-    {
-        @throw([NSException exceptionWithName:@"PARAMETER_ENCODING_ERROR"
-                                       reason:@"UMLicense licenseEmail missing"
-                                     userInfo:@{    @"backtrace": UMBacktrace(NULL,0)}]);
-    }
+    
 }
 
 - (UMLicense *) processAfterDecodeWithContext:(id)context

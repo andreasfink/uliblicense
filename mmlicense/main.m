@@ -583,12 +583,14 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
                 mmlicense.licenseReportTimer = @(7*24*60*60); /* report once a week */
             }
         }
+#if 0
         else
         {
             mmlicense.licenseReportUrl = @"https://license.messagemover.com/report.php";
             mmlicense.licenseReportAddress = @"+41587079922";
             mmlicense.licenseReportTimer = @(7*24*60*60); /* report once a week */
         }
+#endif
 		if(params[@"renew-address"])
 		{
 			NSArray *nrs = params[@"renew-address"];
