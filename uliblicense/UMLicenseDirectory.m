@@ -27,7 +27,7 @@
                                     seconds:5*60 /* every 5 minutes we check if there's any licenses to be potentially updated */
                                        name:@"license-check-timer"
                                     repeats:YES
-                            runInForeground:NO];
+                            runInForeground:YES];
 }
 
 - (UMLicenseDirectory *)init
