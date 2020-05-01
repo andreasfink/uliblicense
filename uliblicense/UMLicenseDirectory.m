@@ -616,7 +616,7 @@
             NSData *data = [NSData dataWithContentsOfURL:u];
             if(data.length>0)
             {
-                NSLog(@"    %d bytes received",data.length);
+                NSLog(@"    %ld bytes received",(long)data.length);
             }
             else
             {

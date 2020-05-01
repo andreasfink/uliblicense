@@ -372,21 +372,6 @@
     f.licenseExpiration = _licenseExpiration;
     f.licenseName = _licenseOwner;
     f.licenseEmail= _licenseEmail;
-    
-    NSString *_licenseSerialNumber;
-    NSString *_licenseType;
-    NSString *_licenseOwner;
-    NSString *_licenseEmail;
-    UMLicenseRestrictionList *_licenseRestrictions;
-    NSDate *_licenseExpiration;
-    NSString *_licenseRenewUrl;
-    NSString *_licenseRenewAddress;
-    NSNumber *_licenseRenewTimerMin;
-    NSNumber *_licenseRenewTimerMax;
-    NSString *_licenseReportUrl;
-    NSString *_licenseReportAddress;
-    NSNumber *_licenseReportTimer;
-
     return f;
 }
 
