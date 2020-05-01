@@ -808,7 +808,17 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			[mmlicense addProduct:estp];
 		}
 
-		licenseFile[@"features"] = licenseFeatures;
+        NSString *licenseFileName = [NSString stringWithFormat:@"%@.license",slicense.license.licenseSerialNumber];
+        if(params[@"output"])
+        {
+            NSArray *lns = params[@"output"];
+            for(NSString *ln in lns)
+            {
+                licenseFileName = ln;
+            }
+        }
+
+        licenseFile[@"features"] = licenseFeatures;
 
 
         mmlicense.licenseRestrictions = licenseRestrictions;
@@ -849,7 +859,8 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			if(licDict == NULL)
 			{
 				NSLog(@"Produced result can not be read!\n");
-			}else
+			}
+            else
 			{
 				NSLog(@"Successfully read\n");
 			}
@@ -858,7 +869,6 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		{
 			[slicense signLicenseWithRSAPublicKey:signatureKey];
 
-			NSString *licenseFileName = [NSString stringWithFormat:@"%@.license",slicense.license.licenseSerialNumber];
 			if(encryptionKey)
 			{
 				[slicense encryptLicenseWithRSAPublicKey:encryptionKey];

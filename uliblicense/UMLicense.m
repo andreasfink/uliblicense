@@ -140,9 +140,7 @@
     }
     else
     {
-        @throw([NSException exceptionWithName:@"PARAMETER_ENCODING_ERROR"
-                                       reason:@"UMLicense licenseEmail missing"
-                                     userInfo:@{    @"backtrace": UMBacktrace(NULL,0)}]);
+        NSLog(@"UMLicense: licenseEmail missing");
     }
     
     if(_licenseReportUrl)
@@ -169,7 +167,6 @@
         asn1int.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
         [_asn1_list addObject:asn1int];
     }
-    
 }
 
 - (UMLicense *) processAfterDecodeWithContext:(id)context
@@ -286,6 +283,10 @@
     {
         dict[@"licenseOwner"] = _licenseOwner;
     }
+    if(_licenseEmail)
+    {
+        dict[@"licenseEmail"] = _licenseEmail;
+    }
     if(_licenseRestrictions)
     {
         dict[@"licenseRestrictions"] = _licenseRestrictions.objectValue;
@@ -371,6 +372,21 @@
     f.licenseExpiration = _licenseExpiration;
     f.licenseName = _licenseOwner;
     f.licenseEmail= _licenseEmail;
+    
+    NSString *_licenseSerialNumber;
+    NSString *_licenseType;
+    NSString *_licenseOwner;
+    NSString *_licenseEmail;
+    UMLicenseRestrictionList *_licenseRestrictions;
+    NSDate *_licenseExpiration;
+    NSString *_licenseRenewUrl;
+    NSString *_licenseRenewAddress;
+    NSNumber *_licenseRenewTimerMin;
+    NSNumber *_licenseRenewTimerMax;
+    NSString *_licenseReportUrl;
+    NSString *_licenseReportAddress;
+    NSNumber *_licenseReportTimer;
+
     return f;
 }
 
