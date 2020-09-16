@@ -444,7 +444,10 @@
         UMSignedLicense *sl = lf.signedLicense;
         UMLicense *lic = sl.license;
         id o = [lic objectValue];
-        [arr addObject:o];
+        if(o)
+        {
+            [arr addObject:o];
+        }
     }
 
     UMJsonWriter *writer = [[UMJsonWriter alloc]init];

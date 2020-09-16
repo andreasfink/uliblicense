@@ -24,7 +24,10 @@
             [p processBeforeEncode];
             p.asn1_tag.tagNumber = 0;
             p.asn1_tag.tagClass = UMASN1Class_ContextSpecific;
-            [_asn1_list addObject:p];
+            if(p)
+            {
+                [_asn1_list addObject:p];
+            }
         }
     }
 }
@@ -85,7 +88,10 @@
     for(NSString *key in keys)
     {
         UMLicenseProduct *p = _productDict [key];
-        [arr addObject:p.objectValue];
+        if(p)
+        {
+            [arr addObject:p.objectValue];
+        }
     }
     return arr;
 }

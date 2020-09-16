@@ -96,7 +96,10 @@
     for(NSString *key in keys)
     {
         UMLicenseProductFeature *f = _featuresDict [key];
-        [arr addObject:f.objectValue];
+        if(f)
+        {
+            [arr addObject:f.objectValue];
+        }
     }
     return arr;
 }
