@@ -50,7 +50,10 @@ int main(int argc, const char * argv[])
 	UMLicenseProduct *diameter_dea  = [[UMLicenseProduct alloc]initWithName:@"diameter-edge-agent"];
 	UMLicenseProduct *map_api 		= [[UMLicenseProduct alloc]initWithName:@"map-api-server"];
 	UMLicenseProduct *camel_api 	= [[UMLicenseProduct alloc]initWithName:@"camel-api-server"];
-	UMLicenseProduct *diameter_api	= [[UMLicenseProduct alloc]initWithName:@"diameter-api-server"];
+    UMLicenseProduct *diameter_api    = [[UMLicenseProduct alloc]initWithName:@"diameter-api-server"];
+    UMLicenseProduct *horisen_screening_mtp3    = [[UMLicenseProduct alloc]initWithName:@"horisen-screening-mtp3"];
+    UMLicenseProduct *horisen_screening_sccp    = [[UMLicenseProduct alloc]initWithName:@"horisen-screening-sccp"];
+    UMLicenseProduct *ss7firewall    = [[UMLicenseProduct alloc]initWithName:@"ss7firewall"];
 
 #define  ADD_PRODUCT_ALL(name) \
 licenseFeatures[name] = @{@"enable": @"YES"}; \
@@ -66,7 +69,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 [hlrclient addFeatureWithName:name]; \
 [diameter_dra addFeatureWithName:name]; \
 [diameter_dea addFeatureWithName:name]
-
+    
 	ADD_PRODUCT_ALL(@"core");
 	ADD_PRODUCT_ALL(@"sctp");
 	ADD_PRODUCT_ALL(@"m2pa");
@@ -407,7 +410,20 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 											   @"short" : @"",
 											   @"long"  : @"--diameter-api-server",
 											   @"help"  : @"enable Diameter API",
-											   },];
+											   },
+                                           @{
+                                           @"name"  : @"horisen-screening-mtp3",
+                                           @"short" : @"",
+                                           @"long"  : @"--horisen-screening-mtp3",
+                                           @"help"  : @"enable Horisen Screening Plugin for MTP3",
+                                           },
+                                           @{
+                                           @"name"  : @"horisen-screening-sccp",
+                                           @"short" : @"",
+                                           @"long"  : @"--horisen-screening-sccp",
+                                           @"help"  : @"enable Horisen Screening Plugin for SCCP",
+                                           },
+                                           ];
 
 		UMCommandLine *_commandLine = [[UMCommandLine alloc]initWithCommandLineDefintion:commandLineDefinition
 																		   appDefinition:appDefinition
@@ -675,7 +691,6 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
         {
             ADD_PRODUCT_ALL(@"mtp3");
         }
-
 		if(params[@"expiration"])
 		{
 			NSArray *expirations = params[@"expiration"];
@@ -799,7 +814,16 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			[mmlicense addProduct:diameter_api];
 		}
 
-
+        if(params[@"horisen-screening-mtp3"])
+        {
+            [horisen_screening_mtp3 addFeatureWithName:@"horisen-screening-mtp3"];
+            [mmlicense addProduct:horisen_screening_mtp3];
+        }
+        if(params[@"horisen-screening-sccp"])
+        {
+            [horisen_screening_sccp addFeatureWithName:@"horisen-screening-sccp"];
+            [mmlicense addProduct:horisen_screening_sccp];
+        }
 
 		if(params[@"estp"])
 		{
