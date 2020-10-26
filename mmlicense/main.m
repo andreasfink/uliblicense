@@ -53,7 +53,6 @@ int main(int argc, const char * argv[])
     UMLicenseProduct *diameter_api    = [[UMLicenseProduct alloc]initWithName:@"diameter-api-server"];
     UMLicenseProduct *horisen_screening_mtp3    = [[UMLicenseProduct alloc]initWithName:@"horisen-screening-mtp3"];
     UMLicenseProduct *horisen_screening_sccp    = [[UMLicenseProduct alloc]initWithName:@"horisen-screening-sccp"];
-    UMLicenseProduct *ss7firewall    = [[UMLicenseProduct alloc]initWithName:@"ss7firewall"];
 
 #define  ADD_PRODUCT_ALL(name) \
 licenseFeatures[name] = @{@"enable": @"YES"}; \
