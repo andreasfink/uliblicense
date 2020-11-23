@@ -1201,7 +1201,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				WARNING_CFLAGS = "-Wimplicit-fallthrough=3";
+				WARNING_CFLAGS = "-Wimplicit-fallthrough";
 			};
 			name = Debug;
 		};
@@ -1247,7 +1247,7 @@
 				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/bin";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				SDKROOT = macosx;
-				WARNING_CFLAGS = "-Wimplicit-fallthrough=3";
+				WARNING_CFLAGS = "-Wimplicit-fallthrough";
 			};
 			name = Release;
 		};
