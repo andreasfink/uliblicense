@@ -42,7 +42,7 @@
 
 - (void)waitUntilDone
 {
-    _sleeper = [[UMSleeper alloc]init];
+    _sleeper = [[UMSleeper alloc]initFromFile:__FILE__ line:__LINE__ function:__func__];
     while(self.done==NO)
     {
         [_sleeper sleep:1000000];
