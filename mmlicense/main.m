@@ -448,19 +448,20 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		{
 			verbose = YES;
 		}
+
         NSArray *a = params[@"speed"];
         if(a.count  > 0)
         {
 
             NSString *speedLimitString = a[0];
-            speedLimit = [speedLimit doubleValue];
-            if(sl<=0)
+            speedLimit = [speedLimitString doubleValue];
+            if(speedLimit<=0)
             {
                 NSLog(@"speed limit ignored as it is <= 0");
             }
         }
 
-        NSArray *a = params[@"encryption-key"];
+        a = params[@"encryption-key"];
 		if(a.count  > 0)
 		{
 			for(NSString *filename in a)
