@@ -31,5 +31,6 @@
 
 - (UMLicenseProductFeature *)initWithName:(NSString *)name;
 - (BOOL)isAvailable;
-
+- (double)doubleValue;
+- (void)setDoubleValue:(double)val;
 @end

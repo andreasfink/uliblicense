@@ -73,6 +73,23 @@
     }
 }
 
+- (void)setSpeedLimit:(double)speedLimit
+{
+    UMLicenseProductFeature *slf = _featuresDict[@"speed-limit"];
+    if(slf == NULL)
+    {
+        slf = [[UMLicenseProductFeature alloc] initWithName:@"speed-limit"];
+        slf.doubleValue = speedLimit;
+    }
+    _featuresDict[@"speed-limit"] = slf;
+}
+
+- (double)speedLimit
+{
+    UMLicenseProductFeature *slf = _featuresDict[@"speed-limit"];
+    return slf.doubleValue;
+}
+
 - (void)removeFeature:(NSString *)featureName
 {
     [_featuresDict removeObjectForKey:featureName];

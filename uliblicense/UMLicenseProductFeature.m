@@ -112,4 +112,23 @@
     return YES;
 }
 
+- (double)doubleValue
+{
+    if(_featureData==NULL)
+    {
+        return 0.0;
+    }
+    UMASN1Real *r = [[UMASN1Real alloc]initWithBerData:_featureData];
+    if(r==NULL)
+    {
+        return 0.0;
+    }
+    return [r value];
+}
+
+- (void)setDoubleValue:(double)val
+{
+    _featureData = [[[UMASN1Real alloc]initWithValue:val] berEncoded];
+}
+
 @end

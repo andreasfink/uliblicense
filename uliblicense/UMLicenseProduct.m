@@ -52,6 +52,16 @@
     [_productFeatures addFeatureWithName:featureName];
 }
 
+- (void)setSpeedLimit:(double)speedLimit
+{
+    [_productFeatures setSpeedLimit:speedLimit];
+}
+
+- (double)speedLimit
+{
+    return [_productFeatures speedLimit];
+}
+
 - (void)removeFeature:(NSString *)featureName
 {
     [_productFeatures removeFeature:featureName];

@@ -25,6 +25,7 @@
 
 int main(int argc, const char * argv[])
 {
+    double speedLimit = 0;
 	NSString *email = NULL;
 	
 	NSMutableDictionary     *licenseFeatures = [[NSMutableDictionary alloc]init];
@@ -69,6 +70,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 [diameter_dra addFeatureWithName:name]; \
 [diameter_dea addFeatureWithName:name]
     
+    
 	ADD_PRODUCT_ALL(@"core");
 	ADD_PRODUCT_ALL(@"sctp");
 	ADD_PRODUCT_ALL(@"m2pa");
@@ -108,7 +110,6 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 	BOOL doInstall = NO;
 	BOOL doLegacy = NO;
 
-	
 	@autoreleasepool
 	{
 		NSDictionary *appDefinition = @
@@ -287,6 +288,12 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
                                                @"long"  : @"--mtp3",
                                                @"help"  : @"enable MTP3 Instance",
                                            },
+                                           @{
+                                               @"name"  : @"speed",
+                                               @"short" : @"",
+                                               @"long"  : @"--speed",
+                                               @"help"  : @"enforce speed limit",
+                                           },
                                           @{
 											   @"name"  : @"http",
 											   @"short" : @"",
@@ -441,6 +448,18 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		{
 			verbose = YES;
 		}
+        NSArray *a = params[@"speed"];
+        if(a.count  > 0)
+        {
+
+            NSString *speedLimitString = a[0];
+            speedLimit = [speedLimit doubleValue];
+            if(sl<=0)
+            {
+                NSLog(@"speed limit ignored as it is <= 0");
+            }
+        }
+
         NSArray *a = params[@"encryption-key"];
 		if(a.count  > 0)
 		{
@@ -616,6 +635,15 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			}
 		}
 
+        if(speedLimit > 0)
+        {
+            [smsc setSpeedLimit:speedLimit];
+            [smsproxy setSpeedLimit:speedLimit];
+            [estp setSpeedLimit:speedLimit];
+            [gsm_api setSpeedLimit:speedLimit];
+            [ss7firewall setSpeedLimit:speedLimit];
+            [smsfirewall setSpeedLimit:speedLimit];
+        }
 		if(params[@"install"])
 		{
 			doInstall = YES;
@@ -636,6 +664,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		if(params[@"smpp"])
 		{
 			ADD_PRODUCT_ALL(@"smpp");
+            
 		}
 		
 		if(params[@"emi-ucp"])

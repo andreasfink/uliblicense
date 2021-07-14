@@ -25,5 +25,8 @@
 - (void)addFeatureWithName:(NSString *)feature;
 - (void)removeFeature:(NSString *)feature;
 - (UMLicenseProductFeature *)getFeature:(NSString *)name;
+- (void)setSpeedLimit:(double)speedLimit;
+- (double)speedLimit;
+
 
 @end
