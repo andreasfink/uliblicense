@@ -448,7 +448,6 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 		{
 			verbose = YES;
 		}
-
         NSArray *a = params[@"speed"];
         if(a.count  > 0)
         {
