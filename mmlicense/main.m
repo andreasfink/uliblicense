@@ -449,9 +449,9 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
 			verbose = YES;
 		}
         id x = params[@"speed"];
-        if(x [is kindOfClass:[NSArray class]])
+        if([x isKindOfClass:[NSArray class]])
         {
-            NSArray *a = ([Ç)NSArray *)x;
+            NSArray *a = (NSArray *)x;
             if(a.count  > 0)
             {
 
@@ -463,11 +463,11 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
                 }
             }
         }
-        else if(x [is kindOfClass:[NSNumber class]])
+        else if([x isKindOfClass:[NSNumber class]])
         {
-            speedLimit = [((NSnumber *)x) doubleValue];
+            speedLimit = [((NSNumber *)x) doubleValue];
         }
-        else if(x [is kindOfClass:[NSString class]])
+        else if([x isKindOfClass:[NSString class]])
         {
             speedLimit = [((NSString *)x) doubleValue];
         }
