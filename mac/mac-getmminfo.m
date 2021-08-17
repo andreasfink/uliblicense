@@ -98,7 +98,7 @@ NSString *GetDMI(void)
     NSMutableString *result = [[NSMutableString alloc]init];
     int fdes = mkstemp(tmpfilename);
 
-    sprintf(buffer,"/usr/sbin/dmidecode > %s 2>/dev/null",tmpfilename);
+    sprintf(buffer,"" DMIDECODE " > %s 2>/dev/null",tmpfilename);
     system(buffer);
     FILE *f = fdopen(fdes,"r");
 

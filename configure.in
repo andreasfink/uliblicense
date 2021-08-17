@@ -5,7 +5,7 @@ dnl  * ====================================================================
 dnl  */ 
 
 dnl initialization
-AC_PREREQ([2.71])
+AC_PREREQ([2.68])
 AC_INIT([mmlic],[1.5.2],[andreas@fink.org])
 
 dnl generic parameters
@@ -97,6 +97,7 @@ case "$host" in
 	LDFLAGS="$LDFLAGS `pkg-config --libs ${DEPENDENT_PKGCONFIGS}`"
     SHARED_LIBRARY_EXTENSION=so
     SHARED_FLAGS="-shared"
+        DMIDECODE="/usr/sbin/dmidecode"
     ;;
   *-freebsd*)
 	CFLAGS="$CFLAGS -std=c99 -fPIC -DFREEBSD"
@@ -109,6 +110,7 @@ case "$host" in
 	CFLAGS="$CFLAGS -Wno-deprecated-implementations -Wprotocol -Wdeprecated-declarations -Wno-sign-conversion "
 	CFLAGS="$CFLAGS -fobjc-arc"
 	SHARED_LIBRARY_EXTENSION="so"
+	DMIDECODE="/usr/local/sbin/dmidecode"
 	if [[ -x /usr/local/GNUstep/System/Tools/gnustep-config ]]
 	then
 		GNUSTEP_CONFIG=/usr/local/GNUstep/System/Tools/gnustep-config
@@ -125,8 +127,8 @@ case "$host" in
 	CFLAGS="$CFLAGS `$GNUSTEP_CONFIG --objc-flags`"
 	LDFLAGS="$LDFLAGS `/usr/local/bin/gnustep-config --base-libs --objc-libs`"
 	CFLAGS="$CFLAGS -DHAVE_OPENSSL=1"
-	CFLAGS="$CFLAGS `pkg-config --cflags libssl libcrypto`"
-	LDFLAGS="$LDFLAGS `pkg-config --libs libssl libcrypto`"
+        CFLAGS="$CFLAGS `pkg-config  --cflags ${DEPENDENT_PKGCONFIGS}`"
+        LDFLAGS="$LDFLAGS `pkg-config --libs ${DEPENDENT_PKGCONFIGS}`"
 	AC_DEFINE(HAVE_OPENSSL)
 	;;
 esac
@@ -184,6 +186,7 @@ AC_SUBST(MAJORVER)
 AC_SUBST(MINORVER)
 AC_SUBST(REVISION)
 AC_SUBST(SHARED_LIBRARY_EXTENSION)
+AC_SUBST(DMIDECODE)
 AC_CONFIG_FILES([Makefile.osx])
 AC_CONFIG_FILES([Makefile.linux])
 AC_CONFIG_FILES([Makefile.freebsd])

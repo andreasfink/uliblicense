@@ -8,9 +8,8 @@
 
 
 CC=@CC@
-CFLAGS=@CFLAGS@
+CFLAGS=@CFLAGS@ -DDMIDECODE=@DMIDECODE@
 LDFLAGS=@LDFLAGS@
-
 ULIBLICENSE_M   = $(wildcard uliblicense/*.m)
 ULIBLICENSE_O	= $(ULIBLICENSE_M:.m=.m.o)
 PKGCONFIGFILE=uliblicense.pc
@@ -64,4 +63,5 @@ install:  build/mminfo build/mmdisplay build/mmlicense build/libuliblicense.a
 	install -b -g wheel -o root -m 644 build/libuliblicense.a                         $(DESTDIR)/usr/local/lib/libuliblicense.a
 	cp uliblicense/*.h								$(DESTDIR)/usr/local/include/uliblicense/
 	-install -b -g wheel -o root -m 644 ${PKGCONFIGFILE} ${DESTDIR}/usr/local/lib/pkgconfig/
+
 
