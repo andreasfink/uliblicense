@@ -192,7 +192,7 @@ AC_CONFIG_FILES([Makefile.linux])
 AC_CONFIG_FILES([Makefile.freebsd])
 AC_CONFIG_FILES([version.h])
 AC_CONFIG_FILES([uliblicense.pc])
-
+AC_CONFIG_FILES([path.h])
 AC_CONFIG_FILES([make_buildnr.sh])
 AC_OUTPUT
 

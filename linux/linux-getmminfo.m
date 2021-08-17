@@ -92,7 +92,7 @@ NSString *GetDMI(void)
     char tmpfilename[256] = "/tmp/.mminfo-tmp-XXXXXX";
     NSMutableString *result = [[NSMutableString alloc]init];
     int fdes = mkstemp(tmpfilename);
-    sprintf(buffer,"" DMIDECODE " > %s 2>/dev/null",tmpfilename);
+    sprintf(buffer,DMIDECODE " > %s 2>/dev/null",tmpfilename);
     system(buffer);
     FILE *f = fdopen(fdes,"r");
 

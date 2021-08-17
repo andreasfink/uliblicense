@@ -3153,6 +3153,7 @@ ac_config_files="$ac_config_files version.h"
 
 ac_config_files="$ac_config_files uliblicense.pc"
 
+ac_config_files="$ac_config_files path.h"
 
 ac_config_files="$ac_config_files make_buildnr.sh"
 
@@ -3852,6 +3853,7 @@ do
     "Makefile.freebsd") CONFIG_FILES="$CONFIG_FILES Makefile.freebsd" ;;
     "version.h") CONFIG_FILES="$CONFIG_FILES version.h" ;;
     "uliblicense.pc") CONFIG_FILES="$CONFIG_FILES uliblicense.pc" ;;
+    "path.h") CONFIG_FILES="$CONFIG_FILES path.h" ;;
     "make_buildnr.sh") CONFIG_FILES="$CONFIG_FILES make_buildnr.sh" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
