@@ -292,6 +292,7 @@ licenseFeatures[name] = @{@"enable": @"YES"}; \
                                                @"name"  : @"speed",
                                                @"short" : @"",
                                                @"long"  : @"--speed",
+                                               @"argument" : @"speed-limit",
                                                @"help"  : @"enforce speed limit",
                                            },
                                           @{
