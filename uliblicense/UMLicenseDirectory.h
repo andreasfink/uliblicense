@@ -13,15 +13,15 @@
 
 @interface UMLicenseDirectory : UMObject
 {
-    NSMutableArray *_licenseFiles;
-    NSMutableArray *_licenseDecryptionKeys;
-    NSMutableArray *_licenseSignatureKeys;
-    UMMutex          *_lock;
-    NSString    *_licenseDirectory;
-    UMTimer *_timer;
+    NSMutableArray                      *_licenseFiles;
+    NSMutableArray                      *_licenseDecryptionKeys;
+    NSMutableArray                      *_licenseSignatureKeys;
+    UMMutex                             *_lock;
+    NSString                            *_licenseDirectory;
+    UMTimer                             *_timer;
     id<UMLicenseRefreshDelegateProtocol> _updateByAddressDelegate;
     id<UMLicenseRefreshDelegateProtocol> _reportByAddressDelegate;
-    NSDictionary *_productHttpParameters;
+    NSDictionary                        *_productHttpParameters;
     BOOL _debug;
 }
 
