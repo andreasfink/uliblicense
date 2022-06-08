@@ -215,6 +215,7 @@
 		A6B0250520BEED9E006779BA /* UMLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMLicense.h; sourceTree = "<group>"; };
 		A6B0250620BEED9E006779BA /* UMLicenseProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMLicenseProduct.h; sourceTree = "<group>"; };
 		A6B0250720BEED9E006779BA /* UMLicenseProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMLicenseProduct.m; sourceTree = "<group>"; };
+		A6C2C26E28510FBA00A09BA7 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
 		A6D4EB5C21770960002B18E9 /* oldmain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = oldmain.m; sourceTree = "<group>"; };
 		A6DBF0CC20C005C600B38DAF /* UMLicenseRestriction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseRestriction.h; sourceTree = "<group>"; };
 		A6DBF0CD20C005C600B38DAF /* UMLicenseRestriction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseRestriction.m; sourceTree = "<group>"; };
@@ -438,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				A6EDC7961A4176320090FC94 /* VERSION */,
+				A6C2C26E28510FBA00A09BA7 /* RELEASE-NOTES.txt */,
 				A652E13D20C7F0B500CDA5EF /* mmlicense */,
 				A652E13C20C7F06F00CDA5EF /* mminfo */,
 				A6B024FA20BEED6E006779BA /* uliblicense */,
