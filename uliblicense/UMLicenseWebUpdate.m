@@ -45,7 +45,11 @@
     _sleeper = [[UMSleeper alloc]initFromFile:__FILE__ line:__LINE__ function:__func__];
     while(self.done==NO)
     {
-        [_sleeper sleep:1000000];
+        UMSleeper_Signal s = [_sleeper sleep:1000000];
+        if(s == UMSleeper_Error)
+        {
+            break;
+        }
     }
 }
 
