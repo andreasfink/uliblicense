@@ -7,6 +7,9 @@
 //
 
 #import "uliblicense.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 uint8_t eDecryptionKey[] =
 {
@@ -992,3 +995,23 @@ UMLicenseDirectory * UMLicense_newLicenseDirectoryWithDefaultKeys(void)
 	return ld;
 }
 
+static NSArray *globalCpuSerialNumbers = NULL;
+
+int globalRunInDocker = -9;
+
+BOOL RunningInDocker(void)
+{
+    if(globalRunInDocker == -9)
+    {
+        struct stat statbuf;
+        if(stat("/.dockerenv",&statbuf)==0)
+        {
+            globalRunInDocker = (int)YES;
+        }
+        else
+        {
+            globalRunInDocker = (int)NO;
+        }
+    }
+    return (BOOL)globalRunInDocker;
+}

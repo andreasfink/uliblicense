@@ -24,4 +24,4 @@
 
 UMLicenseDirectory * UMLicense_loadLicensesFromPath(NSString *directory, BOOL debug);
 UMLicenseDirectory * UMLicense_newLicenseDirectoryWithDefaultKeys(void);
-
+BOOL    RunningInDocker(void);
