@@ -28,6 +28,10 @@ stamp-h1
 uliblicense.pc
 version.h
 mmlic.xcodeproj/xcuserdata
+BUILDNR
+make_buildnr.sh
+buildnumber.c
+buildnumber.h
 
 #####
 # OS X temporary files that should never be committed
