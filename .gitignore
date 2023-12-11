@@ -19,6 +19,8 @@
 #
 #########################
 
+Makefile
+Makefile.freebsd
 Makefile.linux
 Makefile.osx
 config.log
