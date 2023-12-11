@@ -1,0 +1,67 @@
+##
+# File: Makefile
+# Project "mmlic"
+# (c) 2002 -2018 Andreas Fink
+# Create: Andreas Fink (andreas@fink.org)
+#
+#	
+
+
+CC=clang
+CFLAGS= -D_REENTRANT=1 -DDARWIN=1 -arch x86_64 -g -O2 -DMMLIC_CONFIG=Release
+LDFLAGS= -g
+ULIBLICENSE_M   = $(wildcard uliblicense/*.m)
+ULIBLICENSE_O	= $(ULIBLICENSE_M:.m=.m.o)
+PKGCONFIGFILE=uliblicense.pc
+
+
+all:		build/mminfo build/mmdisplay build/mmconvert build/libuliblicense.a build/mmlicense
+
+
+build/mminfo: mminfo/main.m.o build/libuliblicense.a
+	mkdir -p build/
+	${CC} -o build/mminfo ${LDFLAGS} mminfo/main.m.o build/libuliblicense.a ${LIBS} ${STATIC_LIBS}
+
+build/mmdisplay: mmdisplay/main.m.o build/libuliblicense.a
+	mkdir -p build/
+	${CC} -o build/mmdisplay ${LDFLAGS} mmdisplay/main.m.o build/libuliblicense.a ${LIBS} ${STATIC_LIBS}
+
+build/mmlicense: mmlicense/main.m.o build/libuliblicense.a
+	mkdir -p build/
+	${CC} -o build/mmlicense ${LDFLAGS} mmlicense/main.m.o build/libuliblicense.a ${LIBS} ${STATIC_LIBS}
+
+build/mmconvert: mmconvert/main.m.o build/libuliblicense.a
+	mkdir -p build/
+	${CC} -o build/mmconvert ${LDFLAGS} mmconvert/main.m.o build/libuliblicense.a ${LIBS} ${STATIC_LIBS}
+
+build/libuliblicense.a:	$(ULIBLICENSE_O)
+	mkdir -p build/
+	libtool -static -o build/libuliblicense.a $(ULIBLICENSE_O)
+	ranlib  build/libuliblicense.a
+	
+clean:
+	rm -f mminfo/main.m.o
+	rm -f mmdisplay/main.m.o
+	rm -f mmlicense/main.m.o
+	rm -f mmconvert/main.m.o
+	rm -f uliblicense/*.m.o 
+	rm -rf build/*
+.SUFFIXES: .m.o .o .m .c
+
+%.m.o:	%.m
+	${CC} -c ${CFLAGS} -I uliblicense -x objective-c $<  ${INCLUDEDIRS} -o $@
+
+
+install:  build/mminfo build/mmdisplay build/mmlicense build/libuliblicense.a
+	mkdir -p $(DESTDIR)/usr/local/bin/
+	mkdir -p $(DESTDIR)/usr/local/lib/pkgconfig
+	mkdir -p $(DESTDIR)/usr/local/include/uliblicense
+	install -b -g wheel -o root -m 755 build/mminfo                                   $(DESTDIR)/usr/local/bin/mminfo
+	install -b -g wheel -o root -m 755 build/mmlicense                                $(DESTDIR)/usr/local/bin/mmlicense
+	install -b -g wheel -o root -m 755 build/mmdisplay                                $(DESTDIR)/usr/local/bin/mmdisplay
+	install -b -g wheel -o root -m 755 build/mmconvert                                $(DESTDIR)/usr/local/bin/mmconvert
+	install -b -g wheel -o root -m 644 build/libuliblicense.a                         $(DESTDIR)/usr/local/lib/libuliblicense.a
+	cp uliblicense/*.h								$(DESTDIR)/usr/local/include/uliblicense/
+	-install -b -g wheel -o root -m 644 ${PKGCONFIGFILE} ${DESTDIR}/usr/local/lib/pkgconfig/
+
+
