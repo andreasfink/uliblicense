@@ -11,6 +11,7 @@
 		A64FAAED22EB878D001964F4 /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3B22BB74600019806C /* ulib.framework */; };
 		A652E13820C7CFF200CDA5EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A652E13720C7CFF200CDA5EF /* main.m */; };
 		A652E13F20C7F0FC00CDA5EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A652E13E20C7F0FC00CDA5EF /* main.m */; };
+		A65B21A92B29D8D900C34D40 /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3C22BB74600019806C /* ulibasn1.framework */; };
 		A6798A3D22BB74600019806C /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3B22BB74600019806C /* ulib.framework */; };
 		A6798A3E22BB74600019806C /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3C22BB74600019806C /* ulibasn1.framework */; };
 		A6798A3F22BB74A90019806C /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3B22BB74600019806C /* ulib.framework */; };
@@ -60,18 +61,6 @@
 		A67E7A8022C5E9D200B34DA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A67E7A7F22C5E9D200B34DA3 /* main.m */; };
 		A67E7A8422C60CEF00B34DA3 /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3B22BB74600019806C /* ulib.framework */; };
 		A67E7A8522C60CF200B34DA3 /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3C22BB74600019806C /* ulibasn1.framework */; };
-		A67E7A9222C623C500B34DA3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67E7A9122C623C500B34DA3 /* libuliblicense.a */; };
-		A67E7A9322C623C500B34DA3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67E7A9122C623C500B34DA3 /* libuliblicense.a */; };
-		A67E7A9422C623C600B34DA3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67E7A9122C623C500B34DA3 /* libuliblicense.a */; };
-		A67E7A9522C623C600B34DA3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67E7A9122C623C500B34DA3 /* libuliblicense.a */; };
-		A67E7A9622C623C600B34DA3 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A67E7A9122C623C500B34DA3 /* libuliblicense.a */; };
-		A6F8A1F6258A981600D9860D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F8A1F5258A981600D9860D /* AppDelegate.m */; };
-		A6F8A1F9258A981600D9860D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F8A1F8258A981600D9860D /* ViewController.m */; };
-		A6F8A1FB258A981700D9860D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F8A1FA258A981700D9860D /* Assets.xcassets */; };
-		A6F8A1FE258A981700D9860D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6F8A1FC258A981700D9860D /* Main.storyboard */; };
-		A6F8A201258A981700D9860D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F8A200258A981700D9860D /* main.m */; };
-		A6F8A20C258A981800D9860D /* mmTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F8A20B258A981800D9860D /* mmTests.m */; };
-		A6F8A217258A981800D9860D /* mmUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F8A216258A981800D9860D /* mmUITests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,20 +98,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = A6798A6F22BB7BA20019806C;
 			remoteInfo = uliblicense;
-		};
-		A6F8A208258A981800D9860D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A6F36AFA1472525E006F5AF0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A6F8A1F1258A981600D9860D;
-			remoteInfo = mm;
-		};
-		A6F8A213258A981800D9860D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A6F36AFA1472525E006F5AF0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A6F8A1F1258A981600D9860D;
-			remoteInfo = mm;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -206,7 +181,6 @@
 		A67E44BC2112F1940092DB00 /* UMLicenseWebUpdate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseWebUpdate.m; sourceTree = "<group>"; };
 		A67E7A7D22C5E9D200B34DA3 /* keygen */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = keygen; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67E7A7F22C5E9D200B34DA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A67E7A9122C623C500B34DA3 /* libuliblicense.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuliblicense.a; path = "/Library/Application Support/FinkTelecomServices/frameworks/libuliblicense.a"; sourceTree = "<absolute>"; };
 		A6B024FB20BEED6E006779BA /* uliblicense.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = uliblicense.h; sourceTree = "<group>"; };
 		A6B024FD20BEED6E006779BA /* uliblicense.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = uliblicense.m; sourceTree = "<group>"; };
 		A6B0250220BEED9D006779BA /* UMLicenseProductFeature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMLicenseProductFeature.m; sourceTree = "<group>"; };
@@ -237,7 +211,6 @@
 		A6DD2C3820C1B8B600FFFD00 /* UMEncryptedLicense.asn */ = {isa = PBXFileReference; lastKnownFileType = text; path = UMEncryptedLicense.asn; sourceTree = "<group>"; };
 		A6EDC7961A4176320090FC94 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = SOURCE_ROOT; };
 		A6F36B031472525E006F5AF0 /* mmlicense */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mmlicense; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6F8A1F2258A981600D9860D /* mm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F8A1F4258A981600D9860D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A6F8A1F5258A981600D9860D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A6F8A1F7258A981600D9860D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -247,10 +220,8 @@
 		A6F8A1FF258A981700D9860D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6F8A200258A981700D9860D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A6F8A202258A981700D9860D /* mm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mm.entitlements; sourceTree = "<group>"; };
-		A6F8A207258A981700D9860D /* mmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F8A20B258A981800D9860D /* mmTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mmTests.m; sourceTree = "<group>"; };
 		A6F8A20D258A981800D9860D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6F8A212258A981800D9860D /* mmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F8A216258A981800D9860D /* mmUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mmUITests.m; sourceTree = "<group>"; };
 		A6F8A218258A981800D9860D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -261,7 +232,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6798A4322BB74B80019806C /* ulibasn1.framework in Frameworks */,
-				A67E7A9322C623C500B34DA3 /* libuliblicense.a in Frameworks */,
 				A6798A9B22BB81680019806C /* libuliblicense.a in Frameworks */,
 				A6798A3F22BB74A90019806C /* ulib.framework in Frameworks */,
 			);
@@ -272,7 +242,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6798A4222BB74AB0019806C /* ulib.framework in Frameworks */,
-				A67E7A9522C623C600B34DA3 /* libuliblicense.a in Frameworks */,
 				A6798A9D22BB816A0019806C /* libuliblicense.a in Frameworks */,
 				A6798A4622BB74BA0019806C /* ulibasn1.framework in Frameworks */,
 			);
@@ -283,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A64FAAED22EB878D001964F4 /* ulib.framework in Frameworks */,
+				A65B21A92B29D8D900C34D40 /* ulibasn1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +261,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6798A4522BB74B90019806C /* ulibasn1.framework in Frameworks */,
-				A67E7A9422C623C600B34DA3 /* libuliblicense.a in Frameworks */,
 				A6798A9C22BB81690019806C /* libuliblicense.a in Frameworks */,
 				A6798A4122BB74AA0019806C /* ulib.framework in Frameworks */,
 			);
@@ -302,7 +271,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A67E7A8422C60CEF00B34DA3 /* ulib.framework in Frameworks */,
-				A67E7A9622C623C600B34DA3 /* libuliblicense.a in Frameworks */,
 				A67E7A8522C60CF200B34DA3 /* ulibasn1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,30 +280,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6798A3D22BB74600019806C /* ulib.framework in Frameworks */,
-				A67E7A9222C623C500B34DA3 /* libuliblicense.a in Frameworks */,
 				A6798A9A22BB81670019806C /* libuliblicense.a in Frameworks */,
 				A6798A3E22BB74600019806C /* ulibasn1.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6F8A1EF258A981600D9860D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6F8A204258A981700D9860D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6F8A20F258A981800D9860D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,9 +409,6 @@
 				A652E13520C7CFF200CDA5EF /* mmconvert */,
 				A6798A7022BB7BA20019806C /* libuliblicense.a */,
 				A67E7A7D22C5E9D200B34DA3 /* keygen */,
-				A6F8A1F2258A981600D9860D /* mm.app */,
-				A6F8A207258A981700D9860D /* mmTests.xctest */,
-				A6F8A212258A981800D9860D /* mmUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -473,7 +416,6 @@
 		A6F36B061472525E006F5AF0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A67E7A9122C623C500B34DA3 /* libuliblicense.a */,
 				A6798A3B22BB74600019806C /* ulib.framework */,
 				A6798A3C22BB74600019806C /* ulibasn1.framework */,
 			);
@@ -655,59 +597,6 @@
 			productReference = A6F36B031472525E006F5AF0 /* mmlicense */;
 			productType = "com.apple.product-type.tool";
 		};
-		A6F8A1F1258A981600D9860D /* mm */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A6F8A219258A981800D9860D /* Build configuration list for PBXNativeTarget "mm" */;
-			buildPhases = (
-				A6F8A1EE258A981600D9860D /* Sources */,
-				A6F8A1EF258A981600D9860D /* Frameworks */,
-				A6F8A1F0258A981600D9860D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = mm;
-			productName = mm;
-			productReference = A6F8A1F2258A981600D9860D /* mm.app */;
-			productType = "com.apple.product-type.application";
-		};
-		A6F8A206258A981700D9860D /* mmTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A6F8A21C258A981800D9860D /* Build configuration list for PBXNativeTarget "mmTests" */;
-			buildPhases = (
-				A6F8A203258A981700D9860D /* Sources */,
-				A6F8A204258A981700D9860D /* Frameworks */,
-				A6F8A205258A981700D9860D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A6F8A209258A981800D9860D /* PBXTargetDependency */,
-			);
-			name = mmTests;
-			productName = mmTests;
-			productReference = A6F8A207258A981700D9860D /* mmTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		A6F8A211258A981800D9860D /* mmUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A6F8A21F258A981800D9860D /* Build configuration list for PBXNativeTarget "mmUITests" */;
-			buildPhases = (
-				A6F8A20E258A981800D9860D /* Sources */,
-				A6F8A20F258A981800D9860D /* Frameworks */,
-				A6F8A210258A981800D9860D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A6F8A214258A981800D9860D /* PBXTargetDependency */,
-			);
-			name = mmUITests;
-			productName = mmUITests;
-			productReference = A6F8A212258A981800D9860D /* mmUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -715,7 +604,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					A62DAD131472BF69005487AF = {
 						ProvisioningStyle = Automatic;
@@ -744,23 +633,6 @@
 						DevelopmentTeam = 38L827M334;
 						ProvisioningStyle = Automatic;
 					};
-					A6F8A1F1258A981600D9860D = {
-						CreatedOnToolsVersion = 12.3;
-						DevelopmentTeam = 38L827M334;
-						ProvisioningStyle = Automatic;
-					};
-					A6F8A206258A981700D9860D = {
-						CreatedOnToolsVersion = 12.3;
-						DevelopmentTeam = 38L827M334;
-						ProvisioningStyle = Automatic;
-						TestTargetID = A6F8A1F1258A981600D9860D;
-					};
-					A6F8A211258A981800D9860D = {
-						CreatedOnToolsVersion = 12.3;
-						DevelopmentTeam = 38L827M334;
-						ProvisioningStyle = Automatic;
-						TestTargetID = A6F8A1F1258A981600D9860D;
-					};
 				};
 			};
 			buildConfigurationList = A6F36AFD1472525E006F5AF0 /* Build configuration list for PBXProject "mmlic" */;
@@ -782,38 +654,9 @@
 				A652E13420C7CFF200CDA5EF /* mmconvert */,
 				A6798A6F22BB7BA20019806C /* uliblicense */,
 				A67E7A7C22C5E9D200B34DA3 /* keygen */,
-				A6F8A1F1258A981600D9860D /* mm */,
-				A6F8A206258A981700D9860D /* mmTests */,
-				A6F8A211258A981800D9860D /* mmUITests */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		A6F8A1F0258A981600D9860D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6F8A1FB258A981700D9860D /* Assets.xcassets in Resources */,
-				A6F8A1FE258A981700D9860D /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6F8A205258A981700D9860D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6F8A210258A981800D9860D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		A67E7A8722C6185A00B34DA3 /* ShellScript */ = {
@@ -950,32 +793,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6F8A1EE258A981600D9860D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6F8A1F9258A981600D9860D /* ViewController.m in Sources */,
-				A6F8A201258A981700D9860D /* main.m in Sources */,
-				A6F8A1F6258A981600D9860D /* AppDelegate.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6F8A203258A981700D9860D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6F8A20C258A981800D9860D /* mmTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A6F8A20E258A981800D9860D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6F8A217258A981800D9860D /* mmUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1004,16 +821,6 @@
 			target = A6798A6F22BB7BA20019806C /* uliblicense */;
 			targetProxy = A67E7AA022C6251F00B34DA3 /* PBXContainerItemProxy */;
 		};
-		A6F8A209258A981800D9860D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A6F8A1F1258A981600D9860D /* mm */;
-			targetProxy = A6F8A208258A981800D9860D /* PBXContainerItemProxy */;
-		};
-		A6F8A214258A981800D9860D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A6F8A1F1258A981600D9860D /* mm */;
-			targetProxy = A6F8A213258A981800D9860D /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1037,7 +844,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
-				DSTROOT = /;
+				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1045,6 +852,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 				);
+				INSTALL_PATH = FinkTelecomServices/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
@@ -1065,7 +873,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
-				DSTROOT = /;
+				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1073,6 +881,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 				);
+				INSTALL_PATH = FinkTelecomServices/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
@@ -1102,6 +911,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 38L827M334;
+				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1112,6 +922,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INSTALL_PATH = FinkTelecomServices/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
@@ -1142,6 +953,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 38L827M334;
+				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1153,6 +965,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INSTALL_PATH = FinkTelecomServices/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
@@ -1168,6 +981,7 @@
 		A6798A7622BB7BA20019806C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1185,29 +999,32 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
+				DSTROOT = "/Library/Application Support";
+				DYLIB_INSTALL_NAME_BASE = "$(DSTROOT)/$(INSTALL_PATH)";
 				EXECUTABLE_PREFIX = lib;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
+				HEADER_SEARCH_PATHS = (
+					.,
+					"\"/Library/Application Support/FinkTelecomServices/include\"",
+				);
+				INSTALL_PATH = /FinkTelecomServices/lib;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MODULEMAP_PRIVATE_FILE = "/Library/Application Support/FinkTelecomServices/frameworks/uliblicense";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "/Library/Application Support/FinkTelecomServices/frameworks/uliblicense";
+				PUBLIC_HEADERS_FOLDER_PATH = "\"/Library/Application Support/FinkTelecomServices/include\"";
 				SKIP_INSTALL = NO;
+				USE_HEADERMAP = NO;
 			};
 			name = Debug;
 		};
 		A6798A7722BB7BA20019806C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1224,24 +1041,26 @@
 				COPY_PHASE_STRIP = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
+				DSTROOT = "/Library/Application Support";
+				DYLIB_INSTALL_NAME_BASE = "$(DSTROOT)/$(INSTALL_PATH)";
 				ENABLE_NS_ASSERTIONS = NO;
 				EXECUTABLE_PREFIX = lib;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INSTALL_PATH = "/Library/Application Support/FinkTelecomServices/frameworks";
+				HEADER_SEARCH_PATHS = (
+					.,
+					"\"/Library/Application Support/FinkTelecomServices/include\"",
+				);
+				INSTALL_PATH = /FinkTelecomServices/lib;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MODULEMAP_PRIVATE_FILE = "/Library/Application Support/FinkTelecomServices/frameworks/uliblicense";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "/Library/Application Support/FinkTelecomServices/frameworks/uliblicense";
+				PUBLIC_HEADERS_FOLDER_PATH = "\"/Library/Application Support/FinkTelecomServices/include\"";
 				SKIP_INSTALL = NO;
+				USE_HEADERMAP = NO;
 			};
 			name = Release;
 		};
@@ -1264,6 +1083,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 38L827M334;
+				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1274,6 +1094,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INSTALL_PATH = FinkTelecomServices/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
@@ -1305,6 +1126,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 38L827M334;
+				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1316,6 +1138,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INSTALL_PATH = FinkTelecomServices/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
@@ -1346,15 +1169,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 38L827M334;
+				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INSTALL_PATH = FinkTelecomServices/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
@@ -1385,16 +1206,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 38L827M334;
+				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INSTALL_PATH = FinkTelecomServices/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
@@ -1410,7 +1229,7 @@
 		A6F36B101472525E006F5AF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = (
 					"$(ARCHS_STANDARD)",
 					x86_64,
@@ -1436,10 +1255,10 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_LOCATION = YES;
-				DSTROOT = "/Library/Application Support";
+				DSTROOT = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks";
+				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1458,7 +1277,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INSTALL_PATH = /FinkTelecomServices/bin;
+				HEADER_SEARCH_PATHS = (
+					"\"/FinkTelecomServices/include\"",
+					"\"/Library/Application\\\\ Support/FinkTelecomServices/include\"",
+				);
+				INSTALL_PATH = "";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
@@ -1469,7 +1292,7 @@
 		A6F36B111472525E006F5AF0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = (
 					"$(ARCHS_STANDARD)",
 					x86_64,
@@ -1496,9 +1319,9 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_LOCATION = YES;
-				DSTROOT = "/Library/Application Support";
+				DSTROOT = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks";
+				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1510,7 +1333,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INSTALL_PATH = /FinkTelecomServices/bin;
+				HEADER_SEARCH_PATHS = (
+					"\"/FinkTelecomServices/include\"",
+					"\"/Library/Application\\\\ Support/FinkTelecomServices/include\"",
+				);
+				INSTALL_PATH = "";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
@@ -1527,17 +1354,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 38L827M334;
-				DSTROOT = /;
+				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
+					"\"/Library/Application Support/FinkTelecomServices/frameworks\"",
 					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Frameworks",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 				);
+				INSTALL_PATH = /FinkTelecomServices/bin;
 				LIBRARY_SEARCH_PATHS = (
+					"\"/Library/Application\\\\ Support/FinkTelecomServices/frameworks\"",
 					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				PRODUCT_BUNDLE_IDENTIFIER = me.fink.mmlicense;
@@ -1555,256 +1381,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 38L827M334;
-				DSTROOT = /;
+				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
+					"\"/Library/Application Support/FinkTelecomServices/frameworks\"",
 					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Frameworks",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 				);
+				INSTALL_PATH = /FinkTelecomServices/bin;
 				LIBRARY_SEARCH_PATHS = (
+					"\"/Library/Application\\\\ Support/FinkTelecomServices/frameworks\"",
 					"$(inherited)",
-					"$(LOCAL_LIBRARY_DIR)/Application\\ Support/FinkTelecomServices/frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				PRODUCT_BUNDLE_IDENTIFIER = me.fink.mmlicense;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-			};
-			name = Release;
-		};
-		A6F8A21A258A981800D9860D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = mm/mm.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 38L827M334;
-				ENABLE_HARDENED_RUNTIME = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = mm/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = me.fink.mm;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		A6F8A21B258A981800D9860D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = mm/mm.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 38L827M334;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = mm/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = me.fink.mm;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		A6F8A21D258A981800D9860D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 38L827M334;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = mmTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = me.fink.mmTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mm.app/Contents/MacOS/mm";
-			};
-			name = Debug;
-		};
-		A6F8A21E258A981800D9860D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 38L827M334;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = mmTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = me.fink.mmTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mm.app/Contents/MacOS/mm";
-			};
-			name = Release;
-		};
-		A6F8A220258A981800D9860D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 38L827M334;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = mmUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = me.fink.mmUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = mm;
-			};
-			name = Debug;
-		};
-		A6F8A221258A981800D9860D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 2GSNWPNR77;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				INFOPLIST_FILE = mmUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = me.fink.mmUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = mm;
 			};
 			name = Release;
 		};
@@ -1870,33 +1461,6 @@
 			buildConfigurations = (
 				A6F36B131472525E006F5AF0 /* Debug */,
 				A6F36B141472525E006F5AF0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A6F8A219258A981800D9860D /* Build configuration list for PBXNativeTarget "mm" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A6F8A21A258A981800D9860D /* Debug */,
-				A6F8A21B258A981800D9860D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A6F8A21C258A981800D9860D /* Build configuration list for PBXNativeTarget "mmTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A6F8A21D258A981800D9860D /* Debug */,
-				A6F8A21E258A981800D9860D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A6F8A21F258A981800D9860D /* Build configuration list for PBXNativeTarget "mmUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A6F8A220258A981800D9860D /* Debug */,
-				A6F8A221258A981800D9860D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
