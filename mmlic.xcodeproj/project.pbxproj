@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6114CD92BBEE3B500C34D40 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A7022BB7BA20019806C /* libuliblicense.a */; };
 		A62DAD221472BF91005487AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A62DAD211472BF91005487AF /* main.m */; };
 		A64FAAED22EB878D001964F4 /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3B22BB74600019806C /* ulib.framework */; };
 		A652E13820C7CFF200CDA5EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A652E13720C7CFF200CDA5EF /* main.m */; };
@@ -270,6 +271,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6114CD92BBEE3B500C34D40 /* libuliblicense.a in Frameworks */,
 				A67E7A8422C60CEF00B34DA3 /* ulib.framework in Frameworks */,
 				A67E7A8522C60CF200B34DA3 /* ulibasn1.framework in Frameworks */,
 			);
@@ -844,7 +846,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
-				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -873,7 +874,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
-				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -911,7 +911,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 38L827M334;
-				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -953,7 +952,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 38L827M334;
-				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -999,7 +997,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
-				DSTROOT = "/Library/Application Support";
 				DYLIB_INSTALL_NAME_BASE = "$(DSTROOT)/$(INSTALL_PATH)";
 				EXECUTABLE_PREFIX = lib;
 				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
@@ -1010,7 +1007,7 @@
 					.,
 					"\"/Library/Application Support/FinkTelecomServices/include\"",
 				);
-				INSTALL_PATH = /FinkTelecomServices/lib;
+				INSTALL_PATH = FinkTelecomServices/lib;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1041,7 +1038,6 @@
 				COPY_PHASE_STRIP = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 2GSNWPNR77;
-				DSTROOT = "/Library/Application Support";
 				DYLIB_INSTALL_NAME_BASE = "$(DSTROOT)/$(INSTALL_PATH)";
 				ENABLE_NS_ASSERTIONS = NO;
 				EXECUTABLE_PREFIX = lib;
@@ -1053,7 +1049,7 @@
 					.,
 					"\"/Library/Application Support/FinkTelecomServices/include\"",
 				);
-				INSTALL_PATH = /FinkTelecomServices/lib;
+				INSTALL_PATH = FinkTelecomServices/lib;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1083,7 +1079,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 38L827M334;
-				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1126,7 +1121,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 38L827M334;
-				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1169,7 +1163,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 38L827M334;
-				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1206,7 +1199,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 38L827M334;
-				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
@@ -1255,7 +1247,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_LOCATION = YES;
-				DSTROOT = "";
+				DSTROOT = "/Library/Application Support";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
@@ -1319,7 +1311,7 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEPLOYMENT_LOCATION = YES;
-				DSTROOT = "";
+				DSTROOT = "/Library/Application Support";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1354,13 +1346,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 38L827M334;
-				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"/Library/Application Support/FinkTelecomServices/frameworks\"",
+					"\"/Library/Application Support/FinkTelecomServices/frameworks/\"",
 					"$(inherited)",
 				);
-				INSTALL_PATH = /FinkTelecomServices/bin;
+				INSTALL_PATH = FinkTelecomServices/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"\"/Library/Application\\\\ Support/FinkTelecomServices/frameworks\"",
 					"$(inherited)",
@@ -1381,13 +1372,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = 38L827M334;
-				DSTROOT = "/Library/Application Support";
 				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"/Library/Application Support/FinkTelecomServices/frameworks\"",
+					"\"/Library/Application Support/FinkTelecomServices/frameworks/\"",
 					"$(inherited)",
 				);
-				INSTALL_PATH = /FinkTelecomServices/bin;
+				INSTALL_PATH = FinkTelecomServices/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"\"/Library/Application\\\\ Support/FinkTelecomServices/frameworks\"",
 					"$(inherited)",

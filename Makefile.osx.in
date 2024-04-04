@@ -4,7 +4,7 @@
 # (c) 2011 Andreas Fink
 # Create: Andreas Fink (andreas@fink.org)
 #
-#	
+#
 
 all:
 	-xcodebuild -target uliblicense -configuration Release build
@@ -15,11 +15,11 @@ all:
 
 install:
 	mkdir -p $(DESTDIR)/usr/local/bin
-	-xcodebuild DSTROOT=$(DESTDIR)/ -target uliblicense -configuration Release install
-	-xcodebuild DSTROOT=$(DESTDIR)/ -target mminfo      -configuration Release install
-	-xcodebuild DSTROOT=$(DESTDIR)/ -target mmdisplay   -configuration Release install
-	-xcodebuild DSTROOT=$(DESTDIR)/ -target mmlicense   -configuration Release install
-	-xcodebuild DSTROOT=$(DESTDIR)/ -target mmconvert   -configuration Release install
+	-xcodebuild -target uliblicense -configuration Release install
+	-xcodebuild -target mminfo      -configuration Release install
+	-xcodebuild -target mmdisplay   -configuration Release install
+	-xcodebuild -target mmlicense   -configuration Release install
+	-xcodebuild -target mmconvert   -configuration Release install
 
 clean:
 	-xcodebuild -target uliblicense -configuration Release clean

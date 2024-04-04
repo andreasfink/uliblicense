@@ -8,19 +8,19 @@
 
 #import <ulib/ulib.h>
 #import <ulibasn1/ulibasn1.h>
-#import "UMSignedLicense.h"
-#import "UMLegacyLicense.h"
-#import "UMEncryptedLicense.h"
-#import "UMLicense.h"
-#import "UMLicenseRestriction.h"
-#import "UMLicenseProductFeature.h"
-#import "UMLicenseProductFeatureList.h"
-#import "UMLicenseRestrictionList.h"
-#import "UMLicenseProduct.h"
-#import "UMLicenseProductList.h"
-#import "UMLicenseDirectory.h"
-#import "UMLicenseFile.h"
-#import "UMLicenseWebConvert.h"
+#import <uliblicense/UMSignedLicense.h>
+#import <uliblicense/UMLegacyLicense.h>
+#import <uliblicense/UMEncryptedLicense.h>
+#import <uliblicense/UMLicense.h>
+#import <uliblicense/UMLicenseRestriction.h>
+#import <uliblicense/UMLicenseProductFeature.h>
+#import <uliblicense/UMLicenseProductFeatureList.h>
+#import <uliblicense/UMLicenseRestrictionList.h>
+#import <uliblicense/UMLicenseProduct.h>
+#import <uliblicense/UMLicenseProductList.h>
+#import <uliblicense/UMLicenseDirectory.h>
+#import <uliblicense/UMLicenseFile.h>
+#import <uliblicense/UMLicenseWebConvert.h>
 
 UMLicenseDirectory * UMLicense_loadLicensesFromPath(NSString *directory, BOOL debug);
 UMLicenseDirectory * UMLicense_newLicenseDirectoryWithDefaultKeys(void);

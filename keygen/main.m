@@ -7,11 +7,7 @@
 
 #import <ulib/ulib.h>
 
-#ifdef __APPLE__
-#import "/Library/Application Support/FinkTelecomServices/frameworks/uliblicense/uliblicense.h"
-#else
 #import <uliblicense/uliblicense.h>
-#endif
 
 static NSString *decryptionKey =
 @"-----BEGIN RSA PRIVATE KEY-----\n"

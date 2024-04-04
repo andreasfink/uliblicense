@@ -7,9 +7,9 @@
 #	
 
 
-CC=/usr/bin/clang
-CFLAGS=-g -O2 -g -O2 -DMMLIC_CONFIG=Release
-LDFLAGS=-fuse-ld=gold -g
+CC=clang
+CFLAGS= -D_REENTRANT=1 -DDARWIN=1 -arch x86_64 -g -O2 -DMMLIC_CONFIG=Release
+LDFLAGS= -g
 ULIBLICENSE_M   = $(wildcard uliblicense/*.m)
 ULIBLICENSE_O	= $(ULIBLICENSE_M:.m=.m.o)
 PKGCONFIGFILE=uliblicense.pc
@@ -36,7 +36,7 @@ build/mmconvert: mmconvert/main.m.o build/libuliblicense.a
 
 build/libuliblicense.a:	$(ULIBLICENSE_O)
 	mkdir -p build/
-	ar rc build/libuliblicense.a $(ULIBLICENSE_O)
+	libtool -static -o build/libuliblicense.a $(ULIBLICENSE_O)
 	ranlib  build/libuliblicense.a
 	
 clean:
