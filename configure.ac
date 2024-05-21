@@ -84,21 +84,31 @@ case "$host" in
 	CFLAGS="${CFLAGS} -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion"
 	CFLAGS="${CFLAGS} -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector"
 	CFLAGS="${CFLAGS} -Wno-deprecated-implementations -Wprotocol -Wdeprecated-declarations -Wno-sign-conversion "
-	CFLAGS="${CFLAGS} -fobjc-arc"
-	if [[ -x /usr/local/bin/gnustep-config ]] 
-	then
-		GNUSTEP_CONFIG=/usr/local/bin/gnustep-config
-	else
-		GNUSTEP_CONFIG=/usr/bin/gnustep-config
-	fi
-	CFLAGS="$CFLAGS `$GNUSTEP_CONFIG --objc-flags`"
-	LDFLAGS="$LDFLAGS `$GNUSTEP_CONFIG --base-libs --objc-libs`"
-	CFLAGS="$CFLAGS `pkg-config  --cflags ${DEPENDENT_PKGCONFIGS}`"
-	LDFLAGS="$LDFLAGS `pkg-config --libs ${DEPENDENT_PKGCONFIGS}`"
-    SHARED_LIBRARY_EXTENSION=so
-    SHARED_FLAGS="-shared"
-        DMIDECODE="/usr/sbin/dmidecode"
+    CFLAGS="${CFLAGS} -fobjc-arc"
+    if [[ -x /usr/GNUstep/System/Tools/gnustep-config ]]
+    then
+        GNUSTEP_CONFIG=/usr/GNUstep/System/Tools/gnustep-config
+        CFLAGS="${CFLAGS} -I/usr/GNUstep/System/Library/Headers/"
+    else
+        if [[ -x /usr/local/bin/gnustep-config ]]
+        then
+            GNUSTEP_CONFIG=/usr/local/bin/gnustep-config
+        else
+            GNUSTEP_CONFIG=/usr/bin/gnustep-config
+        fi
+    fi
+    CFLAGS="$CFLAGS `${GNUSTEP_CONFIG}  --objc-flags`"
+    LDFLAGS="$LDFLAGS `${GNUSTEP_CONFIG}  --base-libs --objc-libs`"
+    LIBS="$LIBS -ldl"
+    LIBRARIES="-lsctp -lbsd -luuid"
+    CFLAGS="$CFLAGS `pkg-config  --cflags ${DEPENDENT_PKGCONFIGS}`"
+    LDFLAGS="$LDFLAGS `pkg-config --libs ${DEPENDENT_PKGCONFIGS}`"
+    CFLAGS="$CFLAGS -DHAVE_OPENSSL=1"
+    AC_DEFINE(HAVE_OPENSSL)
+    SHARED_LIBRARY_EXTENSION="so"
+    DMIDECODE="/usr/sbin/dmidecode"
     ;;
+
   *-freebsd*)
 	CFLAGS="$CFLAGS -std=c99 -fPIC -DFREEBSD"
 	FREEBSD_VERSION=`uname -r`
