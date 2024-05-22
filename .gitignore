@@ -18,7 +18,10 @@
 # files that we want to exclude
 #
 #########################
-
+*.o
+*.d
+install
+autom4te.cache/
 Makefile
 Makefile.freebsd
 Makefile.linux
