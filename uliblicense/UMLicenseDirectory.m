@@ -82,7 +82,7 @@
         fprintf(stderr,"DEBUG: scanDirectoryForLicenseFiles('%s'\n",path.UTF8String);
     }
 
-    [_lock lock];
+    UMMUTEX_LOCK(_lock);
     NSFileManager *mgr = [NSFileManager defaultManager];
     for (NSString *filePath in [mgr enumeratorAtPath:path])
     {
@@ -123,7 +123,9 @@
             }
         }
     }
-    [_lock unlock];
+    UMMUTEX_UNLOCK(_lock);
+
+    UMMUTEX_UNLOCK(_lock);
 
 }
 
@@ -131,9 +133,9 @@
 {
     if(licenseFile)
     {
-        [_lock lock];
+        UMMUTEX_LOCK(_lock);
         [_licenseFiles addObject:licenseFile];
-        [_lock unlock];
+        UMMUTEX_UNLOCK(_lock);
     }
 }
 
@@ -142,9 +144,9 @@
 {
     if(key)
     {
-        [_lock lock];
+        UMMUTEX_LOCK(_lock);
         [_licenseDecryptionKeys addObject:key];
-        [_lock unlock];
+        UMMUTEX_UNLOCK(_lock);
     }
 }
 
@@ -152,15 +154,15 @@
 {
     if(key)
     {
-        [_lock lock];
+        UMMUTEX_LOCK(_lock);
         [_licenseSignatureKeys addObject:key];
-        [_lock unlock];
+        UMMUTEX_UNLOCK(_lock);
     }
 }
 
 - (void)decryptLicenses
 {
-    [_lock lock];
+    UMMUTEX_LOCK(_lock);
 
     int n = (int)_licenseFiles.count;
     for(int i=0;i<n;i++)
@@ -191,13 +193,13 @@
             i--;
         }
     }
-    [_lock unlock];
+    UMMUTEX_UNLOCK(_lock);
 
 }
 
 - (void)validateSignatures
 {
-    [_lock lock];
+    UMMUTEX_LOCK(_lock);
 
     NSUInteger n = _licenseFiles.count;
     for(NSUInteger i=0;i<n;i++)
@@ -224,13 +226,13 @@
             i--;
         }
     }
-    [_lock unlock];
+    UMMUTEX_UNLOCK(_lock);
 
 }
 
 - (BOOL)validateRestrictions;
 {
-    [_lock lock];
+    UMMUTEX_LOCK(_lock);
     
     // Initial NO Valid
     BOOL valid = NO;
@@ -359,7 +361,7 @@
         }
     }
     
-    [_lock unlock];
+    UMMUTEX_UNLOCK(_lock);
     
     if(osValid && valid)
     {
@@ -379,7 +381,7 @@
 - (UMLicenseProductFeature *)getProduct:(NSString *)product
                                 feature:(NSString *)feature
 {
-    [_lock lock];
+    UMMUTEX_LOCK(_lock);
 
     UMLicenseProductFeature *pf = NULL;
     NSUInteger i;
@@ -410,7 +412,7 @@
             }
         }
     }
-    [_lock unlock];
+    UMMUTEX_UNLOCK(_lock);
 
     return pf;
 }
@@ -418,9 +420,9 @@
 - (NSString *)description
 {
     NSMutableString *s = [[NSMutableString alloc]init];
-    [_lock lock];
+    UMMUTEX_LOCK(_lock);
     NSArray *lfs = [_licenseFiles copy];
-    [_lock unlock];
+    UMMUTEX_UNLOCK(_lock);
     for(UMLicenseFile *lf in lfs)
     {
         NSString *filename = lf.fullPath;
@@ -435,9 +437,9 @@
 
 - (NSString *)jsonString
 {
-    [_lock lock];
+    UMMUTEX_LOCK(_lock);
     NSArray *lfs = [_licenseFiles copy];
-    [_lock unlock];
+    UMMUTEX_UNLOCK(_lock);
     NSMutableArray *arr = [[NSMutableArray alloc]init];
     for(UMLicenseFile *lf in lfs)
     {
@@ -465,7 +467,7 @@
         NSDate *now = [NSDate date];
 
         /* first we update all via URL. if URL fails only then we will attempt update via Address */
-        [_lock lock];
+        UMMUTEX_LOCK(_lock);
         for(UMLicenseFile *lf in _licenseFiles)
         {
             UMLicense *lic = lf.signedLicense.license;
@@ -507,7 +509,7 @@
                 }
             }
         }
-        [_lock unlock];
+        UMMUTEX_UNLOCK(_lock);
 
         NSArray *serials = [toUpdate allKeys];
         NSMutableArray *viaAddressUpdate = [[NSMutableArray alloc]init];
@@ -541,7 +543,7 @@
         if(_updateByAddressDelegate)
         {
             /* if URL update is successful, then the update time will be updated so for the same it would fall through here */
-            [_lock lock];
+            UMMUTEX_LOCK(_lock);
             for(UMLicenseFile *lf in viaAddressUpdate)
             {
                 UMLicense *lic = lf.signedLicense.license;
@@ -549,11 +551,12 @@
                 NSString  *serial = lic.licenseSerialNumber;
                 [_updateByAddressDelegate licenseUpdateRequestForAddress:address serial:serial];
             }
+            UMMUTEX_UNLOCK(_lock);
         }
         if(_reportByAddressDelegate)
         {
             /* if URL update is successful, then the update time will be updated so for the same it would fall through here */
-            [_lock lock];
+            UMMUTEX_LOCK(_lock);
             for(UMLicenseFile *lf in viaAddressReport)
             {
                 UMLicense *lic = lf.signedLicense.license;
@@ -562,6 +565,7 @@
                 NSData *data = [lic berEncoded];
                 [_reportByAddressDelegate licenseReportRequestForAddress:address serial:serial data:data];
             }
+            UMMUTEX_UNLOCK(_lock);
         }
     }
 }
@@ -680,7 +684,7 @@
 
 - (void)refreshLicenseSerial:(NSString *)serial1  data:(NSData *)data
 {
-    [_lock lock];
+    UMMUTEX_LOCK(_lock);
     for(UMLicenseFile *lf in _licenseFiles)
     {
         NSString  *serial = lf.signedLicense.license.licenseSerialNumber;
@@ -714,7 +718,7 @@
             break;
         }
     }
-    [_lock unlock];
+    UMMUTEX_UNLOCK(_lock);
 }
 
 @end
