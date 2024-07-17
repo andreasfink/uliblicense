@@ -124,9 +124,6 @@
         }
     }
     ummutex_unlock(_lock);
-
-    ummutex_unlock(_lock);
-
 }
 
 - (void)addLicenseFile:(UMLicenseFile *)licenseFile
