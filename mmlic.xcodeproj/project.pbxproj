@@ -192,6 +192,8 @@
 		A6B0250720BEED9E006779BA /* UMLicenseProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMLicenseProduct.m; sourceTree = "<group>"; };
 		A6C2C26E28510FBA00A09BA7 /* RELEASE-NOTES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RELEASE-NOTES.txt"; sourceTree = "<group>"; };
 		A6D4EB5C21770960002B18E9 /* oldmain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = oldmain.m; sourceTree = "<group>"; };
+		A6D789DB2C7627CA00387176 /* mmconvert.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mmconvert.entitlements; sourceTree = "<group>"; };
+		A6D789DC2C7627D200387176 /* keygen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = keygen.entitlements; sourceTree = "<group>"; };
 		A6DBF0CC20C005C600B38DAF /* UMLicenseRestriction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseRestriction.h; sourceTree = "<group>"; };
 		A6DBF0CD20C005C600B38DAF /* UMLicenseRestriction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseRestriction.m; sourceTree = "<group>"; };
 		A6DBF0D020C005DC00B38DAF /* UMLicenseRestriction.asn */ = {isa = PBXFileReference; lastKnownFileType = text; path = UMLicenseRestriction.asn; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		A652E13620C7CFF200CDA5EF /* mmconvert */ = {
 			isa = PBXGroup;
 			children = (
+				A6D789DB2C7627CA00387176 /* mmconvert.entitlements */,
 				A652E13720C7CFF200CDA5EF /* main.m */,
 			);
 			path = mmconvert;
@@ -329,6 +332,7 @@
 		A67E7A7E22C5E9D200B34DA3 /* keygen */ = {
 			isa = PBXGroup;
 			children = (
+				A6D789DC2C7627D200387176 /* keygen.entitlements */,
 				A67E7A7F22C5E9D200B34DA3 /* main.m */,
 			);
 			path = keygen;
@@ -606,7 +610,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					A62DAD131472BF69005487AF = {
 						ProvisioningStyle = Automatic;
@@ -907,11 +911,12 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = mmconvert/mmconvert.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 38L827M334;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
@@ -948,11 +953,12 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = mmconvert/mmconvert.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 38L827M334;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -991,13 +997,13 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = YES;
-				DEVELOPMENT_TEAM = 2GSNWPNR77;
+				DEVELOPMENT_TEAM = 38L827M334;
 				DYLIB_INSTALL_NAME_BASE = "$(DSTROOT)/$(INSTALL_PATH)";
 				ENABLE_MODULE_VERIFIER = YES;
 				EXECUTABLE_PREFIX = lib;
@@ -1037,12 +1043,12 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = YES;
-				DEVELOPMENT_TEAM = 2GSNWPNR77;
+				DEVELOPMENT_TEAM = 38L827M334;
 				DYLIB_INSTALL_NAME_BASE = "$(DSTROOT)/$(INSTALL_PATH)";
 				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1169,11 +1175,12 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = keygen/keygen.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 38L827M334;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1205,11 +1212,12 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = keygen/keygen.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 38L827M334;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				FRAMEWORK_SEARCH_PATHS = "\"/Library/Application Support/FinkTelecomServices/frameworks\"";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
