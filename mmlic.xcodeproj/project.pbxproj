@@ -1288,6 +1288,7 @@
 					"\"/Library/Application Support/FinkTelecomServices/include\"",
 				);
 				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "\"/Library/Application Support/\"";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = auto;
@@ -1340,6 +1341,7 @@
 					"\"/Library/Application Support/FinkTelecomServices/include\"",
 				);
 				INSTALL_PATH = "";
+				LD_RUNPATH_SEARCH_PATHS = "\"/Library/Application Support/\"";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = auto;
@@ -1362,6 +1364,7 @@
 					"$(inherited)",
 				);
 				INSTALL_PATH = FinkTelecomServices/bin;
+				LD_RUNPATH_SEARCH_PATHS = "\"/Library/Application Support/\"";
 				LIBRARY_SEARCH_PATHS = (
 					"\"/Library/Application\\\\ Support/FinkTelecomServices/frameworks\"",
 					"$(inherited)",
@@ -1388,6 +1391,7 @@
 					"$(inherited)",
 				);
 				INSTALL_PATH = FinkTelecomServices/bin;
+				LD_RUNPATH_SEARCH_PATHS = "\"/Library/Application Support/\"";
 				LIBRARY_SEARCH_PATHS = (
 					"\"/Library/Application\\\\ Support/FinkTelecomServices/frameworks\"",
 					"$(inherited)",
