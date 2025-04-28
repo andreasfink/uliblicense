@@ -10,22 +10,19 @@
 
 @implementation UMLicenseServerCommandGenericError
 
-
-@implementation UMLicenseServerCommandGenericError
-
 - (UMLicenseServerCommandGenericError *)init
 {
     self = [super init];
     if(self)
     {
-        _command = UMLicenseServerCommandType_GENERIC_ERROR_RESPONSE;
+        _command = UMLicenseServerCommand_GENERIC_ERROR_RESPONSE;
     }
     return self;
 }
 
 - (void) processBeforeEncode
 {
-    _command = UMLicenseServerCommandType_GENERIC_ERROR_RESPONSE;
+    _command = UMLicenseServerCommand_GENERIC_ERROR_RESPONSE;
     
     [super processBeforeEncode];
     UMASN1Integer *i= [[UMASN1Integer alloc]initWithValue:_status];

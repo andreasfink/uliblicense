@@ -9,10 +9,11 @@
 #import <ulib/ulib.h>
 #import <ulibasn1/ulibasn1.h>
 #include <stdlib.h>
-#include "UMLicenseServer.h"
+#include <uliblicense/uliblicense.h>
+
 int main(int argc, const char * argv[])
 {
-    int port = 9121;
+    NSInteger port = 9129;
     const char *rootDirectory = "/opt/uliblicense";
     @autoreleasepool
     {
@@ -22,11 +23,11 @@ int main(int argc, const char * argv[])
         }
         if(argc>2)
         {
-            port = atoi(argv[2]);
+            port = atol(argv[2]);
         }
         if((port<1) || (port > 65535))
         {
-            fprintf(stderr,"port %dis out of range (1...65535)\n",port);
+            fprintf(stderr,"port %d is out of range (1...65535)\n",(int)port);
             return -1;
         }
         UMLicenseServer *ls =  [[UMLicenseServer alloc]initWithPort:port];

@@ -6,6 +6,7 @@
 //
 
 #import <uliblicense/UMLicenseServerCommandHeartBeatResponse.h>
+#import <uliblicense/UMLicenseServerCommandTypes.h>
 
 @implementation UMLicenseServerCommandHeartBeatResponse
 
@@ -14,21 +15,21 @@
     self = [super init];
     if(self)
     {
-        _command = UMLicenseServerCommandType_HEARTBEAT_RESPONSE;
+        _command = UMLicenseServerCommand_HEARTBEAT_RESPONSE;
     }
     return self;
 }
 
 - (void) processBeforeEncode
 {
-    _command = UMLicenseServerCommandType_HEARTBEAT_RESPONSE;
+    _command = UMLicenseServerCommand_HEARTBEAT_RESPONSE;
     
     [super processBeforeEncode];
 }
 
 - (NSString *) objectName
 {
-    return @"UMLicenseServerCommandHeartbeatResponse";
+    return @"UMLicenseServerCommandHeartBeatResponse";
 }
 
 - (id) objectValue
@@ -37,7 +38,7 @@
     return dict;
 }
 
-- (UMLicenseServerCommandHeartbeatResponse *) processAfterDecodeWithContext:(id)context
+- (UMLicenseServerCommandHeartBeatResponse *) processAfterDecodeWithContext:(id)context
 {
     [super processAfterDecodeWithContext:context];
     int pos = 0;

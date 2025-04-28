@@ -5,36 +5,24 @@
 //  Created by Andreas Fink on 28.04.2025.
 //
 
-#import "UMLicenseServerCommandHeartBeatRequest.h"
+#import <uliblicense/UMLicenseServerCommandHeartBeatRequest.h>
+#import <uliblicense/UMLicenseServerCommandTypes.h>
 
 @implementation UMLicenseServerCommandHeartBeatRequest
 
-@end
-//
-//  UMMessageServerCommandHeartbeatRequest.m
-//  ummessage-server
-//
-//  Created by Andreas Fink on 09.03.2025.
-//
-
-#import <um/UMMessageServerCommandHeartbeatRequest.h>
-#import <um/UMMessageServerCommandTypes.h>
-
-@implementation UMMessageServerCommandHeartbeatRequest
-
-- (UMMessageServerCommandHeartbeatRequest *)init
+- (UMLicenseServerCommandHeartBeatRequest *)init
 {
     self = [super init];
     if(self)
     {
-        _command = UMMessageServerCommandType_HEARTBEAT_REQUEST;
+        _command = UMLicenseServerCommand_HEARTBEAT_REQUEST;
     }
     return self;
 }
 
 - (void) processBeforeEncode
 {
-    _command = UMMessageServerCommandType_HEARTBEAT_REQUEST;
+    _command = UMLicenseServerCommand_HEARTBEAT_REQUEST;
     
     [super processBeforeEncode];
 }
@@ -42,7 +30,7 @@
 
 - (NSString *) objectName
 {
-    return @"UMMessageServerCommandHeartbeatRequest";
+    return @"UMLicenseServerCommandHeartbeatRequest";
 }
 
 - (id) objectValue
@@ -51,7 +39,7 @@
     return dict;
 }
 
-- (UMMessageServerCommandHeartbeatRequest *) processAfterDecodeWithContext:(id)context
+- (UMLicenseServerCommandHeartBeatRequest *) processAfterDecodeWithContext:(id)context
 {
     [super processAfterDecodeWithContext:context];
     int pos = 0;

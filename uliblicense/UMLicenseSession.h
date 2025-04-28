@@ -8,6 +8,7 @@
 #import <ulib/ulib.h>
 
 #import <uliblicense/UMLicenseCommandHandlerProtocol.h>
+#import <uliblicense/UMLicenseServerCommandError.h>
 
 @class UMLicenseServer;
 @class UMLicenseClient;
@@ -45,20 +46,20 @@
 @property(readwrite,strong,atomic)  UMLicenseClient     *client;
 @property(readwrite,strong,atomic)  UMLicenseHandler    *handler;
 @property(readwrite,strong,atomic)  NSString            *rootDirectory;
-@property(readwrite,strong,atomic)  NSString            *instance;
-@property(readwrite,assign,atomic)  BOOL                authenticated;
-@property(readwrite,strong,atomic)  NSString            *username;
-@property(readwrite,strong,atomic)  NSString            *password;
 @property(readwrite,strong,atomic)  NSDate              *lastHandshakeRequested;
 @property(readwrite,strong,atomic)  NSDate              *lastHandshakeResponse;
 @property(readwrite,strong,atomic)  NSDate              *lastHandshakeReceived;
-@property(readwrite,strong,atomic)  NSString            *clientName;
-@property(readwrite,strong,atomic)  NSString            *serverName;
-@property(readwrite,assign,atomic)  NSInteger           clientApiVersion;
-@property(readwrite,assign,atomic)  NSInteger           serverApiVersion;
-@property(readwrite,assign,atomic)  BOOL                clientSuccessfullyLoggedIn;
 
 - (int)processCommand:(UMLicenseServerCommand *)cmd; /* return error code*/
+
+- (UMLicenseServerCommandError)getLicenseForApplication:(NSString *)application
+                                               instance:(NSString *)instance
+                                                 serial:(NSString *)serial
+                                           macaddresses:(NSString *)macAdresses
+                                            ipaddresses:(NSString *)ipAdresses
+                                 onCompletionCallObject:(id)callbackObj
+                                           withSelector:(SEL)selector;
+
 - (BOOL) awaitsResponses;
 - (void) startHeartbeat;
 - (void) stopHeartbeat;

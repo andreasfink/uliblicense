@@ -25,6 +25,7 @@ typedef enum UMLicenseServerCommandError
     UMLicenseServerCommandError_DELETE_FAILURE      = 11,
     UMLicenseServerCommandError_API_VERSION_MISMATCH = 12,
     UMLicenseServerCommandError_NO_DB_SESSIONS_AVAILABLE = 13,
+    UMLicenseServerCommandError_IN_PROGRESS = 14,
 
 } UMLicenseServerCommandError;
 
