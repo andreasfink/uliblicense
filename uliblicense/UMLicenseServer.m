@@ -8,13 +8,15 @@
 #import "UMLicenseServer.h"
 #import "UMLicenseServerCommandTypes.h"
 #import "UMLicenseHandler.h"
-
+#import "UMLicenseServerCommandError.h"
+#import "UMLicenseServerCommandGetLicenseRequest.h"
+#import "UMLicenseServerCommandGetLicenseResponse.h"
 
 @implementation UMLicenseServer
 
 - (UMLicenseServer *)initWithPort:(NSInteger)port
 {
-    self = [super initWithName:@"UMMessageServer"];
+    self = [super initWithName:@"UMLicenseServer"];
     if(self)
     {
         _port = port;
@@ -65,4 +67,9 @@
     return 0;
 }
 
+- (void)getLicenseForRequest:(UMLicenseServerCommandGetLicenseRequest *)request
+                    response:(UMLicenseServerCommandGetLicenseResponse *)response
+{
+    response.status = UMLicenseServerCommandError_NO_ERROR;
+}
 @end

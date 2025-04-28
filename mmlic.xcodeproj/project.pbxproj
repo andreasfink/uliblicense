@@ -36,6 +36,7 @@
 		A62FE3122DBF9E6800263016 /* UMLicenseCommandHandlerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE3112DBF9E6800263016 /* UMLicenseCommandHandlerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A62FE3142DBFA09100263016 /* UMLicenseClient.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE3132DBFA09100263016 /* UMLicenseClient.h */; };
 		A62FE3162DBFA0A300263016 /* UMLicenseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE3152DBFA0A300263016 /* UMLicenseClient.m */; };
+		A62FE3172DBFC94A00263016 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A7022BB7BA20019806C /* libuliblicense.a */; };
 		A64FAAED22EB878D001964F4 /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3B22BB74600019806C /* ulib.framework */; };
 		A652E13820C7CFF200CDA5EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A652E13720C7CFF200CDA5EF /* main.m */; };
 		A652E13F20C7F0FC00CDA5EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A652E13E20C7F0FC00CDA5EF /* main.m */; };
@@ -312,6 +313,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A62FE3172DBFC94A00263016 /* libuliblicense.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

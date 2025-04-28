@@ -6,13 +6,17 @@
 //
 
 #import <uliblicense/UMLicenseServerCommand.h>
-
+#import <uliblicense/UMLicenseServerCommandError.h>
 
 @interface UMLicenseServerCommandGetLicenseResponse : UMLicenseServerCommand
 {
-    NSData *_license;
+    UMLicenseServerCommandError     _status;
+    NSString                        *_error;
+    NSData                          *_license;
 }
-@property(readwrite,atomic,strong)  NSData *license;
+@property(readwrite,atomic,assign)  UMLicenseServerCommandError status;
+@property(readwrite,atomic,strong)  NSString *error;
+@property(readwrite,atomic,strong)  NSData   *license;
 
 @end
 

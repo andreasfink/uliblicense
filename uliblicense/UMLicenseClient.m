@@ -47,13 +47,24 @@
     return _isConnected;
 }
 
-- (UMLicenseServerCommandError)getLicenseForInstance:(NSString *)instance
+
+
+- (UMLicenseServerCommandError)getLicenseForApplication:(NSString *)application
+                                               instance:(NSString *)instance
+                                                 serial:(NSString *)serial
+                                           macaddresses:(NSString *)macAdresses
+                                            ipaddresses:(NSString *)ipAdresses
+                                                license:(UMLicense **)licptr
 {
     _callComplete = NO;
-    UMLicenseServerCommandError e = [_session getLicenseForInstance:instance
-                                             onCompletionCallObject:self
-                                                       withSelector:@selector(getLicenseCompletionHandler:)];
-    if(e)
+    UMLicenseServerCommandError e = [_session getLicenseForApplication:(NSString *)application
+                                                              instance:(NSString *)instance
+                                                                serial:(NSString *)serial
+                                                          macaddresses:(NSString *)macAdresses
+                                                           ipaddresses:(NSString *)ipAdresses
+                                                onCompletionCallObject:self
+                                                          withSelector:@selector(getLicenseCompletionHandler:)];
+    if(e != UMLicenseServerCommandError_NO_ERROR)
     {
         return e;
     }
@@ -61,41 +72,17 @@
     {
         usleep(1000);
     }
+    if(licptr)
+    {
+        *licptr = _callResultObject;
+    }
     return _callResult;
 }
 
 - (void)getLicenseCompletionHandler:(UMLicenseServerCommandGetLicenseResponse *)cmd
 {
     _callResult = cmd.status;
-    _callComplete = YES;
-}
-
-
-
-- (UMLicense *) getLicenseForInstance:(NSString *)instance
-                                error:(UMLicenseServerCommandError *)err
-{
-    _callComplete = NO;
-    UMLicenseServerCommandError e = [_session doGetLicense:instance
-                                    onCompletionCallObject:self
-                                              withSelector:@selector(getLicenseCompletionHandler:)];
-    if(e)
-    {
-        *err = e;
-        return NULL;
-    }
-    while(_callComplete==NO)
-    {
-        usleep(1000);
-    }
-    *err = _callResult;
-    return _callResultObject;
-}
-
-- (void)getLicenseCompletionHandler:(UMLicenseServerCommandGetLicenseResponse *)cmd
-{
-    _callResult = cmd.status;
-    _callResultObject = cmd.message;
+    _callResultObject = cmd.license;
     _callComplete = YES;
 }
 

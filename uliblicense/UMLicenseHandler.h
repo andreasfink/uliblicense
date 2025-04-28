@@ -7,7 +7,7 @@
 
 #import <ulib/ulib.h>
 
-#import <uliblicense/UMLicenseCommandHandlerProtocol.h>
+#import "UMLicenseCommandHandlerProtocol.h"
 @class UMLicenseSession;
 @class UMLicenseServer;
 @class UMLicenseClient;
@@ -21,7 +21,7 @@
     UMLicenseClient          *_client;
 }
 
-@property(readwrite,strong,atomic)  id commandHandlerDelegate;
+@property(readwrite,strong,atomic)  id<UMLicenseCommandHandlerProtocol> commandHandlerDelegate;
 @property(readwrite,strong,atomic)  UMLicenseSession *session;
 
 - (UMLicenseHandler *)initWithSocket:(UMSocket *)s server:(UMLicenseServer *)server;

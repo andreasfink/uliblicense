@@ -41,9 +41,12 @@ typedef void (^UMMesssageClientInsertCompletionHandler)(int status,NSString *err
 - (BOOL)connect; /* returns YES if connected */
 - (UMLicenseServerCommandError)login; /* returns UMLicenseServerCommandError_NO_ERROR if logged in */
 - (UMLicenseServerCommandError)insertMessage:(UMLicense *)msg;
-- (UMLicense *) getMessage:(NSString *)messageId
-                  instance:(NSString *)instance
-                     error:(UMLicenseServerCommandError *)err;
+- (UMLicenseServerCommandError)getLicenseForApplication:(NSString *)application
+                                               instance:(NSString *)instance
+                                                 serial:(NSString *)serial
+                                           macaddresses:(NSString *)macAdresses
+                                            ipaddresses:(NSString *)ipAdresses
+                                                license:(UMLicense **)licptr;
 - (BOOL) awaitsResponses;
 - (void)close;
 

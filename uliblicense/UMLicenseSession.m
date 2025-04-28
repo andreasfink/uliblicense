@@ -6,32 +6,21 @@
 //
 
 #import <uliblicense/UMLicenseSession.h>
-
-@implementation UMLicenseSession
-
-
-//
-//  UMLicenseSession.m
-//  ummessage
-//
-//  Created by Andreas Fink on 09.03.2025.
-//
-
-#import <uliblicense/UMLicenseSession.h>
 #import <uliblicense/UMLicenseServer.h>
 #import <uliblicense/UMLicenseHandler.h>
 #import <uliblicense/UMLicenseServerCommandTypes.h>
 #import <uliblicense/UMLicenseServerCommand.h>
 #import <uliblicense/UMLicenseServerCommandError.h>
 #import <uliblicense/UMLicenseServerCommandGenericError.h>
-#import <uliblicense/UMLicenseServerCommandHeartbeatRequest.h>
-#import <uliblicense/UMLicenseServerCommandHeartbeatResponse.h>
+#import <uliblicense/UMLicenseServerCommandHeartBeatRequest.h>
+#import <uliblicense/UMLicenseServerCommandHeartBeatResponse.h>
 #import <uliblicense/UMLicenseServerCommandGetLicenseRequest.h>
 #import <uliblicense/UMLicenseServerCommandGetLicenseResponse.h>
 #import <uliblicense/UMLicenseSessionCompletionObject.h>
 #import <uliblicense/UMLicense.h>
 
 @implementation UMLicenseSession
+
 - (UMLicenseSession *)init
 {
     self = [super init];
@@ -48,11 +37,9 @@
                                          runInForeground:YES];
         _serverApiVersion = 1;
         _clientApiVersion = 1;
-        _serverName = @"umserver";
-        _clientName = @"umcli";
+        _serverName = @"umlic-srv";
+        _clientName = @"umlic-cli";
         _pendingSequences = [[UMSynchronizedDictionary alloc]init];
-        _username = @"testuser";
-        _password = @"testpass";
     }
     return self;
 }
@@ -73,7 +60,7 @@
 
 - (void)doHandshake
 {
-    UMLicenseServerCommandHeartbeatRequest *req = [[UMLicenseServerCommandHeartbeatRequest alloc]init];
+    UMLicenseServerCommandHeartBeatRequest *req = [[UMLicenseServerCommandHeartBeatRequest alloc]init];
     req.sequenceNumber = [self getSequenceNumber];
     [self sendCommand:req];
     _lastHandshakeRequested = [NSDate date];
@@ -86,9 +73,9 @@
     return cmd.status;
 }
 
-- (int)processHeartbeatRequest:(UMLicenseServerCommandHeartbeatRequest *)cmd
+- (int)processHeartbeatRequest:(UMLicenseServerCommandHeartBeatRequest *)cmd
 {
-    UMLicenseServerCommandHeartbeatResponse *res = [[UMLicenseServerCommandHeartbeatResponse alloc]init];
+    UMLicenseServerCommandHeartBeatResponse *res = [[UMLicenseServerCommandHeartBeatResponse alloc]init];
     res.sequenceNumber = cmd.sequenceNumber;
     UMSocketError err;
     err = [self sendCommand:res];
@@ -99,75 +86,17 @@
     return 0;
 }
 
-- (int)processHeartbeatResponse:(UMLicenseServerCommandHeartbeatResponse *)cmd
+- (int)processHeartbeatResponse:(UMLicenseServerCommandHeartBeatResponse *)cmd
 {
     _lastHandshakeReceived = [NSDate date];
     return 0;
 }
 
-- (int)processLoginRequest:(UMLicenseServerCommandLoginRequest *)cmd
-{
-    UMLicenseServerCommandError error = [_server.authenticationDelegate login:cmd.username
-                                                                     password:cmd.password
-                                                                         host:_socket.connectedRemoteAddress
-                                                                     instance:cmd.instance];
-    UMLicenseServerCommandLoginResponse *res = [[UMLicenseServerCommandLoginResponse alloc]init];
-    if(error ==UMLicenseServerCommandError_NO_ERROR)
-    {
-        _authenticated = YES;
-        _instance = cmd.instance;
-    }
-    res.status = error;
-    res.sequenceNumber = cmd.sequenceNumber;
-    res.apiVersion = _serverApiVersion;
-    res.serverName = _serverName;
-    UMSocketError err = [self sendCommand:res];
-    if(err != UMSocketError_no_error)
-    {
-        return -1;
-    }
-    return 0;
-}
 
-- (int)processLoginResponse:(UMLicenseServerCommandLoginResponse *)cmd
+- (int)processGetLicenseRequest:(UMLicenseServerCommandGetLicenseRequest *)cmd
 {
-    NSNumber *seq = @(cmd.sequenceNumber);
-    if(cmd.serverName)
-    {
-        _serverName = cmd.serverName;
-    }
-    _serverApiVersion = cmd.apiVersion;
-    if(cmd.status == UMLicenseServerCommandError_NO_ERROR)
-    {
-        _clientSuccessfullyLoggedIn = YES;
-    }
-    else
-    {
-        _clientSuccessfullyLoggedIn = NO;
-    }
-    
-    UMLicenseSessionCompletionObject *co =_pendingSequences[seq];
-    
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [co.objectToCall performSelector:co.selectorToCall withObject:cmd];
-#pragma clang diagnostic pop
-    return 0;
-}
-
-- (int)processInsertMessageRequest:(UMLicenseServerCommandInsertMessageRequest *)cmd
-{
-    UMLicenseServerCommandError error;
-    if(_server.insertOrUpdateMessageDelegate)
-    {
-        error = [_server.insertOrUpdateMessageDelegate insertOrUpdateMessage:cmd.message];
-    }
-    else
-    {
-        error = [self localInsertMessage:cmd.message];
-    }
-    UMLicenseServerCommandInsertMessageResponse *res = [[UMLicenseServerCommandInsertMessageResponse alloc]init];
-    res.status = error;
+    UMLicenseServerCommandGetLicenseResponse *res = [[UMLicenseServerCommandGetLicenseResponse alloc]init];
+    [_server getLicenseForRequest:cmd response:res];
     res.sequenceNumber = cmd.sequenceNumber;
     UMSocketError err = [self sendCommand:res];
     if(err != UMSocketError_no_error)
@@ -177,124 +106,7 @@
     return 0;
 }
 
-- (int)processInsertMessageResponse:(UMLicenseServerCommandInsertMessageResponse *)cmd
-{
-    NSNumber *seq = @(cmd.sequenceNumber);
-    
-    UMLicenseSessionCompletionObject *co = _pendingSequences[seq];
-    if(co)
-    {
-        [_pendingSequences removeObjectForKey:seq];
-        {
-            if(co.objectToCall)
-            {
-                if([co.objectToCall respondsToSelector:co.selectorToCall])
-                {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                    [co.objectToCall performSelector:co.selectorToCall withObject:cmd];
-                }
-#pragma clang diagnostic pop
-            }
-        }
-    }
-    return 0;
-}
-
-- (int)processUpdateMessageRequest:(UMLicenseServerCommandUpdateMessageRequest *)cmd
-{
-    UMLicenseServerCommandError error;
-    if(_server.updateMessageDelegate)
-    {
-        error = [_server.updateMessageDelegate updateMessage:cmd.message];
-    }
-    else if (_server.insertOrUpdateMessageDelegate)
-    {
-        error = [_server.insertOrUpdateMessageDelegate insertOrUpdateMessage:cmd.message];
-    }
-    else
-    {
-        error = [self localUpdateMessage:cmd.message];
-    }
-    UMLicenseServerCommandUpdateMessageResponse *res = [[UMLicenseServerCommandUpdateMessageResponse alloc]init];
-    res.status = error;
-    res.sequenceNumber = cmd.sequenceNumber;
-    UMSocketError err = [self sendCommand:res];
-    if(err != UMSocketError_no_error)
-    {
-        return -1;
-    }
-    return 0;
-}
-
-- (int)processUpdateMessageResponse:(UMLicenseServerCommandUpdateMessageResponse *)cmd
-{
-    return 0;
-}
-
-- (int)processGetMessageRequest:(UMLicenseServerCommandGetMessageRequest *)cmd
-{
-    UMLicenseServerCommandGetMessageResponse *res = [[UMLicenseServerCommandGetMessageResponse alloc]init];
-    if(!_authenticated)
-    {
-        res.status = UMLicenseServerCommandError_NOT_AUTHORIZED;
-        res.sequenceNumber = cmd.sequenceNumber;
-    }
-    else
-    {
-        UMLicense *msg;
-        UMLicenseServerCommandError err = UMLicenseServerCommandError_NO_ERROR;
-        if(_server.getMessageDelegate)
-        {
-            msg = [_server.getMessageDelegate getMessage:cmd.messageId instance:cmd.instance error:&err];
-        }
-        else
-        {
-            msg = [self localGetMessage:cmd.messageId instance:cmd.instance error:&err];
-        }
-        res.status = err;
-        if(err==UMLicenseServerCommandError_NO_ERROR)
-        {
-            res.message = msg;
-        }
-    }
-    res.sequenceNumber = cmd.sequenceNumber;
-    UMSocketError err = [self sendCommand:res];
-    if(err != UMSocketError_no_error)
-    {
-        return -1;
-    }
-    return 0;
-}
-
-- (int)processGetMessageResponse:(UMLicenseServerCommandGetMessageResponse *)cmd
-{
-    return 0;
-}
-
-- (int)processDeleteMessageRequest:(UMLicenseServerCommandDeleteMessageRequest *)cmd
-{
-    UMLicenseServerCommandError error = UMLicenseServerCommandError_NO_ERROR;
-    if(_server.deleteMessageDelegate)
-    {
-        error = [_server.deleteMessageDelegate deleteMessage:cmd.messageId];
-    }
-    else
-    {
-        error = [self localDeleteMessage:cmd.messageId];
-    }
-    UMLicenseServerCommandDeleteMessageResponse *res = [[UMLicenseServerCommandDeleteMessageResponse alloc]init];
-    res.status = error;
-    res.sequenceNumber = cmd.sequenceNumber;
-    UMSocketError err = [self sendCommand:res];
-    if(err != UMSocketError_no_error)
-    {
-        return -1;
-    }
-    return 0;
-}
-
-- (int)processDeleteMessageResponse:(UMLicenseServerCommandDeleteMessageResponse *)cmd
+- (int)processGetLicenseResponse:(UMLicenseServerCommandGetLicenseResponse *)cmd
 {
     return 0;
 }
@@ -304,100 +116,43 @@
     UMLicenseServerCommandType cid = (UMLicenseServerCommandType)cmd.command;
     switch(cid)
     {
-        case UMLicenseServerCommandType_GENERIC_ERROR_RESPONSE:
+        case UMLicenseServerCommand_GENERIC_ERROR_RESPONSE:
         {
             UMLicenseServerCommandGenericError *cmd1 = [[UMLicenseServerCommandGenericError alloc]initWithASN1Object:cmd context:NULL];
             return [self processGenericError:cmd1];
         }
             break;
-        case UMLicenseServerCommandType_HEARTBEAT_REQUEST:
+        case UMLicenseServerCommand_HEARTBEAT_REQUEST:
         {
-            UMLicenseServerCommandHeartbeatRequest *cmd1 = [[UMLicenseServerCommandHeartbeatRequest alloc]initWithASN1Object:cmd context:NULL];
+            UMLicenseServerCommandHeartBeatRequest *cmd1 = [[UMLicenseServerCommandHeartBeatRequest alloc]initWithASN1Object:cmd context:NULL];
             return [self processHeartbeatRequest:cmd1];
             
         }
             break;
             
-        case UMLicenseServerCommandType_HEARTBEAT_RESPONSE:
+        case UMLicenseServerCommand_HEARTBEAT_RESPONSE:
         {
-            UMLicenseServerCommandHeartbeatResponse *cmd1 = [[UMLicenseServerCommandHeartbeatResponse alloc]initWithASN1Object:cmd context:NULL];
+            UMLicenseServerCommandHeartBeatResponse *cmd1 = [[UMLicenseServerCommandHeartBeatResponse alloc]initWithASN1Object:cmd context:NULL];
             return [self processHeartbeatResponse:cmd1];
             
         }
             break;
             
-        case UMLicenseServerCommandType_LOGIN_REQUEST:
+        case UMLicenseServerCommand_GET_LICENSE_REQUEST:
         {
-            UMLicenseServerCommandLoginRequest *cmd1 = [[UMLicenseServerCommandLoginRequest alloc]initWithASN1Object:cmd context:NULL];
-            return [self processLoginRequest:cmd1];
-            
-        }
-            break;
-             
-        case UMLicenseServerCommandType_LOGIN_RESPONSE:
-        {
-            UMLicenseServerCommandLoginResponse *cmd1 = [[UMLicenseServerCommandLoginResponse alloc]initWithASN1Object:cmd context:NULL];
-            return [self processLoginResponse:cmd1];
-        }
-            break;
-            
-        case UMLicenseServerCommandType_INSERT_MESSAGE_REQUEST:
-        {
-            UMLicenseServerCommandInsertMessageRequest *cmd1 = [[UMLicenseServerCommandInsertMessageRequest alloc]initWithASN1Object:cmd context:NULL];
-            int i =  [self processInsertMessageRequest:cmd1];
-            return i;
-        }
-            break;
-            
-        case UMLicenseServerCommandType_INSERT_MESSAGE_RESPONSE:
-        {
-            UMLicenseServerCommandInsertMessageResponse *cmd1 = [[UMLicenseServerCommandInsertMessageResponse alloc]initWithASN1Object:cmd context:NULL];
-            return [self processInsertMessageResponse:cmd1];
-        }
-            break;
-            
-        case UMLicenseServerCommandType_UPDATE_MESSAGE_REQUEST:
-        {
-            UMLicenseServerCommandUpdateMessageRequest *cmd1 = [[UMLicenseServerCommandUpdateMessageRequest alloc]initWithASN1Object:cmd context:NULL];
-            return [self processUpdateMessageRequest:cmd1];
-        }
-            break;
-            
-        case UMLicenseServerCommandType_UPDATE_MESSAGE_RESPONSE:
-        {
-            UMLicenseServerCommandUpdateMessageResponse *cmd1 = [[UMLicenseServerCommandUpdateMessageResponse alloc]initWithASN1Object:cmd context:NULL];
-            return [self processUpdateMessageResponse:cmd1];
-        }
-            break;
-        case UMLicenseServerCommandType_GET_MESSAGE_REQUEST:
-        {
-            UMLicenseServerCommandGetMessageRequest *cmd1 = [[UMLicenseServerCommandGetMessageRequest alloc]initWithASN1Object:cmd context:NULL];
-            return [self processGetMessageRequest:cmd1];
+            UMLicenseServerCommandGetLicenseRequest *cmd1 = [[UMLicenseServerCommandGetLicenseRequest alloc]initWithASN1Object:cmd context:NULL];
+            return [self processGetLicenseRequest:cmd1];
             
         }
             break;
             
-        case UMLicenseServerCommandType_GET_MESSAGE_RESPONSE:
+        case UMLicenseServerCommand_GET_LICENSE_RESPONSE:
         {
-            UMLicenseServerCommandGetMessageResponse *cmd1 = [[UMLicenseServerCommandGetMessageResponse alloc]initWithASN1Object:cmd context:NULL];
-            return [self processGetMessageResponse:cmd1];
+            UMLicenseServerCommandGetLicenseResponse *cmd1 = [[UMLicenseServerCommandGetLicenseResponse alloc]initWithASN1Object:cmd context:NULL];
+            return [self processGetLicenseResponse:cmd1];
         }
             break;
             
-        case UMLicenseServerCommandType_DELETE_MESSAGE_REQUEST:
-        {
-            UMLicenseServerCommandDeleteMessageRequest *cmd1 = [[UMLicenseServerCommandDeleteMessageRequest alloc]initWithASN1Object:cmd context:NULL];
-            return [self processDeleteMessageRequest:cmd1];
-        }
-            break;
-            
-        case UMLicenseServerCommandType_DELETE_MESSAGE_RESPONSE:
-        {
-            UMLicenseServerCommandDeleteMessageResponse *cmd1 = [[UMLicenseServerCommandDeleteMessageResponse alloc]initWithASN1Object:cmd context:NULL];
-            return [self processDeleteMessageResponse:cmd1];
-            
-        }
-            break;
         default:
         {
             UMLicenseServerCommandGenericError *cmd1 = [[UMLicenseServerCommandGenericError alloc]initWithASN1Object:cmd context:NULL];
@@ -431,199 +186,6 @@
     return err;
 }
 
-
-- (UMLicenseServerCommandError) localInsertMessage:(UMLicense *)msg
-{
-    if(!_authenticated)
-    {
-        return UMLicenseServerCommandError_NOT_AUTHORIZED;
-    }
-    NSString *filename = [self messageIdToFileName:msg.messageId.stringValue];
-    NSString *filename1 = [NSString stringWithFormat:@"%@.json",filename];
-    NSString *filename2 = [NSString stringWithFormat:@"%@.ber",filename];
-    NSString *s = [[msg objectValue]jsonString];
-    NSData *data = [msg berEncoded];
-    NSError *err1=NULL;
-    NSError *err2=NULL;
-
-    [s writeToFile:filename1 atomically:YES encoding:NSUTF8StringEncoding  error:&err1];
-    if(err1)
-    {
-        NSLog(@"write to file '%@' failed.\n%@\n",filename1,err1);
-    }
-    [data writeToFile:filename2 options:NSDataWritingAtomic error:&err2];
-    if(err2)
-    {
-        NSLog(@"write to file '%@' failed.\n%@\n",filename2,err2);
-        return UMLicenseServerCommandError_WRITE_FAILURE;
-    }
-    return UMLicenseServerCommandError_NO_ERROR;
-}
-
-- (UMLicenseServerCommandError) localUpdateMessage:(UMLicense *)msg
-{
-    if(!_authenticated)
-    {
-        return UMLicenseServerCommandError_NOT_AUTHORIZED;
-    }
-    NSString *filename = [self messageIdToFileName:msg.messageId.stringValue];
-    NSData *data = [msg berEncoded];
-    if([data writeToFile:filename atomically:YES])
-    {
-        NSLog(@"write to file '%@' failed",filename);
-        return UMLicenseServerCommandError_UPDATE_FAILURE;
-    }
-    return UMLicenseServerCommandError_NO_ERROR;
-}
-
-- (UMLicenseServerCommandError) localDeleteMessage:(NSString *)messageId
-{
-    if(!_authenticated)
-    {
-        return UMLicenseServerCommandError_NOT_AUTHORIZED;
-    }
-    NSString *filename = [self messageIdToFileName:messageId];
-    if([[NSFileManager defaultManager]isDeletableFileAtPath:filename] == NO)
-    {
-        return UMLicenseServerCommandError_NOT_FOUND;
-        
-    }
-    NSError *err;
-    [[NSFileManager defaultManager] removeItemAtPath:filename
-                                               error:&err];
-    if(err)
-    {
-        NSLog(@"delete failed for file '%@'",filename);
-        return UMLicenseServerCommandError_DELETE_FAILURE;
-    }
-    return UMLicenseServerCommandError_NO_ERROR;
-}
-
-
-- (UMLicenseServerCommandError) doGetMessage:(NSString *)messageId
-                                    instance:(NSString *)instance
-                      onCompletionCallObject:(id)obj
-                                withSelector:(SEL)sel
-{
-    if((obj) && (sel))
-    {
-        if(![obj respondsToSelector:sel])
-        {
-            UMAssert(0,@"Object does not respond to selector");
-        }
-    }
-    NSInteger seq = [self getSequenceNumber];
-    
-    UMLicenseSessionCompletionObject *co = [[UMLicenseSessionCompletionObject alloc]init];
-    co.objectToCall = obj;
-    co.selectorToCall = sel;
-    
-    UMLicenseServerCommandGetMessageRequest *req = [[UMLicenseServerCommandGetMessageRequest alloc]init];
-    req.sequenceNumber = seq;
-    req.messageId = messageId;
-    req.instance = instance;
-    _pendingSequences[@(seq)] = co;
-    UMSocketError err = [self sendCommand:req];
-    if(err != UMSocketError_no_error)
-    {
-        [_pendingSequences removeObjectForKey:@(seq)];
-        return UMLicenseServerCommandError_INVALID_STATE;
-    }
-    return UMLicenseServerCommandError_NO_ERROR;
-}
-
-- (UMLicense *)localGetMessage:(NSString *)messageId instance:(NSString *)instance error:(UMLicenseServerCommandError *)e
-{
-    if(!_authenticated)
-    {
-        *e = UMLicenseServerCommandError_NOT_AUTHORIZED;
-        return NULL;
-    }
-    
-    NSString *filename = [self messageIdToFileName:messageId instance:instance];
-    NSString *filename2 = [NSString stringWithFormat:@"%@.ber",filename];
-
-    NSData *data = [NSData dataWithContentsOfFile:filename];
-    if(data)
-    {
-        UMLicense *msg;
-        @try
-        {
-            msg = [[UMLicense alloc]initWithBerData:data];
-        }
-        @catch(NSException *ex)
-        {
-            NSLog(@"exception while loading %@: %@",filename2,ex);
-        }
-        if(msg)
-        {
-            *e = UMLicenseServerCommandError_NO_ERROR;
-            return msg;
-        }
-    }
-    *e = UMLicenseServerCommandError_LOAD_FAILURE;
-    return NULL;
-}
-
-- (NSString *)messageIdToFileName:(NSString *)msgid
-{
-    return [self messageIdToFileName:(NSString *)msgid instance:_instance];
-}
-
-- (NSString *)messageIdToFileName:(NSString *)msgid instance:(NSString *)instance
-{
-    if(msgid.length == 18)
-    {
-        NSString *year          = [msgid substringWithRange:NSMakeRange(0,4)];
-        NSString *month         = [msgid substringWithRange:NSMakeRange(4,2)];
-        NSString *day           = [msgid substringWithRange:NSMakeRange(6,2)];
-        NSString *hour          = [msgid substringWithRange:NSMakeRange(8,2)];
-        NSString *min           = [msgid substringWithRange:NSMakeRange(10,2)];
-        NSString *sec           = [msgid substringWithRange:NSMakeRange(12,2)];
-        NSString *micro         = [msgid substringWithRange:NSMakeRange(14,4)];
-        NSString *hour_tenmin   = [msgid substringWithRange:NSMakeRange(8,3)];
-
-        NSString *path = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@",_rootDirectory,instance,year,month,day,hour_tenmin];
-        NSString *filename = [NSString stringWithFormat:@"%@/%@-%@-%@_%@:%@:%@.%@",path,year,month,day,hour,min,sec,micro];
-        
-        NSError *err = NULL;
-        [[NSFileManager defaultManager]createDirectoryAtPath:path
-                                 withIntermediateDirectories:YES
-                                                  attributes:NULL
-                                                       error:&err];
-        if(err)
-        {
-            NSLog(@"error while creating path %@",path);
-            return NULL;
-        }
-        return filename;
-    }
-    return NULL;
-}
-
-- (UMLicenseServerCommandError)insertMessage:(UMLicense *)msg
-                      onCompletionCallObject:(id)obj
-                                withSelector:(SEL)sel
-{
-    NSInteger seq = [self getSequenceNumber];
-    
-    UMLicenseSessionCompletionObject *co = [[UMLicenseSessionCompletionObject alloc]init];
-    co.objectToCall = obj;
-    co.selectorToCall = sel;
-    
-    UMLicenseServerCommandInsertMessageRequest *req = [[UMLicenseServerCommandInsertMessageRequest alloc]init];
-    req.sequenceNumber = seq;
-    req.message = msg;
-    _pendingSequences[@(seq)] = co;
-    UMSocketError err = [self sendCommand:req];
-    if(err != UMSocketError_no_error)
-    {
-        [_pendingSequences removeObjectForKey:@(seq)];
-        return UMLicenseServerCommandError_INVALID_STATE;
-    }
-    return UMLicenseServerCommandError_NO_ERROR;
-}
-
 - (BOOL) awaitsResponses
 {
     if(_pendingSequences.count > 0)
@@ -634,40 +196,6 @@
 }
 
 
-- (UMLicenseServerCommandError) doLogin:(NSString *)username
-                               password:(NSString *)password
-                               instance:(NSString *)instance
-                 onCompletionCallObject:(id)obj
-                           withSelector:(SEL)sel
-{
-    if((obj) && (sel))
-    {
-        if(![obj respondsToSelector:sel])
-        {
-            UMAssert(0,@"Object does not respond to selector");
-        }
-    }
-    NSInteger seq = [self getSequenceNumber];
-    
-    UMLicenseSessionCompletionObject *co = [[UMLicenseSessionCompletionObject alloc]init];
-    co.objectToCall = obj;
-    co.selectorToCall = sel;
-    
-    UMLicenseServerCommandLoginRequest *req = [[UMLicenseServerCommandLoginRequest alloc]init];
-    req.sequenceNumber = seq;
-    req.username = username;
-    req.password = password;
-    req.instance = instance;
-    req.apiVersion = 1;
-    _pendingSequences[@(seq)] = co;
-    UMSocketError err = [self sendCommand:req];
-    if(err != UMSocketError_no_error)
-    {
-        [_pendingSequences removeObjectForKey:@(seq)];
-        return UMLicenseServerCommandError_INVALID_STATE;
-    }
-    return UMLicenseServerCommandError_NO_ERROR;
-}
 
 - (void)startHeartbeat
 {
@@ -679,4 +207,53 @@
     [_handshakeTimer stop];
 }
 
+- (UMLicenseServerCommandError)getLicenseForApplication:(NSString *)application
+                                               instance:(NSString *)instance
+                                                 serial:(NSString *)serial
+                                           macaddresses:(NSString *)macAdresses
+                                            ipaddresses:(NSString *)ipAdresses
+                                 onCompletionCallObject:(id)callbackObj
+                                           withSelector:(SEL)selector
+{
+    if((callbackObj) && (selector))
+    {
+        if(![callbackObj respondsToSelector:selector])
+        {
+            UMAssert(0,@"Object does not respond to selector");
+        }
+    }
+    NSInteger seq = [self getSequenceNumber];
+        
+    UMLicenseSessionCompletionObject *co = [[UMLicenseSessionCompletionObject alloc]init];
+    co.objectToCall = callbackObj;
+    co.selectorToCall = selector;
+        
+    UMLicenseServerCommandGetLicenseRequest *req = [[UMLicenseServerCommandGetLicenseRequest alloc]init];
+    req.sequenceNumber = seq;
+    req.application = application;
+    req.instance = instance;
+    req.serial = serial;
+    req.macaddresses = macAdresses;
+    req.ipaddresses = ipAdresses;
+    _pendingSequences[@(seq)] = co;
+    UMSocketError err = [self sendCommand:req];
+    if(err != UMSocketError_no_error)
+    {
+        [_pendingSequences removeObjectForKey:@(seq)];
+        return UMLicenseServerCommandError_INVALID_STATE;
+    }
+    return UMLicenseServerCommandError_NO_ERROR;
+}
+/*
+- (UMLicenseServerCommandError)doGetLicenseForApplication:(NSString *)application
+                                                 instance:(NSString *)instance
+                                                   serial:(NSString *)serial
+                                             macaddresses:(NSString *)macAdresses
+                                              ipaddresses:(NSString *)ipAdresses
+                                   onCompletionCallObject:(id)completionHandler
+                                             withSelector:(SEL)selector
+{
+    
+}
+*/
 @end
