@@ -3,12 +3,39 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A6114CD92BBEE3B500C34D40 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A7022BB7BA20019806C /* libuliblicense.a */; };
 		A62DAD221472BF91005487AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A62DAD211472BF91005487AF /* main.m */; };
+		A62FE2E72DBF785C00263016 /* UMLicenseServerCommandTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE2E42DBF71C600263016 /* UMLicenseServerCommandTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE2E82DBF786600263016 /* UMLicenseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE2E12DBF71B800263016 /* UMLicenseHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE2E92DBF787800263016 /* UMLicenseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE2E22DBF71B800263016 /* UMLicenseHandler.m */; };
+		A62FE2EA2DBF788100263016 /* UMLicenseServer.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE2D82DBF706600263016 /* UMLicenseServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE2EB2DBF788E00263016 /* UMLicenseServer.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE2D92DBF706600263016 /* UMLicenseServer.m */; };
+		A62FE2EC2DBF78B600263016 /* UMLIcenseServerCommandTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE2E52DBF73A100263016 /* UMLIcenseServerCommandTypes.m */; };
+		A62FE2EF2DBF7A1300263016 /* UMLicenseSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE2EE2DBF7A1300263016 /* UMLicenseSession.m */; };
+		A62FE2F02DBF7A1300263016 /* UMLicenseSession.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE2ED2DBF7A1300263016 /* UMLicenseSession.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE2F32DBF7E5C00263016 /* UMLicenseServerCommandGetLicenseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE2F22DBF7E5C00263016 /* UMLicenseServerCommandGetLicenseRequest.m */; };
+		A62FE2F42DBF7E5C00263016 /* UMLicenseServerCommandGetLicenseRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE2F12DBF7E5C00263016 /* UMLicenseServerCommandGetLicenseRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE2F72DBF7E6300263016 /* UMLicenseServerCommandGetLicenseResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE2F62DBF7E6300263016 /* UMLicenseServerCommandGetLicenseResponse.m */; };
+		A62FE2F82DBF7E6300263016 /* UMLicenseServerCommandGetLicenseResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE2F52DBF7E6300263016 /* UMLicenseServerCommandGetLicenseResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE2FB2DBF7E7700263016 /* UMLicenseServerCommandHeartBeatRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE2FA2DBF7E7700263016 /* UMLicenseServerCommandHeartBeatRequest.m */; };
+		A62FE2FC2DBF7E7700263016 /* UMLicenseServerCommandHeartBeatRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE2F92DBF7E7700263016 /* UMLicenseServerCommandHeartBeatRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE2FF2DBF7E7F00263016 /* UMLicenseServerCommandHeartBeatResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE2FE2DBF7E7F00263016 /* UMLicenseServerCommandHeartBeatResponse.m */; };
+		A62FE3002DBF7E7F00263016 /* UMLicenseServerCommandHeartBeatResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE2FD2DBF7E7F00263016 /* UMLicenseServerCommandHeartBeatResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE3032DBF7E9C00263016 /* UMLicenseServerCommandGenericError.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE3022DBF7E9C00263016 /* UMLicenseServerCommandGenericError.m */; };
+		A62FE3042DBF7E9C00263016 /* UMLicenseServerCommandGenericError.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE3012DBF7E9C00263016 /* UMLicenseServerCommandGenericError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE3072DBF7EAD00263016 /* UMLicenseServerCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE3062DBF7EAD00263016 /* UMLicenseServerCommand.m */; };
+		A62FE3082DBF7EAD00263016 /* UMLicenseServerCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE3052DBF7EAD00263016 /* UMLicenseServerCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE30B2DBF7F3F00263016 /* UMLicenseServerCommandError.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE30A2DBF7F3F00263016 /* UMLicenseServerCommandError.m */; };
+		A62FE30C2DBF7F3F00263016 /* UMLicenseServerCommandError.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE3092DBF7F3F00263016 /* UMLicenseServerCommandError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE30F2DBF9D4500263016 /* UMLicenseSessionCompletionObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE30E2DBF9D4500263016 /* UMLicenseSessionCompletionObject.m */; };
+		A62FE3102DBF9D4500263016 /* UMLicenseSessionCompletionObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE30D2DBF9D4500263016 /* UMLicenseSessionCompletionObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE3122DBF9E6800263016 /* UMLicenseCommandHandlerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE3112DBF9E6800263016 /* UMLicenseCommandHandlerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A62FE3142DBFA09100263016 /* UMLicenseClient.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE3132DBFA09100263016 /* UMLicenseClient.h */; };
+		A62FE3162DBFA0A300263016 /* UMLicenseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A62FE3152DBFA0A300263016 /* UMLicenseClient.m */; };
 		A64FAAED22EB878D001964F4 /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3B22BB74600019806C /* ulib.framework */; };
 		A652E13820C7CFF200CDA5EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A652E13720C7CFF200CDA5EF /* main.m */; };
 		A652E13F20C7F0FC00CDA5EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A652E13E20C7F0FC00CDA5EF /* main.m */; };
@@ -112,6 +139,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		A62FE2CF2DBF6FC700263016 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		A652E13320C7CFF200CDA5EF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +191,34 @@
 		A629A7A720C5585A008F3CE8 /* UMLegacyLicense.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLegacyLicense.m; sourceTree = "<group>"; };
 		A62DAD1E1472BF69005487AF /* mminfo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mminfo; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62DAD211472BF91005487AF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = mminfo/main.m; sourceTree = SOURCE_ROOT; };
+		A62FE2D12DBF6FC700263016 /* mmlicense-server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "mmlicense-server"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A62FE2D82DBF706600263016 /* UMLicenseServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseServer.h; sourceTree = "<group>"; };
+		A62FE2D92DBF706600263016 /* UMLicenseServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseServer.m; sourceTree = "<group>"; };
+		A62FE2E12DBF71B800263016 /* UMLicenseHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseHandler.h; sourceTree = "<group>"; };
+		A62FE2E22DBF71B800263016 /* UMLicenseHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseHandler.m; sourceTree = "<group>"; };
+		A62FE2E42DBF71C600263016 /* UMLicenseServerCommandTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseServerCommandTypes.h; sourceTree = "<group>"; };
+		A62FE2E52DBF73A100263016 /* UMLIcenseServerCommandTypes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLIcenseServerCommandTypes.m; sourceTree = "<group>"; };
+		A62FE2ED2DBF7A1300263016 /* UMLicenseSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseSession.h; sourceTree = "<group>"; };
+		A62FE2EE2DBF7A1300263016 /* UMLicenseSession.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseSession.m; sourceTree = "<group>"; };
+		A62FE2F12DBF7E5C00263016 /* UMLicenseServerCommandGetLicenseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseServerCommandGetLicenseRequest.h; sourceTree = "<group>"; };
+		A62FE2F22DBF7E5C00263016 /* UMLicenseServerCommandGetLicenseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseServerCommandGetLicenseRequest.m; sourceTree = "<group>"; };
+		A62FE2F52DBF7E6300263016 /* UMLicenseServerCommandGetLicenseResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseServerCommandGetLicenseResponse.h; sourceTree = "<group>"; };
+		A62FE2F62DBF7E6300263016 /* UMLicenseServerCommandGetLicenseResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseServerCommandGetLicenseResponse.m; sourceTree = "<group>"; };
+		A62FE2F92DBF7E7700263016 /* UMLicenseServerCommandHeartBeatRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseServerCommandHeartBeatRequest.h; sourceTree = "<group>"; };
+		A62FE2FA2DBF7E7700263016 /* UMLicenseServerCommandHeartBeatRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseServerCommandHeartBeatRequest.m; sourceTree = "<group>"; };
+		A62FE2FD2DBF7E7F00263016 /* UMLicenseServerCommandHeartBeatResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseServerCommandHeartBeatResponse.h; sourceTree = "<group>"; };
+		A62FE2FE2DBF7E7F00263016 /* UMLicenseServerCommandHeartBeatResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseServerCommandHeartBeatResponse.m; sourceTree = "<group>"; };
+		A62FE3012DBF7E9C00263016 /* UMLicenseServerCommandGenericError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseServerCommandGenericError.h; sourceTree = "<group>"; };
+		A62FE3022DBF7E9C00263016 /* UMLicenseServerCommandGenericError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseServerCommandGenericError.m; sourceTree = "<group>"; };
+		A62FE3052DBF7EAD00263016 /* UMLicenseServerCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseServerCommand.h; sourceTree = "<group>"; };
+		A62FE3062DBF7EAD00263016 /* UMLicenseServerCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseServerCommand.m; sourceTree = "<group>"; };
+		A62FE3092DBF7F3F00263016 /* UMLicenseServerCommandError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseServerCommandError.h; sourceTree = "<group>"; };
+		A62FE30A2DBF7F3F00263016 /* UMLicenseServerCommandError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseServerCommandError.m; sourceTree = "<group>"; };
+		A62FE30D2DBF9D4500263016 /* UMLicenseSessionCompletionObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseSessionCompletionObject.h; sourceTree = "<group>"; };
+		A62FE30E2DBF9D4500263016 /* UMLicenseSessionCompletionObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseSessionCompletionObject.m; sourceTree = "<group>"; };
+		A62FE3112DBF9E6800263016 /* UMLicenseCommandHandlerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseCommandHandlerProtocol.h; sourceTree = "<group>"; };
+		A62FE3132DBFA09100263016 /* UMLicenseClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseClient.h; sourceTree = "<group>"; };
+		A62FE3152DBFA0A300263016 /* UMLicenseClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMLicenseClient.m; sourceTree = "<group>"; };
 		A652E12D20C7B30D00CDA5EF /* UMLicenseRefreshDelegateProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMLicenseRefreshDelegateProtocol.h; sourceTree = "<group>"; };
 		A652E13520C7CFF200CDA5EF /* mmconvert */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mmconvert; sourceTree = BUILT_PRODUCTS_DIR; };
 		A652E13720C7CFF200CDA5EF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -229,6 +293,10 @@
 		A6F8A218258A981800D9860D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A62FE2D22DBF6FC700263016 /* mmlicense-server */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "mmlicense-server"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		A62DAD161472BF69005487AF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -237,6 +305,13 @@
 				A6798A4322BB74B80019806C /* ulibasn1.framework in Frameworks */,
 				A6798A9B22BB81680019806C /* libuliblicense.a in Frameworks */,
 				A6798A3F22BB74A90019806C /* ulib.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A62FE2CE2DBF6FC700263016 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +458,33 @@
 				A6DBF0F020C025FC00B38DAF /* UMSignedLicense.asn */,
 				A6DBF0E820C0259B00B38DAF /* UMSignedLicense.h */,
 				A6DBF0E920C0259B00B38DAF /* UMSignedLicense.m */,
+				A62FE3112DBF9E6800263016 /* UMLicenseCommandHandlerProtocol.h */,
+				A62FE2E42DBF71C600263016 /* UMLicenseServerCommandTypes.h */,
+				A62FE2E52DBF73A100263016 /* UMLIcenseServerCommandTypes.m */,
+				A62FE2E12DBF71B800263016 /* UMLicenseHandler.h */,
+				A62FE2E22DBF71B800263016 /* UMLicenseHandler.m */,
+				A62FE3132DBFA09100263016 /* UMLicenseClient.h */,
+				A62FE3152DBFA0A300263016 /* UMLicenseClient.m */,
+				A62FE2D82DBF706600263016 /* UMLicenseServer.h */,
+				A62FE2D92DBF706600263016 /* UMLicenseServer.m */,
+				A62FE2ED2DBF7A1300263016 /* UMLicenseSession.h */,
+				A62FE2EE2DBF7A1300263016 /* UMLicenseSession.m */,
+				A62FE3052DBF7EAD00263016 /* UMLicenseServerCommand.h */,
+				A62FE3062DBF7EAD00263016 /* UMLicenseServerCommand.m */,
+				A62FE3092DBF7F3F00263016 /* UMLicenseServerCommandError.h */,
+				A62FE30A2DBF7F3F00263016 /* UMLicenseServerCommandError.m */,
+				A62FE2F12DBF7E5C00263016 /* UMLicenseServerCommandGetLicenseRequest.h */,
+				A62FE2F22DBF7E5C00263016 /* UMLicenseServerCommandGetLicenseRequest.m */,
+				A62FE2F52DBF7E6300263016 /* UMLicenseServerCommandGetLicenseResponse.h */,
+				A62FE2F62DBF7E6300263016 /* UMLicenseServerCommandGetLicenseResponse.m */,
+				A62FE2F92DBF7E7700263016 /* UMLicenseServerCommandHeartBeatRequest.h */,
+				A62FE2FA2DBF7E7700263016 /* UMLicenseServerCommandHeartBeatRequest.m */,
+				A62FE2FD2DBF7E7F00263016 /* UMLicenseServerCommandHeartBeatResponse.h */,
+				A62FE2FE2DBF7E7F00263016 /* UMLicenseServerCommandHeartBeatResponse.m */,
+				A62FE3012DBF7E9C00263016 /* UMLicenseServerCommandGenericError.h */,
+				A62FE3022DBF7E9C00263016 /* UMLicenseServerCommandGenericError.m */,
+				A62FE30D2DBF9D4500263016 /* UMLicenseSessionCompletionObject.h */,
+				A62FE30E2DBF9D4500263016 /* UMLicenseSessionCompletionObject.m */,
 			);
 			path = uliblicense;
 			sourceTree = "<group>";
@@ -401,6 +503,7 @@
 				A6F8A1F3258A981600D9860D /* mm */,
 				A6F8A20A258A981800D9860D /* mmTests */,
 				A6F8A215258A981800D9860D /* mmUITests */,
+				A62FE2D22DBF6FC700263016 /* mmlicense-server */,
 				A6F36B061472525E006F5AF0 /* Frameworks */,
 				A6F36B041472525E006F5AF0 /* Products */,
 			);
@@ -415,6 +518,7 @@
 				A652E13520C7CFF200CDA5EF /* mmconvert */,
 				A6798A7022BB7BA20019806C /* libuliblicense.a */,
 				A67E7A7D22C5E9D200B34DA3 /* keygen */,
+				A62FE2D12DBF6FC700263016 /* mmlicense-server */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -469,22 +573,36 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A62FE2E82DBF786600263016 /* UMLicenseHandler.h in Headers */,
 				A6798A8822BB7C3A0019806C /* UMLicenseWebGet.h in Headers */,
 				A6798A7E22BB7C3A0019806C /* UMLicenseDirectory.h in Headers */,
 				A6798A8122BB7C3A0019806C /* UMLicenseProductFeature.h in Headers */,
+				A62FE30C2DBF7F3F00263016 /* UMLicenseServerCommandError.h in Headers */,
+				A62FE3082DBF7EAD00263016 /* UMLicenseServerCommand.h in Headers */,
+				A62FE2F82DBF7E6300263016 /* UMLicenseServerCommandGetLicenseResponse.h in Headers */,
+				A62FE2F42DBF7E5C00263016 /* UMLicenseServerCommandGetLicenseRequest.h in Headers */,
 				A6798A7922BB7BD70019806C /* uliblicense.h in Headers */,
+				A62FE3122DBF9E6800263016 /* UMLicenseCommandHandlerProtocol.h in Headers */,
 				A6798A7F22BB7C3A0019806C /* UMLicenseFile.h in Headers */,
 				A6798A8A22BB7C3A0019806C /* UMSignedLicense.h in Headers */,
 				A6798A7C22BB7C3A0019806C /* UMLegacyLicense.h in Headers */,
+				A62FE2FC2DBF7E7700263016 /* UMLicenseServerCommandHeartBeatRequest.h in Headers */,
 				A6798A8722BB7C3A0019806C /* UMLicenseWebConvert.h in Headers */,
+				A62FE3142DBFA09100263016 /* UMLicenseClient.h in Headers */,
 				A6798A8422BB7C3A0019806C /* UMLicenseRefreshDelegateProtocol.h in Headers */,
+				A62FE3002DBF7E7F00263016 /* UMLicenseServerCommandHeartBeatResponse.h in Headers */,
+				A62FE3042DBF7E9C00263016 /* UMLicenseServerCommandGenericError.h in Headers */,
+				A62FE2E72DBF785C00263016 /* UMLicenseServerCommandTypes.h in Headers */,
 				A6798A8922BB7C3A0019806C /* UMLicenseWebUpdate.h in Headers */,
 				A6798A8222BB7C3A0019806C /* UMLicenseProductFeatureList.h in Headers */,
 				A6798A7D22BB7C3A0019806C /* UMLicense.h in Headers */,
 				A6798A8322BB7C3A0019806C /* UMLicenseProductList.h in Headers */,
+				A62FE2EA2DBF788100263016 /* UMLicenseServer.h in Headers */,
+				A62FE3102DBF9D4500263016 /* UMLicenseSessionCompletionObject.h in Headers */,
 				A6798A8622BB7C3A0019806C /* UMLicenseRestrictionList.h in Headers */,
 				A6798A8522BB7C3A0019806C /* UMLicenseRestriction.h in Headers */,
 				A6798A7B22BB7C3A0019806C /* UMEncryptedLicense.h in Headers */,
+				A62FE2F02DBF7A1300263016 /* UMLicenseSession.h in Headers */,
 				A6798A8022BB7C3A0019806C /* UMLicenseProduct.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +627,28 @@
 			name = mminfo;
 			productName = mmlic;
 			productReference = A62DAD1E1472BF69005487AF /* mminfo */;
+			productType = "com.apple.product-type.tool";
+		};
+		A62FE2D02DBF6FC700263016 /* mmlicense-server */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A62FE2D72DBF6FC700263016 /* Build configuration list for PBXNativeTarget "mmlicense-server" */;
+			buildPhases = (
+				A62FE2CD2DBF6FC700263016 /* Sources */,
+				A62FE2CE2DBF6FC700263016 /* Frameworks */,
+				A62FE2CF2DBF6FC700263016 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A62FE2D22DBF6FC700263016 /* mmlicense-server */,
+			);
+			name = "mmlicense-server";
+			packageProductDependencies = (
+			);
+			productName = "mmlicense-server";
+			productReference = A62FE2D12DBF6FC700263016 /* mmlicense-server */;
 			productType = "com.apple.product-type.tool";
 		};
 		A652E13420C7CFF200CDA5EF /* mmconvert */ = {
@@ -615,6 +755,9 @@
 					A62DAD131472BF69005487AF = {
 						ProvisioningStyle = Automatic;
 					};
+					A62FE2D02DBF6FC700263016 = {
+						CreatedOnToolsVersion = 16.3;
+					};
 					A652E13420C7CFF200CDA5EF = {
 						CreatedOnToolsVersion = 9.4;
 						DevelopmentTeam = 38L827M334;
@@ -660,6 +803,7 @@
 				A652E13420C7CFF200CDA5EF /* mmconvert */,
 				A6798A6F22BB7BA20019806C /* uliblicense */,
 				A67E7A7C22C5E9D200B34DA3 /* keygen */,
+				A62FE2D02DBF6FC700263016 /* mmlicense-server */,
 			);
 		};
 /* End PBXProject section */
@@ -744,6 +888,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A62FE2CD2DBF6FC700263016 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A652E13120C7CFF200CDA5EF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -756,22 +907,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A62FE2EB2DBF788E00263016 /* UMLicenseServer.m in Sources */,
 				A6798A9722BB7C400019806C /* UMLicenseWebGet.m in Sources */,
+				A62FE3032DBF7E9C00263016 /* UMLicenseServerCommandGenericError.m in Sources */,
+				A62FE2F72DBF7E6300263016 /* UMLicenseServerCommandGetLicenseResponse.m in Sources */,
 				A6798A9222BB7C400019806C /* UMLicenseProductFeatureList.m in Sources */,
+				A62FE2EF2DBF7A1300263016 /* UMLicenseSession.m in Sources */,
 				A6798A9522BB7C400019806C /* UMLicenseRestrictionList.m in Sources */,
+				A62FE2E92DBF787800263016 /* UMLicenseHandler.m in Sources */,
+				A62FE2F32DBF7E5C00263016 /* UMLicenseServerCommandGetLicenseRequest.m in Sources */,
 				A6798A8E22BB7C400019806C /* UMLicenseDirectory.m in Sources */,
+				A62FE2EC2DBF78B600263016 /* UMLIcenseServerCommandTypes.m in Sources */,
 				A6798A9922BB7C400019806C /* UMSignedLicense.m in Sources */,
 				A6798A9822BB7C400019806C /* UMLicenseWebUpdate.m in Sources */,
 				A6798A7A22BB7BDA0019806C /* uliblicense.m in Sources */,
 				A6798A9422BB7C400019806C /* UMLicenseRestriction.m in Sources */,
+				A62FE2FF2DBF7E7F00263016 /* UMLicenseServerCommandHeartBeatResponse.m in Sources */,
 				A6798A9022BB7C400019806C /* UMLicenseProduct.m in Sources */,
 				A6798A8D22BB7C400019806C /* UMLicense.m in Sources */,
+				A62FE30B2DBF7F3F00263016 /* UMLicenseServerCommandError.m in Sources */,
 				A6798A8C22BB7C400019806C /* UMLegacyLicense.m in Sources */,
 				A6798A8F22BB7C400019806C /* UMLicenseFile.m in Sources */,
+				A62FE3072DBF7EAD00263016 /* UMLicenseServerCommand.m in Sources */,
 				A6798A9622BB7C400019806C /* UMLicenseWebConvert.m in Sources */,
 				A6798A9122BB7C400019806C /* UMLicenseProductFeature.m in Sources */,
 				A6798A8B22BB7C400019806C /* UMEncryptedLicense.m in Sources */,
 				A6798A9322BB7C400019806C /* UMLicenseProductList.m in Sources */,
+				A62FE2FB2DBF7E7700263016 /* UMLicenseServerCommandHeartBeatRequest.m in Sources */,
+				A62FE30F2DBF9D4500263016 /* UMLicenseSessionCompletionObject.m in Sources */,
+				A62FE3162DBFA0A300263016 /* UMLicenseClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -896,6 +1060,72 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fink-telecom.--PRODUCT-NAME-rfc1034identifier-";
 				PRODUCT_NAME = mminfo;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+		A62FE2D52DBF6FC700263016 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 38L827M334;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A62FE2D62DBF6FC700263016 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 38L827M334;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -1431,6 +1661,15 @@
 			buildConfigurations = (
 				A62DAD1C1472BF69005487AF /* Debug */,
 				A62DAD1D1472BF69005487AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A62FE2D72DBF6FC700263016 /* Build configuration list for PBXNativeTarget "mmlicense-server" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A62FE2D52DBF6FC700263016 /* Debug */,
+				A62FE2D62DBF6FC700263016 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

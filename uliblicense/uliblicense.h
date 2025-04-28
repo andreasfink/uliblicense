@@ -21,6 +21,17 @@
 #import <uliblicense/UMLicenseDirectory.h>
 #import <uliblicense/UMLicenseFile.h>
 #import <uliblicense/UMLicenseWebConvert.h>
+#import <uliblicense/UMLicenseServer.h>
+#import <uliblicense/UMLicenseSession.h>
+#import <uliblicense/UMLicenseServerCommand.h>
+#import <uliblicense/UMLicenseServerCommandError.h>
+#import <uliblicense/UMLicenseServerCommandGetLicenseRequest.h>
+#import <uliblicense/UMLicenseServerCommandGetLicenseResponse.h>
+#import <uliblicense/UMLicenseServerCommandHeartBeatRequest.h>
+#import <uliblicense/UMLicenseServerCommandHeartBeatResponse.h>
+#import <uliblicense/UMLicenseServerCommandGenericError.h>
+#import <uliblicense/UMLicenseSessionCompletionObject.h>
+
 
 UMLicenseDirectory * UMLicense_loadLicensesFromPath(NSString *directory, BOOL debug);
 UMLicenseDirectory * UMLicense_newLicenseDirectoryWithDefaultKeys(void);
