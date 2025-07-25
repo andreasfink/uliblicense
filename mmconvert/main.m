@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 06.06.18.
 //
 
-#import <Foundation/Foundation.h>
+#import <ulib/ulib.h>
 #include "../version.h"
 #import <uliblicense/uliblicense.h>
 

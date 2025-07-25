@@ -11,7 +11,7 @@
 #include <sys/time.h>
 #include <locale.h>
 
-#import <Foundation/Foundation.h>
+#import <ulib/ulib.h>
 #ifndef	LINUX
 #import <CoreFoundation/CoreFoundation.h>
 #endif

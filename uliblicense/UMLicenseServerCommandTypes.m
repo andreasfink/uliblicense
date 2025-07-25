@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 28.04.2025.
 //
 
-#import <Foundation/Foundation.h>
+#import <ulib/ulib.h>
 #import <uliblicense/UMLicenseServerCommandTypes.h>
 
 NSString *UMLicenseServerCommandTypeString(UMLicenseServerCommandType t)
