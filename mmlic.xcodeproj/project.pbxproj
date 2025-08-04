@@ -1532,7 +1532,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "\"/Library/Application Support/\"";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = auto;
+				SDKROOT = macosx;
 				WARNING_CFLAGS = "-Wimplicit-fallthrough";
 			};
 			name = Debug;
@@ -1586,7 +1586,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "\"/Library/Application Support/\"";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = auto;
+				SDKROOT = macosx;
 				WARNING_CFLAGS = "-Wimplicit-fallthrough";
 			};
 			name = Release;
