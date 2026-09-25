@@ -7,7 +7,6 @@
 //
 
 #import <ulib/ulib.h>
-#import <ulibasn1/ulibasn1.h>
 #import "UMLicenseProduct.h"
 
 @interface UMLicenseProductFeature : UMASN1Sequence

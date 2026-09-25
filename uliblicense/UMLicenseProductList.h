@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 05.06.18.
 //
 
-#import <ulibasn1/ulibasn1.h>
+#import <ulib/ulib.h>
 
 @class UMLicenseProduct;
 @interface UMLicenseProductList : UMASN1Sequence
