@@ -7,7 +7,6 @@
 //
 
 #import <ulib/ulib.h>
-#import <ulibasn1/ulibasn1.h>
 #import <uliblicense/UMSignedLicense.h>
 #import <uliblicense/UMLegacyLicense.h>
 #import <uliblicense/UMEncryptedLicense.h>

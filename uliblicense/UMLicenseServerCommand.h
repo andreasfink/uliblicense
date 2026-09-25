@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 28.04.2025.
 //
 
-#import <ulibasn1/ulibasn1.h>
+#import <ulib/ulib.h>
 #import <uliblicense/UMLicenseServerCommandTypes.h>
 
 @interface UMLicenseServerCommand : UMASN1Sequence
