@@ -101,4 +101,15 @@
     _session = NULL;
     _handler = NULL;
 }
+
+- (UMLicenseServerCommandError)login
+{
+    return UMLicenseServerCommandError_NOT_AUTHORIZED;
+}
+
+- (UMLicenseServerCommandError)insertMessage:(UMLicense *)msg
+{
+    return UMLicenseServerCommandError_NOT_AUTHORIZED;
+}
+
 @end
