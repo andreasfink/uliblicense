@@ -57,5 +57,7 @@
 - (void)addProduct:(UMLicenseProduct *)product;
 - (void)addRestriction:(UMLicenseRestriction *)rest;
 - (UMLicenseProductFeature *)getProduct:(NSString *)product feature:(NSString *)feature;
++ (NSData *)xorData:(NSData *)in with:(NSData *)xor;
+
 
 @end
