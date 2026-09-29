@@ -49,6 +49,9 @@ NSString *UMLicenseServerCommandErrrorString(UMLicenseServerCommandError err)
         case UMLicenseServerCommandError_NO_DB_SESSIONS_AVAILABLE:
             return @"NO_DB_SESSIONS_AVAILABLE";
             break;
+        case UMLicenseServerCommandError_IN_PROGRESS:
+            return @"IN_PROGRESS";
+            break;
     }
     return NULL;
 }

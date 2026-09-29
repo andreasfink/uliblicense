@@ -375,6 +375,24 @@
     return f;
 }
 
++ (NSData *)xorData:(NSData *)in with:(NSData *)xor
+{
+
+    NSMutableData *out = [[NSMutableData alloc]init];
+    NSInteger xor_max = xor.length;
+    NSInteger in_max = in.length;
+    uint8_t *in_bytes = (uint8_t *)in.bytes;
+    uint8_t *xor_bytes = (uint8_t *)xor.bytes;
+
+    for(NSInteger in_idx = 0; in_idx < in_max;in_idx++)
+    {
+        uint8_t inval = in_bytes[in_idx];
+        uint8_t xval = xor_bytes[in_idx % xor_max];
+        uint8_t outval = inval ^ xval;
+        [out appendBytes:&outval length:1];
+    }
+    return out;
+}
 
 
 @end

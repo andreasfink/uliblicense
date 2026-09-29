@@ -963,10 +963,11 @@ UMLicenseDirectory * UMLicense_loadLicensesFromPath(NSString *directory, BOOL de
 	NSData *eKeyData = [NSData dataWithBytes:&eKey length:sizeof(eKey)];
 	NSData *decryptionKeyData = [NSData dataWithBytes:eDecryptionKey length:sizeof(eDecryptionKey)];
 	NSData *signatureVerificationKeyData = [NSData dataWithBytes:eSignatureVerificationKey length:sizeof(eSignatureVerificationKey)];
-	decryptionKeyData = [decryptionKeyData xor:eKeyData];
-	signatureVerificationKeyData = [signatureVerificationKeyData xor:eKeyData];
-	NSString *decryptionKey = [decryptionKeyData utf8String];
-	NSString *signatureVerificationKey =  [signatureVerificationKeyData utf8String];
+
+    decryptionKeyData = [UMLicense xorData:decryptionKeyData with:eKeyData];
+    signatureVerificationKeyData = [UMLicense xorData:signatureVerificationKeyData with:eKeyData];
+	NSString *decryptionKey = [[NSString alloc]initWithData:decryptionKeyData encoding:NSUTF8StringEncoding];
+	NSString *signatureVerificationKey =  [[NSString alloc]initWithData:signatureVerificationKeyData encoding:NSUTF8StringEncoding];
 
 	[ld addDecryptionKey:decryptionKey];
 	[ld addSignatureVerificationKey:signatureVerificationKey];
@@ -986,9 +987,12 @@ UMLicenseDirectory * UMLicense_newLicenseDirectoryWithDefaultKeys(void)
 	NSData *decryptionKeyData = [NSData dataWithBytes:eDecryptionKey length:sizeof(eDecryptionKey)];
 	NSData *signatureVerificationKeyData = [NSData dataWithBytes:eSignatureVerificationKey length:sizeof(eSignatureVerificationKey)];
 	decryptionKeyData = [decryptionKeyData xor:eKeyData];
-	signatureVerificationKeyData = [signatureVerificationKeyData xor:eKeyData];
-	NSString *decryptionKey = [decryptionKeyData utf8String];
-	NSString *signatureVerificationKey =  [signatureVerificationKeyData utf8String];
+    
+    decryptionKeyData = [UMLicense xorData:decryptionKeyData with:eKeyData];
+    signatureVerificationKeyData = [UMLicense xorData:signatureVerificationKeyData with:eKeyData];
+
+    NSString *decryptionKey = [[NSString alloc]initWithData:decryptionKeyData encoding:NSUTF8StringEncoding];
+    NSString *signatureVerificationKey =  [[NSString alloc]initWithData:signatureVerificationKeyData encoding:NSUTF8StringEncoding];
 
 	[ld addDecryptionKey:decryptionKey];
 	[ld addSignatureVerificationKey:signatureVerificationKey];

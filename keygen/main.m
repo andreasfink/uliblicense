@@ -156,20 +156,21 @@ int main(int argc, const char * argv[])
 	NSData *key1 = [decryptionKey            dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
 	NSData *key2 = [signatureVerificationKey dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
 
-	NSData *key1e 	= [key1 xor:d3];
-	NSData *key2e	= [key2 xor:d3];
+   
+    NSData *key1e 	=  [UMLicense xorData:key1 with:d3];
+    NSData *key2e	=  [UMLicense xorData:key2 with:d3];
 
-	NSData *key1d 	= [key1e xor:d3];
-	NSData *key2d	= [key2e xor:d3];
+    NSData *key1d 	=  [UMLicense xorData:key1e with:d3];
+    NSData *key2d	=  [UMLicense xorData:key2e with:d3];
 
-	NSString *key1s = [key1d utf8String];
-	NSString *key2s = [key2d utf8String];
+    NSString *key1s =  [[NSString alloc]initWithData:key1d encoding:NSUTF8StringEncoding];
+    NSString *key2s =  [[NSString alloc]initWithData:key2d encoding:NSUTF8StringEncoding];
 
 	NSLog(@"key1: %@",key1);
 	NSLog(@"key1e: %@",key1e);
 	NSLog(@"key1d: %@",key1d);
 	NSLog(@"key1s: %@",key1s);
-
+    utf8String
 	NSLog(@"key2: %@",key2);
 	NSLog(@"key2e: %@",key2e);
 	NSLog(@"key2d: %@",key2d);

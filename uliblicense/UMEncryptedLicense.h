@@ -5,7 +5,8 @@
 //  Created by Andreas Fink on 01.06.18.
 //
 
-#import <ulibasn1/ulibasn1.h>
+#import <ulib/ulib.h>
+
 @class UMLicense;
 
 @interface UMEncryptedLicense : UMASN1Sequence

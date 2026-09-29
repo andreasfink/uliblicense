@@ -6,7 +6,6 @@
 //
 
 #import <ulib/ulib.h>
-#import <ulibasn1/ulibasn1.h>
 
 @interface UMLicenseRestriction : UMASN1Choice
 {

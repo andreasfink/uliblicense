@@ -5,7 +5,7 @@
 //  Created by Andreas Fink on 31.05.18.
 //
 
-#import <ulibasn1/ulibasn1.h>
+#import <ulib/ulib.h>
 @class UMLicense;
 @class UMEncryptedLicense;
 
