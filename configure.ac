@@ -125,7 +125,7 @@ case "$host" in
     INSTALL_NAME_TOOL="install_name_tool"
     SHARED_FLAGS="-dynamiclib -Wl,-dylib"
     LDFLAGS="$LDFLAGS ${ARCH}"
-    LIBTOOL="libtool -static -o"
+    LIBTOOL="libtool -static -no_warning_for_no_symbols -o"
     ;;
 
   *-linux-*)
