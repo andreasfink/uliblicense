@@ -238,6 +238,8 @@ AC_CONFIG_SECTION([Generating output files])
 AC_CONFIG_FILES([Makefile])
 AC_CONFIG_FILES([uliblicense.pc])
 AC_CONFIG_FILES([make_buildnr.sh])
+AC_CONFIG_FILES([version.h])
+
 AC_OUTPUT
 
 chmod 755 make_buildnr.sh
