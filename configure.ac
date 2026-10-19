@@ -39,6 +39,7 @@ MAJORVER=`echo $VERSION | cut -f1 -d.`
 MINORVER=`echo $VERSION | cut -f2 -d.`
 REVISION=`echo $VERSION | cut -f3 -d.`
 ULIBLICENSE_VERSION=`head -n 1 VERSION`
+./make_version
 
 dnl -----------------------------------------
 dnl Set user who runs ./configure
@@ -90,16 +91,7 @@ case "$host" in
   	then
 		SDK=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk
 	fi
-	
-   	CFLAGS="${CFLAGS} `pkg-config  --cflags ${DEPENDENT_PKGCONFIGS}`"
-	LDFLAGS="${LDFLAGS} `pkg-config --libs ${DEPENDENT_PKGCONFIGS}`"
-    UR="`uname -r | cut -f1 -d.`"
-    DONE=0
-    if [[ -d "${SDK}" ]]
-    then
-		CFLAGS="--sysroot ${SDK} ${CFLAGS}"
-		LDFLAGS="${LDFLAGS} -L ${SDK}/usr/lib"
-	fi
+
 	if [[ "${ARCH}" == "" ]]
 	then
 	    ARCH="-arch arm64 -arch x86_64"
@@ -108,6 +100,10 @@ case "$host" in
 	then
 		MACOSX_DEPLOYMENT_TARGET=12.4
 	fi
+   	CFLAGS="${CFLAGS} `pkg-config  --cflags ${DEPENDENT_PKGCONFIGS}`"
+	LDFLAGS="${LDFLAGS} `pkg-config --libs ${DEPENDENT_PKGCONFIGS}`"
+    UR="`uname -r | cut -f1 -d.`"
+    DONE=0
 	if [[ -d "${SDK}" ]]
     then
 		CFLAGS="${CFLAGS} --sysroot ${SDK} ${CFLAGS}"
