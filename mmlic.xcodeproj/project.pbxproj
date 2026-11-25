@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A6114CD92BBEE3B500C34D40 /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A7022BB7BA20019806C /* libuliblicense.a */; };
 		A62DAD221472BF91005487AF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A62DAD211472BF91005487AF /* main.m */; };
 		A62FE2E72DBF785C00263016 /* UMLicenseServerCommandTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE2E42DBF71C600263016 /* UMLicenseServerCommandTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A62FE2E82DBF786600263016 /* UMLicenseHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A62FE2E12DBF71B800263016 /* UMLicenseHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -88,18 +87,9 @@
 		A6798A9D22BB816A0019806C /* libuliblicense.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A7022BB7BA20019806C /* libuliblicense.a */; };
 		A67A283F20C69EC6001BB7A3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A67A283E20C69EC6001BB7A3 /* main.m */; };
 		A67E7A8022C5E9D200B34DA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A67E7A7F22C5E9D200B34DA3 /* main.m */; };
-		A67E7A8422C60CEF00B34DA3 /* ulib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3B22BB74600019806C /* ulib.framework */; };
-		A67E7A8522C60CF200B34DA3 /* ulibasn1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6798A3C22BB74600019806C /* ulibasn1.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A67E7A9822C6250500B34DA3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A6F36AFA1472525E006F5AF0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A6798A6F22BB7BA20019806C;
-			remoteInfo = uliblicense;
-		};
 		A67E7A9A22C6250C00B34DA3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A6F36AFA1472525E006F5AF0 /* Project object */;
@@ -350,9 +340,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6114CD92BBEE3B500C34D40 /* libuliblicense.a in Frameworks */,
-				A67E7A8422C60CEF00B34DA3 /* ulib.framework in Frameworks */,
-				A67E7A8522C60CF200B34DA3 /* ulibasn1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,7 +706,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A67E7A9922C6250500B34DA3 /* PBXTargetDependency */,
 			);
 			name = keygen;
 			productName = keygen;
@@ -967,11 +953,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A67E7A9922C6250500B34DA3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A6798A6F22BB7BA20019806C /* uliblicense */;
-			targetProxy = A67E7A9822C6250500B34DA3 /* PBXContainerItemProxy */;
-		};
 		A67E7A9B22C6250C00B34DA3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A6798A6F22BB7BA20019806C /* uliblicense */;
